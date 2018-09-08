@@ -17,7 +17,11 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted, making req');
+            axios.get('/api/productions')
+                .then(response => {
+                    console.log(response.data);
+                });
         }
     }
 </script>

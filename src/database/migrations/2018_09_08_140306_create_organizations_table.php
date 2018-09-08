@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductionsTable extends Migration
+class CreateOrganizationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,21 @@ class CreateProductionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('productions', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->softDeletes();
-
             $table->timestamps();
         });
 
-        Schema::create('production_translations', function (Blueprint $table) {
+        Schema::create('organization_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('production_id')->unsigned();
-            $table->string('title');
+            $table->integer('organization_id')->unsigned();
+            $table->string('name');
             $table->string('slug');
             $table->char('locale', 2)->index();
 
-            $table->unique(['production_id', 'locale']);
-            $table->foreign('production_id')->references('id')->on('productions')->onDelete('cascade');
+            $table->unique(['organization_id', 'locale']);
+            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
         });
     }
 
@@ -39,7 +38,8 @@ class CreateProductionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('production_translations');
-        Schema::dropIfExists('productions');
+        Schema::table('organizations', function (Blueprint $table) {
+            //
+        });
     }
 }

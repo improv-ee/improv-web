@@ -47,6 +47,21 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+
+        'migration' => [
+            'driver' => 'mysql',
+            'host' => 'import-db',
+            'port' => 3306,
+            'database' => 'improv_ee',
+            'username' => 'improv_ee',
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
     ],
 
     /*
