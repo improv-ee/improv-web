@@ -32,9 +32,25 @@ class ProductionsSeeder extends Seeder
 
         foreach ($events as $event) {
             $production = new Production;
-            $production->title = trim($event->event_name);
-            $production->slug = trim($event->event_slug);
+            $production->title = $event->event_name;
+            $production->slug = $event->event_slug || $event->event_name;
+            $production->description = $event->post_content;
+            $production->excerpt = strip_tags($event->post_content);
 
+            $thumbnail = $importDb->table('wp_6_postmeta')
+                ->where('meta_key','_thumbnail_id')
+                ->where('post_id', $event->post_id)
+                ->first();
+            if ($thumbnail) {
+                $image_url = $importDb->table('wp_6_posts')
+                    ->where('ID', $thumbnail->meta_value)
+                    ->where('post_type', 'attachment')
+                    ->first();
+                if($image_url) {
+                    $production->header_img=$image_url->guid;
+               }
+
+            }
 
             if (array_key_exists($event->event_owner, $organizations)) {
                 $orgId = Organization::whereTranslation('name', $organizations[$event->event_owner]['name'])->first()->id;

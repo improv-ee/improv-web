@@ -15,7 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('event-schedule', require('./components/EventSchedule.vue'));
+Vue.component('event-schedule', require('./components/schedule-feed/EventSchedule.vue'));
+Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue'));
 
 const app = new Vue({
     el: '#app',

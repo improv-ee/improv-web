@@ -8,20 +8,15 @@ class Production extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
-    public $translatedAttributes = ['title', 'slug'];
+    public $translatedAttributes = ['title', 'slug', 'description', 'excerpt'];
 
-    public function setTitleAttribute($value)
-    {
-        $this->attributes['title'] = trim($value);
-    }
-
-    public function setSlugAttribute($value)
-    {
-        $this->attributes['slug'] = str_slug($value);
-    }
 
     public function organizations()
     {
         return $this->belongsToMany('App\Orm\Organization');
+    }
+
+    public function getHeaderImgAttribute(){
+        return $this->attributes['header_img'] ?? asset('img/production/default-header.jpg');
     }
 }

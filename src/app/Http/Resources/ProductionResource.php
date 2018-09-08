@@ -19,7 +19,10 @@ class ProductionResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'created_at' => $this->created_at->toAtomString(),
-            'updated_at' => $this->updated_at->toAtomString()
+            'updated_at' => $this->updated_at->toAtomString(),
+            'header_img'=>$this->header_img,
+            'description'=>$this->description,
+            'excerpt'=>$this->excerpt
         ];
     }
 }

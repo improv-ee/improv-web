@@ -15,8 +15,8 @@ class CreateProductionsTable extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('header_img')->nullable()->default(null);
             $table->softDeletes();
-
             $table->timestamps();
         });
 
@@ -24,6 +24,8 @@ class CreateProductionsTable extends Migration
             $table->increments('id');
             $table->integer('production_id')->unsigned();
             $table->string('title');
+            $table->text('description')->nullable()->default(null);
+            $table->text('excerpt')->nullable()->default(null);
             $table->string('slug');
             $table->char('locale', 2)->index();
 
