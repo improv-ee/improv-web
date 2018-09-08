@@ -1,0 +1,67 @@
+version: "3"
+
+services:
+  webserver:
+    build: .
+    ports:
+      - "8800"
+    deploy:
+      replicas: 2
+    networks:
+      - backend
+      - db
+    environment:
+      - APP_ENV=local
+      - APP_URL=dev.improv.ee
+    volumes:
+      - ./src:/var/www/
+
+
+  lb:
+    build:
+      context: docker/lb
+    image: sqroot/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - backend
+    volumes:
+      - ./docker/lb/certs:/etc/ssl/certs/lb:ro
+
+
+  app-db:
+    image: mariadb:10
+    environment:
+    - MYSQL_ROOT_PASSWORD=5jzdDHBWV966YWXhGz1HMn7OTu0c0eJV
+    - MYSQL_USER=improv_ee
+    - MYSQL_PASSWORD=FHoXB8ONj4bvTTn7FXaix
+    - MYSQL_DATABASE=improv_ee
+    networks:
+    - db
+    ports:
+    - 3308:3306
+    volumes:
+    - app-db:/var/lib/mysql
+
+  import-db:
+    image: mariadb:10
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=improv_ee
+      - MYSQL_PASSWORD=FHoXB8ONj4bvTTn7FXaix
+      - MYSQL_DATABASE=improv_ee
+    networks:
+      - db
+    ports:
+      - 3307:3306
+    volumes:
+      - ./docker/import-db/export:/docker-entrypoint-initdb.d
+      - import-db:/var/lib/mysql
+volumes:
+  import-db:
+  app-db:
+
+networks:
+  backend:
+  db:
