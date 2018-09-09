@@ -4,3 +4,14 @@
     object-fit: cover;
   }
 }
+
+.nav-link {
+  &.active {
+    border-bottom: 2px solid $gray-600;
+    font-weight: bold;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}

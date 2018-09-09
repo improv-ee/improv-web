@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EventResource extends JsonResource
+class ScheduleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +19,11 @@ class EventResource extends JsonResource
             'title' => $this->title,
             'description'=>$this->description,
             'production'=> [
-                'slug' => $this->production->slug
+                'title' => $this->production->title,
+                'slug' => $this->production->slug,
+                'header_img'=>$this->production->header_img,
+                'description'=>$this->production->description,
+                'excerpt'=>$this->production->excerpt,
             ],
             'time' => [
                 'start'=>$this->start_time->toIso8601String(),

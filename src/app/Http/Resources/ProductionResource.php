@@ -15,12 +15,12 @@ class ProductionResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'uid' => $this->uid,
+            'events' => EventResource::collection($this->events),
             'title' => $this->title,
             'slug' => $this->slug,
             'header_img'=>$this->header_img,
             'description'=>$this->description,
-            'excerpt'=>$this->excerpt
+            'excerpt'=>$this->excerpt,
         ];
     }
 }

@@ -9,6 +9,11 @@
         <a class="btn btn-sm btn-outline-secondary mr-3" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
     @endguest
 @endsection
+
 @section('content')
             <div id="app"></div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
 @endsection

@@ -34,6 +34,6 @@
         <p>improv.ee 2013 - {{ date('Y') }}</p>
     </footer>
 </div>
-<script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

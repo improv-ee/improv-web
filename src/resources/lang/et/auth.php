@@ -17,5 +17,8 @@ return [
     'throttle' => 'Liiga palju sisselogimise katseid. Palun proovi uuesti :seconds sekundi pärast.',
      'login' => 'Logi sisse',
     'register' => 'Loo konto',
-    'logout' => 'Logi välja'
+    'logout' => 'Logi välja',
+    'forgot_password' =>'Unustasid parooli?',
+    'send_reset_link'=>'Saada parooli muutmislink',
+    'reset_password'=>'Muuda parool'
 ];

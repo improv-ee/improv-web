@@ -3,8 +3,15 @@
         "nav": {
             "schedule": "Mängukava",
             "newsletter": "Uudiskiri",
-            "podcast": "Raadiosaade"
-        }
+            "podcast": "Raadiosaade",
+          "productions": "Produktsioonid",
+          "home":"Avaleht"
+        },
+
+      "production": {
+        "name":"Produktsiooni nimi",
+        "num_of_events": "Etendusi"
+      }
     }
 
 }

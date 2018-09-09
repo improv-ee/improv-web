@@ -10,8 +10,12 @@
         </button>
     </form>
 @endsection
+
 @section('content')
-    Logged in
+    <div id="app"></div>
 @endsection
 
 
+@section('scripts')
+    <script src="{{ asset('js/admin/app.js') }}"></script>
+@endsection
