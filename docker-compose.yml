@@ -44,6 +44,14 @@ services:
     volumes:
     - app-db:/var/lib/mysql
 
+  redis:
+    image: redis:4-alpine
+    networks:
+      - db
+    volumes:
+      - redis:/data
+    command: --appendonly yes --requirepass C3azPJ6wk8wueiuDjM
+
   import-db:
     image: mariadb:10
     environment:
@@ -61,6 +69,7 @@ services:
 volumes:
   import-db:
   app-db:
+  redis:
 
 networks:
   backend:
