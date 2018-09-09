@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'login' => 'Logi sisse',
+    'failed'   => 'Need andmed ei klapi meie kirjetega.',
+    'throttle' => 'Liiga palju sisselogimise katseid. Palun proovi uuesti :seconds sekundi pärast.',
+     'login' => 'Logi sisse',
     'register' => 'Loo konto',
     'logout' => 'Logi välja'
 ];
