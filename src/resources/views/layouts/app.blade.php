@@ -22,8 +22,7 @@
                 <h1>Improteater Eestis</h1>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-
-                <a class="btn btn-sm btn-outline-secondary" href="#">Logi sisse</a>
+                @yield('topright')
             </div>
         </div>
     </header>
@@ -32,7 +31,7 @@
 
 
     <footer>
-        <p>improv.ee {{ date('Y') }}</p>
+        <p>improv.ee 2013 - {{ date('Y') }}</p>
     </footer>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>

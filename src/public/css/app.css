@@ -10496,5 +10496,7 @@ footer {
 
 .event-card img {
   max-height: 30em;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 

@@ -15,3 +15,10 @@ Route::get('/', function () {
 
     return view('frontpage');
 });
+
+Auth::routes();
+
+
+Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
