@@ -16,8 +16,13 @@ class CreateProductionsTable extends Migration
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('header_img')->nullable()->default(null);
+            $table->integer('creator_id')->unsigned()->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
+            $table->foreign('creator_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
 
         Schema::create('production_translations', function (Blueprint $table) {
@@ -30,6 +35,7 @@ class CreateProductionsTable extends Migration
             $table->char('locale', 2)->index();
 
             $table->unique(['production_id', 'locale']);
+            $table->unique(['slug']);
             $table->foreign('production_id')->references('id')->on('productions')->onDelete('cascade');
         });
     }

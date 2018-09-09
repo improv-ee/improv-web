@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('productions', 'Api\ProductionController')->only([
     'index', 'show'
 ]);
+Route::resource('events', 'Api\EventController', ['as'=>'api'])->only([
+    'index', 'show'
+]);
 
 
 Route::middleware('auth:api')->group(function () {

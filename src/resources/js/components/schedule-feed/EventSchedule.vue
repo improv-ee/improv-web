@@ -1,16 +1,13 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-md-12"><h3>Kolmapäev, 12 Oktoober</h3></div>
-        </div>
 
         <div class="row mb-2">
             <div class="col-12 col-md-6 col-lg-4"
-                 v-for="production in productions"
-                 :key="production.id">
+                 v-for="event in events"
+                 :key="event.id">
 
                 <schedule-feed-event
-                        :production="production">
+                        :event="event">
                 </schedule-feed-event>
             </div>
         </div>
@@ -22,13 +19,13 @@
     export default {
         data() {
             return {
-                productions: {}
+                events: {}
             }
         },
         mounted() {
-            axios.get('/api/productions?page=50')
+            axios.get('/api/events')
                 .then(response => {
-                    this.productions = response.data.data;
+                    this.events = response.data.data;
                 });
         }
     }

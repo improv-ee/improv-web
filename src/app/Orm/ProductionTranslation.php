@@ -12,11 +12,11 @@ protected $fillable = ['title'];
 
     public function setDescriptionAttribute($value)
     {
-        $this->attributes['description'] = trim($value);
+        $this->attributes['description'] = trim($value) ?: null;
     }
     public function setExcerptAttribute($value)
     {
-        $this->attributes['excerpt'] = Str::limit(trim($value), 200);
+        $this->attributes['excerpt'] = Str::limit(trim($value), 200)?:null;
     }
 
     public function setTitleAttribute($value)

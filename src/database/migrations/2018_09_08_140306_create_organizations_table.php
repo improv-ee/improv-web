@@ -15,8 +15,14 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('creator_id')->unsigned()->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('creator_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
 
         Schema::create('organization_translations', function (Blueprint $table) {
@@ -28,6 +34,7 @@ class CreateOrganizationsTable extends Migration
 
             $table->unique(['organization_id', 'locale']);
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
+
         });
     }
 

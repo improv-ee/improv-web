@@ -30,6 +30,7 @@ class OrganizationsSeeder extends Seeder
             $org = new \App\Orm\Organization;
             $org->name = $organization['name'];
             $org->slug = str_slug($organization['name']);
+            $org->creator_id = 1;
             $org->save();
         }
 

@@ -19,4 +19,8 @@ class Production extends Model
     public function getHeaderImgAttribute(){
         return $this->attributes['header_img'] ?? asset('img/production/default-header.jpg');
     }
+
+    public function events(){
+        return $this->hasMany('App\Orm\Event');
+    }
 }

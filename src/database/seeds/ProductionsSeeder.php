@@ -1,7 +1,9 @@
 <?php
 
+use App\Orm\Event;
 use App\Orm\Production;
 use App\Orm\Organization;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class ProductionsSeeder extends Seeder
@@ -30,45 +32,77 @@ class ProductionsSeeder extends Seeder
             2 => ['default']
         ];
 
-        foreach ($events as $event) {
-            $production = new Production;
-            $production->title = $event->event_name;
-            $production->slug = $event->event_slug || $event->event_name;
-            $production->description = $event->post_content;
-            $production->excerpt = strip_tags($event->post_content);
+        foreach ($events as $em_event) {
 
-            $thumbnail = $importDb->table('wp_6_postmeta')
-                ->where('meta_key','_thumbnail_id')
-                ->where('post_id', $event->post_id)
-                ->first();
-            if ($thumbnail) {
-                $image_url = $importDb->table('wp_6_posts')
-                    ->where('ID', $thumbnail->meta_value)
-                    ->where('post_type', 'attachment')
-                    ->first();
-                if($image_url) {
-                    $production->header_img=$image_url->guid;
-               }
+
+
+            $production = Production::whereTranslation('title', $em_event->event_name)->first();
+            if (!$production) {
+
+                $production = $this->create_production($em_event, $importDb, $organizations);
 
             }
 
-            if (array_key_exists($event->event_owner, $organizations)) {
-                $orgId = Organization::whereTranslation('name', $organizations[$event->event_owner]['name'])->first()->id;
-                switch ($orgId) {
-                    case 18:
-                        $orgId = 2;
-                        break;
-                }
+            $event = new Event;
+            $event->production_id = $production->id;
 
-            } else {
-                $orgId=2;
-            }
+            $tz = new DateTimeZone('Europe/Tallinn');
+            $start_time = new Carbon($em_event->event_start_date.' '.$em_event->event_start_time,$tz);
+            $end_time = new Carbon($em_event->event_end_date.' '.$em_event->event_end_time,$tz);
 
-            $production->save();
-            $production->organizations()->attach($orgId);
-
+            $event->start_time = $start_time->setTimezone('UTC');
+            $event->end_time = $end_time->setTimezone('UTC');
+            $event->setToken();
+            $event->creator_id = 1;
+            $event->save();
         }
 
 
+    }
+
+    /**
+     * @param $em_event
+     * @param $importDb
+     * @param $organizations
+     * @return Production
+     */
+    private function create_production($em_event, $importDb, $organizations): Production
+    {
+        $production = new Production;
+        $production->title = $em_event->event_name;
+        $production->slug = $em_event->event_slug ?: $em_event->event_name;
+        $production->description = $em_event->post_content;
+        $production->excerpt = strip_tags($em_event->post_content);
+
+        $thumbnail = $importDb->table('wp_6_postmeta')
+            ->where('meta_key', '_thumbnail_id')
+            ->where('post_id', $em_event->post_id)
+            ->first();
+        if ($thumbnail) {
+            $image_url = $importDb->table('wp_6_posts')
+                ->where('ID', $thumbnail->meta_value)
+                ->where('post_type', 'attachment')
+                ->first();
+            if ($image_url) {
+                $production->header_img = $image_url->guid;
+            }
+
+        }
+
+        if (array_key_exists($em_event->event_owner, $organizations)) {
+            $orgId = Organization::whereTranslation('name', $organizations[$em_event->event_owner]['name'])->first()->id;
+            switch ($orgId) {
+                case 18:
+                    $orgId = 2;
+                    break;
+            }
+
+        } else {
+            $orgId = 2;
+        }
+
+        $production->save();
+        $production->organizations()->attach($orgId);
+        return $production;
     }
 }

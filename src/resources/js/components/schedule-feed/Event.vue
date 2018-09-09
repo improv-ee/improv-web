@@ -1,23 +1,34 @@
 <template>
 
     <div class="card mb-4 shadow-sm event-card">
-                <img class="card-img-top flex-auto d-none d-lg-block" :src="production.header_img" alt="Card image cap">
+        <a href="">
+                <img class="card-img-top flex-auto d-none d-lg-block"
+                     :src="event.production.header_img"
+                     :alt="event.production.slug" />
+        </a>
             <div class="card-body align-items-start">
 
-                <h3 class="mb-0">
-                    {{ production.title }}
-                </h3>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <p class="card-text mb-auto">{{ production.excerpt }}</p>
+                <h4 class="mb-0">
+                    {{ event.production.title }}
+                </h4>
+                <div class="mb-1 text-muted">{{ start_time }}</div>
+                <p class="card-text mb-auto">{{ event.production.excerpt }}</p>
             </div>
 
     </div>
 </template>
 
 <script>
+    var moment = require('moment');
+    moment.locale('et');
+
     export default {
-        props: ['production'],
-        mounted() {
-        }
+        props: ['event'],
+        computed: {
+            // a computed getter
+            start_time: function () {
+                return moment(this.event.start_time).format('do MMMM HH:mm')
+            }
+            }
     }
 </script>

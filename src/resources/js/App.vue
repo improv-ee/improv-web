@@ -1,7 +1,7 @@
 <template>
 <div>
     <schedule-feed-event
-            :production="production">
+            :event="event">
     </schedule-feed-event>
     <event-schedule></event-schedule>
 </div>
@@ -11,13 +11,13 @@
     export default {
         data() {
             return {
-                production: {}
+                event: {}
             }
         },
         mounted() {
-            axios.get('/api/productions?page=58')
+            axios.get('/api/events')
                 .then(response => {
-                    this.production = response.data.data[0];
+                    this.event = response.data.data[0];
                 });
         }
     }
