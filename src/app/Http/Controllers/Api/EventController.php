@@ -8,9 +8,10 @@ use App\Orm\Event;
 
 class EventController extends Controller
 {
-    public function show ($id)
+    public function show ($uid)
     {
-        return new EventResource(Event::find($id));
+        $event = Event::where('uid', $uid)->first();
+        return new EventResource($event);
     }
 
     public function index() {

@@ -1,16 +1,16 @@
 <template>
 
     <div class="card mb-4 shadow-sm event-card">
-        <a href="">
+        <router-link :to="{ name: 'events', params: { uid: event.uid }}">
                 <img class="card-img-top flex-auto d-none d-lg-block"
                      :src="event.production.header_img"
                      :alt="event.production.slug" />
-        </a>
+        </router-link>
             <div class="card-body align-items-start">
 
-                <h4 class="mb-0">
+                <router-link :to="{ name: 'events', params: { uid: event.uid }}"><h4 class="mb-0">
                     {{ event.production.title }}
-                </h4>
+                </h4></router-link>
                 <div class="mb-1 text-muted">{{ start_time }}</div>
                 <p class="card-text mb-auto">{{ event.production.excerpt }}</p>
             </div>
@@ -25,7 +25,6 @@
     export default {
         props: ['event'],
         computed: {
-            // a computed getter
             start_time: function () {
                 return moment(this.event.start_time).format('do MMMM HH:mm')
             }

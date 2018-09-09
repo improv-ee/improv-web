@@ -1,24 +1,48 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 
-Vue.component('event-schedule', require('./components/schedule-feed/EventSchedule.vue'));
+import VueRouter from 'vue-router'
+Vue.use(VueRouter);
+
+
 Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue'));
+
+import EventSchedule from './views/EventSchedule.vue'
+import EventDetails from './views/EventDetails.vue'
+import Newsletter from './views/Newsletter.vue'
+
+const router = new VueRouter({
+    mode: 'hash',
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: EventSchedule
+        },
+        {
+            path: '/events/:uid',
+            name: 'events',
+            component: EventDetails,
+        },
+        {
+            path: '/newsletter',
+            name: 'newsletter',
+            component: Newsletter,
+        },
+    ],
+});
+
+const messages = require('../lang/frontend.json');
+const i18n = new VueI18n({    locale: 'et',    messages});
 
 const app = new Vue({
     el: '#app',
-    render: createElement => createElement(require('./App.vue'))
+    render: createElement => createElement(require('./App.vue')),
+    router,
+    i18n
 });
