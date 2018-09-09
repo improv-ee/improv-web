@@ -68543,6 +68543,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -69368,18 +69374,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-12 col-md-6 col-lg-4" }, [
-      _c("img", {
-        staticClass: "card-img-top flex-auto d-none d-lg-block",
-        attrs: {
-          src: _vm.event.production.header_img,
-          alt: _vm.event.production.slug
-        }
-      }),
-      _vm._v(
-        "\n\n        " + _vm._s(_vm.event.production.description) + "\n\n    "
-      )
+  return _c("div", { staticClass: "event-details" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 col-md-8" }, [
+        _c("img", {
+          staticClass: "img-fluid event-image",
+          attrs: {
+            src: _vm.event.production.header_img,
+            alt: _vm.event.production.slug
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 col-md-4" }, [
+        _vm._v(
+          "\n                " +
+            _vm._s(_vm.event.start_time) +
+            " - " +
+            _vm._s(_vm.event.end_time) +
+            "\n            "
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-8 offset-2" }, [
+        _vm._v(
+          "\n            " +
+            _vm._s(_vm.event.production.description) +
+            "\n        "
+        )
+      ])
     ])
   ])
 }
@@ -69464,9 +69489,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -69496,36 +69518,6 @@ var render = function() {
               attrs: { to: { name: "home" } }
             },
             [_vm._v(_vm._s(_vm.$t("nav.schedule")))]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "flex-sm-fill nav-link text-sm-center p-2 text-muted",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Õppimine")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "flex-sm-fill nav-link text-sm-center p-2 text-muted",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Trupid")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "flex-sm-fill nav-link text-sm-center p-2 text-muted",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Kutsu esinema")]
           ),
           _vm._v(" "),
           _c(

@@ -10487,6 +10487,13 @@ footer {
   margin-top: 1rem;
 }
 
+.event-details .event-image {
+  height: 20em;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .event-card img {
   max-height: 30em;
 }

@@ -1,17 +1,23 @@
 <template>
-
+<div class="event-details">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-8">
 
-                <img class="card-img-top flex-auto d-none d-lg-block"
+                <img class="img-fluid event-image"
                      :src="event.production.header_img"
                      :alt="event.production.slug" />
-
-                {{ event.production.description }}
-
+            </div>
+            <div class="col-12 col-md-4">
+                {{ event.start_time }} - {{ event.end_time }}
             </div>
         </div>
 
+    <div class="row">
+        <div class="col-8 offset-2">
+            {{ event.production.description }}
+        </div>
+    </div>
+</div>
 </template>
 
 <script>

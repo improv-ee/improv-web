@@ -12,3 +12,11 @@ footer {
   margin-bottom: $spacer*2;
   margin-top: $spacer;
 }
+
+.event-details {
+  .event-image {
+    height: 20em;
+    width: 100%;
+    object-fit: cover;
+  }
+}
