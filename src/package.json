@@ -21,6 +21,7 @@
         "moment": "^2.22",
       "vue-router":"^3.0.1",
       "vue-i18n":"^8.1.0",
-        "laravel-vue-pagination":"^2.0.0"
+        "laravel-vue-pagination":"^2.0.0",
+        "bootstrap-vue":"^2.0.0-rc.11"
     }
 }

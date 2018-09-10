@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('uid');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
+            $table->boolean('is_public')->default(false);
             $table->integer('production_id')->unsigned();
             $table->integer('creator_id')->unsigned()->default(null);
             $table->timestamps();

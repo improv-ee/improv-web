@@ -48,6 +48,12 @@ return [
             'engine' => null,
         ],
 
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'database' => database_path('testing.sqlite'),
+            'prefix' => '',
+        ],
+
         'migration' => [
             'driver' => 'mysql',
             'host' => 'import-db',

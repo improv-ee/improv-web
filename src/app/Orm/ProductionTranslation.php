@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class ProductionTranslation extends Model {
 
 public $timestamps = false;
-protected $fillable = ['title'];
+    protected $fillable = ['title','description','excerpt'];
 
     public function setDescriptionAttribute($value)
     {

@@ -16,6 +16,7 @@ class CreateProductionsTable extends Migration
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('header_img')->nullable()->default(null);
+            $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned()->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();

@@ -20,5 +20,6 @@ return [
     'logout' => 'Logi välja',
     'forgot_password' =>'Unustasid parooli?',
     'send_reset_link'=>'Saada parooli muutmislink',
-    'reset_password'=>'Muuda parool'
+    'reset_password'=>'Muuda parool',
+    'remember_me' => 'Jäta meelde'
 ];

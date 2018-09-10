@@ -1,13 +1,5 @@
 <template>
-<div>
-
-    <p><router-link :to="{ name: 'production.edit', params: {slug: production.slug}}"
-                 class="btn btn-sm btn-outline-secondary mb-3">{{ $t("ui.edit") }}</router-link></p>
-
-
-    {{production.title}}
-
-</div>
+    <production-form :production="production"></production-form>
 </template>
 
 <script>
@@ -18,10 +10,12 @@
             }
         },
         mounted() {
+            if (this.$route.params.slug) {
             axios.get('/api/productions/'+this.$route.params.slug)
                 .then(response => {
                     this.production = response.data.data;
                 });
+        }
         }
     }
 </script>

@@ -15,6 +15,7 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned()->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();

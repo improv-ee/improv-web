@@ -1,17 +1,31 @@
 {
-    "et": {
-        "nav": {
-            "schedule": "Mängukava",
-            "newsletter": "Uudiskiri",
-            "podcast": "Raadiosaade",
-          "productions": "Produktsioonid",
-          "home":"Avaleht"
-        },
-
-      "production": {
-        "name":"Produktsiooni nimi",
-        "num_of_events": "Etendusi"
+  "et": {
+    "nav": {
+      "schedule": "Mängukava",
+      "newsletter": "Uudiskiri",
+      "podcast": "Raadiosaade",
+      "productions": "Produktsioonid",
+      "home": "Avaleht"
+    },
+    "ui":{
+      "create":"Sisesta",
+      "edit":"Muuda"
+    },
+    "production": {
+      "num_of_events": "Etendusi",
+      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.",
+      "create_new": "Uus produktsioon",
+      "attr": {
+        "title": "Pealkiri",
+        "title_description": "Formaadi, lavastuse või festivali nimetus",
+        "title_placeholder": "Improfestival Tilt",
+        "excerpt": "Lühikirjeldus",
+        "excerpt_placeholder": "Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.",
+        "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.",
+        "description": "Kirjeldus",
+        "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
+        "description_placeholder": "Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"
       }
     }
-
+  }
 }
