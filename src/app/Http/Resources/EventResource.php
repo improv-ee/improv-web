@@ -21,7 +21,7 @@ class EventResource extends JsonResource
             'production'=> [
                 'slug' => $this->production->slug
             ],
-            'time' => [
+            'times' => [
                 'start'=>$this->start_time->toIso8601String(),
                 'end'=>$this->end_time->toIso8601String()
             ],

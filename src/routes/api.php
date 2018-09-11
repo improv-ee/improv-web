@@ -30,5 +30,6 @@ Route::resource('events', 'Api\EventController', ['as'=>'api'])->only([
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('productions', 'Api\ProductionController')->only(['store','destroy','update']);
+    Route::apiResource('events', 'Api\EventController')->only(['store','destroy','update']);
 });
 

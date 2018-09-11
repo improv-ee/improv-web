@@ -52,7 +52,7 @@ class ProductionsSeeder extends Seeder
 
             $event->start_time = $start_time->setTimezone('UTC');
             $event->end_time = $end_time->setTimezone('UTC');
-            $event->setToken();
+
             $event->creator_id = 1;
             $event->save();
         }

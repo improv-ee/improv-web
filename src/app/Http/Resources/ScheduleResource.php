@@ -25,7 +25,7 @@ class ScheduleResource extends JsonResource
                 'description'=>$this->production->description,
                 'excerpt'=>$this->production->excerpt,
             ],
-            'time' => [
+            'times' => [
                 'start'=>$this->start_time->toIso8601String(),
                 'end'=>$this->end_time->toIso8601String()
             ],

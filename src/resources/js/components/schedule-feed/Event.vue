@@ -26,7 +26,7 @@
         props: ['event'],
         computed: {
             start_time: function () {
-                return moment(this.event.time.start).format('Do MMMM HH:mm')
+                return moment(this.event.times.start).format('Do MMMM HH:mm')
             }
             }
     }

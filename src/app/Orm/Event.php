@@ -13,7 +13,7 @@ class Event extends Model
     protected $DT_Column='uid';
     protected $DT_settings=['type'=>DT_Unique,'size'=>10,'special_chr'=>false];
     public $translatedAttributes = ['description','title'];
-
+protected $fillable = ['production_id','start_time','end_time'];
     protected $dates = [
         'created_at',
         'updated_at',
@@ -21,6 +21,11 @@ class Event extends Model
         'end_time',
         'deleted_at'
     ];
+
+    public function setProductionIdAttribute($value) {
+        $this->attributes['production_id'] = $value;
+        $this->setToken();
+    }
 
     public function production()
     {

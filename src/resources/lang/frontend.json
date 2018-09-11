@@ -9,11 +9,21 @@
     },
     "ui":{
       "create":"Sisesta",
+      "add_new":"Lisa uus",
       "edit":"Muuda",
       "cancel":"Katkesta",
       "delete":"Kustuta"
     },
+    "event":{
+      "attr": {
+        "start_time": "Algus",
+        "start_time_description":"Ürituse alguskuupäev- ja kella-aeg",
+        "end_time": "Lõpp",
+        "end_time_description":"Ürituse alguskuupäev- ja kella-aeg"
+      }
+    },
     "production": {
+      "no_events":"Ühtegi sündmust pole lisatud",
       "num_of_events": "Etendusi",
       "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.",
       "create_new": "Uus produktsioon",
