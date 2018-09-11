@@ -10,12 +10,10 @@
             }
         },
         mounted() {
-            if (this.$route.params.slug) {
             axios.get('/api/productions/'+this.$route.params.slug)
                 .then(response => {
                     this.production = response.data.data;
                 });
-        }
         }
     }
 </script>

@@ -30,7 +30,7 @@
     @yield('content')
 
 
-    <footer>
+    <footer class="site-footer">
         <p>improv.ee 2013 - {{ date('Y') }}</p>
     </footer>
 </div>

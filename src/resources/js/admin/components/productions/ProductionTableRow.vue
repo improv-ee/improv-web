@@ -1,6 +1,6 @@
 <template>
 
-   <tr @click="openProduction(production.slug)" class="clickable">
+   <tr @click="openProduction(production.slug)">
        <td>{{ production.title }}</td>
        <td>{{ production.events.length }}</td>
    </tr>

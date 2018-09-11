@@ -4,10 +4,11 @@ namespace App\Orm;
 
 use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
-    use \Dimsav\Translatable\Translatable, DirapeToken;
+    use \Dimsav\Translatable\Translatable, DirapeToken, SoftDeletes;
 
     protected $DT_Column='uid';
     protected $DT_settings=['type'=>DT_Unique,'size'=>10,'special_chr'=>false];
@@ -17,7 +18,8 @@ class Event extends Model
         'created_at',
         'updated_at',
         'start_time',
-        'end_time'
+        'end_time',
+        'deleted_at'
     ];
 
     public function production()

@@ -22,11 +22,13 @@ public $timestamps = false;
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = trim($value);
+        $this->slug = $value;
     }
 
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] = Str::limit(str_slug($value),50);
+        $slug = trim(Str::limit(str_slug($value),50));
+        $this->attributes['slug'] = $slug ?: null;
     }
 
 }

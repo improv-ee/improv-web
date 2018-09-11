@@ -51,11 +51,6 @@ const router = new VueRouter({
         },
 
         {
-            path: '/productions/new',
-            name: 'production.new',
-            component: ProductionEdit,
-        },
-        {
             path: '/productions/:slug',
             name: 'production.details',
             component: ProductionDetails,

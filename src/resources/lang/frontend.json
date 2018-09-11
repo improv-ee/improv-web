@@ -9,7 +9,9 @@
     },
     "ui":{
       "create":"Sisesta",
-      "edit":"Muuda"
+      "edit":"Muuda",
+      "cancel":"Katkesta",
+      "delete":"Kustuta"
     },
     "production": {
       "num_of_events": "Etendusi",

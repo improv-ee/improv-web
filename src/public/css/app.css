@@ -10787,7 +10787,7 @@ body {
   margin-top: 2rem;
 }
 
-footer {
+.site-footer {
   text-align: center;
   font-size: 80%;
   margin-top: 5rem;
@@ -10817,7 +10817,7 @@ footer {
   font-weight: bold;
 }
 
-.clickable {
+.table-clickable tr {
   cursor: pointer;
 }
 

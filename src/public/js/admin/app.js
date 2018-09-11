@@ -15742,9 +15742,9 @@ window.Popper = __webpack_require__(12).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(20);
+    window.$ = window.jQuery = __webpack_require__(20);
 
-  __webpack_require__(37);
+    __webpack_require__(37);
 } catch (e) {}
 
 /**
@@ -15757,6 +15757,20 @@ window.axios = __webpack_require__(38);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+function errorResponseHandler(error) {
+    // check for errorHandle config
+    if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
+        return Promise.reject(error);
+    }
+
+    // if has response show the error
+    if (error.response) {
+        alert(error.response.data.message);
+    }
+}
+window.axios.interceptors.response.use(function (response) {
+    return response;
+}, errorResponseHandler);
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -15766,9 +15780,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -53201,7 +53215,7 @@ if (inBrowser && window.Vue) {
 /* 62 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht"},"ui":{"create":"Sisesta","edit":"Muuda"},"production":{"num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"}}}}
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht"},"ui":{"create":"Sisesta","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta"},"production":{"num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"}}}}
 
 /***/ }),
 /* 63 */
@@ -58252,10 +58266,6 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/productions',
         name: 'productions',
         component: __WEBPACK_IMPORTED_MODULE_4__views_productions_List_vue___default.a
-    }, {
-        path: '/productions/new',
-        name: 'production.new',
-        component: __WEBPACK_IMPORTED_MODULE_6__views_productions_Edit_vue___default.a
     }, {
         path: '/productions/:slug',
         name: 'production.details',
@@ -69206,15 +69216,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            productions: {}
+            productions: {},
+            newProductionTitle: ''
         };
     },
 
     methods: {
+        createProduction: function createProduction() {
+            var self = this;
+            axios.post('/api/productions', { "title": this.newProductionTitle }).then(function (response) {
+                self.$router.push({
+                    name: 'production.edit',
+                    params: { slug: response.data.data.slug }
+                });
+            });
+        },
         getResults: function getResults() {
             var _this = this;
 
@@ -69252,10 +69291,16 @@ var render = function() {
         { staticClass: "text-right" },
         [
           _c(
-            "router-link",
+            "b-btn",
             {
-              staticClass: "btn btn-sm btn-outline-secondary mb-3",
-              attrs: { to: { name: "production.new" } }
+              directives: [
+                {
+                  name: "b-modal",
+                  rawName: "v-b-modal.modal-new-production",
+                  modifiers: { "modal-new-production": true }
+                }
+              ],
+              staticClass: "btn btn-sm btn-outline-secondary mb-3"
             },
             [_vm._v(_vm._s(_vm.$t("production.create_new")))]
           )
@@ -69264,7 +69309,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table table-hover" }, [
+        _c("table", { staticClass: "table table-hover table-clickable" }, [
           _c("thead", { staticClass: "thead-dark" }, [
             _c("tr", [
               _c("th", [_vm._v(_vm._s(_vm.$t("production.attr.title")))]),
@@ -69289,7 +69334,65 @@ var render = function() {
         staticClass: "justify-content-center",
         attrs: { data: _vm.productions.meta },
         on: { "pagination-change-page": _vm.getResults }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "modal-new-production",
+            title: _vm.$t("production.create_new"),
+            "modal-ok": _vm.$t("ui.create"),
+            "modal-cancel": _vm.$t("ui.cancel")
+          },
+          on: { ok: _vm.createProduction }
+        },
+        [
+          _c(
+            "b-form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.createProduction($event)
+                }
+              }
+            },
+            [
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    label: _vm.$t("production.attr.title"),
+                    "label-for": "title",
+                    description: _vm.$t("production.attr.title_description")
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "title",
+                      type: "text",
+                      required: "",
+                      placeholder: _vm.$t("production.attr.title_placeholder")
+                    },
+                    model: {
+                      value: _vm.newProductionTitle,
+                      callback: function($$v) {
+                        _vm.newProductionTitle = $$v
+                      },
+                      expression: "newProductionTitle"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -69369,12 +69472,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             production: {}
         };
+    },
+
+    methods: {
+        markAsDeleted: function markAsDeleted() {
+            var self = this;
+            axios.delete('/api/productions/' + this.$route.params.slug).then(function (response) {
+                self.$router.push({
+                    name: 'productions'
+                });
+            });
+        }
     },
     mounted: function mounted() {
         var _this = this;
@@ -69393,28 +69511,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "p",
-      [
-        _c(
-          "router-link",
-          {
-            staticClass: "btn btn-sm btn-outline-secondary mb-3",
-            attrs: {
-              to: {
-                name: "production.edit",
-                params: { slug: _vm.production.slug }
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.$t("ui.edit")))]
-        )
-      ],
-      1
-    ),
-    _vm._v("\n\n\n    " + _vm._s(_vm.production.title) + "\n\n")
-  ])
+  return _c(
+    "div",
+    [
+      _c(
+        "b-button-toolbar",
+        { attrs: { "key-nav": "" } },
+        [
+          _c(
+            "b-button-group",
+            { staticClass: "mx-1" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-sm btn-outline-secondary",
+                  attrs: {
+                    to: {
+                      name: "production.edit",
+                      params: { slug: _vm.production.slug }
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.$t("ui.edit")))]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  attrs: { size: "sm", variant: "outline-danger" },
+                  on: { click: _vm.markAsDeleted }
+                },
+                [_vm._v(_vm._s(_vm.$t("ui.delete")))]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v("\n\n    " + _vm._s(_vm.production.title) + "\n\n")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -69493,11 +69632,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        if (this.$route.params.slug) {
-            axios.get('/api/productions/' + this.$route.params.slug).then(function (response) {
-                _this.production = response.data.data;
-            });
-        }
+        axios.get('/api/productions/' + this.$route.params.slug).then(function (response) {
+            _this.production = response.data.data;
+        });
     }
 });
 
@@ -69605,7 +69742,6 @@ var render = function() {
   return _c(
     "tr",
     {
-      staticClass: "clickable",
       on: {
         click: function($event) {
           _vm.openProduction(_vm.production.slug)
@@ -69737,31 +69873,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['production'],
     data: function data() {
         return {
-
-            operation: this.$route.params.slug ? 'update' : 'create'
+            form: {}
         };
     },
 
-    computed: {
-        buttonLabel: function buttonLabel() {
-            return this.operation === 'update' ? this.$t('ui.edit') : this.$t('ui.create');
-        } },
+
     methods: {
         onSubmit: function onSubmit(evt) {
-            evt.preventDefault();
-            if (this.operation) {
-                axios.put('/api/productions/' + this.$route.params.slug, this.production).then(function (response) {
-                    console.log(response.data);
-                }).catch(function (error) {
-                    console.log(error);
+            var self = this;
+            axios.put('/api/productions/' + this.$route.params.slug, this.form).then(function (response) {
+
+                self.$router.push({
+                    name: 'production.details',
+                    params: { slug: response.data.data.slug }
                 });
-            } else {
-                axios.post('/api/productions', this.production).then(function (response) {
-                    console.log(response.data);
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
+            });
+        }
+    },
+    watch: {
+
+        // When the component initializes, the production prop is not yet populated,
+        // it will be fetched with async request. Wait for it to complete, then set initial form
+        // state to those values
+        production: function production(_production) {
+            this.form = {
+                title: _production.title,
+                description: _production.description,
+                excerpt: _production.excerpt
+            };
         }
     }
 
@@ -69780,9 +69919,18 @@ var render = function() {
       "div",
       { staticClass: "col-8 offset-2" },
       [
+        _c("h2"),
+        _vm._v(" "),
         _c(
           "b-form",
-          { on: { submit: _vm.onSubmit } },
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.onSubmit($event)
+              }
+            }
+          },
           [
             _c(
               "b-form-group",
@@ -69802,11 +69950,11 @@ var render = function() {
                     placeholder: _vm.$t("production.attr.title_placeholder")
                   },
                   model: {
-                    value: _vm.production.title,
+                    value: _vm.form.title,
                     callback: function($$v) {
-                      _vm.$set(_vm.production, "title", $$v)
+                      _vm.$set(_vm.form, "title", $$v)
                     },
-                    expression: "production.title"
+                    expression: "form.title"
                   }
                 })
               ],
@@ -69832,11 +69980,11 @@ var render = function() {
                     placeholder: _vm.$t("production.attr.excerpt_placeholder")
                   },
                   model: {
-                    value: _vm.production.excerpt,
+                    value: _vm.form.excerpt,
                     callback: function($$v) {
-                      _vm.$set(_vm.production, "excerpt", $$v)
+                      _vm.$set(_vm.form, "excerpt", $$v)
                     },
-                    expression: "production.excerpt"
+                    expression: "form.excerpt"
                   }
                 })
               ],
@@ -69861,16 +70009,17 @@ var render = function() {
                     type: "text",
                     rows: "10",
                     required: "",
+                    required: "",
                     placeholder: _vm.$t(
                       "production.attr.description_placeholder"
                     )
                   },
                   model: {
-                    value: _vm.production.description,
+                    value: _vm.form.description,
                     callback: function($$v) {
-                      _vm.$set(_vm.production, "description", $$v)
+                      _vm.$set(_vm.form, "description", $$v)
                     },
-                    expression: "production.description"
+                    expression: "form.description"
                   }
                 })
               ],
@@ -69883,7 +70032,7 @@ var render = function() {
                 staticClass: "btn-block",
                 attrs: { type: "submit", variant: "primary" }
               },
-              [_vm._v(_vm._s(_vm.buttonLabel))]
+              [_vm._v(_vm._s(_vm.$t("ui.edit")))]
             )
           ],
           1

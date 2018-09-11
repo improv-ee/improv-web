@@ -18560,9 +18560,9 @@ window.Popper = __webpack_require__(12).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(20);
+    window.$ = window.jQuery = __webpack_require__(20);
 
-  __webpack_require__(37);
+    __webpack_require__(37);
 } catch (e) {}
 
 /**
@@ -18575,6 +18575,20 @@ window.axios = __webpack_require__(38);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+function errorResponseHandler(error) {
+    // check for errorHandle config
+    if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
+        return Promise.reject(error);
+    }
+
+    // if has response show the error
+    if (error.response) {
+        alert(error.response.data.message);
+    }
+}
+window.axios.interceptors.response.use(function (response) {
+    return response;
+}, errorResponseHandler);
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -18584,9 +18598,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -56019,7 +56033,7 @@ if (inBrowser && window.Vue) {
 /* 62 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht"},"ui":{"create":"Sisesta","edit":"Muuda"},"production":{"num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"}}}}
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht"},"ui":{"create":"Sisesta","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta"},"production":{"num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"}}}}
 
 /***/ }),
 /* 63 */,
