@@ -25,14 +25,21 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 function errorResponseHandler(error) {
-    // check for errorHandle config
+
+
     if( error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false ) {
         return Promise.reject(error);
     }
 
-    // if has response show the error
     if (error.response) {
-        alert(error.response.data.message);
+
+        Vue.notify({
+            position: 'top center',
+            type: 'danger',
+            group: 'app',
+            title: 'Error communicating with the server',
+            text: error.response.data.message
+        });
     }
 }
 window.axios.interceptors.response.use(

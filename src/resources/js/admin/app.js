@@ -5,7 +5,7 @@ window.Vue = require('vue');
 
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import datePicker from 'vue-bootstrap-datetimepicker';
-
+import Notifications from 'vue-notification'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -20,6 +20,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 Vue.use(datePicker);
+Vue.use(Notifications);
+
+
 
 import Home from './views/Home.vue'
 import ProductionsList from './views/productions/List.vue'
@@ -27,7 +30,6 @@ import ProductionDetails from './views/productions/Details.vue'
 import ProductionEdit from './views/productions/Edit.vue'
 import EventDetails from './views/events/Details.vue'
 import EventEdit from './views/events/Edit.vue'
-
 
 Vue.component('production-table-row', require('./components/productions/ProductionTableRow.vue'));
 Vue.component('production-form', require('./components/productions/Form.vue'));

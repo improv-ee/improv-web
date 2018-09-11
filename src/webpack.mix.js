@@ -12,10 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/admin/app.js','public/js/admin/app.js')
+    .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/js/admin/app.js','public/js/admin')
     .autoload({
         'jquery': ['$', 'window.jQuery', 'jQuery'],
         'vue': ['Vue','window.Vue'],
         'moment': ['moment','window.moment'],
     })
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/admin.scss', 'public/css');

@@ -1,14 +1,13 @@
-
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
+import Notifications from 'vue-notification'
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
-
+Vue.use(Notifications);
 
 Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue'));
 

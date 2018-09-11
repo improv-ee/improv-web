@@ -8,7 +8,8 @@
 
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" />
+    @yield('styles')
+
 
 </head>
 <body>

@@ -47,7 +47,6 @@
 </template>
 
 <script>
-    var moment = require('moment');
     export default {
         data() {
             return {
