@@ -21,7 +21,9 @@ class ScheduleResource extends JsonResource
             'production'=> [
                 'title' => $this->production->title,
                 'slug' => $this->production->slug,
-                'header_img'=>$this->production->header_img,
+                'images' => [
+                    'header' => $this->when($this->production->header_img_id, new ImageResource($this->production->header_img))
+                ],
                 'description'=>$this->production->description,
                 'excerpt'=>$this->production->excerpt,
             ],

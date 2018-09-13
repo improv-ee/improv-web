@@ -18,19 +18,18 @@
                 </b-form-group>
 
                 <b-form-group
-                        :label="$t('production.attr.title')"
+                        :label="$t('event.attr.title')"
                         label-for="title"
-                        :description="$t('production.attr.title_description')">
+                        :description="$t('event.attr.title_description')">
                     <b-form-input id="title"
                                   type="text"
-                                  v-model="form.title"
-                                  :placeholder="$t('production.attr.title_placeholder')">
+                                  v-model="form.title">
                     </b-form-input>
                 </b-form-group>
 
                 <b-form-group
-                        :label="$t('production.attr.description')"
-                        :description="$t('production.attr.description_description')"
+                        :label="$t('event.attr.description')"
+                        :description="$t('event.attr.description_description')"
                         label-for="description">
                     <b-form-textarea id="description"
                                      type="text" rows="10"

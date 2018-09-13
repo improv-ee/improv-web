@@ -20,7 +20,7 @@ class CreateEventsTable extends Migration
             $table->dateTime('end_time');
             $table->boolean('is_public')->default(false);
             $table->integer('production_id')->unsigned();
-            $table->integer('creator_id')->unsigned()->default(null);
+            $table->integer('creator_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 

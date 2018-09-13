@@ -16,6 +16,15 @@
                                   :placeholder="$t('production.attr.title_placeholder')">
                     </b-form-input>
                 </b-form-group>
+
+                <b-form-group :label="$t('production.img.header')"
+                label-for="header-img"
+                              :description="$t('production.img.header_description')">
+                    <b-form-file @change="uploadHeaderImg"
+                                 accept="image/jpeg, image/png, image/webp"
+                                 :placeholder="$t('production.img.select_file')"></b-form-file>
+                </b-form-group>
+
                 <b-form-group
                         :label="$t('production.attr.excerpt')"
                         :description="$t('production.attr.excerpt_description')"
@@ -53,13 +62,46 @@
         props: ['production'],
         data() {
             return {
-                form: {}
+                form: {},
             }
         },
 
         methods: {
+            uploadHeaderImg(e){
+                let self = this;
+                let formData = new FormData();
+                formData.append('image', e.srcElement.files[0]);
+                axios.post('/api/images',formData, {
+                    onUploadProgress: this.uploadProgress,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    errorHandle: false})
+                    .then(function (response) {
+                        self.form.header_img = response.data.uid
+
+                }).catch((error) => {
+
+                    for (var i = 0; i < error.response.data.errors.image.length; i++) {
+                        self.$notify({
+                            type: 'error',
+                            group: 'app',
+                            title: self.$t('ui.validation_error'),
+                            text: error.response.data.errors.image[i]
+                        });
+                    }
+
+
+                })
+            },
+            uploadProgress(progressEvent){
+                let percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                console.log(percentCompleted);
+            },
             onSubmit(evt) {
                 let self = this;
+
+
                 axios.put('/api/productions/' + this.$route.params.slug, this.form)
                     .then(function (response) {
 
@@ -79,7 +121,8 @@
                 this.form = {
                     title: production.title,
                     description: production.description,
-                    excerpt: production.excerpt
+                    excerpt: production.excerpt,
+                    header_img: production.images.header.uid
                 }
             }
         }

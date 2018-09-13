@@ -2,7 +2,7 @@
     <div>
 <div class="row">
     <div class="col-8 offset-2">
-        <notifications group="app" />
+        <notifications group="app" position="top center" />
     </div>
 </div>
 

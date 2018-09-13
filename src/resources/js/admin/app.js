@@ -23,7 +23,6 @@ Vue.use(datePicker);
 Vue.use(Notifications);
 
 
-
 import Home from './views/Home.vue'
 import ProductionsList from './views/productions/List.vue'
 import ProductionDetails from './views/productions/Details.vue'

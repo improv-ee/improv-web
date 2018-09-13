@@ -1,10 +1,13 @@
 <?php
 
 use App\Orm\Event;
+use App\Orm\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Orm\Production;
 use App\Orm\Organization;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 class ProductionsSeeder extends Seeder
 {
@@ -34,12 +37,10 @@ class ProductionsSeeder extends Seeder
 
         foreach ($events as $em_event) {
 
-
-
             $production = Production::whereTranslation('title', $em_event->event_name)->first();
             if (!$production) {
 
-                $production = $this->create_production($em_event, $importDb, $organizations);
+                $production = $this->createProduction($em_event, $importDb, $organizations);
 
             }
 
@@ -66,13 +67,14 @@ class ProductionsSeeder extends Seeder
      * @param $organizations
      * @return Production
      */
-    private function create_production($em_event, $importDb, $organizations): Production
+    private function createProduction($em_event, $importDb, $organizations): Production
     {
         $production = new Production;
         $production->title = $em_event->event_name;
         $production->slug = $em_event->event_slug ?: $em_event->event_name;
         $production->description = strip_tags($em_event->post_content);
         $production->excerpt = strip_tags($em_event->post_content);
+        $production->creator_id = 1;
 
         $thumbnail = $importDb->table('wp_6_postmeta')
             ->where('meta_key', '_thumbnail_id')
@@ -84,7 +86,7 @@ class ProductionsSeeder extends Seeder
                 ->where('post_type', 'attachment')
                 ->first();
             if ($image_url) {
-                $production->header_img = $image_url->guid;
+                $production->header_img_id = $this->importImage($image_url->guid);
             }
 
         }
@@ -104,5 +106,50 @@ class ProductionsSeeder extends Seeder
         $production->save();
         $production->organizations()->attach($orgId);
         return $production;
+    }
+
+    private function isImageDownloadRequired($imageUrl, $filename) {
+        if (!Storage::disk('images')->exists($filename)) {
+            return true;
+        }
+        return $this->getRemoteFileSize($imageUrl) != Storage::disk('images')->size($filename);
+    }
+    /**
+     * @param $imageUrl
+     * @return mixed
+     */
+    private function importImage($imageUrl)
+    {
+        $url = parse_url($imageUrl);
+        $pathinf = pathinfo($url['path']);
+        $filename = md5($imageUrl).'.'.$pathinf['extension'];
+
+
+        if ($this->isImageDownloadRequired($imageUrl,$filename)) {
+            Storage::disk('images')->put($filename, file_get_contents($imageUrl));
+            ImageOptimizer::optimize(storage_path('app/public/images/').$filename);
+        }
+
+        $image = new Image;
+        $image->uid = $filename;
+        $image->creator_id = 1;
+        $image->filename = $pathinf['basename'];
+        $image->save();
+
+        return $image->id;
+    }
+
+    private function getRemoteFileSize($url){
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, TRUE);
+        curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+
+        curl_exec($ch);
+        $size = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+
+        curl_close($ch);
+        return $size;
     }
 }

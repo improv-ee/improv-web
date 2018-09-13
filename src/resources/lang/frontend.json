@@ -12,10 +12,15 @@
       "add_new":"Lisa uus",
       "edit":"Muuda",
       "cancel":"Katkesta",
-      "delete":"Kustuta"
+      "delete":"Kustuta",
+      "validation_error":"Sisendandmed ei sobi"
     },
     "event":{
       "attr": {
+        "title":"Pealkiri",
+        "title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
+        "description":"Kirjeldus",
+        "description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.",
         "start_time": "Algus",
         "start_time_description":"Ürituse alguskuupäev- ja kella-aeg",
         "end_time": "Lõpp",
@@ -37,6 +42,12 @@
         "description": "Kirjeldus",
         "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
         "description_placeholder": "Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"
+      },
+      "img":{
+        "header": "Päise pilt",
+        "header_description": "Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
+        "select_file":"Vali fail..."
+
       }
     }
   }

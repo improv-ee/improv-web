@@ -3,7 +3,7 @@
     <div class="card mb-4 shadow-sm event-card">
         <router-link :to="{ name: 'events', params: { uid: event.uid }}">
                 <img class="card-img-top flex-auto d-none d-lg-block"
-                     :src="event.production.header_img"
+                     :src="header_img(event.production.images)"
                      :alt="event.production.slug" />
         </router-link>
             <div class="card-body align-items-start">
@@ -28,6 +28,12 @@
             start_time: function () {
                 return moment(this.event.times.start).format('Do MMMM HH:mm')
             }
+
+            },
+        methods: {
+            header_img(images) {
+                return images.hasOwnProperty('header') ? images.header.url : '/img/production/default-header.jpg';
             }
+        }
     }
 </script>

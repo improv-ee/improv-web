@@ -10,6 +10,7 @@ class Production extends Model
     use \Dimsav\Translatable\Translatable, SoftDeletes;
 
     public $translatedAttributes = ['title', 'slug', 'description', 'excerpt'];
+    public $fillable = ['title', 'slug', 'description', 'excerpt'];
     protected $dates = [
         'created_at',
         'updated_at',
@@ -21,11 +22,14 @@ class Production extends Model
         return $this->belongsToMany('App\Orm\Organization');
     }
 
-    public function getHeaderImgAttribute(){
-        return $this->attributes['header_img'] ?? asset('img/production/default-header.jpg');
+
+    public function header_img()
+    {
+        return $this->hasOne('App\Orm\Image', 'id','header_img_id');
     }
 
-    public function events(){
+    public function events()
+    {
         return $this->hasMany('App\Orm\Event');
     }
 }

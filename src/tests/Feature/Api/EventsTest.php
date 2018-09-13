@@ -1,15 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api;
 
 use App\Orm\Event;
 use App\Orm\Production;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class EventsTest extends TestCase
+class EventsTest extends ApiTestCase
 {
     use DatabaseMigrations;
 

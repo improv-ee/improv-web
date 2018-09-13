@@ -144,5 +144,6 @@ return [
         'password'               => 'parool',
         'email'        => 'e-mail',
         'name'             => 'nimi',
+        'image'=>'pilt'
     ],
 ];

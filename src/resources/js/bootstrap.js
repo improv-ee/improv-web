@@ -34,8 +34,7 @@ function errorResponseHandler(error) {
     if (error.response) {
 
         Vue.notify({
-            position: 'top center',
-            type: 'danger',
+            type: 'error',
             group: 'app',
             title: 'Error communicating with the server',
             text: error.response.data.message
