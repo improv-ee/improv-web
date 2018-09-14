@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('../bootstrap');
 
 window.Vue = require('vue');
 
@@ -36,7 +36,7 @@ const router = new VueRouter({
     ],
 });
 
-const messages = require('../lang/frontend.json');
+const messages = require('../../lang/frontend.json');
 const i18n = new VueI18n({    locale: 'et',    messages});
 
 const app = new Vue({

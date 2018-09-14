@@ -31,6 +31,7 @@ import ProductionDetails from './views/productions/Details.vue'
 import ProductionEdit from './views/productions/Edit.vue'
 import EventDetails from './views/events/Details.vue'
 import EventEdit from './views/events/Edit.vue'
+import ProfileSettings from './views/profile/Settings.vue'
 
 Vue.component('production-table-row', require('./components/productions/ProductionTableRow.vue'));
 Vue.component('production-form', require('./components/productions/Form.vue'));
@@ -98,6 +99,11 @@ const router = new VueRouter({
             path: '/productions/:slug/edit',
             name: 'production.edit',
             component: ProductionEdit,
+        },
+        {
+            path: '/profile/settings',
+            name: 'profile.settings',
+            component: ProfileSettings,
         }
     ]
 });

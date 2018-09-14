@@ -11549,6 +11549,13 @@ body {
   cursor: pointer;
 }
 
+.header-img {
+  max-height: 25em;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .overlay-container {
   position: relative;
   display: inline-block;

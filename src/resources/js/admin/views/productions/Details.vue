@@ -11,6 +11,8 @@
 
     <h1>{{production.title}}</h1>
 
+    <img :src="production.images.header.url" :alt="production.title" class="img-responsive header-img"/>
+
     <p class="lead">{{production.excerpt}}</p>
 
     <p>{{production.description}}</p>
