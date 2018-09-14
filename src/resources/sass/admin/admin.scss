@@ -1,18 +1,14 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
-@import 'variables';
-
+@import '../variables';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 // Plugins
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 @import '~@fortawesome/fontawesome-svg-core/styles.css';
 @import '~pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+@import '../layout';
+@import '../components';
 
-
-@import 'layout';
-@import 'components';
+@import "layout";

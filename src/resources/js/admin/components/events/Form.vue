@@ -46,7 +46,6 @@
 </template>
 
 <script>
-    import { dom } from '@fortawesome/fontawesome-svg-core'
     export default {
         props: ['event'],
         data() {
@@ -82,10 +81,6 @@
                     times: {end: moment(event.times.end), start:moment(event.times.start)}
                 }
             }
-        },
-
-        mounted() {
-            dom.watch();
         }
 
     }

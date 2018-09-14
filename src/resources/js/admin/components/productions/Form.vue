@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-10 offset-1">
 
             <h2></h2>
             <b-form @submit.prevent="onSubmit">
@@ -20,7 +20,18 @@
                 <b-form-group :label="$t('production.img.header')"
                 label-for="header-img"
                               :description="$t('production.img.header_description')">
-                    <b-form-file @change="uploadHeaderImg"
+
+
+                    <div class="overlay-container" v-if="form.header_img" @click="removeHeaderImg()">
+                        <img class="img-fluid" :src="production.images.header.url"
+                             :alt="$t('production.img.header')" />
+                        <div class="img-overlay">
+                            <span><i class="far fa-trash-alt fa-10x"></i></span>
+                        </div>
+                    </div>
+
+
+                    <b-form-file @change="uploadHeaderImg" v-else
                                  accept="image/jpeg, image/png, image/webp"
                                  :placeholder="$t('production.img.select_file')"></b-form-file>
                 </b-form-group>
@@ -67,6 +78,9 @@
         },
 
         methods: {
+            removeHeaderImg() {
+                this.form.header_img = null
+            },
             uploadHeaderImg(e){
                 let self = this;
                 let formData = new FormData();
@@ -78,7 +92,9 @@
                     },
                     errorHandle: false})
                     .then(function (response) {
-                        self.form.header_img = response.data.uid
+                        self.form.header_img = response.data.uid;
+                        console.log(response.data.url);
+                        self.production.images.header.url = response.data.url;
 
                 }).catch((error) => {
 

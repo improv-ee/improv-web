@@ -8,12 +8,14 @@ import datePicker from 'vue-bootstrap-datetimepicker';
 import Notifications from 'vue-notification'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
+
+// Font Awesome bits
+import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faClock, faArrowUp,faArrowDown,faChevronLeft,faChevronRight,faCalendarCheck  } from '@fortawesome/free-solid-svg-icons'
 import {faCalendar,faTrashAlt,faTimesCircle} from '@fortawesome/free-regular-svg-icons'
-
 library.add(faClock, faCalendar,faArrowUp,faArrowDown,faChevronLeft,faChevronRight,faCalendarCheck,faTrashAlt,faTimesCircle);
+dom.watch();
 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

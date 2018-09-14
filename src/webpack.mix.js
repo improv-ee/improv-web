@@ -20,4 +20,4 @@ mix.js('resources/js/admin/app.js','public/js/admin')
         'vue': ['Vue','window.Vue'],
         'moment': ['moment','window.moment'],
     })
-    .sass('resources/sass/admin.scss', 'public/css');
+    .sass('resources/sass/admin/admin.scss', 'public/css');
