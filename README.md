@@ -1,5 +1,9 @@
 # improv.ee v2
 
+This is the source code for https://improv.ee, a website dedicated to listing information and events about improvised theatre.
+
+**It is very much in development stages.**
+
 
 ## Development
 
@@ -7,6 +11,10 @@
 
 - Docker (latest)
 - Docker Compose (latest)
+
+### Setup
+
+Add `dev.improv.ee` to `/etc/hosts` as `127.0.0.1`.
 
 Run the setup script:
 
@@ -23,3 +31,11 @@ Bring up services:
 docker-compose build
 docker-compose up
 ```
+
+## Contributing
+
+Want to help? Great - submit a pull request or an issue.
+
+## License
+
+Licensed under Apache-2.0 license.

@@ -1,17 +1,12 @@
 <template>
-<div>
+<div v-if="production">
 
-    <b-button-toolbar key-nav>
-        <b-button-group class="mx-1">
-        <router-link :to="{ name: 'production.edit', params: {slug: production.slug}}"
-                 class="btn btn-sm btn-outline-secondary">{{ $t("ui.edit") }}</router-link>
-        <b-button size="sm" variant="outline-danger" @click="markAsDeleted">{{ $t("ui.delete") }}</b-button>
-        </b-button-group>
-    </b-button-toolbar>
+    <crud-toolbar resource-name="productions"
+                  :resource-id="this.$route.params.slug"></crud-toolbar>
 
     <h1>{{production.title}}</h1>
 
-    <img :src="production.images.header.url" :alt="production.title" class="img-responsive header-img"/>
+    <img :src="production.images.header.url" v-if="production.images" :alt="production.title" class="img-responsive header-img"/>
 
     <p class="lead">{{production.excerpt}}</p>
 
@@ -75,15 +70,6 @@
                         self.$router.push({
                             name: 'event.edit',
                             params: {uid: response.data.data.uid}
-                        })
-                    });
-            },
-            markAsDeleted(){
-                let self = this;
-                axios.delete('/api/productions/'+this.$route.params.slug)
-                    .then(response => {
-                        self.$router.push({
-                            name: 'productions'
                         })
                     });
             }

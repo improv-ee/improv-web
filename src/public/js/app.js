@@ -69343,15 +69343,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_notification__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_notification__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_EventSchedule_vue__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_EventSchedule_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_EventSchedule_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_EventDetails_vue__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_EventDetails_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_EventDetails_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Newsletter_vue__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Newsletter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_Newsletter_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(434);
 __webpack_require__(161);
 
 __webpack_provided_window_dot_Vue = __webpack_require__(9);
+
+
 
 
 
@@ -69362,25 +69359,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_notification___default.a);
 
 Vue.component('schedule-feed-event', __webpack_require__(232));
 
-
-
-
-
 var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     mode: 'hash',
-    routes: [{
-        path: '/',
-        name: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_3__views_EventSchedule_vue___default.a
-    }, {
-        path: '/events/:uid',
-        name: 'events',
-        component: __WEBPACK_IMPORTED_MODULE_4__views_EventDetails_vue___default.a
-    }, {
-        path: '/newsletter',
-        name: 'newsletter',
-        component: __WEBPACK_IMPORTED_MODULE_5__views_Newsletter_vue___default.a
-    }]
+    routes: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */]
 });
 
 var messages = __webpack_require__(420);
@@ -71661,7 +71642,49 @@ if (false) {
 /* 420 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Loo uus","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
+
+/***/ }),
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_EventSchedule_vue__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_EventSchedule_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_EventSchedule_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__);
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ([{
+    path: '/',
+    name: 'home',
+    component: __WEBPACK_IMPORTED_MODULE_0__views_EventSchedule_vue___default.a
+}, {
+    path: '/events/:uid',
+    name: 'events',
+    component: __WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue___default.a
+}, {
+    path: '/newsletter',
+    name: 'newsletter',
+    component: __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue___default.a
+}]);
 
 /***/ })
 /******/ ]);

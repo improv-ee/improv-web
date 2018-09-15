@@ -5,7 +5,8 @@
       "newsletter": "Uudiskiri",
       "podcast": "Raadiosaade",
       "productions": "Produktsioonid",
-      "home": "Avaleht"
+      "home": "Avaleht",
+      "organizations": "Organisatsioonid"
     },
     "ui":{
       "create":"Sisesta",
@@ -25,6 +26,13 @@
         "start_time_description":"Ürituse alguskuupäev- ja kella-aeg",
         "end_time": "Lõpp",
         "end_time_description":"Ürituse alguskuupäev- ja kella-aeg"
+      }
+    },
+    "organization":{
+      "list_intro":"Organisatsioonid on produktsioone korraldavad trupid.",
+      "create_new":"Loo uus",
+      "attr":{
+        "name": "Nimi"
       }
     },
     "production": {

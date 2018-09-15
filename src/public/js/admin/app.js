@@ -77805,30 +77805,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_notification__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_notification__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_svg_core__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_regular_svg_icons__ = __webpack_require__(372);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_Home_vue__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__views_Home_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_productions_List_vue__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_productions_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__views_productions_List_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__views_productions_Details_vue__ = __webpack_require__(379);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__views_productions_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__views_productions_Details_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__views_productions_Edit_vue__ = __webpack_require__(382);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__views_productions_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__views_productions_Edit_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__views_events_Details_vue__ = __webpack_require__(385);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__views_events_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__views_events_Details_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__views_events_Edit_vue__ = __webpack_require__(388);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__views_events_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__views_events_Edit_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__views_profile_Settings_vue__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__views_profile_Settings_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__views_profile_Settings_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_bootstrap_vue__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_svg_core__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fortawesome_vue_fontawesome__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fortawesome_free_regular_svg_icons__ = __webpack_require__(372);
 
 __webpack_require__(161);
 
 __webpack_provided_window_dot_Vue = __webpack_require__(9);
+
 
 
 
@@ -77841,27 +77829,20 @@ __webpack_provided_window_dot_Vue = __webpack_require__(9);
 
 
 
-__WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_svg_core__["library"].add(__WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__["f" /* faClock */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_regular_svg_icons__["a" /* faCalendar */], __WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__["b" /* faArrowUp */], __WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__["a" /* faArrowDown */], __WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__["d" /* faChevronLeft */], __WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__["e" /* faChevronRight */], __WEBPACK_IMPORTED_MODULE_7__fortawesome_free_solid_svg_icons__["c" /* faCalendarCheck */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_regular_svg_icons__["c" /* faTrashAlt */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_regular_svg_icons__["b" /* faTimesCircle */]);
-__WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_svg_core__["dom"].watch();
+__WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_svg_core__["library"].add(__WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__["f" /* faClock */], __WEBPACK_IMPORTED_MODULE_9__fortawesome_free_regular_svg_icons__["a" /* faCalendar */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__["b" /* faArrowUp */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__["a" /* faArrowDown */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__["d" /* faChevronLeft */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__["e" /* faChevronRight */], __WEBPACK_IMPORTED_MODULE_8__fortawesome_free_solid_svg_icons__["c" /* faCalendarCheck */], __WEBPACK_IMPORTED_MODULE_9__fortawesome_free_regular_svg_icons__["c" /* faTrashAlt */], __WEBPACK_IMPORTED_MODULE_9__fortawesome_free_regular_svg_icons__["b" /* faTimesCircle */]);
+__WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_svg_core__["dom"].watch();
 
-Vue.component('font-awesome-icon', __WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome__["FontAwesomeIcon"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__["a" /* default */]);
+Vue.component('font-awesome-icon', __WEBPACK_IMPORTED_MODULE_7__fortawesome_vue_fontawesome__["FontAwesomeIcon"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_bootstrap_vue__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_bootstrap_datetimepicker___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_notification___default.a);
-
-
-
-
-
-
-
-
 
 Vue.component('production-table-row', __webpack_require__(394));
 Vue.component('production-form', __webpack_require__(397));
 Vue.component('event-form', __webpack_require__(400));
 Vue.component('pagination', __webpack_require__(403));
+Vue.component('crud-toolbar', __webpack_require__(441));
 
 Vue.component('passport-clients', __webpack_require__(404));
 
@@ -77886,35 +77867,7 @@ $.extend(true, $.fn.datetimepicker.defaults, {
 
 var router = new __WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]({
     mode: 'hash',
-    routes: [{
-        path: '/',
-        name: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_9__views_Home_vue___default.a
-    }, {
-        path: '/productions',
-        name: 'productions',
-        component: __WEBPACK_IMPORTED_MODULE_10__views_productions_List_vue___default.a
-    }, {
-        path: '/events/:uid',
-        name: 'event.details',
-        component: __WEBPACK_IMPORTED_MODULE_13__views_events_Details_vue___default.a
-    }, {
-        path: '/events/:uid/edit',
-        name: 'event.edit',
-        component: __WEBPACK_IMPORTED_MODULE_14__views_events_Edit_vue___default.a
-    }, {
-        path: '/productions/:slug',
-        name: 'production.details',
-        component: __WEBPACK_IMPORTED_MODULE_11__views_productions_Details_vue___default.a
-    }, {
-        path: '/productions/:slug/edit',
-        name: 'production.edit',
-        component: __WEBPACK_IMPORTED_MODULE_12__views_productions_Edit_vue___default.a
-    }, {
-        path: '/profile/settings',
-        name: 'profile.settings',
-        component: __WEBPACK_IMPORTED_MODULE_15__views_profile_Settings_vue___default.a
-    }]
+    routes: __WEBPACK_IMPORTED_MODULE_4__routes__["a" /* default */]
 });
 
 var messages = __webpack_require__(420);
@@ -95655,11 +95608,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -95689,14 +95637,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     params: { uid: response.data.data.uid }
                 });
             });
-        },
-        markAsDeleted: function markAsDeleted() {
-            var self = this;
-            axios.delete('/api/productions/' + this.$route.params.slug).then(function (response) {
-                self.$router.push({
-                    name: 'productions'
-                });
-            });
         }
     },
     mounted: function mounted() {
@@ -95717,122 +95657,96 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "b-button-toolbar",
-        { attrs: { "key-nav": "" } },
+  return _vm.production
+    ? _c(
+        "div",
         [
-          _c(
-            "b-button-group",
-            { staticClass: "mx-1" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-sm btn-outline-secondary",
-                  attrs: {
-                    to: {
-                      name: "production.edit",
-                      params: { slug: _vm.production.slug }
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$t("ui.edit")))]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: { size: "sm", variant: "outline-danger" },
-                  on: { click: _vm.markAsDeleted }
-                },
-                [_vm._v(_vm._s(_vm.$t("ui.delete")))]
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("h1", [_vm._v(_vm._s(_vm.production.title))]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "img-responsive header-img",
-        attrs: {
-          src: _vm.production.images.header.url,
-          alt: _vm.production.title
-        }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "lead" }, [
-        _vm._v(_vm._s(_vm.production.excerpt))
-      ]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.production.description))]),
-      _vm._v(" "),
-      _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table table-clickable" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v(_vm._s(_vm.$t("production.attr.title")))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.$t("event.attr.start_time")))])
-            ])
+          _c("crud-toolbar", {
+            attrs: {
+              "resource-name": "productions",
+              "resource-id": this.$route.params.slug
+            }
+          }),
+          _vm._v(" "),
+          _c("h1", [_vm._v(_vm._s(_vm.production.title))]),
+          _vm._v(" "),
+          _vm.production.images
+            ? _c("img", {
+                staticClass: "img-responsive header-img",
+                attrs: {
+                  src: _vm.production.images.header.url,
+                  alt: _vm.production.title
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "lead" }, [
+            _vm._v(_vm._s(_vm.production.excerpt))
           ]),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.production.events, function(event) {
-              return _vm.production.events
-                ? _c(
-                    "tr",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.openEvent(event.uid)
-                        }
-                      }
-                    },
-                    [
-                      _c("td", [
-                        _vm._v(_vm._s(event.title || _vm.production.title))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(_vm.formatTime(event.times.start)))
-                      ])
-                    ]
-                  )
-                : _c("tr", [
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.$t("production.no_events")))
-                    ])
-                  ])
-            })
-          ),
+          _c("p", [_vm._v(_vm._s(_vm.production.description))]),
           _vm._v(" "),
-          _c("tfoot", [
-            _c("tr", [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table table-clickable" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v(_vm._s(_vm.$t("production.attr.title")))]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v(_vm._s(_vm.$t("event.attr.start_time")))])
+                ])
+              ]),
+              _vm._v(" "),
               _c(
-                "td",
-                { attrs: { colspan: "2" } },
-                [
-                  _c("b-button", { on: { click: _vm.addEvent } }, [
-                    _vm._v(_vm._s(_vm.$t("ui.add_new")))
-                  ])
-                ],
-                1
-              )
+                "tbody",
+                _vm._l(_vm.production.events, function(event) {
+                  return _vm.production.events
+                    ? _c(
+                        "tr",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.openEvent(event.uid)
+                            }
+                          }
+                        },
+                        [
+                          _c("td", [
+                            _vm._v(_vm._s(event.title || _vm.production.title))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.formatTime(event.times.start)))
+                          ])
+                        ]
+                      )
+                    : _c("tr", [
+                        _c("td", { attrs: { colspan: "2" } }, [
+                          _vm._v(_vm._s(_vm.$t("production.no_events")))
+                        ])
+                      ])
+                })
+              ),
+              _vm._v(" "),
+              _c("tfoot", [
+                _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "2" } },
+                    [
+                      _c("b-button", { on: { click: _vm.addEvent } }, [
+                        _vm._v(_vm._s(_vm.$t("ui.add_new")))
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              ])
             ])
           ])
-        ])
-      ])
-    ],
-    1
-  )
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -96007,28 +95921,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             event: {}
         };
-    },
-
-    methods: {
-        markAsDeleted: function markAsDeleted() {
-            var self = this;
-            axios.delete('/api/events/' + this.$route.params.uid).then(function (response) {
-                self.$router.push({
-                    name: 'production.details',
-                    params: { slug: self.event.production.slug }
-                });
-            });
-        }
     },
     mounted: function mounted() {
         var _this = this;
@@ -96047,51 +95945,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "b-button-toolbar",
-        { attrs: { "key-nav": "" } },
+  return _vm.event.uid
+    ? _c(
+        "div",
         [
-          _c(
-            "b-button-group",
-            { staticClass: "mx-1" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-sm btn-outline-secondary",
-                  attrs: {
-                    to: { name: "event.edit", params: { uid: _vm.event.uid } }
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$t("ui.edit")))]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: { size: "sm", variant: "outline-danger" },
-                  on: { click: _vm.markAsDeleted }
-                },
-                [_vm._v(_vm._s(_vm.$t("ui.delete")))]
-              )
-            ],
-            1
-          )
+          _c("crud-toolbar", {
+            attrs: {
+              "resource-name": "events",
+              "resource-id": _vm.$route.params.uid,
+              "delete-redirect": {
+                name: "production.details",
+                params: { slug: _vm.event.production.slug }
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("h1", [_vm._v(_vm._s(_vm.event.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.event.description))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.event.times.start))])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("h1", [_vm._v(_vm._s(_vm.event.title))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.event.description))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.event.times.start))])
-    ],
-    1
-  )
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -100525,7 +100402,7 @@ if (false) {
 /* 420 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Loo uus","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
 
 /***/ }),
 /* 421 */
@@ -100604,6 +100481,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
@@ -100643,7 +100528,7 @@ var render = function() {
                   "flex-sm-fill nav-link text-sm-center p-2 text-muted",
                 attrs: { exact: "", "active-class": "active", to: "/" }
               },
-              [_vm._v(_vm._s(_vm.$t("nav.home")))]
+              [_vm._v(_vm._s(_vm.$t("nav.home")) + "\n                ")]
             ),
             _vm._v(" "),
             _c(
@@ -100653,7 +100538,24 @@ var render = function() {
                   "flex-sm-fill nav-link text-sm-center p-2 text-muted",
                 attrs: { "active-class": "active", to: { name: "productions" } }
               },
-              [_vm._v(_vm._s(_vm.$t("nav.productions")))]
+              [_vm._v(_vm._s(_vm.$t("nav.productions")) + "\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "flex-sm-fill nav-link text-sm-center p-2 text-muted",
+                attrs: {
+                  "active-class": "active",
+                  to: { name: "organizations" }
+                }
+              },
+              [
+                _vm._v(
+                  _vm._s(_vm.$t("nav.organizations")) + "\n                "
+                )
+              ]
             )
           ],
           1
@@ -100671,6 +100573,716 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-65bd4233", module.exports)
+  }
+}
+
+/***/ }),
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(431)
+/* template */
+var __vue_template__ = __webpack_require__(432)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/views/organizations/List.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4e282ecc", Component.options)
+  } else {
+    hotAPI.reload("data-v-4e282ecc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 431 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            organizations: {},
+            newOrganizationName: ''
+        };
+    },
+
+    methods: {
+        createOrganization: function createOrganization() {
+            var self = this;
+            axios.post('/api/organizations', { "name": this.newOrganizationName }).then(function (response) {
+                self.$router.push({
+                    name: 'organization.edit',
+                    params: { slug: response.data.data.slug }
+                });
+            });
+        },
+        getResults: function getResults() {
+            var _this = this;
+
+            var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+            axios.get('/api/organizations', { params: { page: page } }).then(function (response) {
+                _this.organizations = response.data.data;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getResults();
+    }
+});
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("p", [
+        _c("span", {
+          domProps: { innerHTML: _vm._s(_vm.$t("organization.list_intro")) }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticClass: "text-right" },
+        [
+          _c(
+            "b-btn",
+            {
+              directives: [
+                {
+                  name: "b-modal",
+                  rawName: "v-b-modal.modal-new-organization",
+                  modifiers: { "modal-new-organization": true }
+                }
+              ],
+              staticClass: "btn btn-sm btn-outline-secondary mb-3"
+            },
+            [_vm._v(_vm._s(_vm.$t("organization.create_new")) + "\n        ")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.organizations, function(organization) {
+        return _c("div", { key: organization.slug, staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-10 offset-1" },
+            [
+              _c(
+                "b-card",
+                {
+                  attrs: {
+                    "img-src": "https://placekitten.com/1000/300",
+                    "img-alt": "Card image",
+                    "img-top": ""
+                  }
+                },
+                [
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(organization.name) +
+                        "\n                "
+                    )
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        ])
+      }),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "modal-new-organizaion",
+            title: _vm.$t("organization.create_new"),
+            "modal-ok": _vm.$t("ui.create"),
+            "modal-cancel": _vm.$t("ui.cancel")
+          },
+          on: { ok: _vm.createOrganization }
+        },
+        [
+          _c(
+            "b-form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.createOrganization($event)
+                }
+              }
+            },
+            [
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    label: _vm.$t("organization.attr.name"),
+                    "label-for": "title"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: { id: "title", type: "text", required: "" },
+                    model: {
+                      value: _vm.newOrganizationName,
+                      callback: function($$v) {
+                        _vm.newOrganizationName = $$v
+                      },
+                      expression: "newOrganizationName"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4e282ecc", module.exports)
+  }
+}
+
+/***/ }),
+/* 433 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home_vue__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Home_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue__);
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ([{
+    path: '/',
+    name: 'home',
+    component: __WEBPACK_IMPORTED_MODULE_0__views_Home_vue___default.a
+}, {
+    path: '/productions',
+    name: 'productions',
+    component: __WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue___default.a
+}, {
+    path: '/events/:uid',
+    name: 'event.details',
+    component: __WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue___default.a
+}, {
+    path: '/events/:uid/edit',
+    name: 'event.edit',
+    component: __WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue___default.a
+}, {
+    path: '/productions/:slug',
+    name: 'production.details',
+    component: __WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue___default.a
+}, {
+    path: '/productions/:slug/edit',
+    name: 'production.edit',
+    component: __WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue___default.a
+}, {
+    path: '/profile/settings',
+    name: 'profile.settings',
+    component: __WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue___default.a
+}, {
+    path: '/organizations',
+    name: 'organizations',
+    component: __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue___default.a
+}, {
+    path: '/organizations/:slug',
+    name: 'organizations.details',
+    component: __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue___default.a
+}, {
+    path: '/organizations/:slug/edit',
+    name: 'organizations.edit',
+    component: __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue___default.a
+}]);
+
+/***/ }),
+/* 434 */,
+/* 435 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(436)
+/* template */
+var __vue_template__ = __webpack_require__(437)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/views/organizations/Details.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-87a74cf8", Component.options)
+  } else {
+    hotAPI.reload("data-v-87a74cf8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 436 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            organization: {}
+        };
+    },
+
+    methods: {},
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/organization/' + this.$route.params.slug).then(function (response) {
+            _this.organization = response.data.data;
+        });
+    }
+});
+
+/***/ }),
+/* 437 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.organization.slug
+    ? _c(
+        "div",
+        [
+          _c("crud-toolbar", {
+            attrs: {
+              "resource-name": "organizations",
+              "resource-id": _vm.$route.params.slug
+            }
+          }),
+          _vm._v(" "),
+          _c("h1", [_vm._v(_vm._s(_vm.organization.name))])
+        ],
+        1
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-87a74cf8", module.exports)
+  }
+}
+
+/***/ }),
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(439)
+/* template */
+var __vue_template__ = __webpack_require__(440)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/views/organizations/Edit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5d705638", Component.options)
+  } else {
+    hotAPI.reload("data-v-5d705638", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 439 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            production: {}
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/productions/' + this.$route.params.slug).then(function (response) {
+            _this.production = response.data.data;
+        });
+    }
+});
+
+/***/ }),
+/* 440 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("TODO")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5d705638", module.exports)
+  }
+}
+
+/***/ }),
+/* 441 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(6)
+/* script */
+var __vue_script__ = __webpack_require__(442)
+/* template */
+var __vue_template__ = __webpack_require__(443)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/components/CrudToolbar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fa9c85fc", Component.options)
+  } else {
+    hotAPI.reload("data-v-fa9c85fc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 442 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        resourceName: String,
+        resourceId: String,
+        deleteRedirect: {
+            type: [String, Object],
+            default: ''
+        }
+    },
+    data: function data() {
+        return {};
+    },
+    computed: {
+        editLink: function editLink() {
+            return '/' + this.resourceName + '/' + this.resourceId + '/edit';
+        },
+        deletePath: function deletePath() {
+            return '/api/' + this.resourceName + '/' + this.resourceId;
+        },
+        deleteRedirectUri: function deleteRedirectUri() {
+            return this.deleteRedirect !== '' ? this.deleteRedirect : { name: this.resourceName };
+        }
+
+    },
+    methods: {
+        markAsDeleted: function markAsDeleted() {
+            var self = this;
+            axios.delete(this.deletePath).then(function (response) {
+                self.$router.push(self.deleteRedirectUri);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 443 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-button-toolbar",
+    { attrs: { "key-nav": "" } },
+    [
+      _c(
+        "b-button-group",
+        { staticClass: "mx-1" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-sm btn-outline-secondary",
+              attrs: { to: _vm.editLink }
+            },
+            [_vm._v(_vm._s(_vm.$t("ui.edit")) + "\n        ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              attrs: { size: "sm", variant: "outline-danger" },
+              on: { click: _vm.markAsDeleted }
+            },
+            [_vm._v(_vm._s(_vm.$t("ui.delete")))]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-fa9c85fc", module.exports)
   }
 }
 

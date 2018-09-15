@@ -1,22 +1,18 @@
 <template>
-<div>
+    <div v-if="event.uid">
 
-    <b-button-toolbar key-nav>
-        <b-button-group class="mx-1">
-        <router-link :to="{ name: 'event.edit', params: {uid: event.uid}}"
-                 class="btn btn-sm btn-outline-secondary">{{ $t("ui.edit") }}</router-link>
-        <b-button size="sm" variant="outline-danger" @click="markAsDeleted">{{ $t("ui.delete") }}</b-button>
-        </b-button-group>
-    </b-button-toolbar>
+        <crud-toolbar resource-name="events"
+                      :resource-id="$route.params.uid"
+                      :delete-redirect="{name: 'production.details', params: {slug: event.production.slug}}"></crud-toolbar>
 
-    <h1>{{event.title}}</h1>
+        <h1>{{event.title}}</h1>
 
 
-    <p>{{event.description}}</p>
-<p>{{event.times.start}}</p>
+        <p>{{event.description}}</p>
+        <p>{{event.times.start}}</p>
 
 
-</div>
+    </div>
 </template>
 
 <script>
@@ -26,21 +22,8 @@
                 event: {},
             }
         },
-        methods: {
-
-            markAsDeleted(){
-                let self = this;
-                axios.delete('/api/events/'+this.$route.params.uid)
-                    .then(response => {
-                        self.$router.push({
-                            name: 'production.details',
-                            params: {slug: self.event.production.slug}
-                        })
-                    });
-            }
-        },
         mounted() {
-            axios.get('/api/events/'+this.$route.params.uid)
+            axios.get('/api/events/' + this.$route.params.uid)
                 .then(response => {
                     this.event = response.data.data;
                 });

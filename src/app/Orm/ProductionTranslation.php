@@ -27,7 +27,7 @@ public $timestamps = false;
 
     public function setSlugAttribute($value)
     {
-        $slug = trim(Str::limit(str_slug($value),50));
+        $slug = trim(Str::limit(str_slug($value),50,''));
         $this->attributes['slug'] = $slug ?: null;
     }
 

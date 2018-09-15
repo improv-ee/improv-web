@@ -6,34 +6,18 @@ import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import Notifications from 'vue-notification'
 
 import VueRouter from 'vue-router'
+import routes from './routes'
+
 Vue.use(VueRouter);
 Vue.use(Notifications);
 
 Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue'));
 
-import EventSchedule from './views/EventSchedule.vue'
-import EventDetails from './views/EventDetails.vue'
-import Newsletter from './views/Newsletter.vue'
+
 
 const router = new VueRouter({
     mode: 'hash',
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: EventSchedule
-        },
-        {
-            path: '/events/:uid',
-            name: 'events',
-            component: EventDetails,
-        },
-        {
-            path: '/newsletter',
-            name: 'newsletter',
-            component: Newsletter,
-        },
-    ],
+    routes: routes,
 });
 
 const messages = require('../../lang/frontend.json');
