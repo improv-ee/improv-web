@@ -1,13 +1,14 @@
-import Home from './views/Home.vue'
-import ProductionsList from './views/productions/List.vue'
-import ProductionDetails from './views/productions/Details.vue'
-import ProductionEdit from './views/productions/Edit.vue'
-import EventDetails from './views/events/Details.vue'
-import EventEdit from './views/events/Edit.vue'
-import ProfileSettings from './views/profile/Settings.vue'
-import OrganizationsList from './views/organizations/List.vue'
-import OrganizationDetails from './views/organizations/Details.vue'
-import OrganizationEdit from './views/organizations/Edit.vue'
+import Home from './views/Home'
+import PageNotFound from '../views/PageNotFound'
+import ProductionsList from './views/productions/List'
+import ProductionDetails from './views/productions/Details'
+import ProductionEdit from './views/productions/Edit'
+import EventDetails from './views/events/Details'
+import EventEdit from './views/events/Edit'
+import ProfileSettings from './views/profile/Settings'
+import OrganizationsList from './views/organizations/List'
+import OrganizationDetails from './views/organizations/Details'
+import OrganizationEdit from './views/organizations/Edit'
 
 export default [
     {
@@ -58,5 +59,6 @@ export default [
         path: '/organizations/:slug/edit',
         name: 'organization.edit',
         component: OrganizationEdit,
-    }
+    },
+    { path: "*", component: PageNotFound }
 ];

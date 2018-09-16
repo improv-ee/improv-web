@@ -1,6 +1,7 @@
 import EventSchedule from './views/EventSchedule.vue'
 import EventDetails from './views/EventDetails.vue'
 import Newsletter from './views/Newsletter.vue'
+import PageNotFound from "../views/PageNotFound";
 
 export default [
     {
@@ -18,4 +19,5 @@ export default [
         name: 'newsletter',
         component: Newsletter,
     },
+    { path: "*", component: PageNotFound }
 ];

@@ -69389,6 +69389,9 @@ var app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_PageNotFound__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_PageNotFound___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_PageNotFound__);
+
 
 
 
@@ -69405,7 +69408,7 @@ var app = new Vue({
     path: '/newsletter',
     name: 'newsletter',
     component: __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue___default.a
-}]);
+}, { path: "*", component: __WEBPACK_IMPORTED_MODULE_3__views_PageNotFound___default.a }]);
 
 /***/ }),
 /* 234 */
@@ -71698,13 +71701,87 @@ if (false) {
 /* 448 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"}}}
+module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi","page_not_found":"Lehte ei leitud","page_not_found_description":"Soovitud lehe avamine ebaõnnestus"}}}
 
 /***/ }),
 /* 449 */
 /***/ (function(module, exports) {
 
 module.exports = {"et":{"nav":{"productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Uus organisatsioon","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
+
+/***/ }),
+/* 450 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(452)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/PageNotFound.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-444d8c86", Component.options)
+  } else {
+    hotAPI.reload("data-v-444d8c86", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 451 */,
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-6 offset-3" }, [
+      _c("h1", [_vm._v(_vm._s(_vm.$t("ui.page_not_found")))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.$t("ui.page_not_found_description")))])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-444d8c86", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -80953,7 +80953,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_PageNotFound__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_PageNotFound__ = __webpack_require__(450);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_PageNotFound___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_PageNotFound__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_List__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_productions_List__);
@@ -101384,15 +101384,31 @@ if (false) {
 /* 441 */,
 /* 442 */,
 /* 443 */,
-/* 444 */
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */
+/***/ (function(module, exports) {
+
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"production":{"attr":{"title":"Pealkiri","excerpt":"Lühikirjeldus","description":"Kirjeldus"}}}}
+
+/***/ }),
+/* 448 */
+/***/ (function(module, exports) {
+
+module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi","page_not_found":"Lehte ei leitud","page_not_found_description":"Soovitud lehe avamine ebaõnnestus"}}}
+
+/***/ }),
+/* 449 */,
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(445)
+var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(446)
+var __vue_template__ = __webpack_require__(452)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -101409,7 +101425,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/admin/views/PageNotFound.vue"
+Component.options.__file = "resources/js/views/PageNotFound.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -101418,9 +101434,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-672ca806", Component.options)
+    hotAPI.createRecord("data-v-444d8c86", Component.options)
   } else {
-    hotAPI.reload("data-v-672ca806", Component.options)
+    hotAPI.reload("data-v-444d8c86", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -101431,29 +101447,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 445 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 446 */
+/* 451 */,
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -101462,9 +101457,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-6 offset-3" }, [
-      _c("h1"),
+      _c("h1", [_vm._v(_vm._s(_vm.$t("ui.page_not_found")))]),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.$t("")))])
+      _c("p", [_vm._v(_vm._s(_vm.$t("ui.page_not_found_description")))])
     ])
   ])
 }
@@ -101474,21 +101469,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-672ca806", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-444d8c86", module.exports)
   }
 }
-
-/***/ }),
-/* 447 */
-/***/ (function(module, exports) {
-
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"production":{"attr":{"title":"Pealkiri","excerpt":"Lühikirjeldus","description":"Kirjeldus"}}}}
-
-/***/ }),
-/* 448 */
-/***/ (function(module, exports) {
-
-module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"}}}
 
 /***/ })
 /******/ ]);
