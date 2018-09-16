@@ -11,4 +11,4 @@ install:
 
 script:
   - php src/artisan migrate
-  - php src/vendor/bin/phpunit
+  - php src/vendor/bin/phpunit -c src/
