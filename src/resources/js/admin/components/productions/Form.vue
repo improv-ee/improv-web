@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-10 offset-1">
 
-            <b-form @submit.prevent="onSubmit">
+            <b-form @submit.prevent="onSubmit" v-if="production.slug">
 
                 <b-form-group
                         :label="$t('production.attr.title')"
@@ -11,8 +11,7 @@
                     <b-form-input id="title"
                                   type="text"
                                   v-model="form.title"
-                                  required
-                                  :placeholder="$t('production.attr.title_placeholder')">
+                                  required>
                     </b-form-input>
                 </b-form-group>
 
@@ -21,7 +20,7 @@
                               :description="$t('production.img.header_description')">
 
 
-                    <div class="overlay-container" v-if="form.header_img" @click="removeHeaderImg()">
+                    <div class="overlay-container" v-if="production.images.header" @click="removeHeaderImg()">
                         <img class="img-fluid" :src="production.images.header.url"
                              :alt="$t('production.img.header')" />
                         <div class="img-overlay">
@@ -41,9 +40,7 @@
                         label-for="excerpt">
                     <b-form-textarea id="excerpt"
                                      type="text" rows="4"
-                                     v-model="form.excerpt"
-                                     required
-                                     :placeholder="$t('production.attr.excerpt_placeholder')">
+                                     v-model="form.excerpt">
                     </b-form-textarea>
                 </b-form-group>
                 <b-form-group
@@ -53,8 +50,7 @@
                     <b-form-textarea id="description"
                                      type="text" rows="10"
                                      v-model="form.description"
-                                     required
-                                     :placeholder="$t('production.attr.description_placeholder')">
+                                     required>
                     </b-form-textarea>
                 </b-form-group>
 
@@ -137,7 +133,7 @@
                     title: production.title,
                     description: production.description,
                     excerpt: production.excerpt,
-                    header_img: production.images.header.uid
+                    header_img: production.images.header ? production.images.header.uid:null
                 }
             }
         }

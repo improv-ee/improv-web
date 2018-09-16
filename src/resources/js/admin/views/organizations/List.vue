@@ -25,7 +25,7 @@
 
 
         <b-modal id="modal-new-organization" :title="$t('organization.create_new')"
-                 :modal-ok="$t('ui.create')" :modal-cancel="$t('ui.cancel')" @ok="createOrganization">
+                 :ok-title="$t('ui.create')" :cancel-title="$t('ui.cancel')" @ok="createOrganization">
             <b-form @submit.prevent="createOrganization">
 
                 <b-form-group

@@ -24,9 +24,9 @@ class ProductionStoreRequest extends FormRequest
     public function rules()
     {
         return[
-            'excerpt' => 'max:300|nullable',
-            'title'=>'max:255|required',
-            'description'=>'max:3000|nullable'
+            'excerpt' => 'max:300|nullable|min:10',
+            'title'=>'max:255|required|min:3',
+            'description'=>'max:3000|nullable|min:10'
         ];
     }
 }

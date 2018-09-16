@@ -33,13 +33,10 @@
       "attr": {
         "title": "Pealkiri",
         "title_description": "Formaadi, lavastuse või festivali nimetus",
-        "title_placeholder": "Improfestival Tilt",
         "excerpt": "Lühikirjeldus",
-        "excerpt_placeholder": "Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.",
         "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.",
         "description": "Kirjeldus",
-        "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
-        "description_placeholder": "Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"
+        "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\"."
       },
       "img":{
         "header": "Päise pilt",

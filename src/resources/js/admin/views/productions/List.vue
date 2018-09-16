@@ -23,7 +23,7 @@
 
 
         <b-modal id="modal-new-production" :title="$t('production.create_new')"
-        :modal-ok="$t('ui.create')" :modal-cancel="$t('ui.cancel')" @ok="createProduction">
+        :ok-title="$t('ui.create')" :cancel-title="$t('ui.cancel')" @ok="createProduction">
             <b-form @submit.prevent="createProduction">
 
                 <b-form-group
@@ -32,10 +32,9 @@
                         :description="$t('production.attr.title_description')">
                     <b-form-input id="title"
                                   type="text"
-                                  v-model="newProductionTitle"
-                                  :state="newProductionTitle.length"
-                                  required
-                                  :placeholder="$t('production.attr.title_placeholder')">
+                                  v-model.trim="newProductionTitle"
+                                  :state="newProductionTitle.length > 0"
+                                  required>
                     </b-form-input>
                 </b-form-group>
             </b-form>
@@ -48,7 +47,7 @@
         data() {
             return {
                 productions:  {},
-                newProductionTitle: ''
+                newProductionTitle: ' '
             }
         },
         methods: {

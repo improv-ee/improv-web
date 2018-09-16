@@ -81232,13 +81232,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             productions: {},
-            newProductionTitle: ''
+            newProductionTitle: ' '
         };
     },
 
@@ -81344,8 +81343,8 @@ var render = function() {
           attrs: {
             id: "modal-new-production",
             title: _vm.$t("production.create_new"),
-            "modal-ok": _vm.$t("ui.create"),
-            "modal-cancel": _vm.$t("ui.cancel")
+            "ok-title": _vm.$t("ui.create"),
+            "cancel-title": _vm.$t("ui.cancel")
           },
           on: { ok: _vm.createProduction }
         },
@@ -81375,14 +81374,14 @@ var render = function() {
                     attrs: {
                       id: "title",
                       type: "text",
-                      state: _vm.newProductionTitle.length,
-                      required: "",
-                      placeholder: _vm.$t("production.attr.title_placeholder")
+                      state: _vm.newProductionTitle.length > 0,
+                      required: ""
                     },
                     model: {
                       value: _vm.newProductionTitle,
                       callback: function($$v) {
-                        _vm.newProductionTitle = $$v
+                        _vm.newProductionTitle =
+                          typeof $$v === "string" ? $$v.trim() : $$v
                       },
                       expression: "newProductionTitle"
                     }
@@ -82291,8 +82290,8 @@ var render = function() {
           attrs: {
             id: "modal-new-organization",
             title: _vm.$t("organization.create_new"),
-            "modal-ok": _vm.$t("ui.create"),
-            "modal-cancel": _vm.$t("ui.cancel")
+            "ok-title": _vm.$t("ui.create"),
+            "cancel-title": _vm.$t("ui.cancel")
           },
           on: { ok: _vm.createOrganization }
         },
@@ -97068,10 +97067,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -97138,7 +97133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: _production.title,
                 description: _production.description,
                 excerpt: _production.excerpt,
-                header_img: _production.images.header.uid
+                header_img: _production.images.header ? _production.images.header.uid : null
             };
         }
     }
@@ -97158,169 +97153,161 @@ var render = function() {
       "div",
       { staticClass: "col-10 offset-1" },
       [
-        _c(
-          "b-form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.onSubmit($event)
-              }
-            }
-          },
-          [
-            _c(
-              "b-form-group",
+        _vm.production.slug
+          ? _c(
+              "b-form",
               {
-                attrs: {
-                  label: _vm.$t("production.attr.title"),
-                  "label-for": "title",
-                  description: _vm.$t("production.attr.title_description")
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: {
-                    id: "title",
-                    type: "text",
-                    required: "",
-                    placeholder: _vm.$t("production.attr.title_placeholder")
-                  },
-                  model: {
-                    value: _vm.form.title,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "title", $$v)
-                    },
-                    expression: "form.title"
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onSubmit($event)
                   }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: _vm.$t("production.img.header"),
-                  "label-for": "header-img",
-                  description: _vm.$t("production.img.header_description")
                 }
               },
               [
-                _vm.form.header_img
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "overlay-container",
-                        on: {
-                          click: function($event) {
-                            _vm.removeHeaderImg()
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "img-fluid",
-                          attrs: {
-                            src: _vm.production.images.header.url,
-                            alt: _vm.$t("production.img.header")
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "img-overlay" }, [
-                          _c("span", [
-                            _c("i", { staticClass: "far fa-trash-alt fa-10x" })
-                          ])
-                        ])
-                      ]
-                    )
-                  : _c("b-form-file", {
-                      attrs: {
-                        accept: "image/jpeg, image/png, image/webp",
-                        placeholder: _vm.$t("production.img.select_file")
-                      },
-                      on: { change: _vm.uploadHeaderImg }
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: _vm.$t("production.attr.title"),
+                      "label-for": "title",
+                      description: _vm.$t("production.attr.title_description")
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "title", type: "text", required: "" },
+                      model: {
+                        value: _vm.form.title,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "title", $$v)
+                        },
+                        expression: "form.title"
+                      }
                     })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: _vm.$t("production.attr.excerpt"),
-                  description: _vm.$t("production.attr.excerpt_description"),
-                  "label-for": "excerpt"
-                }
-              },
-              [
-                _c("b-form-textarea", {
-                  attrs: {
-                    id: "excerpt",
-                    type: "text",
-                    rows: "4",
-                    required: "",
-                    placeholder: _vm.$t("production.attr.excerpt_placeholder")
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: _vm.$t("production.img.header"),
+                      "label-for": "header-img",
+                      description: _vm.$t("production.img.header_description")
+                    }
                   },
-                  model: {
-                    value: _vm.form.excerpt,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "excerpt", $$v)
-                    },
-                    expression: "form.excerpt"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  label: _vm.$t("production.attr.description"),
-                  description: _vm.$t(
-                    "production.attr.description_description"
-                  ),
-                  "label-for": "description"
-                }
-              },
-              [
-                _c("b-form-textarea", {
-                  attrs: {
-                    id: "description",
-                    type: "text",
-                    rows: "10",
-                    required: "",
-                    placeholder: _vm.$t(
-                      "production.attr.description_placeholder"
-                    )
+                  [
+                    _vm.production.images.header
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "overlay-container",
+                            on: {
+                              click: function($event) {
+                                _vm.removeHeaderImg()
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              attrs: {
+                                src: _vm.production.images.header.url,
+                                alt: _vm.$t("production.img.header")
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "img-overlay" }, [
+                              _c("span", [
+                                _c("i", {
+                                  staticClass: "far fa-trash-alt fa-10x"
+                                })
+                              ])
+                            ])
+                          ]
+                        )
+                      : _c("b-form-file", {
+                          attrs: {
+                            accept: "image/jpeg, image/png, image/webp",
+                            placeholder: _vm.$t("production.img.select_file")
+                          },
+                          on: { change: _vm.uploadHeaderImg }
+                        })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: _vm.$t("production.attr.excerpt"),
+                      description: _vm.$t(
+                        "production.attr.excerpt_description"
+                      ),
+                      "label-for": "excerpt"
+                    }
                   },
-                  model: {
-                    value: _vm.form.description,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "description", $$v)
-                    },
-                    expression: "form.description"
-                  }
-                })
+                  [
+                    _c("b-form-textarea", {
+                      attrs: { id: "excerpt", type: "text", rows: "4" },
+                      model: {
+                        value: _vm.form.excerpt,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "excerpt", $$v)
+                        },
+                        expression: "form.excerpt"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: _vm.$t("production.attr.description"),
+                      description: _vm.$t(
+                        "production.attr.description_description"
+                      ),
+                      "label-for": "description"
+                    }
+                  },
+                  [
+                    _c("b-form-textarea", {
+                      attrs: {
+                        id: "description",
+                        type: "text",
+                        rows: "10",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.form.description,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "description", $$v)
+                        },
+                        expression: "form.description"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    staticClass: "btn-block",
+                    attrs: { type: "submit", variant: "primary" }
+                  },
+                  [_vm._v(_vm._s(_vm.$t("ui.edit")))]
+                )
               ],
               1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-button",
-              {
-                staticClass: "btn-block",
-                attrs: { type: "submit", variant: "primary" }
-              },
-              [_vm._v(_vm._s(_vm.$t("ui.edit")))]
             )
-          ],
-          1
-        )
+          : _vm._e()
       ],
       1
     )
@@ -101403,7 +101390,7 @@ module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Mu
 /* 449 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Uus organisatsioon","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
+module.exports = {"et":{"nav":{"productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Uus organisatsioon","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","excerpt":"Lühikirjeldus","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\"."},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
 
 /***/ }),
 /* 450 */

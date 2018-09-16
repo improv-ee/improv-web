@@ -21,7 +21,7 @@ class ProductionResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'images' => [
-                'header' => $this->when($this->header_img_id, new ImageResource($this->header_img))
+                'header' => $this->header_img_id ? new ImageResource($this->header_img) : null
             ],
             'description' => $this->description,
             'excerpt' => $this->excerpt,
