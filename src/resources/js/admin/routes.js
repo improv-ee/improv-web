@@ -51,12 +51,12 @@ export default [
     },
     {
         path: '/organizations/:slug',
-        name: 'organizations.details',
+        name: 'organization.details',
         component: OrganizationDetails,
     },
     {
         path: '/organizations/:slug/edit',
-        name: 'organizations.edit',
+        name: 'organization.edit',
         component: OrganizationEdit,
     }
 ];

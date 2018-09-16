@@ -2,7 +2,6 @@
     <div class="row">
         <div class="col-10 offset-1">
 
-            <h2></h2>
             <b-form @submit.prevent="onSubmit">
 
                 <b-form-group
@@ -93,7 +92,7 @@
                     errorHandle: false})
                     .then(function (response) {
                         self.form.header_img = response.data.uid;
-                        console.log(response.data.url);
+
                         self.production.images.header.url = response.data.url;
 
                 }).catch((error) => {

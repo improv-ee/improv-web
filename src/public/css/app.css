@@ -10831,6 +10831,10 @@ body {
   cursor: pointer;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .header-img {
   max-height: 25em;
   width: 100%;

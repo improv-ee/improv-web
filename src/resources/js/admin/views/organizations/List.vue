@@ -11,8 +11,9 @@
         <div class="row" v-for="organization in organizations"
              :key="organization.slug">
             <div class="col-10 offset-1">
-                <b-card img-src="https://placekitten.com/1000/300"
-                        img-alt="Card image"
+                <b-card
+                        class="cursor-pointer"
+                        @click="goToDetailsView(organization.slug)"
                         img-top>
                     <p class="card-text">
                     {{ organization.name }}
@@ -23,7 +24,7 @@
 
 
 
-        <b-modal id="modal-new-organizaion" :title="$t('organization.create_new')"
+        <b-modal id="modal-new-organization" :title="$t('organization.create_new')"
                  :modal-ok="$t('ui.create')" :modal-cancel="$t('ui.cancel')" @ok="createOrganization">
             <b-form @submit.prevent="createOrganization">
 
@@ -50,6 +51,12 @@
             }
         },
         methods: {
+            goToDetailsView(slug){
+                this.$router.push({
+                    name: 'organization.details',
+                    params: {slug: slug}
+                })
+            },
             createOrganization() {
                 let self = this;
                 axios.post('/api/organizations', {"name": this.newOrganizationName})

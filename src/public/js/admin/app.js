@@ -70979,7 +70979,7 @@ if (inBrowser && __webpack_provided_window_dot_Vue) {
 /* 187 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Loo uus","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Uus organisatsioon","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
 
 /***/ }),
 /* 188 */
@@ -81022,11 +81022,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     component: __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue___default.a
 }, {
     path: '/organizations/:slug',
-    name: 'organizations.details',
+    name: 'organization.details',
     component: __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue___default.a
 }, {
     path: '/organizations/:slug/edit',
-    name: 'organizations.edit',
+    name: 'organization.edit',
     component: __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue___default.a
 }]);
 
@@ -82169,6 +82169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -82179,6 +82180,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        goToDetailsView: function goToDetailsView(slug) {
+            this.$router.push({
+                name: 'organization.details',
+                params: { slug: slug }
+            });
+        },
         createOrganization: function createOrganization() {
             var self = this;
             axios.post('/api/organizations', { "name": this.newOrganizationName }).then(function (response) {
@@ -82251,10 +82258,12 @@ var render = function() {
               _c(
                 "b-card",
                 {
-                  attrs: {
-                    "img-src": "https://placekitten.com/1000/300",
-                    "img-alt": "Card image",
-                    "img-top": ""
+                  staticClass: "cursor-pointer",
+                  attrs: { "img-top": "" },
+                  on: {
+                    click: function($event) {
+                      _vm.goToDetailsView(organization.slug)
+                    }
                   }
                 },
                 [
@@ -82277,7 +82286,7 @@ var render = function() {
         "b-modal",
         {
           attrs: {
-            id: "modal-new-organizaion",
+            id: "modal-new-organization",
             title: _vm.$t("organization.create_new"),
             "modal-ok": _vm.$t("ui.create"),
             "modal-cancel": _vm.$t("ui.cancel")
@@ -82416,7 +82425,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        axios.get('/api/organization/' + this.$route.params.slug).then(function (response) {
+        axios.get('/api/organizations/' + this.$route.params.slug).then(function (response) {
             _this.organization = response.data.data;
         });
     }
@@ -82514,18 +82523,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            production: {}
+            organization: {},
+            form: {}
         };
+    },
+
+    methods: {
+        onSubmit: function onSubmit() {
+            var self = this;
+
+            axios.put('/api/organizations/' + this.$route.params.slug, this.form).then(function (response) {
+
+                self.$router.push({
+                    name: 'organization.details',
+                    params: { slug: response.data.data.slug }
+                });
+            });
+        }
     },
     mounted: function mounted() {
         var _this = this;
 
-        axios.get('/api/productions/' + this.$route.params.slug).then(function (response) {
-            _this.production = response.data.data;
+        axios.get('/api/organizations/' + this.$route.params.slug).then(function (response) {
+            _this.organization = response.data.data;
+            _this.form = {
+                name: _this.organization.name
+            };
         });
     }
 });
@@ -82538,7 +82586,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("TODO")])
+  return _vm.form.name
+    ? _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-10 offset-1" },
+          [
+            _c(
+              "b-form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onSubmit($event)
+                  }
+                }
+              },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: _vm.$t("organization.attr.name"),
+                      "label-for": "name"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: { id: "name", type: "text", required: "" },
+                      model: {
+                        value: _vm.form.name,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "name", $$v)
+                        },
+                        expression: "form.name"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    staticClass: "btn-block",
+                    attrs: { type: "submit", variant: "primary" }
+                  },
+                  [_vm._v(_vm._s(_vm.$t("ui.edit")))]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -96966,7 +97069,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -96993,7 +97095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
                 errorHandle: false }).then(function (response) {
                 self.form.header_img = response.data.uid;
-                console.log(response.data.url);
+
                 self.production.images.header.url = response.data.url;
             }).catch(function (error) {
 
@@ -97053,8 +97155,6 @@ var render = function() {
       "div",
       { staticClass: "col-10 offset-1" },
       [
-        _c("h2"),
-        _vm._v(" "),
         _c(
           "b-form",
           {

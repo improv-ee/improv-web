@@ -23,7 +23,7 @@
 
         },
         mounted() {
-            axios.get('/api/organization/' + this.$route.params.slug)
+            axios.get('/api/organizations/' + this.$route.params.slug)
                 .then(response => {
                     this.organization = response.data.data;
                 });
