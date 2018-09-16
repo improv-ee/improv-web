@@ -33,6 +33,7 @@
                     <b-form-input id="title"
                                   type="text"
                                   v-model="newProductionTitle"
+                                  :state="newProductionTitle.length"
                                   required
                                   :placeholder="$t('production.attr.title_placeholder')">
                     </b-form-input>
@@ -51,7 +52,11 @@
             }
         },
         methods: {
-            createProduction(){
+            createProduction(e){
+                e.preventDefault();
+                if (!this.newProductionTitle){
+                    return
+                }
                 let self = this;
                 axios.post('/api/productions', {"title":this.newProductionTitle})
                     .then(function (response) {

@@ -81232,6 +81232,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -81242,7 +81243,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        createProduction: function createProduction() {
+        createProduction: function createProduction(e) {
+            e.preventDefault();
+            if (!this.newProductionTitle) {
+                return;
+            }
             var self = this;
             axios.post('/api/productions', { "title": this.newProductionTitle }).then(function (response) {
                 self.$router.push({
@@ -81370,6 +81375,7 @@ var render = function() {
                     attrs: {
                       id: "title",
                       type: "text",
+                      state: _vm.newProductionTitle.length,
                       required: "",
                       placeholder: _vm.$t("production.attr.title_placeholder")
                     },

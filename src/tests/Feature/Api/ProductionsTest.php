@@ -59,4 +59,13 @@ class ProductionsTest extends ApiTestCase
 
         $this->assertDatabaseHas('production_translations', ['title' => $productionInput['title']]);
     }
+
+    public function testCreatingProductionWithInvalidInputFails()
+    {
+        $this->actingAsOrganizationMember();
+
+        $response = $this->post('/api/productions', ['title' => '']);
+        $response->assertStatus(422)
+            ->assertJson(['message' => 'The given data was invalid.']);
+    }
 }
