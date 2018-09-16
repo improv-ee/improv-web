@@ -47,13 +47,11 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => database_path('testing.sqlite'),
+            'database' => ':memory:',
             'prefix' => '',
         ],
-
         'migration' => [
             'driver' => 'mysql',
             'host' => 'import-db',
