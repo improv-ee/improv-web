@@ -4,12 +4,11 @@ php:
   - 7.2
 
 before_script:
-  - cd src
-  - cp .env.travis .env
+  - cp src/.env.testing src/.env
 
 install:
-  - composer install --prefer-source --no-interaction --dev
+  - composer install -d src --prefer-source --no-interaction --dev
 
 script:
-  - php artisan migrate
-  - vendor/bin/phpunit
+  - php src/artisan migrate
+  - php src/vendor/bin/phpunit
