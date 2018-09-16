@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.2
+
+before_script:
+  - cd src
+  - cp .env.travis .env
+
+install:
+  - composer install --prefer-source --no-interaction --dev
+
+script:
+  - php artisan migrate
+  - vendor/bin/phpunit
