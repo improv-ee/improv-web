@@ -5,7 +5,6 @@ php:
 
 before_script:
   - cp src/.env.testing src/.env
-  - touch src/storage/framework/testing/db.sqlite
 
 install:
   - composer install -d src --prefer-source --no-interaction --dev
