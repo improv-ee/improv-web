@@ -1,0 +1,28 @@
+{
+  "et": {
+    "nav": {
+      "schedule": "Mängukava",
+      "newsletter": "Uudiskiri",
+      "podcast": "Raadiosaade",
+      "productions": "Produktsioonid",
+      "home": "Avaleht",
+      "organizations": "Organisatsioonid"
+    },
+    "event":{
+      "attr": {
+        "title":"Pealkiri",
+        "description":"Kirjeldus",
+        "start_time": "Algus",
+        "end_time": "Lõpp"
+      }
+    },
+
+    "production": {
+      "attr": {
+        "title": "Pealkiri",
+        "excerpt": "Lühikirjeldus",
+        "description": "Kirjeldus"
+      }
+    }
+  }
+}

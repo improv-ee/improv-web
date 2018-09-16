@@ -70976,12 +70976,7 @@ if (inBrowser && __webpack_provided_window_dot_Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9)))
 
 /***/ }),
-/* 187 */
-/***/ (function(module, exports) {
-
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"},"event":{"attr":{"title":"Pealkiri","title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.","description":"Kirjeldus","description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.","start_time":"Algus","start_time_description":"Ürituse alguskuupäev- ja kella-aeg","end_time":"Lõpp","end_time_description":"Ürituse alguskuupäev- ja kella-aeg"}},"organization":{"list_intro":"Organisatsioonid on produktsioone korraldavad trupid.","create_new":"Uus organisatsioon","attr":{"name":"Nimi"}},"production":{"no_events":"Ühtegi sündmust pole lisatud","num_of_events":"Etendusi","list_intro":"See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.","create_new":"Uus produktsioon","attr":{"title":"Pealkiri","title_description":"Formaadi, lavastuse või festivali nimetus","title_placeholder":"Improfestival Tilt","excerpt":"Lühikirjeldus","excerpt_placeholder":"Improfestival Tilt toob Eestisse kokku parimat improvisatsiooni meilt ja välismaailmast.","excerpt_description":"Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.","description":"Kirjeldus","description_description":"Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".","description_placeholder":"Kuues rahvusvaheline improteatrite festival Tilt toob teie ette ülevaate Eesti improteatritest ning parimad impronäitlejad ja -koolitajad üle kogu maailma! Olete palutud spontaanse teatri peole!"},"img":{"header":"Päise pilt","header_description":"Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.","select_file":"Vali fail..."}}}}
-
-/***/ }),
+/* 187 */,
 /* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -77821,7 +77816,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fortawesome_free_regular_svg_icons__ = __webpack_require__(405);
 
 __webpack_require__(161);
-
 __webpack_provided_window_dot_Vue = __webpack_require__(9);
 
 
@@ -77877,7 +77871,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]({
     routes: __WEBPACK_IMPORTED_MODULE_4__routes__["a" /* default */]
 });
 
-var messages = __webpack_require__(187);
+var messages = _.merge(__webpack_require__(447), __webpack_require__(448));
 var i18n = new __WEBPACK_IMPORTED_MODULE_0_vue_i18n_dist_vue_i18n_js___default.a({ locale: 'et', messages: messages });
 
 var app = new Vue({
@@ -80957,26 +80951,29 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home_vue__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Home_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue__ = __webpack_require__(272);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue__ = __webpack_require__(287);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Home__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_PageNotFound__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_PageNotFound___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_PageNotFound__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_List__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_productions_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_productions_List__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_productions_Details__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_productions_Details___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_productions_Details__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_productions_Edit__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_productions_Edit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_productions_Edit__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_events_Details__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_events_Details___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_events_Details__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_events_Edit__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_events_Edit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__views_events_Edit__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_profile_Settings__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_profile_Settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_profile_Settings__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_organizations_List__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_organizations_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__views_organizations_List__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_organizations_Details__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_organizations_Details___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__views_organizations_Details__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_organizations_Edit__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_organizations_Edit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__views_organizations_Edit__);
+
 
 
 
@@ -80991,44 +80988,44 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /* harmony default export */ __webpack_exports__["a"] = ([{
     path: '/',
     name: 'home',
-    component: __WEBPACK_IMPORTED_MODULE_0__views_Home_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_0__views_Home___default.a
 }, {
     path: '/productions',
     name: 'productions',
-    component: __WEBPACK_IMPORTED_MODULE_1__views_productions_List_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_2__views_productions_List___default.a
 }, {
     path: '/events/:uid',
     name: 'event.details',
-    component: __WEBPACK_IMPORTED_MODULE_4__views_events_Details_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_5__views_events_Details___default.a
 }, {
     path: '/events/:uid/edit',
     name: 'event.edit',
-    component: __WEBPACK_IMPORTED_MODULE_5__views_events_Edit_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_6__views_events_Edit___default.a
 }, {
     path: '/productions/:slug',
     name: 'production.details',
-    component: __WEBPACK_IMPORTED_MODULE_2__views_productions_Details_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_3__views_productions_Details___default.a
 }, {
     path: '/productions/:slug/edit',
     name: 'production.edit',
-    component: __WEBPACK_IMPORTED_MODULE_3__views_productions_Edit_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_4__views_productions_Edit___default.a
 }, {
     path: '/profile/settings',
     name: 'profile.settings',
-    component: __WEBPACK_IMPORTED_MODULE_6__views_profile_Settings_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_7__views_profile_Settings___default.a
 }, {
     path: '/organizations',
     name: 'organizations',
-    component: __WEBPACK_IMPORTED_MODULE_7__views_organizations_List_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_8__views_organizations_List___default.a
 }, {
     path: '/organizations/:slug',
     name: 'organization.details',
-    component: __WEBPACK_IMPORTED_MODULE_8__views_organizations_Details_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_9__views_organizations_Details___default.a
 }, {
     path: '/organizations/:slug/edit',
     name: 'organization.edit',
-    component: __WEBPACK_IMPORTED_MODULE_9__views_organizations_Edit_vue___default.a
-}]);
+    component: __WEBPACK_IMPORTED_MODULE_10__views_organizations_Edit___default.a
+}, { path: "*", component: __WEBPACK_IMPORTED_MODULE_1__views_PageNotFound___default.a }]);
 
 /***/ }),
 /* 260 */
@@ -101379,6 +101376,119 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-65bd4233", module.exports)
   }
 }
+
+/***/ }),
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(445)
+/* template */
+var __vue_template__ = __webpack_require__(446)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/views/PageNotFound.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-672ca806", Component.options)
+  } else {
+    hotAPI.reload("data-v-672ca806", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 445 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 446 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-6 offset-3" }, [
+      _c("h1"),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.$t("")))])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-672ca806", module.exports)
+  }
+}
+
+/***/ }),
+/* 447 */
+/***/ (function(module, exports) {
+
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"production":{"attr":{"title":"Pealkiri","excerpt":"Lühikirjeldus","description":"Kirjeldus"}}}}
+
+/***/ }),
+/* 448 */
+/***/ (function(module, exports) {
+
+module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi"}}}
 
 /***/ })
 /******/ ]);

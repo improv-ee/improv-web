@@ -1,0 +1,12 @@
+{
+  "et": {
+    "ui":{
+      "create":"Sisesta",
+      "add_new":"Lisa uus",
+      "edit":"Muuda",
+      "cancel":"Katkesta",
+      "delete":"Kustuta",
+      "validation_error":"Sisendandmed ei sobi"
+    }
+  }
+}

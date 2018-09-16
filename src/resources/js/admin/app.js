@@ -1,6 +1,5 @@
 
 require('../bootstrap');
-
 window.Vue = require('vue');
 
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
@@ -67,7 +66,7 @@ const router = new VueRouter({
     routes: routes
 });
 
-const messages = require('../../lang/frontend.json');
+const messages = _.merge(require('../../lang/et/public.json'),require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
 
 const app = new Vue({

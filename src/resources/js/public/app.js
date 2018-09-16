@@ -20,7 +20,7 @@ const router = new VueRouter({
     routes: routes,
 });
 
-const messages = require('../../lang/frontend.json');
+const messages = _.merge(require('../../lang/et/admin.json'),require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
 
 const app = new Vue({

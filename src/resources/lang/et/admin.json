@@ -1,20 +1,9 @@
 {
   "et": {
     "nav": {
-      "schedule": "Mängukava",
-      "newsletter": "Uudiskiri",
-      "podcast": "Raadiosaade",
       "productions": "Produktsioonid",
       "home": "Avaleht",
       "organizations": "Organisatsioonid"
-    },
-    "ui":{
-      "create":"Sisesta",
-      "add_new":"Lisa uus",
-      "edit":"Muuda",
-      "cancel":"Katkesta",
-      "delete":"Kustuta",
-      "validation_error":"Sisendandmed ei sobi"
     },
     "event":{
       "attr": {
@@ -56,7 +45,6 @@
         "header": "Päise pilt",
         "header_description": "Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
         "select_file":"Vali fail..."
-
       }
     }
   }
