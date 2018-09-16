@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'improv.ee')
+@section('title', config('app.name'))
 
 @section('topright')
     <a class="btn btn-sm btn-outline-secondary mr-3" href="#/profile/settings">{{ Auth::user()->name }}</a>

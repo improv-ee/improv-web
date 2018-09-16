@@ -20,7 +20,7 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4"></div>
             <div class="col-4 text-center">
-                <h1>Improteater Eestis</h1>
+                <h1>{{ config('app.name') }}</h1>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 @yield('topright')
@@ -32,7 +32,23 @@
 
 
     <footer class="site-footer">
-        <p>improv.ee 2013 - {{ date('Y') }}</p>
+
+        <div class="row footer-links">
+            <div class="col-4">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p>improv.ee 2013 - {{ date('Y') }}</p>
+
+            </div>
+        </div>
     </footer>
 </div>
 @yield('scripts')

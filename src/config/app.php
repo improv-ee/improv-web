@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'improv.ee'),
+    'name' => env('APP_NAME', 'Improv Estonia'),
 
     /*
     |--------------------------------------------------------------------------

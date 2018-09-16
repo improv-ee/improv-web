@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'improv.ee')
+@section('title', config('app.name'))
 
 @section('topright')
     @guest

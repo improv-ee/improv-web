@@ -11522,6 +11522,16 @@ body {
   margin-bottom: 5rem;
 }
 
+.site-footer .footer-links {
+  background-color: #38c172;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+
+.site-footer .footer-links ul {
+  list-style: none;
+}
+
 #top-nav {
   margin-bottom: 2rem;
   margin-top: 1rem;
