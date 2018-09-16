@@ -16,7 +16,6 @@ abstract class ApiTestCase extends TestCase
     public function setUp()
     {
         parent::setUp();
-        //$this->defaultHeaders['Accept'] = 'application/json';
         $this->withHeader('Accept','application/json');
     }
 }

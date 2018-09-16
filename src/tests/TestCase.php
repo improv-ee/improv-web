@@ -13,7 +13,11 @@ abstract class TestCase extends BaseTestCase
     protected function actingAsOrganizationMember(){
         return Passport::actingAs(
             factory(User::class)->create()
-
+        );
+    }
+    protected function actingAsLoggedInUser(){
+        return Passport::actingAs(
+            factory(User::class)->create()
         );
     }
 }

@@ -15,47 +15,53 @@ class EventController extends Controller
 {
 
 
-    public function show ($uid)
+    public function show($uid)
     {
         $event = Event::where('uid', $uid)
             ->first();
         return new EventResource($event);
     }
 
-    private function getNextEvents(){
-        return Event::orderBy('start_time','asc')
-            ->whereDate('start_time','>=',Carbon::now(config('app.timezone')))
+    private function getNextEvents()
+    {
+        return Event::orderBy('start_time', 'asc')
+            ->whereDate('start_time', '>=', Carbon::now(config('app.timezone')))
             ->paginate();
     }
-    public function index() {
+
+    public function index()
+    {
         return EventResource::collection($this->getNextEvents());
     }
 
-    public function schedule() {
+    public function schedule()
+    {
         return ScheduleResource::collection($this->getNextEvents());
     }
 
-    public function store(EventStoreRequest $request){
+    public function store(EventStoreRequest $request)
+    {
 
         $request->validate(['production.slug' => 'required|max:255']);
 
-        $production = Production::whereTranslation('slug',$request->post('production')['slug'])
+        $production = Production::whereTranslation('slug', $request->post('production')['slug'])
             ->firstOrFail();
 
         $event = new Event;
 
         $event->start_time = new Carbon($request->post('times')['start']);
         $event->end_time = new Carbon($request->post('times')['end']);
-        $event->production_id=$production->id;
+        $event->production_id = $production->id;
         $event->creator_id = $request->user()->id;
         $event->save();
 
         return new EventResource($event);
     }
 
-    public function update($id, EventStoreRequest $request){
+    public function update($id, EventStoreRequest $request)
+    {
 
-        $event = Event::where('uid',$id)->firstOrFail();
+        $event = Event::where('uid', $id)->firstOrFail();
         $event->start_time = new Carbon($request->post('times')['start']);
         $event->end_time = new Carbon($request->post('times')['end']);
         $event->title = $request->post('title');
@@ -65,7 +71,8 @@ class EventController extends Controller
         return new EventResource($event);
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $event = Event::where('uid', $id)
             ->firstOrFail();
         $event->delete();

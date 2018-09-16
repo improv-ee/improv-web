@@ -17,6 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->increments('id');
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
+
             $table->softDeletes();
             $table->timestamps();
 

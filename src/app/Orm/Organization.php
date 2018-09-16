@@ -15,6 +15,13 @@ class Organization extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    protected $fillable = ['name'];
+
+    protected $casts = [
+        'is_public' => 'boolean',
+    ];
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = trim($value);
