@@ -32,6 +32,8 @@ Route::resource('organizations', 'Api\OrganizationController', ['as' => 'api'])-
     'index', 'show'
 ]);
 
+Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['show']);
+
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('productions', 'Api\ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
     Route::apiResource('organizations', 'Api\OrganizationController', ['as' => 'api'])->only(['store', 'destroy', 'update']);

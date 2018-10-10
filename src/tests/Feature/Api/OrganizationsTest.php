@@ -87,7 +87,7 @@ class OrganizationsTest extends ApiTestCase
         $response->assertStatus(200)
             ->assertJson([
                 'data' => [
-                    [
+                    1 => [
                         'name' => $organizations[0]->name,
                     ]
                 ]
