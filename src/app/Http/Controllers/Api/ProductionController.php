@@ -9,6 +9,12 @@ use App\Orm\Image;
 use App\Orm\Production;
 use Illuminate\Http\Request;
 
+/**
+ * Class ProductionController
+ *
+ * @resource Production
+ * @package App\Http\Controllers\Api
+ */
 class ProductionController extends Controller
 {
     public function show($id)

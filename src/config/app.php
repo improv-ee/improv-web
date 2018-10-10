@@ -152,6 +152,7 @@ return [
          * Package Service Providers...
          */
         Dimsav\Translatable\TranslatableServiceProvider::class,
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
 
         /*

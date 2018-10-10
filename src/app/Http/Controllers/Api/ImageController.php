@@ -10,10 +10,20 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
+/**
+ * Class ImageController
+ *
+ * @resource Image
+ * @package App\Http\Controllers\Api
+ */
 class ImageController extends Controller
 {
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     *
+     */
     public function store(Request $request)
     {
         $request->validate([

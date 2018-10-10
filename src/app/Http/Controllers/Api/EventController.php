@@ -11,6 +11,12 @@ use App\Orm\Production;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+/**
+ * Class EventController
+ *
+ * @resource Event
+ * @package App\Http\Controllers\Api
+ */
 class EventController extends Controller
 {
 

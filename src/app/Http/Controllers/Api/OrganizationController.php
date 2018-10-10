@@ -7,8 +7,18 @@ use App\Http\Resources\OrganizationResource;
 use App\Orm\Organization;
 use Illuminate\Http\Request;
 
+/**
+ * Class OrganizationController
+ *
+ * @resource Organization
+ * @package App\Http\Controllers\Api
+ */
 class OrganizationController extends Controller
 {
+    /**
+     * @param $id
+     * @return OrganizationResource
+     */
     public function show($id)
     {
         return new OrganizationResource(Organization::whereTranslation('slug', $id)

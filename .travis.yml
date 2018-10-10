@@ -15,3 +15,5 @@ install:
 script:
   - php src/artisan migrate
   - php src/vendor/bin/phpunit -c src/
+  - php src/artisan api:generate --routePrefix="api/*" --output=src/public/docs
+
