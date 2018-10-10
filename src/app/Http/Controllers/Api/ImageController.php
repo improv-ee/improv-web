@@ -20,6 +20,16 @@ class ImageController extends Controller
 {
 
     /**
+     * Mocked, needs to exists for tests/apidoc
+     *
+     * @param $id
+     * @return null
+     */
+    public function show($id){
+        return null;
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      *
