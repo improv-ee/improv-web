@@ -15,6 +15,10 @@ services:
       - APP_URL=dev.improv.ee
     volumes:
       - ./src:/var/www/
+    depends_on:
+      - app-db
+      - redis
+      - import-db
 
 
   lb:
@@ -28,6 +32,8 @@ services:
       - backend
     volumes:
       - ./docker/lb/certs:/etc/ssl/certs/lb:ro
+    depends_on:
+      - webserver
 
 
   app-db:

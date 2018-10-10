@@ -4,6 +4,8 @@ namespace Tests\Feature\Api;
 
 use App\Orm\Organization;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrganizationsTest extends ApiTestCase
 {
@@ -37,11 +39,11 @@ class OrganizationsTest extends ApiTestCase
 
         $newInput = ['name' => 'X-Force'];
 
-        $response = $this->put('/api/organizations/'.$organization->slug, $newInput);
+        $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
         $response->assertStatus(200)
             ->assertJson(['data' => ['name' => $newInput['name']]]);
 
-        $this->assertDatabaseHas('organization_translations',['name'=>$newInput['name']]);
+        $this->assertDatabaseHas('organization_translations', ['name' => $newInput['name']]);
     }
 
     public function testOrganizationListIsReturned()
@@ -71,6 +73,26 @@ class OrganizationsTest extends ApiTestCase
                 'slug' => $organization->slug,
                 'is_public' => $organization->is_public
             ]]);
+    }
+
+    public function testOnlyMyOrganizationsAreReturned()
+    {
+        $user = $this->actingAsOrganizationMember();
+
+        $organizations = factory(Organization::class, 3)->create();
+        $organizations[0]->users()->attach($user);
+
+        $response = $this->get('/api/organizations?onlyMine=1');
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    [
+                        'name' => $organizations[0]->name,
+                    ]
+                ]
+            ]);
+        $this->assertCount(2, $response->json('data'));
     }
 
 }

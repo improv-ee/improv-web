@@ -5,6 +5,9 @@
       "home": "Avaleht",
       "organizations": "Organisatsioonid"
     },
+    "dash":{
+      "greeting":"Meie homne on meie endi teha. - Ilves"
+    },
     "event":{
       "attr": {
         "title":"Pealkiri",
@@ -20,6 +23,7 @@
     "organization":{
       "list_intro":"Organisatsioonid on produktsioone korraldavad trupid.",
       "create_new":"Uus organisatsioon",
+      "you_dont_have_any":"Sind pole veel ühtegi organisatsiooni lisatud",
       "attr":{
         "name": "Nimi"
 

@@ -8,20 +8,27 @@
         </p>
 
 
-        <div class="row" v-for="organization in organizations"
-             :key="organization.slug">
+        <div class="row" v-if="organizations.length">
             <div class="col-10 offset-1">
-                <b-card
+                <b-card v-for="organization in organizations"
+                        :key="organization.slug"
                         class="cursor-pointer"
                         @click="goToDetailsView(organization.slug)"
                         img-top>
                     <p class="card-text">
-                    {{ organization.name }}
+                        {{ organization.name }}
                     </p>
                 </b-card>
             </div>
         </div>
 
+        <div class="row" v-else>
+            <div class="col-10 offset-1">
+                <div class="alert alert-secondary">
+                    <p>{{ $t('organization.you_dont_have_any') }}</p>
+                </div>
+            </div>
+        </div>
 
 
         <b-modal id="modal-new-organization" :title="$t('organization.create_new')"
@@ -46,12 +53,12 @@
     export default {
         data() {
             return {
-                organizations: {},
+                organizations: [],
                 newOrganizationName: ''
             }
         },
         methods: {
-            goToDetailsView(slug){
+            goToDetailsView(slug) {
                 this.$router.push({
                     name: 'organization.details',
                     params: {slug: slug}
@@ -69,7 +76,7 @@
             },
 
             getResults(page = 1) {
-                axios.get('/api/organizations', {params: {page: page}})
+                axios.get('/api/organizations?onlyMine=1', {params: {page: page}})
                     .then(response => {
                         this.organizations = response.data.data;
                     });

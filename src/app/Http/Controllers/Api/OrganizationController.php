@@ -15,9 +15,10 @@ class OrganizationController extends Controller
             ->firstOrFail());
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $organizations = Organization::orderBy('created_at', 'desc')
+            ->onlyMine($request->input('onlyMine',false))
             ->paginate(30);
         return OrganizationResource::collection($organizations);
     }

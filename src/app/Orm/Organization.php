@@ -2,14 +2,16 @@
 
 namespace App\Orm;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Organization extends Model
 {
-    use \Dimsav\Translatable\Translatable,SoftDeletes;
+    use \Dimsav\Translatable\Translatable, SoftDeletes;
 
-    public $translatedAttributes = ['name','slug'];
+    public $translatedAttributes = ['name', 'slug'];
     protected $dates = [
         'created_at',
         'updated_at',
@@ -30,5 +32,25 @@ class Organization extends Model
     public function productions()
     {
         return $this->belongsToMany('App\Orm\Production');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
+    /**
+     * @param Builder $query
+     * @param bool $enabled
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOnlyMine(Builder $query, bool $enabled)
+    {
+        if (!$enabled) {
+            return $query;
+        }
+        return $query->whereHas('users', function ($query) {
+            $query->where('id', Auth::user()->id ?? null);
+        });
     }
 }
