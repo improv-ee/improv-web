@@ -1,4 +1,7 @@
 language: php
+sudo: required
+services:
+  - docker
 
 php:
   - 7.2
@@ -16,4 +19,13 @@ script:
   - php src/artisan migrate
   - php src/vendor/bin/phpunit -c src/
   - php src/artisan api:generate --routePrefix="api/*" --output=src/public/docs
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
+  - docker build -t improv/improv-ee:$TAG .
 
+after_success:
+  - docker push improv/improv-ee:$TAG
+  - docker rmi improv/improv-ee:$TAG
+
+after_script:
+  - docker logout
