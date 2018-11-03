@@ -1,6 +1,5 @@
 
 require('../bootstrap');
-window.Vue = require('vue');
 
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import datePicker from 'vue-bootstrap-datetimepicker';

@@ -2,6 +2,14 @@
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
+window.Vue = require('vue');
+
+import * as Sentry from '@sentry/browser'
+Sentry.init({
+    dsn: 'https://8afd4526c39647f7b9a1868fe6bfa55a@sentry.io/265079',
+    integrations: [new Sentry.Integrations.Vue({ Vue })]
+});
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
