@@ -1,0 +1,8 @@
+- name: Configure Apache
+  include: conf-apache.yml
+
+- name: Configure Nginx
+  include: conf-nginx.yml
+
+- name: Install PHP app
+  include: install-app.yml

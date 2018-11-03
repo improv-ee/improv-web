@@ -1,0 +1,18 @@
+mysql_databases:
+  - name: improv_ee
+    encoding: utf8mb4
+    collation: utf8mb4_unicode_ci
+
+  - name: migration
+    encoding: utf8mb4
+    collation: utf8mb4_unicode_ci
+
+mysql_users:
+  - name: improv_ee
+    host: "localhost"
+    password: "{{ mysql_improv_ee_password }}"
+    priv: "improv_ee.*:ALL/migration.*:ALL"
+mysql_bind_address: '127.0.0.1'
+mysql_packages:
+  - mariadb-client
+  - mariadb-server

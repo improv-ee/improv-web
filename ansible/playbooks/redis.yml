@@ -1,0 +1,4 @@
+- name: Install Redis server
+  hosts: redis
+  roles:
+  - geerlingguy.redis

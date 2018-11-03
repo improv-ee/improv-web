@@ -1,0 +1,51 @@
+- name: Download latest version of source code
+  git:
+    repo: 'https://github.com/improv-ee/improv-ee.git'
+    dest: /var/www/improv-ee
+    version: master
+    force: yes
+
+- name: Own the app by www-data
+  file:
+    path: /var/www/improv-ee
+    owner: www-data
+    group: www-data
+    recurse: yes
+
+- name: Copy environment file
+  template:
+    src: .env
+    dest: /var/www/improv-ee/src/.env
+    owner: www-data
+    group: root
+    mode: 0650
+
+- name: Copy update script
+  copy:
+    src: update.sh
+    dest: /usr/local/bin/update-improv
+    mode: 0760
+    owner: www-data
+    group: root
+
+- name: Update and migrate the deployment
+  shell: "update-improv | logger -t improv-update"
+  become_user: www-data
+  become: yes
+
+- name: Set update script to run daily
+  cron:
+    name: Update improv-ee deployment
+    hour: 02
+    minute: 05
+    job: "update-improv | logger -t improv-cron"
+    user: www-data
+
+- name: Set database reset script to run daily
+  cron:
+    name: Reset improv-ee database
+    hour: 06
+    minute: 05
+    job: "cd /var/www/improv-ee/src && /usr/bin/php artisan migrate:fresh --force && /usr/bin/php artisan db:seed --force"
+    user: www-data
+

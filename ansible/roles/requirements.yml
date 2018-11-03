@@ -1,0 +1,9 @@
+- src: geerlingguy.security
+- src: weareinteractive.ufw
+- src: geerlingguy.mysql
+- src: geerlingguy.php
+- src: geerlingguy.apache
+- src: geerlingguy.nginx
+- src: geerlingguy.redis
+- src: geerlingguy.composer
+- src: geerlingguy.nodejs

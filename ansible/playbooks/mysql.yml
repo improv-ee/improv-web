@@ -1,0 +1,4 @@
+- name: Install MySQL server
+  hosts: mysql
+  roles:
+  - geerlingguy.mysql
