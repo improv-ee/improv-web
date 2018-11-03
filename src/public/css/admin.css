@@ -311,7 +311,7 @@ table.b-table > tbody > tr.b-table-details > td {
     border-top: none;
 }
 /*!
- * Font Awesome Free 5.3.1 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.5.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 svg:not(:root).svg-inline--fa {
@@ -616,7 +616,7 @@ svg:not(:root).svg-inline--fa {
   display: inline-block;
   height: 2em;
   position: relative;
-  width: 2em; }
+  width: 2.5em; }
 
 .fa-stack-1x,
 .fa-stack-2x {
@@ -629,11 +629,11 @@ svg:not(:root).svg-inline--fa {
 
 .svg-inline--fa.fa-stack-1x {
   height: 1em;
-  width: 1em; }
+  width: 1.25em; }
 
 .svg-inline--fa.fa-stack-2x {
   height: 2em;
-  width: 2em; }
+  width: 2.5em; }
 
 .fa-inverse {
   color: #fff; }
@@ -3297,11 +3297,6 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
-.form-control:-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }

@@ -37,7 +37,7 @@ class CreateProductionsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable()->default(null);
             $table->text('excerpt')->nullable()->default(null);
-            $table->string('slug');
+            $table->string('slug', 190);
             $table->char('locale', 2)->index();
 
             $table->unique(['production_id', 'locale']);
