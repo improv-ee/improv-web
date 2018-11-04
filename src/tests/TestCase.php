@@ -5,7 +5,6 @@ namespace Tests;
 use App\Orm\Organization;
 use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Support\Facades\DB;
 use Laravel\Passport\Passport;
 
 abstract class TestCase extends BaseTestCase
@@ -18,6 +17,7 @@ abstract class TestCase extends BaseTestCase
         $organization->users()->attach($user);
         return Passport::actingAs($user);
     }
+
     protected function actingAsLoggedInUser(){
         return Passport::actingAs(
             factory(User::class)->create()

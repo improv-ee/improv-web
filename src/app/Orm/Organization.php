@@ -2,6 +2,7 @@
 
 namespace App\Orm;
 
+use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,6 +38,13 @@ class Organization extends Model
     public function users()
     {
         return $this->belongsToMany('App\User');
+    }
+
+    public function isMember(User $targetUser = null): bool {
+        if ($targetUser === null) {
+            return false;
+        }
+        return $this->users->contains($targetUser->id);
     }
 
     /**

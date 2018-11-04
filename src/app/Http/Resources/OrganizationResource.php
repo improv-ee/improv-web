@@ -12,13 +12,13 @@ class OrganizationResource extends JsonResource
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request) : array
     {
-
         return [
             'name' => $this->name,
             'slug' => $this->slug,
-            'is_public'=>$this->is_public
+            'is_public'=>$this->is_public,
+            'is_member'=>$this->when($request->user(), $this->isMember($request->user()))
         ];
     }
 }

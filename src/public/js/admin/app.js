@@ -90874,7 +90874,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-            axios.get('/api/organizations?onlyMine=1', { params: { page: page } }).then(function (response) {
+            axios.get('/api/organizations', { params: { page: page } }).then(function (response) {
                 _this.organizations = response.data.data;
             });
         }

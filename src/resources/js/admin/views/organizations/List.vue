@@ -76,7 +76,7 @@
             },
 
             getResults(page = 1) {
-                axios.get('/api/organizations?onlyMine=1', {params: {page: page}})
+                axios.get('/api/organizations', {params: {page: page}})
                     .then(response => {
                         this.organizations = response.data.data;
                     });
