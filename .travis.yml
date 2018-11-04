@@ -13,10 +13,10 @@ before_install:
   - sudo apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle
 
 install:
-  - composer install -d src --prefer-source --no-interaction --dev
+  - composer install -d src --no-interaction --dev
 
 script:
-  - php src/artisan migrate
+  - php src/artisan passport:keys
   - php src/vendor/bin/phpunit -c src/
   - php src/artisan apidoc:generate
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
