@@ -1,5 +1,0 @@
-- name: Harden servers
-  hosts: all
-  roles:
-    - geerlingguy.security
-    - weareinteractive.ufw

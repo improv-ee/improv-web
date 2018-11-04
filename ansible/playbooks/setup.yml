@@ -1,0 +1,6 @@
+- name: Configure basic server settings
+  hosts: all
+  roles:
+    - basic-config
+    - geerlingguy.security
+    - weareinteractive.ufw

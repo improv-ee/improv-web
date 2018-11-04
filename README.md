@@ -32,6 +32,26 @@ docker-compose build
 docker-compose up
 ```
 
+## Deployment to a DigitalOcean Droplet
+
+```bash
+$ export DIGITALOCEAN_TOKEN=xxxx
+$ cd terraform
+$ terraform init
+$ terraform apply
+
+# Check that all resources created OK in DO
+# Map domain name to floating IP
+
+$ cd ../ansible
+
+# Save vault token
+$ nano .vault 
+$ ansible-playbook -i hosts playbooks/all.yml
+```
+
+
+
 ## Contributing
 
 Want to help? Great - submit a pull request or an issue.

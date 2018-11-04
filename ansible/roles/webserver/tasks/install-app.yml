@@ -1,9 +1,36 @@
+
 - name: Download latest version of source code
   git:
     repo: 'https://github.com/improv-ee/improv-ee.git'
     dest: /var/www/improv-ee
     version: master
     force: yes
+
+- name: Make sure app data storage directories exists
+  file:
+    path: "{{ app_storage_dir }}/{{ item }}"
+    state: directory
+    owner: www-data
+    group: root
+    mode: 0770
+  with_items:
+  - app/public
+  - framework/cache
+  - framework/sessions
+  - framework/testing
+  - framework/views
+  - logs
+
+- name: Remove app default storage directory
+  file:
+    path: "{{ app_root_dir }}/storage"
+    state: absent
+
+- name: Link system storage directory
+  file:
+    src: "{{ app_storage_dir }}"
+    dest: "{{ app_root_dir }}/storage"
+    state: link
 
 - name: Own the app by www-data
   file:
@@ -15,7 +42,7 @@
 - name: Copy environment file
   template:
     src: .env
-    dest: /var/www/improv-ee/src/.env
+    dest: "{{ app_root_dir }}/.env"
     owner: www-data
     group: root
     mode: 0650
@@ -46,6 +73,12 @@
     name: Reset improv-ee database
     hour: 06
     minute: 05
-    job: "cd /var/www/improv-ee/src && /usr/bin/php artisan migrate:fresh --force && /usr/bin/php artisan db:seed --force"
+    job: "cd {{ app_root_dir }} && /usr/bin/php artisan migrate:fresh --force && /usr/bin/php artisan db:seed --force"
     user: www-data
 
+
+- name: Link public storage directory
+  file:
+    src: "{{ app_storage_dir }}/app/public"
+    dest: "{{ app_root_dir }}/public/storage"
+    state: link

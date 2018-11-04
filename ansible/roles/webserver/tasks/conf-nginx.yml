@@ -6,6 +6,11 @@
     - /etc/nginx/sites-available/default
     - /etc/nginx/sites-enabled/default
 
+- name: Create folder for certificates
+  file:
+    path: /etc/ssl/certs/lb
+    state: directory
+
 - name: Check if dhparam file exists
   stat:
     path: /etc/ssl/certs/lb/dhparam.pem
