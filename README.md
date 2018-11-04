@@ -50,7 +50,17 @@ $ nano .vault
 $ ansible-playbook -i hosts playbooks/all.yml
 ```
 
+## Api Doc
 
+API documentation can be generated using https://github.com/mpociot/laravel-apidoc-generator
+
+Run:
+
+```bash
+$ php artisan apidoc:generate
+```
+
+Open `public/doc/index.html` with a local webbrowser.
 
 ## Contributing
 

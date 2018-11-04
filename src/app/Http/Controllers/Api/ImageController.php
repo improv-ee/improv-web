@@ -13,8 +13,6 @@ use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 /**
  * Class ImageController
  *
- * @resource Image
- * @package App\Http\Controllers\Api
  */
 class ImageController extends Controller
 {

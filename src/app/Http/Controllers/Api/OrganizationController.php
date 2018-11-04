@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 /**
  * Class OrganizationController
  *
- * @resource Organization
- * @package App\Http\Controllers\Api
  */
 class OrganizationController extends Controller
 {

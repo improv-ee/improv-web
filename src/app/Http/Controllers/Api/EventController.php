@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 
 /**
  * Class EventController
- *
- * @resource Event
- * @package App\Http\Controllers\Api
+ * @group Events
  */
 class EventController extends Controller
 {
