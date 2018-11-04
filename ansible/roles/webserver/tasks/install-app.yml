@@ -82,3 +82,13 @@
     src: "{{ app_storage_dir }}/app/public"
     dest: "{{ app_root_dir }}/public/storage"
     state: link
+
+- name: Generate Passport OAuth keys
+  command: php artisan passport:keys
+    args:
+      chdir: "{{ app_root_dir }}"
+
+- name: Install Passport
+  command: php artisan passport:install
+    args:
+      chdir: "{{ app_root_dir }}"
