@@ -2,12 +2,14 @@
 @section('title', config('app.name'))
 
 @section('topright')
+    <div class="btn-group" role="group" aria-label="{{ __('auth.login') }}">
     @guest
-        <a class="btn btn-sm btn-outline-secondary mr-3" href="{{ route('login') }}">{{ __('auth.login') }}</a>
-        <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}">{{ __('auth.register') }}</a>
+        <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ __('auth.login') }}</a>
+        <a class="btn btn-sm btn-primary" href="{{ route('register') }}">{{ __('auth.register') }}</a>
     @else
-        <a class="btn btn-sm btn-outline-secondary mr-3" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
+        <a class="btn btn-sm btn-outline-secondary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
     @endguest
+    </div>
 @endsection
 
 @section('content')

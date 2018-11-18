@@ -14,9 +14,7 @@ class ScheduleResource extends JsonResource
      */
     public function toArray($request)
     {
-if ($this->production == null) {
-    die(var_dump($this->uid));
-}
+
         return [
             'uid' => $this->uid,
             'title' => $this->title,

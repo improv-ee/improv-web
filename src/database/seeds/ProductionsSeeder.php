@@ -70,10 +70,10 @@ class ProductionsSeeder extends Seeder
     private function createProduction($em_event, $importDb, $organizations): Production
     {
         $production = new Production;
-        $production->title = $em_event->event_name;
+        $production->title = html_entity_decode($em_event->event_name);
         $production->slug = $em_event->event_slug ?: $em_event->event_name;
-        $production->description = strip_tags($em_event->post_content);
-        $production->excerpt = strip_tags($em_event->post_content);
+        $production->description = strip_tags(html_entity_decode($em_event->post_content));
+        $production->excerpt = strip_tags(html_entity_decode($em_event->post_content));
         $production->creator_id = 1;
 
         $thumbnail = $importDb->table('wp_6_postmeta')

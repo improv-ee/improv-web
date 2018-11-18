@@ -1,16 +1,17 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-6" v-for="event in featuredEvents"                 :key="event.uid">
+            <div class="col-6 mb-5" v-for="event in featuredEvents"                 :key="event.uid">
                 <schedule-feed-event :event="event"></schedule-feed-event>
             </div>
         </div>
         <div class="row mb-2">
-            <div class="col-12 col-md-6 col-lg-4"
+            <div class="col-12 col-md-6 col-lg-4 mb-3"
                  v-for="event in events"
                  :key="event.uid">
 
                 <schedule-feed-event :event="event"></schedule-feed-event>
+
             </div>
         </div>
 

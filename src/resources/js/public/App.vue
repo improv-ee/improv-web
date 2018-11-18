@@ -1,17 +1,26 @@
 <template>
-<div>
-    <notifications group="app" position="top center" />
-        <nav id="top-nav" class="nav flex-column flex-sm-row">
-            <router-link active-class="active" exact :to="{ name: 'home' }" class="flex-sm-fill nav-link text-sm-center p-2 text-muted">{{ $t("nav.schedule") }}</router-link>
-            <a class="flex-sm-fill nav-link text-sm-center p-2 text-muted" href="https://pooltund.improv.ee">{{ $t("nav.podcast") }}</a>
-            <router-link active-class="active" :to="{ name: 'newsletter' }" class="flex-sm-fill nav-link text-sm-center p-2 text-muted">{{ $t("nav.newsletter") }}</router-link>
-        </nav>
+    <div>
+        <notifications group="app" position="top center"/>
 
-    <router-view></router-view>
-</div>
+
+        <b-navbar toggleable="md"  id="top-nav" type="dark" variant="primary">
+
+            <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+            <b-collapse is-nav id="nav_collapse">
+
+                <b-navbar-nav>
+                    <b-nav-item exact :to="{ name: 'home' }">{{ $t("nav.schedule") }}</b-nav-item>
+                    <b-nav-item href="https://pooltund.improv.ee">{{ $t("nav.podcast") }}</b-nav-item>
+                    <b-nav-item :to="{ name: 'newsletter' }">{{ $t("nav.newsletter") }}
+                    </b-nav-item>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-    export default {
-    }
+    export default {}
 </script>

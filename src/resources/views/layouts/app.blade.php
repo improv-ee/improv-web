@@ -6,50 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="title" content="@yield('title')">
+    <meta name="description" content="@lang('site.meta_description')">
+    <meta name="keywords" content="@lang('site.meta_keywords')">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="{{ app()->getLocale() }}">
+
+    <link rel="author" type="text/plain" href="humans.txt" />
     <title>@yield('title')</title>
 
     @yield('styles')
-
 
 </head>
 <body>
 
 
 <div class="container">
-    <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4"></div>
-            <div class="col-4 text-center">
-                <h1>{{ config('app.name') }}</h1>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                @yield('topright')
-            </div>
-        </div>
-    </header>
+
+    @include('layouts._header')
 
     @yield('content')
 
+    @include('layouts._footer')
 
-    <footer class="site-footer">
-
-        <div class="row footer-links">
-            <div class="col-4">
-                <ul>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="col-4"></div>
-            <div class="col-4"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <p>improv.ee 2013 - {{ date('Y') }}</p>
-
-            </div>
-        </div>
-    </footer>
 </div>
 @yield('scripts')
 </body>

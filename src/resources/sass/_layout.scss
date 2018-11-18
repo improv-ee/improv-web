@@ -2,26 +2,10 @@ body {
   margin-top: $spacer * 2;
 }
 
-.site-footer {
-  text-align: center;
-  font-size: $small-font-size;
-  margin-top: $spacer * 5;
-  margin-bottom: $spacer * 5;
 
-  .footer-links {
-    background-color: $green;
-    margin-bottom: $spacer * 3;
-    padding: $spacer;
-
-    ul {
-      list-style: none;
-    }
-  }
-}
 
 #top-nav {
-  margin-bottom: $spacer*2;
-  margin-top: $spacer;
+  margin-bottom: 1em;
 }
 
 .event-details {
