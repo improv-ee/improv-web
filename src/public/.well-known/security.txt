@@ -1,0 +1,3 @@
+# https://securitytxt.org
+Contact: ando@sqroot.eu
+Permission: none
