@@ -6,7 +6,7 @@ window.Vue = require('vue');
 
 import * as Sentry from '@sentry/browser'
 Sentry.init({
-    dsn: 'https://8afd4526c39647f7b9a1868fe6bfa55a@sentry.io/265079',
+    dsn: 'https://4b357e3a9aa347229d1f452bf469f676@sentry.io/1314907',
     integrations: [new Sentry.Integrations.Vue({ Vue })]
 });
 
