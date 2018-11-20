@@ -2,8 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
 @import '../variables';
+
 // Bootstrap
+@import '~mdbootstrap/scss/mdb';
 @import '~bootstrap/scss/bootstrap';
+
 // Plugins
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 @import '~@fortawesome/fontawesome-svg-core/styles.css';

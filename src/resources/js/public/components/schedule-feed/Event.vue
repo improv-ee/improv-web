@@ -3,7 +3,7 @@
     <div class="card h-100 mb-4 shadow-sm event-card">
         <div class="view overlay">
         <router-link :to="{ name: 'events', params: { uid: event.uid }}">
-                <img class="card-img-top flex-auto d-none d-lg-block"
+                <img class="card-img-top flex-auto"
                      :src="header_img(event.production.images)"
                      :alt="event.production.slug" />
             <div class="mask rgba-white-slight"></div>

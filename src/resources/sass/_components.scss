@@ -31,8 +31,13 @@
 }
 
 .blog-header {
-  h1 {
+  a {
+    color: $mdb-color-darken-2;
     text-transform: uppercase;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 .header-img {

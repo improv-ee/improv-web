@@ -49,9 +49,9 @@
 
     </div>
 
-    <div class="footer-copyright text-center py-3">
-        @lang('site.footer_copyright_text')
-        © 2013 - {{ date('Y') }}
-        <a href="/humans.txt">@lang('site.footer_copyright_holder')</a>
+    <div class="footer-copyright text-center">
+        <p>@lang('site.footer_copyright_text')</p>
+        <p>© 2013 - {{ date('Y') }}
+        <a href="/humans.txt">@lang('site.footer_copyright_holder')</a></p>
     </div>
 </footer>

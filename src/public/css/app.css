@@ -22092,6 +22092,10 @@ body {
   padding-top: 1.5rem;
 }
 
+.page-footer .footer-copyright {
+  padding: 1.5rem;
+}
+
 .event-card img {
   max-height: 30em;
   -o-object-fit: cover;
@@ -22118,8 +22122,13 @@ body {
   cursor: pointer;
 }
 
-.blog-header h1 {
+.blog-header a {
+  color: #2e3951;
   text-transform: uppercase;
+}
+
+.blog-header a:hover {
+  text-decoration: none;
 }
 
 .header-img {

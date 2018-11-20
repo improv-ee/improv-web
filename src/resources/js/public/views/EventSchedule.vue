@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-6 mb-5" v-for="event in featuredEvents"                 :key="event.uid">
+            <div class="col-12 col-md-6 mb-5" v-for="event in featuredEvents" :key="event.uid">
                 <schedule-feed-event :event="event"></schedule-feed-event>
             </div>
         </div>

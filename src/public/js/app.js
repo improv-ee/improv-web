@@ -100243,7 +100243,7 @@ var render = function() {
       _vm._l(_vm.featuredEvents, function(event) {
         return _c(
           "div",
-          { key: event.uid, staticClass: "col-6 mb-5" },
+          { key: event.uid, staticClass: "col-12 col-md-6 mb-5" },
           [_c("schedule-feed-event", { attrs: { event: event } })],
           1
         )
@@ -101289,7 +101289,7 @@ var render = function() {
           { attrs: { to: { name: "events", params: { uid: _vm.event.uid } } } },
           [
             _c("img", {
-              staticClass: "card-img-top flex-auto d-none d-lg-block",
+              staticClass: "card-img-top flex-auto",
               attrs: {
                 src: _vm.header_img(_vm.event.production.images),
                 alt: _vm.event.production.slug
