@@ -7,7 +7,7 @@
         <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ __('auth.login') }}</a>
         <a class="btn btn-sm btn-primary" href="{{ route('register') }}">{{ __('auth.register') }}</a>
     @else
-        <a class="btn btn-sm btn-outline-secondary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
+        <a class="btn btn-sm btn-primary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
     @endguest
     </div>
 @endsection

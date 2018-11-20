@@ -2,13 +2,15 @@
 @section('title', config('app.name'))
 
 @section('topright')
-    <a class="btn btn-sm btn-outline-secondary mr-3" href="#/profile/settings">{{ Auth::user()->name }}</a>
+    <div class="btn-group" role="group" aria-label="{{ __('auth.login') }}">
+    <a class="btn btn-sm btn-primary" href="#/profile/settings">{{ Auth::user()->name }}</a>
     <form action="{{ url('/logout') }}" method="POST">
         {!! csrf_field() !!}
-        <button type="submit" class="btn btn-sm btn-outline-secondary">
+        <button type="submit" class="btn btn-sm btn-primary">
             {{ __('auth.logout') }}
         </button>
     </form>
+    </div>
 @endsection
 
 @section('content')

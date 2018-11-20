@@ -21,7 +21,6 @@
 </head>
 <body>
 
-
 <div class="container">
 
     @include('layouts._header')
