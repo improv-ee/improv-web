@@ -5,5 +5,6 @@ return [
     'footer_copyright_holder' => 'improv.ee tiim',
     'meta_description' => 'improv.ee koondab impro-ürituste mängukava ning infot improteatri kohta',
     'meta_keywords'=> 'improteater,impro,improv,impro eestis,improvisatsioon,improetendus',
-    'about_us'=>'Meist'
+    'about_us'=>'Meist',
+    'report_bug'=>'Teata veast'
 ];

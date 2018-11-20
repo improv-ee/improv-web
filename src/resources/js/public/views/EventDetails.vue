@@ -3,15 +3,23 @@
         <div class="row">
             <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
 
-                <img class="img-fluid event-image"
+                <img class="img-fluid header-img"
                      :src="production.images.header.url"
                      :alt="event.production.slug" />
             </div>
         </div>
     <div class="row">
-        <div class="offset-lg-1 col-lg-2">
-                <p>{{ startTime }} - {{ endTime }}</p>
+        <div class="offset-lg-1 col-lg-2 col-event-meta">
+            <p><span class="meta-label">
+                <i class="far fa-calendar"></i> {{ $t('event.attr.start_time')}}</span><br />
+                <span class="meta-value">{{ startTime }}</span></p>
             </div>
+        <div class="col-lg-2 col-event-meta">
+                <p><span class="meta-label">
+                    <i class="far fa-calendar"></i> {{ $t('event.attr.end_time')}}</span><br />
+                    <span class="meta-value">{{ endTime }}</span></p>
+            </div>
+
         </div>
 
     <div class="row">
@@ -36,7 +44,7 @@
                 return moment(this.event.times.start).format('Do MMMM HH:mm')
             },
             endTime: function () {
-                return moment(this.event.times.end).format('Do MMMM HH:mm')
+                return moment(this.event.times.end).format('HH:mm')
             }
         },
         methods: {

@@ -100039,7 +100039,7 @@ var _iconsCache = {
 /* 377 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi","page_not_found":"Lehte ei leitud","page_not_found_description":"Soovitud lehe avamine ebaõnnestus"}}}
+module.exports = {"et":{"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi","page_not_found":"Lehte ei leitud","page_not_found_description":"Soovitud lehe avamine ebaõnnestus"}}}
 
 /***/ }),
 /* 378 */,
@@ -100352,6 +100352,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -100366,7 +100374,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return moment(this.event.times.start).format('Do MMMM HH:mm');
         },
         endTime: function endTime() {
-            return moment(this.event.times.end).format('Do MMMM HH:mm');
+            return moment(this.event.times.end).format('HH:mm');
         }
     },
     methods: {
@@ -100404,7 +100412,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8 offset-md-2 col-lg-8 offset-lg-2" }, [
         _c("img", {
-          staticClass: "img-fluid event-image",
+          staticClass: "img-fluid header-img",
           attrs: {
             src: _vm.production.images.header.url,
             alt: _vm.event.production.slug
@@ -100414,8 +100422,32 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "offset-lg-1 col-lg-2" }, [
-        _c("p", [_vm._v(_vm._s(_vm.startTime) + " - " + _vm._s(_vm.endTime))])
+      _c("div", { staticClass: "offset-lg-1 col-lg-2 col-event-meta" }, [
+        _c("p", [
+          _c("span", { staticClass: "meta-label" }, [
+            _c("i", { staticClass: "far fa-calendar" }),
+            _vm._v(" " + _vm._s(_vm.$t("event.attr.start_time")))
+          ]),
+          _c("br"),
+          _vm._v(" "),
+          _c("span", { staticClass: "meta-value" }, [
+            _vm._v(_vm._s(_vm.startTime))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-2 col-event-meta" }, [
+        _c("p", [
+          _c("span", { staticClass: "meta-label" }, [
+            _c("i", { staticClass: "far fa-calendar" }),
+            _vm._v(" " + _vm._s(_vm.$t("event.attr.end_time")))
+          ]),
+          _c("br"),
+          _vm._v(" "),
+          _c("span", { staticClass: "meta-value" }, [
+            _vm._v(_vm._s(_vm.endTime))
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
@@ -101331,7 +101363,7 @@ if (false) {
 /* 397 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"production":{"attr":{"title":"Pealkiri","excerpt":"Lühikirjeldus","description":"Kirjeldus"}}}}
+module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"production":{"attr":{"title":"Pealkiri","excerpt":"Lühikirjeldus","description":"Kirjeldus"}}}}
 
 /***/ }),
 /* 398 */

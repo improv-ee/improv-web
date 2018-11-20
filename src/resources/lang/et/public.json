@@ -8,14 +8,7 @@
       "home": "Avaleht",
       "organizations": "Organisatsioonid"
     },
-    "event":{
-      "attr": {
-        "title":"Pealkiri",
-        "description":"Kirjeldus",
-        "start_time": "Algus",
-        "end_time": "Lõpp"
-      }
-    },
+
 
     "production": {
       "attr": {

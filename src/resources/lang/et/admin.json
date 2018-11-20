@@ -10,13 +10,9 @@
     },
     "event":{
       "attr": {
-        "title":"Pealkiri",
         "title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
-        "description":"Kirjeldus",
         "description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.",
-        "start_time": "Algus",
         "start_time_description":"Ürituse alguskuupäev- ja kella-aeg",
-        "end_time": "Lõpp",
         "end_time_description":"Ürituse alguskuupäev- ja kella-aeg"
       }
     },

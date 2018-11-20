@@ -11514,11 +11514,9 @@ body {
   margin-bottom: 1em;
 }
 
-.event-details .event-image {
-  height: 20em;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.page-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
 }
 
 .event-card img {
@@ -11556,6 +11554,15 @@ body {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  margin-bottom: 2em;
+}
+
+.col-event-meta .meta-label {
+  text-transform: uppercase;
+}
+
+.col-event-meta .meta-value {
+  font-weight: bold;
 }
 
 .overlay-container {

@@ -1,5 +1,13 @@
 {
   "et": {
+    "event":{
+      "attr": {
+        "title":"Pealkiri",
+        "description":"Kirjeldus",
+        "start_time": "Algus",
+        "end_time": "Lõpp"
+      }
+    },
     "ui":{
       "create":"Sisesta",
       "add_new":"Lisa uus",

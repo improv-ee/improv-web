@@ -1,4 +1,4 @@
-<footer class="page-footer font-small blue pt-4">
+<footer class="page-footer font-small blue">
     <div class="container-fluid text-center text-md-left">
         <div class="row">
             <div class="col-md-6 mt-md-0 mt-3">
@@ -16,6 +16,9 @@
                 <ul class="list-unstyled">
                     <li>
                         <a href="https://github.com/improv-ee/improv-ee">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/improv-ee/improv-ee/issues">@lang('site.report_bug')</a>
                     </li>
                 </ul>
 
