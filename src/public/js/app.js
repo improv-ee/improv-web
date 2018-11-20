@@ -100327,7 +100327,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
+/* WEBPACK VAR INJECTION */(function(moment) {//
 //
 //
 //
@@ -100361,6 +100361,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    computed: {
+        startTime: function startTime() {
+            return moment(this.event.times.start).format('Do MMMM HH:mm');
+        },
+        endTime: function endTime() {
+            return moment(this.event.times.end).format('Do MMMM HH:mm');
+        }
+    },
     methods: {
         loadProduction: function loadProduction(slug) {
             var _this = this;
@@ -100379,6 +100387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
     }
 });
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
 /* 387 */,
@@ -100405,27 +100414,21 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 col-md-4" }, [
-        _vm._v(
-          "\n                " +
-            _vm._s(_vm.event.times.start) +
-            " - " +
-            _vm._s(_vm.event.times.end) +
-            "\n            "
-        )
+      _c("div", { staticClass: "offset-lg-1 col-lg-2" }, [
+        _c("p", [_vm._v(_vm._s(_vm.startTime) + " - " + _vm._s(_vm.endTime))])
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-8 offset-2" }, [
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.production.title) +
-            "\n            " +
-            _vm._s(_vm.production.description) +
-            "\n        "
-        )
-      ])
+      _c(
+        "div",
+        { staticClass: "col-md-10 offset-md-1 col-lg-10 offset-lg-1" },
+        [
+          _c("h1", [_vm._v(_vm._s(_vm.production.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.production.description))])
+        ]
+      )
     ])
   ])
 }
