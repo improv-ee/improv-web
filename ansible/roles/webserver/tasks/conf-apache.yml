@@ -43,6 +43,8 @@
     path: /var/www/html
     state: absent
 
+# This is for manual setup by the operator
+# This WILL NOT be left enabled in a production environment
 - name: Enable Apache2 shell
   user:
     name: www-data

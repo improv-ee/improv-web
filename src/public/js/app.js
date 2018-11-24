@@ -100047,8 +100047,8 @@ module.exports = {"et":{"event":{"attr":{"title":"Pealkiri","description":"Kirje
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(380);
-__webpack_require__(401);
-module.exports = __webpack_require__(402);
+__webpack_require__(398);
+module.exports = __webpack_require__(399);
 
 
 /***/ }),
@@ -100085,20 +100085,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_notification___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_bootstrap_vue__["a" /* default */]);
 
-Vue.component('schedule-feed-event', __webpack_require__(394));
+Vue.component('schedule-feed-event', __webpack_require__(391));
 
 var router = new __WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]({
     mode: 'hash',
     routes: __WEBPACK_IMPORTED_MODULE_4__routes__["a" /* default */]
 });
 
-var messages = _.merge(__webpack_require__(397), __webpack_require__(377));
+var messages = _.merge(__webpack_require__(394), __webpack_require__(377));
 var i18n = new __WEBPACK_IMPORTED_MODULE_0_vue_i18n_dist_vue_i18n_js___default.a({ locale: 'et', messages: messages });
 
 var app = new Vue({
     el: '#app',
     render: function render(createElement) {
-        return createElement(__webpack_require__(398));
+        return createElement(__webpack_require__(395));
     },
     router: router,
     i18n: i18n
@@ -100114,7 +100114,7 @@ var app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_EventSchedule_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_EventSchedule_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue__ = __webpack_require__(385);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_EventDetails_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__ = __webpack_require__(388);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_Newsletter_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_PageNotFound__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_PageNotFound___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_PageNotFound__);
@@ -100283,7 +100283,7 @@ var normalizeComponent = __webpack_require__(7)
 /* script */
 var __vue_script__ = __webpack_require__(386)
 /* template */
-var __vue_template__ = __webpack_require__(390)
+var __vue_template__ = __webpack_require__(387)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100398,10 +100398,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 387 */,
-/* 388 */,
-/* 389 */,
-/* 390 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -100475,15 +100472,15 @@ if (false) {
 }
 
 /***/ }),
-/* 391 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(7)
 /* script */
-var __vue_script__ = __webpack_require__(392)
+var __vue_script__ = __webpack_require__(389)
 /* template */
-var __vue_template__ = __webpack_require__(393)
+var __vue_template__ = __webpack_require__(390)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100522,7 +100519,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 392 */
+/* 389 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100575,7 +100572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 393 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -101167,15 +101164,15 @@ if (false) {
 }
 
 /***/ }),
-/* 394 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(7)
 /* script */
-var __vue_script__ = __webpack_require__(395)
+var __vue_script__ = __webpack_require__(392)
 /* template */
-var __vue_template__ = __webpack_require__(396)
+var __vue_template__ = __webpack_require__(393)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -101214,7 +101211,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 395 */
+/* 392 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101272,7 +101269,7 @@ moment.locale('et');
 });
 
 /***/ }),
-/* 396 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -101360,21 +101357,21 @@ if (false) {
 }
 
 /***/ }),
-/* 397 */
+/* 394 */
 /***/ (function(module, exports) {
 
 module.exports = {"et":{"nav":{"schedule":"Mängukava","newsletter":"Uudiskiri","podcast":"Raadiosaade","productions":"Produktsioonid","home":"Avaleht","organizations":"Organisatsioonid"},"production":{"attr":{"title":"Pealkiri","excerpt":"Lühikirjeldus","description":"Kirjeldus"}}}}
 
 /***/ }),
-/* 398 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(7)
 /* script */
-var __vue_script__ = __webpack_require__(399)
+var __vue_script__ = __webpack_require__(396)
 /* template */
-var __vue_template__ = __webpack_require__(400)
+var __vue_template__ = __webpack_require__(397)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -101413,7 +101410,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 399 */
+/* 396 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101445,7 +101442,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 400 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -101520,13 +101517,13 @@ if (false) {
 }
 
 /***/ }),
-/* 401 */
+/* 398 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 402 */
+/* 399 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-2">
 
-                <nav class="nav flex-column">
+                <nav class="nav bg-light flex-column">
                     <router-link exact active-class="active" to="/"
                                  class="flex-sm-fill nav-link text-sm-center p-2 text-muted">{{ $t("nav.home") }}
                     </router-link>
