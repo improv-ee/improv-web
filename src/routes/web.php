@@ -16,9 +16,9 @@ Route::get('/', function () {
     return view('frontpage');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 
-Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
+Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
