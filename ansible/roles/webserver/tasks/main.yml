@@ -6,3 +6,6 @@
 
 - name: Install PHP app
   include: install-app.yml
+
+- name: Install queue worker
+  include: install-worker.yml

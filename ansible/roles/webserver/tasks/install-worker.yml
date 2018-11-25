@@ -1,0 +1,10 @@
+- name: Copy worker service file
+  copy:
+    src: laravel-worker.service
+    dest: /etc/systemd/system/
+
+- name: Enable worker service
+  service:
+    name: laravel-worker
+    state: started
+    enabled: yes

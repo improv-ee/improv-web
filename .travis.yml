@@ -16,6 +16,7 @@ install:
   - composer install -d src --no-interaction --dev
 
 script:
+  - php src/vendor/bin/parallel-lint --exclude src/vendor src
   - php src/artisan passport:keys
   - php src/vendor/bin/phpunit -c src/
   - php src/artisan apidoc:generate

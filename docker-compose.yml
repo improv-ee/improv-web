@@ -2,7 +2,8 @@ version: "3"
 
 services:
   webserver:
-    build: .
+    build:
+      context: .
     ports:
       - "8800"
     deploy:
@@ -20,6 +21,21 @@ services:
       - redis
       - import-db
 
+  worker:
+    build:
+      context: .
+    networks:
+      - backend
+      - db
+    environment:
+      - APP_ENV=local
+      - APP_URL=dev.improv.ee
+    volumes:
+      - ./src:/var/www/
+    depends_on:
+      - app-db
+      - redis
+    command: "php /var/www/artisan queue:work --tries=3"
 
   lb:
     build:
@@ -74,6 +90,7 @@ services:
     volumes:
       - ./docker/import-db/export:/docker-entrypoint-initdb.d
       - import-db:/var/lib/mysql
+
 volumes:
   import-db:
   app-db:
