@@ -5,10 +5,11 @@ namespace App\Orm;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Production extends Model
+class Production extends Model implements Auditable
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes, SoftCascadeTrait;
+    use \Dimsav\Translatable\Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable;
 
     public $translatedAttributes = ['title', 'slug', 'description', 'excerpt'];
     public $fillable = ['title', 'slug', 'description', 'excerpt'];

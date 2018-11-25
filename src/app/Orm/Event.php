@@ -2,13 +2,16 @@
 
 namespace App\Orm;
 
+use Dimsav\Translatable\Translatable;
 use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
 
-class Event extends Model
+class Event extends Model implements AuditableInterface
 {
-    use \Dimsav\Translatable\Translatable, DirapeToken, SoftDeletes;
+    use Translatable, DirapeToken, SoftDeletes, Auditable;
 
     protected $DT_Column='uid';
     protected $DT_settings=['type'=>DT_Unique,'size'=>10,'special_chr'=>false];

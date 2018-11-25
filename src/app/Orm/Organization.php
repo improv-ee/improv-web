@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Organization extends Model
+class Organization extends Model implements Auditable
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes;
+    use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable;
 
     public $translatedAttributes = ['name', 'slug'];
     protected $dates = [

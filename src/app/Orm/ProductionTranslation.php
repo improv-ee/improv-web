@@ -4,9 +4,10 @@ namespace App\Orm;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class ProductionTranslation extends Model {
-
+class ProductionTranslation extends Model implements Auditable {
+    use \OwenIt\Auditing\Auditable;
 public $timestamps = false;
     protected $fillable = ['title','description','excerpt'];
 
