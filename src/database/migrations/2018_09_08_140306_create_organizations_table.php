@@ -47,8 +47,7 @@ class CreateOrganizationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('organizations', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('organization_translations');
+        Schema::dropIfExists('organizations');
     }
 }

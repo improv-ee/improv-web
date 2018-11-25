@@ -12,6 +12,7 @@
       "create":"Sisesta",
       "add_new":"Lisa uus",
       "edit":"Muuda",
+      "view_details": "Rohkem infot",
       "cancel":"Katkesta",
       "delete":"Kustuta",
       "validation_error":"Sisendandmed ei sobi",

@@ -56,8 +56,13 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'ando@sqroot.eu'),
-        'name' => env('MAIL_FROM_NAME', 'Ando Roots'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@improvision.eu'),
+        'name' => env('MAIL_FROM_NAME', 'Improvision'),
+    ],
+
+    'reply_to' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'support@improvision.eu'),
+        'name' => env('MAIL_FROM_NAME', 'Improvision Support'),
     ],
 
     /*

@@ -3,7 +3,7 @@
         <p><span v-html="$t('organization.list_intro')"></span></p>
         <p class="text-right">
             <b-btn v-b-modal.modal-new-organization
-                   class="btn btn-sm btn-outline-secondary mb-3">{{ $t("organization.create_new") }}
+                   class="btn btn-sm btn-primary mb-3">{{ $t("organization.create_new") }}
             </b-btn>
         </p>
 
@@ -12,12 +12,14 @@
             <div class="col-10 offset-1">
                 <b-card v-for="organization in organizations"
                         :key="organization.slug"
-                        class="cursor-pointer"
-                        @click="goToDetailsView(organization.slug)"
                         img-top>
                     <p class="card-text">
                         {{ organization.name }}
                     </p>
+
+                    <b-button :to="{name: 'organization.details', params: {slug: organization.slug}}"
+                           variant="info"   class="btn">{{ $t('ui.view_details') }}</b-button>
+
                 </b-card>
             </div>
         </div>
@@ -54,16 +56,11 @@
         data() {
             return {
                 organizations: [],
-                newOrganizationName: ''
+                newOrganizationName: '',
             }
         },
         methods: {
-            goToDetailsView(slug) {
-                this.$router.push({
-                    name: 'organization.details',
-                    params: {slug: slug}
-                })
-            },
+
             createOrganization() {
                 let self = this;
                 axios.post('/api/organizations', {"name": this.newOrganizationName})
@@ -76,7 +73,7 @@
             },
 
             getResults(page = 1) {
-                axios.get('/api/organizations', {params: {page: page}})
+                axios.get('/api/organizations', {params: {page: page, onlyMine: 1}})
                     .then(response => {
                         this.organizations = response.data.data;
                     });

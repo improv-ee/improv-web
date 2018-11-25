@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 
+/**
+ * @property \Illuminate\Database\Eloquent\Collection $users
+ * @property \Illuminate\Database\Eloquent\Collection $admins
+ */
 class Organization extends Model implements Auditable
 {
     use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable;
@@ -26,6 +30,7 @@ class Organization extends Model implements Auditable
         'is_public' => 'boolean',
     ];
 
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = trim($value);
@@ -38,10 +43,17 @@ class Organization extends Model implements Auditable
 
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot(['role']);
     }
 
-    public function isMember(User $targetUser = null): bool {
+    public function admins()
+    {
+        return $this->users()
+            ->wherePivot('role', OrganizationUser::ROLE_ADMIN);
+    }
+
+    public function isMember(User $targetUser = null): bool
+    {
         if ($targetUser === null) {
             return false;
         }
@@ -59,7 +71,7 @@ class Organization extends Model implements Auditable
             return $query;
         }
         return $query->whereHas('users', function ($query) {
-            $query->where('id', Auth::user()->id ?? null);
+            $query->where('users.id', Auth::user()->id ?? null);
         });
     }
 }
