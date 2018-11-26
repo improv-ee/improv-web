@@ -100384,6 +100384,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        header_img: function header_img(images) {
+            return images.hasOwnProperty('header') ? images.header.url : '/img/production/default-header.jpg';
+        },
+
         startTime: function startTime() {
             return moment(this.event.times.start).format('Do MMMM HH:mm');
         },
@@ -100424,10 +100428,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8 offset-md-2 col-lg-8 offset-lg-2" }, [
         _c("img", {
           staticClass: "img-fluid header-img",
-          attrs: {
-            src: _vm.production.images.header.url,
-            alt: _vm.event.production.slug
-          }
+          attrs: { src: _vm.header_img, alt: _vm.event.production.slug }
         })
       ])
     ]),
