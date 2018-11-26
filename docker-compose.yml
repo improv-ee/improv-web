@@ -27,6 +27,7 @@ services:
     networks:
       - backend
       - db
+      - mail
     environment:
       - APP_ENV=local
       - APP_URL=dev.improv.ee
@@ -91,6 +92,13 @@ services:
       - ./docker/import-db/export:/docker-entrypoint-initdb.d
       - import-db:/var/lib/mysql
 
+  mailserver:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+    networks:
+      - mail
+
 volumes:
   import-db:
   app-db:
@@ -99,3 +107,4 @@ volumes:
 networks:
   backend:
   db:
+  mail:

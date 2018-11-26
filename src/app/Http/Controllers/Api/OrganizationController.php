@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\Organization\UserJoined;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrganizationResource;
 use App\Orm\Organization;
-use App\Orm\OrganizationUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class OrganizationController
@@ -57,28 +54,5 @@ class OrganizationController extends Controller
         $organization = Organization::whereTranslation('slug', $id)
             ->firstOrFail();
         $organization->delete();
-    }
-
-    public function join($slug)
-    {
-        $organization = Organization::whereTranslation('slug', $slug)
-            ->firstOrFail();
-
-        $userId = Auth::user()->id;
-        $membership = OrganizationUser::getMembership($userId, $organization->id);
-
-        if ($membership !== null) {
-            return response(['errors' => ['title' => 'Membership already exists']], 400);
-        }
-
-        $member = new OrganizationUser;
-        $member->user_id = $userId;
-        $member->organization_id = $organization->id;
-        $member->role = OrganizationUser::ROLE_JOINER;
-        $member->save();
-
-        event(new UserJoined($member));
-
-        return response(null, 201);
     }
 }

@@ -24,7 +24,7 @@ class CreateOrganizationUserTable extends Migration
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');
 
-            $table->tinyInteger('role')->unsigned()->default(OrganizationUser::ROLE_JOINER);
+            $table->tinyInteger('role')->unsigned()->default(OrganizationUser::ROLE_MEMBER);
             $table->unique(['user_id', 'organization_id']);
             $table->timestamps();
         });

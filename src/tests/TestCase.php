@@ -11,6 +11,9 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    /**
+     * @return \Illuminate\Contracts\Auth\Authenticatable|User
+     */
     protected function actingAsOrganizationMember(){
         $user = factory(User::class)->create();
         $organization = factory(Organization::class)->create();

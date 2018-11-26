@@ -14,9 +14,8 @@ class OrganizationUser extends Pivot implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    const ROLE_JOINER = 0;
+    const ROLE_ADMIN = 0;
     const ROLE_MEMBER = 1;
-    const ROLE_ADMIN = 2;
 
     protected $dates = [
         'created_at',

@@ -38,7 +38,7 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('productions', 'Api\ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
 
     Route::apiResource('organizations', 'Api\OrganizationController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
-    Route::post('/organizations/{slug}/join', 'Api\OrganizationController@join', ['as'=>'api'])->name('api.organizations.joins');
+    Route::apiResource('/organizations/{slug}/membership/{user}', 'Api\Organization\MembershipController', ['as'=>'api'])->only(['store']);
 
     Route::apiResource('events', 'Api\EventController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
     Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['store']);

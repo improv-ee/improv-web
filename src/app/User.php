@@ -35,6 +35,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function organizations(){
         return $this->belongsToMany('App\Orm\Organization')->using('App\Orm\OrganizationUser');
     }

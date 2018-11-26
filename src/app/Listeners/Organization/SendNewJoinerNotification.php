@@ -27,8 +27,6 @@ class SendNewJoinerNotification
      */
     public function handle(UserJoined $event)
     {
-        $organizationAdmins = $event->organizationUser->organization->admins()->get();
-
-        Notification::send($organizationAdmins, new NewMemberApplication($event->organizationUser));
+        Notification::send($event->organizationUser->user, new NewMemberApplication($event->organizationUser));
     }
 }

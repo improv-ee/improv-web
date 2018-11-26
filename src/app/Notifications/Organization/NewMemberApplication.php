@@ -48,9 +48,11 @@ class NewMemberApplication extends Notification implements ShouldQueue
         $org = $this->organizationUser->organization;
 
         return (new MailMessage)
-            ->greeting(__('notification.organization.new_member_application.greeting', ['org' => $org->name]))
-            ->line(__('notification.organization.new_member_application.name_wants_to_join', ['name' => $this->organizationUser->user->name]))
-            ->action(__('notification.organization.new_member_application.manage_members'), url('/admin/#/organizations/' . $org->slug));
+            ->view('vendor.mail.email')
+            ->subject(__('notification.organization.new_member.subject'))
+            ->greeting(__('notification.organization.new_member.greeting', ['name' => $this->organizationUser->user->name]))
+            ->line(__('notification.organization.new_member.you_joined', ['org' => $org->name]))
+            ->action(__('notification.organization.new_member.view_org'), url('/admin/#/organizations/' . $org->slug));
     }
 
     /**

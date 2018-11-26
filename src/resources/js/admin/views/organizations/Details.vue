@@ -8,6 +8,9 @@
         <h1>{{organization.name}}</h1>
 
 
+        <h2>{{ $t('organization.members') }}</h2>
+
+
     </div>
 </template>
 

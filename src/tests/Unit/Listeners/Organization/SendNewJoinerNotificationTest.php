@@ -16,7 +16,7 @@ class SendNewJoinerNotificationTest extends TestCase
 
     use DatabaseMigrations;
 
-    public function testNotificationIsSentToOrganizationAdmins()
+    public function testNotificationIsSentToJoiner()
     {
         $organization = factory(Organization::class)->create();
 
@@ -25,7 +25,7 @@ class SendNewJoinerNotificationTest extends TestCase
         $orgMemberAdmin2 = factory(User::class)->create();
         $orgMember = factory(User::class)->create();
 
-        $organization->users()->attach($orgMemberJoiner, ['role'=> OrganizationUser::ROLE_JOINER]);
+        $organization->users()->attach($orgMemberJoiner, ['role'=> OrganizationUser::ROLE_MEMBER]);
         $organization->users()->attach($orgMemberAdmin1, ['role' => OrganizationUser::ROLE_ADMIN]);
         $organization->users()->attach($orgMemberAdmin2, ['role' => OrganizationUser::ROLE_ADMIN]);
         $organization->users()->attach($orgMember, ['role' => OrganizationUser::ROLE_MEMBER]);
@@ -37,11 +37,11 @@ class SendNewJoinerNotificationTest extends TestCase
         event(new UserJoined($member));
 
         Notification::assertSentTo(
-            [$orgMemberAdmin1,$orgMemberAdmin2], NewMemberApplication::class
+            [$orgMemberJoiner], NewMemberApplication::class
         );
 
         Notification::assertNotSentTo(
-            [$orgMember,$orgMemberJoiner], NewMemberApplication::class
+            [$orgMember,$orgMemberAdmin2,$orgMemberAdmin1], NewMemberApplication::class
         );
 
     }

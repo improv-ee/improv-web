@@ -1,10 +1,11 @@
 <?php
 return [
     'organization' => [
-        'new_member_application' => [
-            'greeting' => 'Uus liikmesoov organisatsiooni :org',
-            'name_wants_to_join' => ':name soovib organisatsiooniga liituda.',
-            'manage_members' => 'Halda organisatsiooni liikmeid'
-        ]
-    ]
+        'new_member' => [
+            'greeting' => 'Tere :name',
+            'you_joined' => 'Sind lisati organisatsiooni :org liikmeks.',
+            'view_org' => 'Vaata lähemalt siit',
+            'subject' => 'Sind lisati organisatsiooni liikmeks'
+        ],
+    ],
 ];

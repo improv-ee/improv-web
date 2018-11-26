@@ -97,48 +97,4 @@ class OrganizationsTest extends ApiTestCase
             ]);
         $this->assertCount(2, $response->json('data'));
     }
-
-
-    public function testCanApplyToJoinOrganization()
-    {
-        $user = $this->actingAsLoggedInUser();
-
-        $organization = factory(Organization::class)->create();
-
-        $response = $this->post(sprintf('/api/organizations/%s/join', $organization->slug));
-
-        $response->assertStatus(201);
-
-        $this->assertDatabaseHas('organization_user', [
-            'user_id' => $user->id,
-            'organization_id' => $organization->id,
-            'role' => OrganizationUser::ROLE_JOINER]);
-    }
-
-    public function testCanNotJoinOrganizationTwice()
-    {
-        $user = $this->actingAsOrganizationMember();
-        $org = $user->organizations()->first();
-
-        $this->assertDatabaseHas('organization_user', ['user_id' => $user->id, 'organization_id' => $org->id]);
-
-        $response = $this->post(sprintf('/api/organizations/%s/join', $org->slug));
-
-        $response->assertStatus(400)
-            ->assertJsonStructure(['errors' => []]);
-    }
-
-    public function testEventIsCreatedOnOrganizationJoin(){
-        $this->actingAsLoggedInUser();
-
-        $organization = factory(Organization::class)->create();
-
-        Event::fake();
-
-        $this->post(sprintf('/api/organizations/%s/join', $organization->slug));
-
-        Event::assertDispatched(UserJoined::class, function ($e) use ($organization) {
-            return $e->organizationUser->organization_id === $organization->id;
-        });
-    }
 }
