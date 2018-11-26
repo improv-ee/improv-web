@@ -14,16 +14,25 @@ abstract class TestCase extends BaseTestCase
     /**
      * @return \Illuminate\Contracts\Auth\Authenticatable|User
      */
-    protected function actingAsOrganizationMember(){
-        $user = factory(User::class)->create();
+    protected function actingAsOrganizationMember()
+    {
+        $user = $this->actingAsLoggedInUser();
         $organization = factory(Organization::class)->create();
         $organization->users()->attach($user);
         return Passport::actingAs($user);
     }
 
-    protected function actingAsLoggedInUser(){
-        return Passport::actingAs(
-            factory(User::class)->create()
-        );
+    protected function actingAsLoggedInUser()
+    {
+        $user = factory(User::class)->create();
+
+        $user->assignRole('auth-user');
+        return Passport::actingAs($user);
+    }
+
+    protected function actingAsUnauthenticatedUser(){
+        $user = factory(User::class)->create();
+
+        return Passport::actingAs($user);
     }
 }

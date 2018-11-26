@@ -74,7 +74,7 @@ class OrganizationsTest extends ApiTestCase
             ->assertJson(['data' => [
                 'name' => $organization->name,
                 'slug' => $organization->slug,
-                'is_public' => $organization->is_public
+                'is_public' => $organization->is_public,
             ]]);
     }
 

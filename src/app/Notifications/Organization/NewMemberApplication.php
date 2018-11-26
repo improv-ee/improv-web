@@ -48,7 +48,6 @@ class NewMemberApplication extends Notification implements ShouldQueue
         $org = $this->organizationUser->organization;
 
         return (new MailMessage)
-            ->view('vendor.mail.email')
             ->subject(__('notification.organization.new_member.subject'))
             ->greeting(__('notification.organization.new_member.greeting', ['name' => $this->organizationUser->user->name]))
             ->line(__('notification.organization.new_member.you_joined', ['org' => $org->name]))

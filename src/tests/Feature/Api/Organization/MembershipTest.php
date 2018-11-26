@@ -30,6 +30,7 @@ class MembershipTest extends ApiTestCase
             'role' => OrganizationUser::ROLE_MEMBER]);
     }
 
+
     public function testCanNotJoinOrganizationTwice()
     {
         $user = $this->actingAsOrganizationMember();
@@ -42,6 +43,7 @@ class MembershipTest extends ApiTestCase
         $response->assertStatus(400)
             ->assertJsonStructure(['errors' => []]);
     }
+
 
     public function testEventIsCreatedOnOrganizationJoin()
     {

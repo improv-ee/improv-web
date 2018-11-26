@@ -154,6 +154,7 @@ return [
         Dimsav\Translatable\TranslatableServiceProvider::class,
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
 
         /*
