@@ -15,16 +15,16 @@ class CreateAuditsTable extends Migration
     {
         Schema::create('audits', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_type')->nullable();
+            $table->string('user_type',190)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('event');
+            $table->string('event',190);
             $table->morphs('auditable');
             $table->text('old_values')->nullable();
             $table->text('new_values')->nullable();
             $table->text('url')->nullable();
             $table->ipAddress('ip_address')->nullable();
-            $table->string('user_agent')->nullable();
-            $table->string('tags')->nullable();
+            $table->text('user_agent')->nullable();
+            $table->string('tags',190)->nullable();
             $table->timestamps();
 			
             $table->index(['user_id', 'user_type']);
