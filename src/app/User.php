@@ -42,4 +42,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function organizations(){
         return $this->belongsToMany('App\Orm\Organization')->using('App\Orm\OrganizationUser');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 }

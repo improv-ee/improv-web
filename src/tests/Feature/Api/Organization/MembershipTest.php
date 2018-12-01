@@ -20,7 +20,7 @@ class MembershipTest extends ApiTestCase
 
         $organization = factory(Organization::class)->create();
 
-        $response = $this->post(sprintf('/api/organizations/%s/membership/%d', $organization->slug, $user->id));
+        $response = $this->post(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $user->username));
 
         $response->assertStatus(201);
 
@@ -38,7 +38,7 @@ class MembershipTest extends ApiTestCase
 
         $this->assertDatabaseHas('organization_user', ['user_id' => $user->id, 'organization_id' => $org->id]);
 
-        $response = $this->post(sprintf('/api/organizations/%s/membership/%d', $org->slug, $user->id));
+        $response = $this->post(sprintf('/api/organizations/%s/membership/%s', $org->slug, $user->username));
 
         $response->assertStatus(400)
             ->assertJsonStructure(['errors' => []]);
@@ -53,7 +53,7 @@ class MembershipTest extends ApiTestCase
 
         Event::fake();
 
-        $this->post(sprintf('/api/organizations/%s/membership/%d', $organization->slug, $user->id));
+        $this->post(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $user->username));
 
         Event::assertDispatched(UserJoined::class, function ($e) use ($organization) {
             return $e->organizationUser->organization_id === $organization->id;

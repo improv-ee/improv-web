@@ -5,28 +5,35 @@
       "home": "Avaleht",
       "organizations": "Organisatsioonid"
     },
-    "dash":{
-      "greeting":"Meie homne on meie endi teha. - Ilves"
+    "dash": {
+      "greeting": "Meie homne on meie endi teha. - Ilves"
     },
-    "event":{
+    "event": {
       "attr": {
-        "title_description":"Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
-        "description_description":"Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.",
-        "start_time_description":"Ürituse alguskuupäev- ja kella-aeg",
-        "end_time_description":"Ürituse alguskuupäev- ja kella-aeg"
+        "title_description": "Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
+        "description_description": "Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.",
+        "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
+        "end_time_description": "Ürituse alguskuupäev- ja kella-aeg"
       }
     },
-    "organization":{
-      "list_intro":"Organisatsioonid on produktsioone korraldavad trupid.",
-      "create_new":"Uus organisatsioon",
-      "members":"Liikmed",
-      "you_dont_have_any":"Sind pole veel ühtegi organisatsiooni lisatud",
-      "attr":{
+    "organization": {
+      "list_intro": "Organisatsioonid on produktsioone korraldavad trupid.",
+      "create_new": "Uus organisatsioon",
+      "members": "Liikmed",
+      "you_dont_have_any": "Sind pole veel ühtegi organisatsiooni lisatud",
+      "attr": {
         "name": "Nimi"
+      },
+      "user": {
+        "role": {
+          "role": "Roll",
+          "admin": "Omanik",
+          "member": "Liige"
+        }
       }
     },
     "production": {
-      "no_events":"Ühtegi sündmust pole lisatud",
+      "no_events": "Ühtegi sündmust pole lisatud",
       "num_of_events": "Etendusi",
       "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.",
       "create_new": "Uus produktsioon",
@@ -38,10 +45,10 @@
         "description": "Kirjeldus",
         "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\"."
       },
-      "img":{
+      "img": {
         "header": "Päise pilt",
         "header_description": "Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
-        "select_file":"Vali fail..."
+        "select_file": "Vali fail..."
       }
     }
   }

@@ -57,7 +57,7 @@ class OrganizationsTest extends ApiTestCase
         $organizations = factory(Organization::class, 2)->create();
         $member = factory(User::class)->create();
 
-        OrganizationUser::create(['user_id'=>$member->id,'organization_id'=>$organizations[0]->id]);
+        OrganizationUser::create(['user_id' => $member->id, 'organization_id' => $organizations[0]->id]);
 
         $response = $this->get('/api/organizations');
 
@@ -68,7 +68,7 @@ class OrganizationsTest extends ApiTestCase
                     'slug' => $organizations[0]->slug,
                     'is_public' => $organizations[0]->is_public,
                     'members' => [
-
+                        ['username' => $member->username, 'role' => OrganizationUser::ROLE_MEMBER]
                     ]
                 ]
             ]]);

@@ -43,8 +43,6 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['store']);
 
 
-    Route::middleware('role:auth-user')->group(function(){
-        Route::apiResource('/organizations/{slug}/membership/{user}', 'Api\Organization\MembershipController', ['as'=>'api'])->only(['store']);
-    });
+    Route::apiResource('/organizations/{slug}/membership/{user}', 'Api\Organization\MembershipController', ['as'=>'api'])->only(['store']);
 });
 

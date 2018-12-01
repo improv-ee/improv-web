@@ -7,14 +7,15 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class OrganizationResource extends JsonResource
 {
 
-    protected function getMembers(): array
+    protected function getMembers(): \Traversable
     {
 
-        $members = [];
         foreach ($this->users as $user) {
-            $members[] = ['name' => $user->name];
+            yield [
+                'username' => $user->username,
+                'role' => $user->pivot->role
+            ];
         }
-        return $members;
     }
 
     /**
@@ -30,7 +31,7 @@ class OrganizationResource extends JsonResource
             'slug' => $this->slug,
             'is_public' => $this->is_public,
             'is_member' => $this->when($request->user(), $this->isMember($request->user())),
-            'members' => $this->getMembers()
+            'members' => iterator_to_array($this->getMembers())
         ];
     }
 }

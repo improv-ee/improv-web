@@ -100053,7 +100053,7 @@ var _iconsCache = {
 /* 378 */
 /***/ (function(module, exports) {
 
-module.exports = {"et":{"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","view_details":"Rohkem infot","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi","page_not_found":"Lehte ei leitud","page_not_found_description":"Soovitud lehe avamine ebaõnnestus"}}}
+module.exports = {"et":{"event":{"attr":{"title":"Pealkiri","description":"Kirjeldus","start_time":"Algus","end_time":"Lõpp"}},"ui":{"create":"Sisesta","add_new":"Lisa uus","edit":"Muuda","view_details":"Rohkem infot","cancel":"Katkesta","delete":"Kustuta","validation_error":"Sisendandmed ei sobi","page_not_found":"Lehte ei leitud","page_not_found_description":"Soovitud lehe avamine ebaõnnestus"},"user":{"username":"Kasutajanimi"}}}
 
 /***/ }),
 /* 379 */,

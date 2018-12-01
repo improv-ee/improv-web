@@ -18,6 +18,9 @@
       "validation_error":"Sisendandmed ei sobi",
       "page_not_found":"Lehte ei leitud",
       "page_not_found_description":"Soovitud lehe avamine ebaõnnestus"
+    },
+    "user":{
+      "username":"Kasutajanimi"
     }
   }
 }

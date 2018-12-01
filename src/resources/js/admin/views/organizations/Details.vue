@@ -10,16 +10,20 @@
 
         <h2>{{ $t('organization.members') }}</h2>
 
-        <b-table striped hover :items="members"></b-table>
+        <member-table :members="organization.members"></member-table>
     </div>
 </template>
 
 <script>
+
+    import MemberTable from '../../components/organizations/MemberTable';
     export default {
+        components: {
+            MemberTable
+        },
         data() {
             return {
                 organization: {},
-                members: []
             }
         },
         methods: {
@@ -27,9 +31,10 @@
 
         },
         mounted() {
+            let self = this;
             axios.get('/api/organizations/' + this.$route.params.slug)
                 .then(response => {
-                    this.organization = response.data.data;
+                    self.organization = response.data.data;
                 });
         }
     }
