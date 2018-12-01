@@ -1,12 +1,16 @@
 <template>
-    <b-button-toolbar key-nav>
-        <b-button-group class="mx-1">
-            <router-link :to="editLink"
-                         class="btn btn-sm btn-outline-secondary">{{ $t("ui.edit") }}
-            </router-link>
-            <b-button size="sm" @click="markAsDeleted" variant="outline-danger">{{ $t("ui.delete") }}</b-button>
-        </b-button-group>
-    </b-button-toolbar>
+    <div class="row">
+        <div class="col-lg-4 offset-lg-8">
+            <b-button-toolbar key-nav>
+                <b-button-group class="mx-1">
+                    <router-link :to="editLink"
+                                 class="btn btn-sm btn-secondary">{{ $t("ui.edit") }}
+                    </router-link>
+                    <b-button size="sm" @click="markAsDeleted" variant="danger">{{ $t("ui.delete") }}</b-button>
+                </b-button-group>
+            </b-button-toolbar>
+        </div>
+    </div>
 </template>
 <script>
     export default {

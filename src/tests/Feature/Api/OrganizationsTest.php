@@ -5,6 +5,7 @@ namespace Tests\Feature\Api;
 use App\Events\Organization\UserJoined;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -51,7 +52,13 @@ class OrganizationsTest extends ApiTestCase
 
     public function testOrganizationListIsReturned()
     {
+        $this->actingAsLoggedInUser();
+
         $organizations = factory(Organization::class, 2)->create();
+        $member = factory(User::class)->create();
+
+        OrganizationUser::create(['user_id'=>$member->id,'organization_id'=>$organizations[0]->id]);
+
         $response = $this->get('/api/organizations');
 
         $response->assertStatus(200)
@@ -59,7 +66,10 @@ class OrganizationsTest extends ApiTestCase
                 [
                     'name' => $organizations[0]->name,
                     'slug' => $organizations[0]->slug,
-                    'is_public' => $organizations[0]->is_public
+                    'is_public' => $organizations[0]->is_public,
+                    'members' => [
+
+                    ]
                 ]
             ]]);
     }

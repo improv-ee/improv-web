@@ -15,12 +15,12 @@
                     <form class="text-center" action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="md-form">
-                            <label for="materialLoginFormEmail">{{ __('user.email') }}</label>
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                   name="email" value="{{ old('email') }}" required autofocus>
-                            @if ($errors->has('email'))
+                            <label for="username">{{ __('user.username') }}</label>
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                   name="username" value="{{ old('username') }}" required autofocus maxlength="32">
+                            @if ($errors->has('username'))
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                             @endif
                         </div>

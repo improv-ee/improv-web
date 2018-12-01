@@ -10,7 +10,7 @@
 
         <h2>{{ $t('organization.members') }}</h2>
 
-        <b-table striped hover :items="items"></b-table>
+        <b-table striped hover :items="members"></b-table>
     </div>
 </template>
 
@@ -19,6 +19,7 @@
         data() {
             return {
                 organization: {},
+                members: []
             }
         },
         methods: {

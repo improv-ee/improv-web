@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('stargate');
         $user->email = 'ando@sqroot.eu';
         $user->email_verified_at = now();
+        $user->username = 'ando.roots';
         $user->name = 'Ando Roots';
         $user->save();
 
