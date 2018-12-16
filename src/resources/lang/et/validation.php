@@ -147,4 +147,5 @@ return [
         'image'=>'pilt',
         'username'=> 'kasutajanimi'
     ],
+    'pwned' => 'Seda parooli ei saa kasutada, sest see on häkkeritele juba teada - parool on ilmunud andmelekkes. Rohkem infot - https://haveibeenpwned.com/Passwords'
 ];
