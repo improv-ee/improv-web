@@ -17,14 +17,14 @@ class Organization extends Model implements Auditable
 {
     use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable;
 
-    public $translatedAttributes = ['name', 'slug'];
+    public $translatedAttributes = ['name', 'description', 'slug'];
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'
     ];
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     protected $casts = [
         'is_public' => 'boolean',

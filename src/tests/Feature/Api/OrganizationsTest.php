@@ -41,13 +41,13 @@ class OrganizationsTest extends ApiTestCase
         $this->actingAsOrganizationMember();
         $organization = factory(Organization::class)->create();
 
-        $newInput = ['name' => 'X-Force'];
+        $newInput = ['name' => 'X-Force', 'description' => 'Isnt it derivative?'];
 
         $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
         $response->assertStatus(200)
             ->assertJson(['data' => ['name' => $newInput['name']]]);
 
-        $this->assertDatabaseHas('organization_translations', ['name' => $newInput['name']]);
+        $this->assertDatabaseHas('organization_translations', ['name' => $newInput['name'], 'description' => $newInput['description']]);
     }
 
     public function testOrganizationListIsReturned()

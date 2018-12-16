@@ -10,7 +10,7 @@ class OrganizationTranslation extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     public $timestamps = false;
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     public function setSlugAttribute($value)
     {

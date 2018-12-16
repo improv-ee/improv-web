@@ -29,6 +29,7 @@ class OrganizationResource extends JsonResource
         return [
             'name' => $this->name,
             'slug' => $this->slug,
+            'description' => $this->description,
             'is_public' => $this->is_public,
             'is_member' => $this->when($request->user(), $this->isMember($request->user())),
             'members' => iterator_to_array($this->getMembers())

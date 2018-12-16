@@ -5,8 +5,9 @@
                       :resource-id="$route.params.slug"></crud-toolbar>
 
 
-        <h1>{{organization.name}}</h1>
+        <h1>{{ organization.name }}</h1>
 
+        <p>{{ organization.description }}</p>
 
         <h2>{{ $t('organization.members') }}</h2>
 

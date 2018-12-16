@@ -44,7 +44,6 @@ class OrganizationController extends Controller
     public function update($id, Request $request)
     {
         $organization = Organization::whereTranslation('slug', $id)->firstOrFail();
-
         $organization->fill($request->all($organization->getFillable()))->save();
         return new OrganizationResource($organization);
     }

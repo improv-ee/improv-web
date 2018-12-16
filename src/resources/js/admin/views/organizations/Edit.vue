@@ -14,6 +14,18 @@
                     </b-form-input>
                 </b-form-group>
 
+                <b-form-group
+                        :label="$t('organization.attr.description')"
+                        label-for="description">
+                    <b-form-textarea id="description"
+                                  type="text"
+                                     rows="4"
+                                     max-rows="20"
+                                  v-model="form.description"
+                                  required>
+                    </b-form-textarea>
+                </b-form-group>
+
 
                 <b-button type="submit" variant="primary" class="btn-block">{{ $t('ui.edit') }}</b-button>
             </b-form>
@@ -50,7 +62,8 @@
                 .then(response => {
                     this.organization = response.data.data;
                     this.form = {
-                        name: this.organization.name
+                        name: this.organization.name,
+                        description: this.organization.description
                     }
                 });
         },

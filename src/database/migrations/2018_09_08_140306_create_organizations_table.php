@@ -17,6 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->increments('id');
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
+            $table->integer('header_img_id')->unsigned()->nullable()->default(null);
 
             $table->softDeletes();
             $table->timestamps();
@@ -25,12 +26,18 @@ class CreateOrganizationsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->foreign('header_img_id')
+                ->references('id')
+                ->on('images')
+                ->onDelete('cascade');
         });
 
         Schema::create('organization_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('organization_id')->unsigned();
             $table->string('name');
+            $table->text('description')->nullable()->default(null);
             $table->string('slug');
             $table->char('locale', 2)->index();
 
