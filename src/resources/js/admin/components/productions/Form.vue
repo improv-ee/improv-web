@@ -45,7 +45,7 @@
                 </b-form-group>
                 <b-form-group
                         :label="$t('production.attr.description')"
-                        :description="$t('production.attr.description_description')"
+                        :description="ui.help.description"
                         label-for="description">
                     <b-form-textarea id="description"
                                      type="text" rows="10"
@@ -69,6 +69,7 @@
         data() {
             return {
                 form: {},
+                ui: {}
             }
         },
 
@@ -121,6 +122,13 @@
                             params: {slug: response.data.data.slug}
                         })
                     });
+            }
+        },
+        mounted() {
+            this.ui = {
+                help: {
+                    description: this.$t('production.attr.description_description') + ' ' + this.$t('ui.markdown_supported')
+                }
             }
         },
         watch: {

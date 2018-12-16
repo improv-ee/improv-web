@@ -7,7 +7,7 @@
 
         <h1>{{ organization.name }}</h1>
 
-        <p>{{ organization.description }}</p>
+        <vue-markdown :source="organization.description"></vue-markdown>
 
         <h2>{{ $t('organization.members') }}</h2>
 
@@ -18,19 +18,19 @@
 <script>
 
     import MemberTable from '../../components/organizations/MemberTable';
+    import VueMarkdown from 'vue-markdown'
+
     export default {
         components: {
-            MemberTable
+            MemberTable,
+            VueMarkdown
         },
         data() {
             return {
                 organization: {},
             }
         },
-        methods: {
 
-
-        },
         mounted() {
             let self = this;
             axios.get('/api/organizations/' + this.$route.params.slug)

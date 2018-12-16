@@ -1,5 +1,8 @@
 {
   "et": {
+    "ui":{
+      "markdown_supported":"Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
+    },
     "nav": {
       "productions": "Produktsioonid",
       "home": "Avaleht",
@@ -11,7 +14,7 @@
     "event": {
       "attr": {
         "title_description": "Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
-        "description_description": "Etenduse kirjeldus, kui on vaja midagi konkreetse [rituse kohta täpsustada. V]ib jätta tühjaks.",
+        "description_description": "Etenduse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
         "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
         "end_time_description": "Ürituse alguskuupäev- ja kella-aeg"
       }

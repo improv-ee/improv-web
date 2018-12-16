@@ -25,14 +25,18 @@
         <div class="row">
             <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
                 <h1>{{ production.title }}</h1>
-                <p>{{ production.description }}</p>
+                <vue-markdown :source="production.description"></vue-markdown>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import VueMarkdown from 'vue-markdown'
     export default {
+        components: {
+            VueMarkdown
+        },
         data() {
             return {
                 event: {},

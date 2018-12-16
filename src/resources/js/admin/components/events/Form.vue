@@ -33,8 +33,7 @@
                         label-for="description">
                     <b-form-textarea id="description"
                                      type="text" rows="10"
-                                     v-model="form.description"
-                                     :placeholder="$t('production.attr.description_placeholder')">
+                                     v-model="form.description">
                     </b-form-textarea>
                 </b-form-group>
 

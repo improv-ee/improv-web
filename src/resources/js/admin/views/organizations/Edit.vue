@@ -10,17 +10,19 @@
                     <b-form-input id="name"
                                   type="text"
                                   v-model="form.name"
+                                  description="sss"
                                   required>
                     </b-form-input>
                 </b-form-group>
 
                 <b-form-group
                         :label="$t('organization.attr.description')"
+                        :description="$t('ui.markdown_supported')"
                         label-for="description">
                     <b-form-textarea id="description"
                                   type="text"
-                                     rows="4"
-                                     max-rows="20"
+                                  rows="4"
+                                  max-rows="20"
                                   v-model="form.description"
                                   required>
                     </b-form-textarea>
@@ -29,7 +31,6 @@
 
                 <b-button type="submit" variant="primary" class="btn-block">{{ $t('ui.edit') }}</b-button>
             </b-form>
-
 
         </div>
     </div>
