@@ -41,7 +41,8 @@ class CreateOrganizationsTable extends Migration
             $table->string('slug');
             $table->char('locale', 2)->index();
 
-            $table->unique(['organization_id', 'locale']);
+            $table->unique(['name', 'locale']);
+            $table->unique(['slug', 'locale']);
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
 
         });

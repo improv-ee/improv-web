@@ -20,10 +20,10 @@
       }
     },
     "organization": {
-      "list_intro": "Organisatsioonid on produktsioone korraldavad trupid.",
+      "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
       "create_new": "Uus organisatsioon",
       "members": "Liikmed",
-      "you_dont_have_any": "Sind pole veel ühtegi organisatsiooni lisatud",
+      "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
       "attr": {
         "name": "Nimi",
         "description": "Kirjeldus"

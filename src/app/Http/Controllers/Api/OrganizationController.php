@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateOrganizationRequest;
 use App\Http\Resources\OrganizationResource;
 use App\Orm\Organization;
+use App\Orm\OrganizationUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class OrganizationController
@@ -33,15 +36,26 @@ class OrganizationController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|filled|unique:organization_translations|max:255|min:2',
+        ]);
+
         $organization = new Organization;
 
         $organization->fill($request->all($organization->getFillable()));
         $organization->creator_id = $request->user()->id;
         $organization->save();
+
+        $membership = new OrganizationUser;
+        $membership->user_id=Auth::user()->id;
+        $membership->role = OrganizationUser::ROLE_ADMIN;
+        $membership->organization_id = $organization->id;
+        $membership->save();
+
         return new OrganizationResource($organization);
     }
 
-    public function update($id, Request $request)
+    public function update($id, UpdateOrganizationRequest $request)
     {
         $organization = Organization::whereTranslation('slug', $id)->firstOrFail();
         $organization->fill($request->all($organization->getFillable()))->save();

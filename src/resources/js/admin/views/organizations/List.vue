@@ -26,9 +26,8 @@
 
         <div class="row" v-else>
             <div class="col-10 offset-1">
-                <div class="alert alert-secondary">
-                    <p>{{ $t('organization.you_dont_have_any') }}</p>
-                </div>
+                <b-alert show>{{ $t('organization.you_dont_have_any') }}</b-alert>
+
             </div>
         </div>
 
@@ -61,7 +60,14 @@
         },
         methods: {
 
-            createOrganization() {
+
+            createOrganization(e) {
+
+                if (!this.newOrganizationName.length) {
+                    e.preventDefault();
+                    return
+                }
+
                 let self = this;
                 axios.post('/api/organizations', {"name": this.newOrganizationName})
                     .then(function (response) {

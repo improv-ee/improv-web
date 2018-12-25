@@ -36,6 +36,35 @@ class OrganizationsTest extends ApiTestCase
         $this->assertDataBaseHas('organizations', ['creator_id' => $user->id, 'is_public' => 0]);
     }
 
+    public function testOrganizationCreatorGetsAdmin(){
+        $user = $this->actingAsLoggedInUser();
+
+        $organizationName = 'The Evil League of Evil';
+        $response = $this->post('/api/organizations', [
+            'name' => $organizationName
+        ]);
+
+        $response->assertStatus(201);
+
+        $org = $user->organizations()->first();
+
+        $this->assertEquals($organizationName,$org->name);
+        $this->assertEquals(OrganizationUser::ROLE_ADMIN,$org->pivot->role);
+
+    }
+
+    public function testOrganizationWithExistingNameCanNotBeCreated()
+    {
+
+        $user = $this->actingAsOrganizationMember();
+
+        $response = $this->post('/api/organizations', [
+            'name' => $user->organizations()->first()->name
+        ]);
+
+        $response->assertStatus(422);
+    }
+
     public function testOrganizationCanBeEdited()
     {
         $this->actingAsOrganizationMember();
