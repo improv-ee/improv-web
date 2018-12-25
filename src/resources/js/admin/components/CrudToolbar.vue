@@ -3,10 +3,10 @@
         <div class="col-lg-4 offset-lg-8">
             <b-button-toolbar key-nav>
                 <b-button-group class="mx-1">
-                    <router-link :to="editLink"
+                    <router-link :to="editLink" v-if="this.showEdit"
                                  class="btn btn-sm btn-secondary">{{ $t("ui.edit") }}
                     </router-link>
-                    <b-button size="sm" @click="markAsDeleted" variant="danger">{{ $t("ui.delete") }}</b-button>
+                    <b-button size="sm" @click="markAsDeleted" v-if="this.showDelete" variant="danger">{{ $t("ui.delete") }}</b-button>
                 </b-button-group>
             </b-button-toolbar>
         </div>
@@ -20,7 +20,9 @@
             deleteRedirect: {
                 type: [String, Object],
                 default: ''
-            }
+            },
+            showDelete: Boolean,
+            showEdit: Boolean
         },
         data: function () {
             return {}

@@ -1,7 +1,7 @@
 <template>
     <div v-if="organization.slug">
 
-        <crud-toolbar resource-name="organizations"
+        <crud-toolbar resource-name="organizations" :showEdit="isAdmin" :showDelete="isAdmin"
                       :resource-id="$route.params.slug"></crud-toolbar>
 
 
@@ -31,6 +31,17 @@
             }
         },
 
+        computed: {
+            isAdmin: function () {
+                for (let i in this.organization.members) {
+                    let member = this.organization.members[i];
+                    if (member.username === window.config.username && member.role === window.config.organization.ROLE_ADMIN) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        },
         mounted() {
             let self = this;
             axios.get('/api/organizations/' + this.$route.params.slug)

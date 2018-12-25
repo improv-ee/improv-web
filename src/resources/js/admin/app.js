@@ -68,6 +68,16 @@ const router = new VueRouter({
 const messages = _.merge(require('../../lang/et/admin.json'),require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
 
+
+// Global app config options
+window.config = {
+    'username': document.head.querySelector('meta[name="username"]').getAttribute('content'),
+    'organization': {
+        ROLE_ADMIN: 0
+    }
+};
+
+
 const app = new Vue({
     el: '#app',
     render: createElement => createElement(require('./App.vue')),
