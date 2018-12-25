@@ -11,6 +11,9 @@
     "dash": {
       "greeting": "Meie homne on meie endi teha. - Ilves"
     },
+    "user": {
+      "not_found": "Sellist kasutajanime ei leitud"
+    },
     "event": {
       "attr": {
         "title_description": "Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
@@ -23,6 +26,7 @@
       "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
       "create_new": "Uus organisatsioon",
       "members": "Liikmed",
+      "add_member":"Lisa uus liige",
       "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
       "attr": {
         "name": "Nimi",

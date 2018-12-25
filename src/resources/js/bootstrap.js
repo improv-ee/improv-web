@@ -34,28 +34,6 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-function errorResponseHandler(error) {
-
-
-    if( error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false ) {
-        return Promise.reject(error);
-    }
-
-    if (error.response) {
-
-        Vue.notify({
-            type: 'error',
-            group: 'app',
-            title: 'Error communicating with the server',
-            text: error.response.data.message
-        });
-    }
-}
-window.axios.interceptors.response.use(
-    response => response,
-    errorResponseHandler
-);
-
 
 window.moment = require('moment');
 moment.locale('et');

@@ -12,6 +12,25 @@
         <h2>{{ $t('organization.members') }}</h2>
 
         <member-table :members="organization.members"></member-table>
+
+
+        <b-form @submit.prevent="addMember" v-if="isAdmin" inline>
+
+            <b-form-group id="newMember"
+                          label-for="newMemberUsername">
+                <b-form-input id="newMemberUsername"
+                              type="text"
+                              v-model="newMemberUsername"
+                              required
+                              :placeholder="$t('user.username')">
+                </b-form-input>
+            </b-form-group>
+
+
+            <b-button type="submit" variant="primary">{{ $t('organization.add_member') }}</b-button>
+        </b-form>
+
+
     </div>
 </template>
 
@@ -28,9 +47,34 @@
         data() {
             return {
                 organization: {},
+                newMemberUsername: null
             }
         },
+        methods: {
+            addMember() {
+                let self = this;
+                axios.post(`/api/organizations/${ this.$route.params.slug }/membership/${this.newMemberUsername}`)
+                    .then(function () {
+                        self.loadOrganization();
+                    }).catch(function (error) {
+                    Vue.notify({
+                        group: 'app',
+                        type: 'error',
+                        title: self.$t('ui.validation_error'),
+                        text: self.$t('user.not_found')
+                    });
+                });
 
+            },
+            loadOrganization() {
+                let self = this;
+                axios.get('/api/organizations/' + this.$route.params.slug)
+                    .then(response => {
+                        self.organization = response.data.data;
+                    });
+            }
+
+        },
         computed: {
             isAdmin: function () {
                 for (let i in this.organization.members) {
@@ -43,11 +87,7 @@
             }
         },
         mounted() {
-            let self = this;
-            axios.get('/api/organizations/' + this.$route.params.slug)
-                .then(response => {
-                    self.organization = response.data.data;
-                });
+            this.loadOrganization();
         }
     }
 </script>

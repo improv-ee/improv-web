@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-4 offset-lg-8">
-            <b-button-toolbar key-nav>
+            <b-button-toolbar key-nav class="float-right">
                 <b-button-group class="mx-1">
                     <router-link :to="editLink" v-if="this.showEdit"
                                  class="btn btn-sm btn-secondary">{{ $t("ui.edit") }}
