@@ -67,16 +67,29 @@ class OrganizationsTest extends ApiTestCase
 
     public function testOrganizationCanBeEdited()
     {
-        $this->actingAsOrganizationMember();
-        $organization = factory(Organization::class)->create();
+        $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
 
-        $newInput = ['name' => 'X-Force', 'description' => 'Isnt it derivative?'];
+        $organization=  $user->organizations()->first();
+
+        $newInput = ['name'=> $organization->name, 'description' => 'new description'];
 
         $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
+
         $response->assertStatus(200)
             ->assertJson(['data' => ['name' => $newInput['name']]]);
 
-        $this->assertDatabaseHas('organization_translations', ['name' => $newInput['name'], 'description' => $newInput['description']]);
+        $this->assertDatabaseHas('organization_translations', ['name'=>$organization->name, 'description' => $newInput['description']]);
+    }
+
+    public function testUserCanNotEditOrganizationIfNotAdmin() {
+        $this->actingAsLoggedInUser();
+
+        $organization = factory(Organization::class)->create();
+
+        $newInput = ['name' => 'X-Force'];
+
+        $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
+        $response->assertStatus(403);
     }
 
     public function testOrganizationListIsReturned()

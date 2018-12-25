@@ -2,8 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Orm\OrganizationTranslation;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
+/**
+ * @property \App\Orm\Organization $organization
+ */
 class UpdateOrganizationRequest extends FormRequest
 {
     /**
@@ -13,7 +19,8 @@ class UpdateOrganizationRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        // Only organization members with ROLE_ADMIN can edit the organization details
+        return $this->organization->isAdmin(Auth::user());
     }
 
     /**
@@ -24,8 +31,11 @@ class UpdateOrganizationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|filled|unique:organization_translations|max:255|min:2',
-            'description'=>'max:3000'
+            'name' => ['required', 'filled', 'max:255', 'min:2',
+                Rule::unique('organization_translations', 'name')
+                    ->whereNot('organization_id', $this->organization->id)
+            ],
+            'description' => 'max:3000'
         ];
     }
 }

@@ -16,7 +16,7 @@ class SeedRolesTable extends Migration
     public function up()
     {
 
-        Role::create(['name'=>'auth-user']);
+        Role::create(['name'=>'standard-user']);
     }
 
     /**

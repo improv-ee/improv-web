@@ -17,13 +17,12 @@ use Illuminate\Support\Facades\Auth;
 class OrganizationController extends Controller
 {
     /**
-     * @param $id
+     * @param Organization $organization
      * @return OrganizationResource
      */
-    public function show($id)
+    public function show(Organization $organization)
     {
-        return new OrganizationResource(Organization::whereTranslation('slug', $id)
-            ->firstOrFail());
+        return new OrganizationResource($organization);
     }
 
     public function index(Request $request)
@@ -55,17 +54,15 @@ class OrganizationController extends Controller
         return new OrganizationResource($organization);
     }
 
-    public function update($id, UpdateOrganizationRequest $request)
+    public function update(Organization $organization, UpdateOrganizationRequest $request)
     {
-        $organization = Organization::whereTranslation('slug', $id)->firstOrFail();
         $organization->fill($request->all($organization->getFillable()))->save();
         return new OrganizationResource($organization);
     }
 
-    public function destroy($id)
+    public function destroy(Organization $organization)
     {
-        $organization = Organization::whereTranslation('slug', $id)
-            ->firstOrFail();
+
         $organization->delete();
     }
 }

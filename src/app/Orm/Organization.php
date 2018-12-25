@@ -52,6 +52,18 @@ class Organization extends Model implements Auditable
             ->wherePivot('role', OrganizationUser::ROLE_ADMIN);
     }
 
+    public function isAdmin(User $targetUser = null): bool
+    {
+        if ($targetUser === null) {
+            return false;
+        }
+
+        return (bool)$this->users()
+            ->wherePivot('role', OrganizationUser::ROLE_ADMIN)
+            ->wherePivot('user_id', $targetUser->id)
+            ->count();
+    }
+
     public function isMember(User $targetUser = null): bool
     {
         if ($targetUser === null) {
