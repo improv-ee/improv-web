@@ -22875,6 +22875,10 @@ body {
   font-weight: bold;
 }
 
+.admin-content {
+  min-height: 30em;
+}
+
 .overlay-container {
   position: relative;
   display: inline-block;

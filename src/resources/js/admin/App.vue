@@ -1,36 +1,27 @@
 <template>
+
     <div>
-        <div class="row">
-            <div class="col-8 offset-2">
-                <notifications group="app" position="top center"/>
-            </div>
-        </div>
+        <notifications group="app" position="top center"/>
+
+        <b-navbar toggleable="md" id="top-nav" type="dark" variant="default">
+
+            <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+            <b-collapse is-nav id="nav_collapse">
+
+                <b-navbar-nav>
+                    <b-nav-item exact to="/">{{ $t("nav.home") }}</b-nav-item>
+                    <b-nav-item :to="{ name: 'productions' }">{{ $t("nav.productions") }}</b-nav-item>
+                    <b-nav-item :to="{ name: 'organizations' }">{{ $t("nav.organizations") }}
+                    </b-nav-item>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
 
         <div class="row">
-            <div class="col-2">
-
-                <nav class="nav bg-light flex-column">
-                    <router-link exact active-class="active" to="/"
-                                 class="flex-sm-fill nav-link text-sm-center p-2 text-muted">{{ $t("nav.home") }}
-                    </router-link>
-                    <router-link active-class="active" :to="{ name: 'productions' }"
-                                 class="flex-sm-fill nav-link text-sm-center p-2 text-muted">{{ $t("nav.productions") }}
-                    </router-link>
-                    <router-link active-class="active" :to="{ name: 'organizations' }"
-                                 class="flex-sm-fill nav-link text-sm-center p-2 text-muted">{{ $t("nav.organizations")
-                        }}
-                    </router-link>
-                </nav>
-
-            </div>
-            <div class="col-10">
+            <div class="col-12 admin-content">
                 <router-view></router-view>
             </div>
         </div>
     </div>
 </template>
-
-<script>
-
-    export default {}
-</script>

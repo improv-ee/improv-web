@@ -1,17 +1,11 @@
 <template>
-
-    <div class="row">
-        <div class="col-6 offset-3">
-            <p class="lead">
-                {{ $t('dash.greeting')}}
-            </p>
+    <div class="row h-100">
+        <div class="col-sm-12 my-auto">
+            <div class="w-100">
+                <p class="lead text-center">
+                    {{ $t('dash.greeting')}}
+                </p>
+            </div>
         </div>
     </div>
-
 </template>
-
-<script>
-    export default {
-
-    }
-</script>
