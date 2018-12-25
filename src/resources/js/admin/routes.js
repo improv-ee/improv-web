@@ -9,6 +9,7 @@ import ProfileSettings from './views/profile/Settings'
 import OrganizationsList from './views/organizations/List'
 import OrganizationDetails from './views/organizations/Details'
 import OrganizationEdit from './views/organizations/Edit'
+import OrganizationPeopleDetails from './views/organizations/people/Details'
 
 export default [
     {
@@ -59,6 +60,11 @@ export default [
         path: '/organizations/:slug/edit',
         name: 'organization.edit',
         component: OrganizationEdit,
+    },
+    {
+        path: '/organizations/:slug/people/:username',
+        name: 'organizations.people.details',
+        component: OrganizationPeopleDetails
     },
     { path: "*", component: PageNotFound }
 ];

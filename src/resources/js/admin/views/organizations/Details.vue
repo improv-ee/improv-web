@@ -11,7 +11,7 @@
 
         <h2>{{ $t('organization.members') }}</h2>
 
-        <member-table :members="organization.members"></member-table>
+        <member-table :members="organization.members" :organization-slug="this.$route.params.slug"></member-table>
 
 
         <b-form @submit.prevent="addMember" v-if="isAdmin" inline>

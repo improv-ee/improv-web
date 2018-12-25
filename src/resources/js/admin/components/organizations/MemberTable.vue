@@ -1,28 +1,35 @@
 <template>
-    <b-table id="org-members-table" v-if="members" striped outlined responsive hover :items="items" :fields="fields"></b-table>
+    <b-table id="org-members-table" v-if="members" striped outlined responsive hover :items="items" :fields="fields">
+        <template slot="username" slot-scope="data">
+           <router-link
+                    :to="{ name: 'organizations.people.details', params: { slug: organizationSlug, username: data.value }}">
+                {{ data.value }}
+            </router-link>
+        </template>
+    </b-table>
 </template>
 
 <script>
 
     export default {
-        props: ['members'],
+        props: ['members', 'organizationSlug'],
         data: function () {
             return {
                 items: [],
                 fields: {
                     username: {
-                        label: 'test',
+                        label: 'username',
                         sortable: true
                     },
                     role: {
-                        label: 'test',
+                        label: 'role',
                         sortable: true
                     }
                 }
             }
         },
         watch: {
-            members: function(){
+            members: function () {
                 this.refresh()
             }
         },
