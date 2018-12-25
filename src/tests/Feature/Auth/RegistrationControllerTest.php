@@ -14,8 +14,8 @@ class RegistrationControllerTest extends TestCase
         'name' => 'Samantha Carter',
         'username' => 'samantha',
         'email' => 'sam@sqroot.eu',
-        'password' => 'StarGate',
-        'password_confirmation' => 'StarGate',
+        'password' => 'wE6h0WkhD3rLwsRO8pp7',
+        'password_confirmation' => 'wE6h0WkhD3rLwsRO8pp7',
     ];
 
     public function testUserCanSignUp()
@@ -35,5 +35,16 @@ class RegistrationControllerTest extends TestCase
 
         $response = $this->post('/register', $fields);
         $response->assertSessionHasErrors(['username']);
+    }
+
+    public function testUserCanNotSignupWithPwnedPasswd()
+    {
+
+        $fields = $this->userRegistrationFields;
+        $fields['password'] = 'monkey';
+        $fields['password_confirmation'] = 'monkey';
+
+        $response = $this->post('/register', $fields);
+        $response->assertSessionHasErrors(['password']);
     }
 }
