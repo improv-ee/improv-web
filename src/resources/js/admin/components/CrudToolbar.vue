@@ -4,9 +4,9 @@
             <b-button-toolbar key-nav class="float-right">
                 <b-button-group class="mx-1">
                     <router-link :to="editLink" v-if="this.showEdit"
-                                 class="btn btn-sm btn-secondary">{{ $t("ui.edit") }}
+                                 class="btn btn-sm btn-primary"><i class="far fa-edit"></i> {{ $t("ui.edit") }}
                     </router-link>
-                    <b-button size="sm" @click="markAsDeleted" v-if="this.showDelete" variant="danger">{{ $t("ui.delete") }}</b-button>
+                    <b-button size="sm" @click="markAsDeleted" v-if="this.showDelete" variant="danger"><i class="far fa-trash-alt"></i> {{ $t("ui.delete") }}</b-button>
                 </b-button-group>
             </b-button-toolbar>
         </div>
@@ -21,8 +21,8 @@
                 type: [String, Object],
                 default: ''
             },
-            showDelete: Boolean,
-            showEdit: Boolean
+            showDelete: {type: Boolean, default: true},
+            showEdit: {type: Boolean, default: true}
         },
         data: function () {
             return {}

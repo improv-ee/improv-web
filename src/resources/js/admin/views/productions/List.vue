@@ -2,8 +2,8 @@
     <div>
         <p><span v-html="$t('production.list_intro')"></span></p>
         <p class="text-right">
-            <b-btn v-b-modal.modal-new-production
-                         class="btn btn-sm btn-outline-secondary mb-3">{{ $t("production.create_new") }}</b-btn></p>
+            <b-btn v-b-modal.modal-new-production variant="primary"
+                         class="btn btn-sm mb-3">{{ $t("production.create_new") }}</b-btn></p>
     <div class="table-responsive">
             <table class="table table-hover table-clickable">
                 <thead class="thead-dark">

@@ -1,6 +1,7 @@
 <template>
     <div v-if="event.uid">
 
+
         <crud-toolbar resource-name="events"
                       :resource-id="$route.params.uid"
                       :delete-redirect="{name: 'production.details', params: {slug: event.production.slug}}"></crud-toolbar>

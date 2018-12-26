@@ -32,7 +32,7 @@
                 <tfoot>
                 <tr>
                     <td colspan="2">
-                        <b-button @click="addEvent">{{ $t('ui.add_new') }}</b-button>
+                        <b-button @click="addEvent" variant="primary">{{ $t('ui.add_new') }}</b-button>
                     </td>
                 </tr>
                 </tfoot>
