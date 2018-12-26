@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <notifications group="app" position="top center" width="50%" duration="5000"/>
+        <notifications group="app" position="top center" width="50%" :duration="5000"/>
 
         <b-navbar toggleable="md" id="top-nav" type="dark" variant="default">
 

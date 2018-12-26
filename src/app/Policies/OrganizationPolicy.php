@@ -39,6 +39,12 @@ class OrganizationPolicy
         return $organization->isAdmin($user);
     }
 
+    public function removeMember(User $user, Organization $organization): bool
+    {
+
+        return $organization->isAdmin($user);
+    }
+
     /**
      * Determine whether the user can update the organization user.
      *

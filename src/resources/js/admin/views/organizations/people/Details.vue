@@ -28,11 +28,11 @@
         methods: {
             removeMember() {
                 let self = this;
-                axios.post(`/api/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`,)
+                axios.delete(`/api/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`,)
                     .then(function () {
                         self.$router.push({
-                            name: 'organization.edit',
-                            params: { slug: this.$route.params.slug }
+                            name: 'organization.details',
+                            params: { slug: self.$route.params.slug }
                         })
                     });
 

@@ -25,10 +25,10 @@ class SendNewJoinerNotificationTest extends TestCase
         $orgMemberAdmin2 = factory(User::class)->create();
         $orgMember = factory(User::class)->create();
 
-        $organization->users()->attach($orgMemberJoiner, ['role'=> OrganizationUser::ROLE_MEMBER]);
-        $organization->users()->attach($orgMemberAdmin1, ['role' => OrganizationUser::ROLE_ADMIN]);
-        $organization->users()->attach($orgMemberAdmin2, ['role' => OrganizationUser::ROLE_ADMIN]);
-        $organization->users()->attach($orgMember, ['role' => OrganizationUser::ROLE_MEMBER]);
+        $organization->users()->attach($orgMemberJoiner, ['role'=> OrganizationUser::ROLE_MEMBER, 'creator_id'=>$orgMemberJoiner->id]);
+        $organization->users()->attach($orgMemberAdmin1, ['role' => OrganizationUser::ROLE_ADMIN,'creator_id'=>$orgMemberAdmin1->id]);
+        $organization->users()->attach($orgMemberAdmin2, ['role' => OrganizationUser::ROLE_ADMIN,'creator_id'=>$orgMemberAdmin2->id]);
+        $organization->users()->attach($orgMember, ['role' => OrganizationUser::ROLE_MEMBER, 'creator_id'=>$orgMember->id]);
 
         $member = OrganizationUser::getMembership($orgMemberJoiner->id, $organization->id);
 

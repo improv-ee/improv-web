@@ -15,7 +15,7 @@ class OrganizationTest extends TestCase
 
         $user = $this->actingAsLoggedInUser();
         $organization = factory(Organization::class)->create();
-        $organization->users()->attach($user);
+        $organization->users()->attach($user,['creator_id'=>$user->id]);
 
         $this->assertTrue($organization->isMember($user));
     }

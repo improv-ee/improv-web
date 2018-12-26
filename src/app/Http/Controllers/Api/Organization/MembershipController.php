@@ -9,6 +9,7 @@ use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
 {
@@ -39,10 +40,22 @@ class MembershipController extends Controller
         $member->user_id = $user->id;
         $member->organization_id = $organization->id;
         $member->role = OrganizationUser::ROLE_MEMBER;
+        $member->creator_id = Auth::user()->id;
         $member->save();
 
         event(new UserJoined($member));
 
         return response(null, 201);
+    }
+
+    public function destroy(Organization $organization, User $user)
+    {
+        $this->authorize('removeMember',$organization);
+
+        $membership = OrganizationUser::where('organization_id', $organization->id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        $membership->delete();
     }
 }

@@ -52,8 +52,9 @@ class OrganizationController extends Controller
         $organization->save();
 
         $membership = new OrganizationUser;
-        $membership->user_id=Auth::user()->id;
+        $membership->user_id = Auth::user()->id;
         $membership->role = OrganizationUser::ROLE_ADMIN;
+        $membership->creator_id = Auth::user()->id;
         $membership->organization_id = $organization->id;
         $membership->save();
 

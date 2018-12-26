@@ -20,7 +20,7 @@ abstract class TestCase extends BaseTestCase
     {
         $user = $this->actingAsLoggedInUser();
         $organization = factory(Organization::class)->create();
-        $organization->users()->attach($user, ['role' => $role]);
+        $organization->users()->attach($user, ['role' => $role, 'creator_id'=>$user->id]);
         return Passport::actingAs($user);
     }
 
