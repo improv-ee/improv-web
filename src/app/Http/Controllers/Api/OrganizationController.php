@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Auth;
  */
 class OrganizationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Organization::class, 'organization');
+    }
+
     /**
      * @param Organization $organization
      * @return OrganizationResource

@@ -25,6 +25,9 @@ class MembershipController extends Controller
 
     public function store(Organization $organization, Request $request)
     {
+
+        $this->authorize('addMember', $organization);
+
         $user = User::where('username', $request->input('username'))->firstOrFail();
         $membership = OrganizationUser::getMembership($user->id, $organization->id);
 

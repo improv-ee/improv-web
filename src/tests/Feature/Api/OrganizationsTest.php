@@ -2,14 +2,10 @@
 
 namespace Tests\Feature\Api;
 
-use App\Events\Organization\UserJoined;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Event;
 
 class OrganizationsTest extends ApiTestCase
 {
@@ -36,7 +32,33 @@ class OrganizationsTest extends ApiTestCase
         $this->assertDataBaseHas('organizations', ['creator_id' => $user->id, 'is_public' => 0]);
     }
 
-    public function testOrganizationCreatorGetsAdmin(){
+    public function testOrganizationCanBeDeleted()
+    {
+        $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
+        $organization = $user->organizations()->first();
+        $this->assertNull($organization->deleted_at);
+
+        $response = $this->delete('/api/organizations/' . $organization->slug);
+        $response->assertStatus(200);
+
+        $organization->refresh();
+        $this->assertNotNull($organization->deleted_at);
+    }
+
+    public function testOrganizationCanNotBeDeletedByNonAdmin()
+    {
+        $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_MEMBER);
+        $organization = $user->organizations()->first();
+
+        $response = $this->delete('/api/organizations/' . $organization->slug);
+        $response->assertStatus(403);
+
+        $organization->refresh();
+        $this->assertNull($organization->deleted_at);
+    }
+
+    public function testOrganizationCreatorGetsAdmin()
+    {
         $user = $this->actingAsLoggedInUser();
 
         $organizationName = 'The Evil League of Evil';
@@ -48,8 +70,8 @@ class OrganizationsTest extends ApiTestCase
 
         $org = $user->organizations()->first();
 
-        $this->assertEquals($organizationName,$org->name);
-        $this->assertEquals(OrganizationUser::ROLE_ADMIN,$org->pivot->role);
+        $this->assertEquals($organizationName, $org->name);
+        $this->assertEquals(OrganizationUser::ROLE_ADMIN, $org->pivot->role);
 
     }
 
@@ -69,21 +91,32 @@ class OrganizationsTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
 
-        $organization=  $user->organizations()->first();
+        $organization = $user->organizations()->first();
 
-        $newInput = ['name'=> $organization->name, 'description' => 'new description'];
+        $newInput = ['name' => $organization->name, 'description' => 'new description'];
 
         $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
 
         $response->assertStatus(200)
             ->assertJson(['data' => ['name' => $newInput['name']]]);
 
-        $this->assertDatabaseHas('organization_translations', ['name'=>$organization->name, 'description' => $newInput['description']]);
+        $this->assertDatabaseHas('organization_translations', ['name' => $organization->name, 'description' => $newInput['description']]);
     }
 
-    public function testUserCanNotEditOrganizationIfNotAdmin() {
-        $this->actingAsLoggedInUser();
+    public function testUserCanNotEditOrganizationIfNotAdmin()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $organization = $user->organizations()->first();
 
+        $newInput = ['name' => 'X-Force'];
+
+        $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
+        $response->assertStatus(403);
+    }
+
+    public function testUserCanNotEditOtherOrganizations()
+    {
+        $this->actingAsLoggedInUser();
         $organization = factory(Organization::class)->create();
 
         $newInput = ['name' => 'X-Force'];
