@@ -53,7 +53,7 @@
         methods: {
             addMember() {
                 let self = this;
-                axios.post(`/api/organizations/${ this.$route.params.slug }/membership/${this.newMemberUsername}`)
+                axios.post(`/api/organizations/${ this.$route.params.slug }/membership`, {username: this.newMemberUsername})
                     .then(function () {
                         self.loadOrganization();
                     }).catch(function (error) {

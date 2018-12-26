@@ -20,7 +20,12 @@ class MembershipTest extends ApiTestCase
 
         $organization = factory(Organization::class)->create();
 
-        $response = $this->post(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $user->username));
+        $response = $this->post(
+            sprintf('/api/organizations/%s/membership', $organization->slug),
+            [
+                'username' => $user->username,
+            ]
+        );
 
         $response->assertStatus(201);
 
@@ -31,6 +36,22 @@ class MembershipTest extends ApiTestCase
     }
 
 
+    public function testShowReturnsMembershipInfo()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $org = $user->organizations()->first();
+        $response = $this->get('/api/organizations/' . $org->slug . '/membership/' . $user->username);
+
+
+        $response->assertStatus(200)
+            ->assertJson(['data' => [
+                'organization' => [
+                    'name' => $org->name
+                ]
+            ]]);
+
+    }
+
     public function testCanNotJoinOrganizationTwice()
     {
         $user = $this->actingAsOrganizationMember();
@@ -38,7 +59,7 @@ class MembershipTest extends ApiTestCase
 
         $this->assertDatabaseHas('organization_user', ['user_id' => $user->id, 'organization_id' => $org->id]);
 
-        $response = $this->post(sprintf('/api/organizations/%s/membership/%s', $org->slug, $user->username));
+        $response = $this->post(sprintf('/api/organizations/%s/membership', $org->slug), ['username' => $user->username]);
 
         $response->assertStatus(400)
             ->assertJsonStructure(['errors' => []]);
@@ -53,7 +74,7 @@ class MembershipTest extends ApiTestCase
 
         Event::fake();
 
-        $this->post(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $user->username));
+        $this->post(sprintf('/api/organizations/%s/membership', $organization->slug), ['username' => $user->username]);
 
         Event::assertDispatched(UserJoined::class, function ($e) use ($organization) {
             return $e->organizationUser->organization_id === $organization->id;

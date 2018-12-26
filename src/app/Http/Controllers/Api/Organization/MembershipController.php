@@ -4,18 +4,28 @@ namespace App\Http\Controllers\Api\Organization;
 
 use App\Events\Organization\UserJoined;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Organization\MembershipResource;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
+use Illuminate\Http\Request;
 
 class MembershipController extends Controller
 {
 
-    public function store(string $slug, User $user)
+    public function show(Organization $organization, User $user)
     {
-        $organization = Organization::whereTranslation('slug', $slug)
+        $membership = OrganizationUser::where('organization_id', $organization->id)
+            ->where('user_id', $user->id)
             ->firstOrFail();
 
+        return new MembershipResource($membership);
+    }
+
+
+    public function store(Organization $organization, Request $request)
+    {
+        $user = User::where('username', $request->input('username'))->firstOrFail();
         $membership = OrganizationUser::getMembership($user->id, $organization->id);
 
         if ($membership !== null) {
