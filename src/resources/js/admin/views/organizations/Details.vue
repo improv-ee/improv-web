@@ -57,12 +57,14 @@
                     .then(function () {
                         self.loadOrganization();
                     }).catch(function (error) {
-                    Vue.notify({
-                        group: 'app',
-                        type: 'error',
-                        title: self.$t('ui.validation_error'),
-                        text: self.$t('user.not_found')
-                    });
+                    if (error.response.status === 422) {
+                        Vue.notify({
+                            group: 'app',
+                            type: 'error',
+                            title: self.$t('ui.validation_error'),
+                            text: self.$t('user.not_found')
+                        });
+                    }
                 });
 
             },

@@ -1,5 +1,7 @@
 # improv.ee v2
 
+[![](https://img.shields.io/travis/improv-ee/improv-ee.svg)](https://travis-ci.org/improv-ee/improv-ee)
+
 This is the source code for https://improv.ee, a website dedicated to listing information and events about improvised theatre.
 
 **It is very much in development stages.**

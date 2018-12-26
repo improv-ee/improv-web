@@ -75,6 +75,14 @@
                             name: 'organization.edit',
                             params: {slug: response.data.data.slug}
                         })
+                    })
+                    .catch(function(error){
+                        Vue.notify({
+                            group: 'app',
+                            type: 'error',
+                            title: self.$t('ui.validation_error'),
+                            text: self.$t('organization.name_taken')
+                        });
                     });
             },
 
