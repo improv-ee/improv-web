@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rules\ReservedUsername;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -50,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'username' => 'required|string|min:5|max:32|unique:users',
+            'username' => ['required','string','min:5','max:32','unique:users', new ReservedUsername],
             'email' => 'required|string|email|min:6|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed|pwned',
         ]);
