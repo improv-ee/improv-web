@@ -58,7 +58,9 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    {{  __('user.password_help') }} <a href="https://github.com/improv-ee/improv-ee/wiki/Password-requirements" target="_blank">{{ __('site.more_info') }}</a>
+                                </small>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
