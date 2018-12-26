@@ -1,18 +1,18 @@
 <template>
    <div>
-      <table class="table table-striped table-bordered">
 
-         <tbody><tr>
-            <th>{{ $t('user.username') }}</th>
-            <td>{{ membership.user.username }}</td>
-         </tr>
-         <tr>
-            <td colspan="2">
-               <b-button @click="removeMember" variant="danger">{{ $t('organization.remove_member') }}</b-button>
-            </td>
-         </tr>
-         </tbody>
-      </table>
+      <b-card :title="membership.user.name"
+              :img-src="membership.user.avatar"
+              img-alt="Avatar"
+              img-top
+              tag="article"
+              style="max-width: 20rem;">
+         <b-button @click="removeMember" variant="danger">{{ $t('organization.remove_member') }}</b-button>
+
+      </b-card>
+
+
+
    </div>
 </template>
 

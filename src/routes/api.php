@@ -31,6 +31,7 @@ Route::resource('events', 'Api\EventController', ['as' => 'api'])->only([
 Route::resource('organizations', 'Api\OrganizationController', ['as' => 'api'])->only([
     'index', 'show'
 ]);
+Route::resource('users','Api\UserController',['as'=>'api'])->only(['show']);
 
 Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['show']);
 

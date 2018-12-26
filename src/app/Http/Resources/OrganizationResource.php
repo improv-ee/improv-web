@@ -13,7 +13,7 @@ class OrganizationResource extends JsonResource
         foreach ($this->users as $user) {
             yield [
                 'username' => $user->username,
-                'role' => $user->pivot->role
+                'role' => $user->pivot->role,
             ];
         }
     }

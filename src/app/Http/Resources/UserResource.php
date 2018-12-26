@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Thomaswelton\LaravelGravatar\Facades\Gravatar;
 
 class UserResource extends JsonResource
 {
@@ -19,7 +20,7 @@ class UserResource extends JsonResource
         return [
             'name' => $this->name,
             'username' => $this->username,
-            'email' => $this->email
+            'avatar' => Gravatar::src($this->email)
         ];
     }
 }
