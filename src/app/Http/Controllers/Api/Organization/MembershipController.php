@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Organization;
 
 use App\Events\Organization\UserJoined;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Organization\MembershipUpdateRequest;
 use App\Http\Resources\Organization\MembershipResource;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
@@ -46,6 +47,15 @@ class MembershipController extends Controller
         event(new UserJoined($member));
 
         return response(null, 201);
+    }
+
+    public function update(Organization $organization, User $user, MembershipUpdateRequest $request){
+
+        $membership = OrganizationUser::getMembership($user->id, $organization->id);
+
+        $membership->role = $request->input('role');
+        $membership->save();
+
     }
 
     public function destroy(Organization $organization, User $user)

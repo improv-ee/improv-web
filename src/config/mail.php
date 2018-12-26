@@ -57,12 +57,12 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@improvision.eu'),
-        'name' => env('MAIL_FROM_NAME', 'Improvision'),
+        'name' => env('MAIL_FROM_NAME', 'Improv Estonia'),
     ],
 
     'reply_to' => [
         'address' => env('MAIL_FROM_ADDRESS', 'support@improvision.eu'),
-        'name' => env('MAIL_FROM_NAME', 'Improvision Support'),
+        'name' => env('MAIL_FROM_NAME', 'Improv Estonia Support'),
     ],
 
     /*

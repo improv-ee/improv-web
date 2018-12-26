@@ -44,6 +44,6 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['store']);
 
 
-    Route::apiResource('organizations.membership', 'Api\Organization\MembershipController', ['as'=>'api', 'parameters'=>['membership'=>'user'] ])->only(['show','store', 'destroy']);
+    Route::apiResource('organizations.membership', 'Api\Organization\MembershipController', ['as'=>'api', 'parameters'=>['membership'=>'user'] ])->only(['show','store', 'destroy', 'update']);
 });
 

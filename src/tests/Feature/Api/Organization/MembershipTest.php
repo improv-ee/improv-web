@@ -111,6 +111,7 @@ class MembershipTest extends ApiTestCase
         $response->assertStatus(200);
         $this->assertDatabaseMissing('organization_user', ['user_id' => $member->user->username]);
     }
+
     public function testNonAdminCanNotDeleteMembership()
     {
         $user = $this->actingAsOrganizationMember();
@@ -132,5 +133,36 @@ class MembershipTest extends ApiTestCase
         $response = $this->delete(sprintf('/api/organizations/%s/membership/%s', $organization->slug, 'batman'));
 
         $response->assertStatus(404);
+    }
+
+    public function testAdminCanChangeMembershipDetails()
+    {
+        $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
+        $organization = $user->organizations()->first();
+
+        $member = factory(OrganizationUser::class)
+            ->create(['organization_id' => $organization->id]);
+
+        $response = $this->put(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('organization_user', [
+            'user_id' => $member->user->id,
+            'organization_id' => $member->organization->id,
+            'role' => OrganizationUser::ROLE_ADMIN]);
+    }
+    public function testNonAdminCanNotChangeMembershipDetails()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $organization = $user->organizations()->first();
+
+        $member = factory(OrganizationUser::class)
+            ->create(['organization_id' => $organization->id]);
+
+        $response = $this->put(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
+
+        $response->assertStatus(403);
+
     }
 }

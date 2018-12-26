@@ -34,7 +34,12 @@ class OrganizationUser extends Pivot implements Auditable
         return $this->belongsTo(User::class);
     }
 
-    public static function getMembership(int $userId, int $organizationId)
+    /**
+     * @param int $userId
+     * @param int $organizationId
+     * @return OrganizationUser
+     */
+    public static function getMembership(int $userId, int $organizationId) : ?OrganizationUser
     {
         return OrganizationUser::where('user_id', $userId)
             ->where('organization_id', $organizationId)
