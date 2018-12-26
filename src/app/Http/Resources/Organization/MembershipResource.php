@@ -18,8 +18,8 @@ class MembershipResource extends JsonResource
     {
         return [
             'organization' => new OrganizationResource($this->organization),
-            'user'=> new UserResource($this->user),
-            'role'=>$this->role
+            'user' => new UserResource($this->user),
+            'role' => $this->role
         ];
     }
 }
