@@ -18,7 +18,7 @@
                         <a href="https://github.com/improv-ee/improv-ee">GitHub</a>
                     </li>
                     <li>
-                        <a href="https://github.com/improv-ee/improv-ee/issues">@lang('site.report_bug')</a>
+                        <a href="https://github.com/improv-ee/improv-ee/wiki/Reporting-bugs-and-feature-requests">@lang('site.report_bug')</a>
                     </li>
                 </ul>
 
