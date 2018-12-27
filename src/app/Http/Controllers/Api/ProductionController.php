@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductionStoreRequest;
+use App\Http\Requests\Production\DeleteProductionRequest;
+use App\Http\Requests\Production\ProductionStoreRequest;
+use App\Http\Requests\Production\UpdateProductionRequest;
 use App\Http\Resources\ProductionResource;
 use App\Orm\Image;
-use App\Orm\OrganizationProduction;
 use App\Orm\Production;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -17,15 +19,13 @@ use Illuminate\Support\Facades\Auth;
  */
 class ProductionController extends Controller
 {
-    public function show($id)
+    public function show(Production $production) : JsonResource
     {
-        return new ProductionResource(Production::whereTranslation('slug', $id)
-            ->firstOrFail());
+        return new ProductionResource($production);
     }
 
     public function index(Request $request)
     {
-
 
         $query = Production::orderBy('created_at', 'desc');
 
@@ -47,11 +47,11 @@ class ProductionController extends Controller
         return new ProductionResource($production);
     }
 
-    public function update($id, Request $request)
+    public function update(Production $production, UpdateProductionRequest $request)
     {
-        $production = Production::whereTranslation('slug', $id)->firstOrFail();
 
         $image = Image::where('uid', $request->post('header_img'))->first();
+
         if ($image) {
             $production->header_img_id = $image->id;
         }
@@ -59,10 +59,8 @@ class ProductionController extends Controller
         return new ProductionResource($production);
     }
 
-    public function destroy($id)
+    public function destroy(Production $production, DeleteProductionRequest $request)
     {
-        $production = Production::whereTranslation('slug', $id)
-            ->firstOrFail();
         $production->delete();
     }
 }

@@ -5,8 +5,6 @@ namespace Tests\Feature\Api;
 use App\Orm\Organization;
 use App\Orm\Production;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\DB;
-use Tests\TestCase;
 
 class ProductionsTest extends ApiTestCase
 {
@@ -47,13 +45,13 @@ class ProductionsTest extends ApiTestCase
 
         $response = $this->get('/api/productions?onlyMine=true');
 
-        $response->assertStatus(200)->assertJsonCount(2,'data')
+        $response->assertStatus(200)->assertJsonCount(2, 'data')
             ->assertJson(['data' => [
                 [
                     'title' => $productions[1]->title,
                 ],
                 [
-                    'title'=>$productions[4]->title
+                    'title' => $productions[4]->title
                 ]
             ]]);
     }
@@ -71,8 +69,9 @@ class ProductionsTest extends ApiTestCase
 
     public function testProductionCanBeEdited()
     {
-        $this->actingAsOrganizationMember();
+        $user = $this->actingAsOrganizationMember();
         $production = factory(Production::class)->create();
+        $production->organizations()->attach($user->organizations()->first());
         $productionInput = ['title' => 'Tilt Improv Festival',
             'description' => 'First improv festival in Estonia',
             'excerpt' => 'Lots of shows, many nights of fun'];
@@ -87,6 +86,20 @@ class ProductionsTest extends ApiTestCase
         $this->assertDatabaseHas('production_translations', ['title' => $productionInput['title']]);
     }
 
+    public function testCanNotEditProductionNotOwnedByMyOrganization()
+    {
+        $this->actingAsOrganizationMember();
+        $production = factory(Production::class)->create();
+
+        $productionInput = ['title' => 'Tilt Improv Festival',
+            'description' => 'First improv festival in Estonia',
+            'excerpt' => 'Lots of shows, many nights of fun'];
+
+        $response = $this->put('/api/productions/' . $production->slug, $productionInput);
+
+        $response->assertStatus(403);
+    }
+
     public function testCreatingProductionWithInvalidInputFails()
     {
         $this->actingAsOrganizationMember();
@@ -94,5 +107,26 @@ class ProductionsTest extends ApiTestCase
         $response = $this->post('/api/productions', ['title' => '']);
         $response->assertStatus(422)
             ->assertJson(['message' => 'The given data was invalid.']);
+    }
+
+    public function testCanNotDeleteProductionNotOwnedByMyOrganizations()
+    {
+        $this->actingAsOrganizationMember();
+        $production = factory(Production::class)->create();
+
+        $response = $this->delete('/api/productions/' . $production->slug);
+        $response->assertStatus(403);
+
+    }
+
+    public function testCanDeleteProduction()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $production = factory(Production::class)->create();
+        $production->organizations()->attach($user->organizations()->first());
+
+        $response = $this->delete('/api/productions/' . $production->slug);
+
+        $response->assertStatus(200);
     }
 }
