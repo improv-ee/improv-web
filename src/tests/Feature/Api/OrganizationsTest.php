@@ -93,7 +93,7 @@ class OrganizationsTest extends ApiTestCase
 
         $organization = $user->organizations()->first();
 
-        $newInput = ['name' => $organization->name, 'description' => 'new description'];
+        $newInput = ['name' => $organization->name, 'is_public' => true, 'description' => 'new description'];
 
         $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
 
@@ -101,6 +101,7 @@ class OrganizationsTest extends ApiTestCase
             ->assertJson(['data' => ['name' => $newInput['name']]]);
 
         $this->assertDatabaseHas('organization_translations', ['name' => $organization->name, 'description' => $newInput['description']]);
+        $this->assertDatabaseHas('organizations',['is_public'=>1,'id'=>$organization->id]);
     }
 
     public function testUserCanNotEditOrganizationIfNotAdmin()
@@ -132,7 +133,7 @@ class OrganizationsTest extends ApiTestCase
         $organizations = factory(Organization::class, 2)->create();
         $member = factory(User::class)->create();
 
-        factory(OrganizationUser::class)->create(['user_id'=>$member->id,'organization_id' => $organizations[0]->id]);
+        factory(OrganizationUser::class)->create(['user_id' => $member->id, 'organization_id' => $organizations[0]->id]);
         $response = $this->get('/api/organizations');
 
         $response->assertStatus(200)
@@ -167,7 +168,7 @@ class OrganizationsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
 
         $organizations = factory(Organization::class, 3)->create();
-        $organizations[0]->users()->attach($user,['creator_id'=>$user->id]);
+        $organizations[0]->users()->attach($user, ['creator_id' => $user->id]);
 
         $response = $this->get('/api/organizations?onlyMine=1');
 

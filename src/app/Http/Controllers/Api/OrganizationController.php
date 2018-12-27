@@ -47,7 +47,7 @@ class OrganizationController extends Controller
 
         $organization = new Organization;
 
-        $organization->fill($request->all($organization->getFillable()));
+        $organization->fill($request->all());
         $organization->creator_id = $request->user()->id;
         $organization->save();
 
@@ -63,7 +63,7 @@ class OrganizationController extends Controller
 
     public function update(Organization $organization, UpdateOrganizationRequest $request)
     {
-        $organization->fill($request->all($organization->getFillable()))->save();
+        $organization->fill($request->all())->save();
         return new OrganizationResource($organization);
     }
 

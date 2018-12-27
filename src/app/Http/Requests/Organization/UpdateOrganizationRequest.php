@@ -34,7 +34,8 @@ class UpdateOrganizationRequest extends FormRequest
                 Rule::unique('organization_translations', 'name')
                     ->whereNot('organization_id', $this->organization->id)
             ],
-            'description' => 'max:3000'
+            'description' => 'max:3000',
+            'is_public' => 'boolean'
         ];
     }
 }

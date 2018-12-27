@@ -41,7 +41,7 @@ class ProductionController extends Controller
     public function store(ProductionStoreRequest $request)
     {
         $production = new Production;
-        $production->fill($request->all($production->getFillable()));
+        $production->fill($request->all());
         $production->creator_id = $request->user()->id;
         $production->save();
         return new ProductionResource($production);
@@ -55,7 +55,7 @@ class ProductionController extends Controller
         if ($image) {
             $production->header_img_id = $image->id;
         }
-        $production->fill($request->all($production->getFillable()))->save();
+        $production->fill($request->all())->save();
         return new ProductionResource($production);
     }
 
