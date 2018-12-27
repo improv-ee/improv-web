@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductionStoreRequest;
 use App\Http\Resources\ProductionResource;
 use App\Orm\Image;
+use App\Orm\OrganizationProduction;
 use App\Orm\Production;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProductionController
@@ -21,10 +23,18 @@ class ProductionController extends Controller
             ->firstOrFail());
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $productions = Production::orderBy('created_at', 'desc')
-            ->paginate(30);
+
+
+        $query = Production::orderBy('created_at', 'desc');
+
+        if ($request->input('onlyMine', false)) {
+            $query->belongingToUser(Auth::user());
+        }
+
+        $productions = $query->paginate(30);
+
         return ProductionResource::collection($productions);
     }
 

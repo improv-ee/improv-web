@@ -2,8 +2,10 @@
 
 namespace Tests\Feature\Api;
 
+use App\Orm\Organization;
 use App\Orm\Production;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class ProductionsTest extends ApiTestCase
@@ -27,6 +29,31 @@ class ProductionsTest extends ApiTestCase
                     'title' => $production->title,
                     'description' => $production->description,
                     'excerpt' => $production->excerpt
+                ]
+            ]]);
+    }
+
+    public function testOnlyProductionBelongingToMyOrganizationsAreReturned()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $organization = $user->organizations()->first();
+
+        $otherOrganization = factory(Organization::class)->create();
+
+        $productions = factory(Production::class, 10)->create()->getDictionary();
+        $productions[1]->organizations()->attach($organization);
+        $productions[2]->organizations()->attach($otherOrganization);
+        $productions[4]->organizations()->attach($organization);
+
+        $response = $this->get('/api/productions?onlyMine=true');
+
+        $response->assertStatus(200)->assertJsonCount(2,'data')
+            ->assertJson(['data' => [
+                [
+                    'title' => $productions[1]->title,
+                ],
+                [
+                    'title'=>$productions[4]->title
                 ]
             ]]);
     }

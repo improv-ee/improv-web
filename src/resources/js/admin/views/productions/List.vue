@@ -67,7 +67,7 @@
             },
 
             getResults(page = 1) {
-                axios.get('/api/productions',{params:{page:page}})
+                axios.get('/api/productions?onlyMine=true',{params:{page:page}})
                     .then(response => {
                         this.productions = response.data;
                     });
