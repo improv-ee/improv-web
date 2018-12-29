@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -21,3 +23,10 @@ mix.js('resources/js/admin/app.js','public/js/admin')
         'moment': ['moment','window.moment'],
     })
     .sass('resources/sass/admin/admin.scss', 'public/css');
+
+mix.webpackConfig({
+    plugins: [
+        new BundleAnalyzerPlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
+});
