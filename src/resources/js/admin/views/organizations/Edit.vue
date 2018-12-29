@@ -6,25 +6,34 @@
 
                 <b-form-group
                         :label="$t('organization.attr.name')"
-                        label-for="name">
-                    <b-form-input id="name"
+                        label-for="org-name">
+                    <b-form-input id="org-name"
                                   type="text"
                                   v-model="form.name"
-                                  description="sss"
                                   required>
                     </b-form-input>
                 </b-form-group>
 
                 <b-form-group
+                        label=""
+                        label-for="org-ispublic">
+
+                    <b-form-checkbox id="org-ispublic"
+                                     v-model="form.is_public">
+                        {{ $t('organization.attr.is_public') }}
+                    </b-form-checkbox>
+
+                </b-form-group>
+
+                <b-form-group
                         :label="$t('organization.attr.description')"
                         :description="$t('ui.markdown_supported')"
-                        label-for="description">
-                    <b-form-textarea id="description"
+                        label-for="org-description">
+                    <b-form-textarea id="org-description"
                                   type="text"
                                   rows="4"
                                   max-rows="20"
-                                  v-model="form.description"
-                                  required>
+                                  v-model="form.description">
                     </b-form-textarea>
                 </b-form-group>
 
@@ -64,7 +73,8 @@
                     this.organization = response.data.data;
                     this.form = {
                         name: this.organization.name,
-                        description: this.organization.description
+                        description: this.organization.description,
+                        is_public: this.organization.is_public
                     }
                 });
         },

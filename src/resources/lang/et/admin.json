@@ -32,7 +32,8 @@
       "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
       "attr": {
         "name": "Nimi",
-        "description": "Kirjeldus"
+        "description": "Kirjeldus",
+        "is_public":"Näita avalikus nimekirjas"
       },
       "user": {
         "role": {
