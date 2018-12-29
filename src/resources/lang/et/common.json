@@ -1,5 +1,8 @@
 {
   "et": {
+    "nav":{
+      "organizations": "Organisatsioonid"
+    },
     "event":{
       "attr": {
         "title":"Pealkiri",
