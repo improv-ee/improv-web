@@ -19,6 +19,17 @@
                     <i class="far fa-calendar"></i> {{ $t('event.attr.end_time')}}</span><br/>
                     <span class="meta-value">{{ endTime }}</span></p>
             </div>
+            <div class="col-lg-3 col-event-meta">
+                <p><span class="meta-label">
+                    <i class="far fa-address-card"></i> {{ $t('event.attr.organizers')}}</span><br/>
+                    <span class="meta-value">
+                        <ul class="list-inline">
+                            <li v-for="organization in production.organizations">
+                                <router-link :to="{name: 'organization.details', params: {slug: organization.slug}}">{{ organization.name }}</router-link>
+                            </li>
+                        </ul>
+                    </span></p>
+            </div>
 
         </div>
 

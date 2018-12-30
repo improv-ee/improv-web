@@ -1,9 +1,10 @@
 <?php
 
+use App\Orm\Production;
 use App\User;
 use Faker\Generator as Faker;
 
-$factory->define(App\Orm\Production::class, function (Faker $faker) {
+$factory->define(Production::class, function (Faker $faker) {
     $user = factory(User::class)->create();
     return [
         'title' => $faker->sentence(3),
@@ -12,4 +13,7 @@ $factory->define(App\Orm\Production::class, function (Faker $faker) {
         'slug' => str_slug($faker->sentence(4)),
         'creator_id' =>$user->id
     ];
+})->afterCreating(Production::class, function(Production $production, Faker $faker){
+    $organization = factory(\App\Orm\Organization::class)->create();
+    $production->organizations()->attach($organization);
 });

@@ -7,9 +7,9 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
-import {faCalendar} from "@fortawesome/free-regular-svg-icons";
+import {faCalendar, faAddressCard} from "@fortawesome/free-regular-svg-icons";
 import { faChevronRight  } from '@fortawesome/free-solid-svg-icons'
-library.add(faCalendar, faChevronRight);
+library.add(faCalendar, faChevronRight, faAddressCard);
 dom.watch();
 
 Vue.use(VueRouter);

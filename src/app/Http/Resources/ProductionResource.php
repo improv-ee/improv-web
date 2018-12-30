@@ -2,9 +2,14 @@
 
 namespace App\Http\Resources;
 
-use App\Orm\Image;
+use App\Orm\Production;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class ProductionResource
+ * @package App\Http\Resources
+ * @property Production $this
+ */
 class ProductionResource extends JsonResource
 {
     /**
@@ -25,6 +30,22 @@ class ProductionResource extends JsonResource
             ],
             'description' => $this->description,
             'excerpt' => $this->excerpt,
+            'organizations' => $this->when($this->organizations()->count(), $this->getOrganizationCollection())
         ];
+    }
+
+    /**
+     * @return array
+     */
+    private function getOrganizationCollection()
+    {
+        $organizations = [];
+        foreach ($this->organizations()->get() as $organization) {
+            $organizations[] = [
+                'slug' => $organization->slug,
+                'name' => $organization->name
+            ];
+        }
+        return $organizations;
     }
 }

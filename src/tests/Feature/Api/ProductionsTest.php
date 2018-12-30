@@ -26,7 +26,12 @@ class ProductionsTest extends ApiTestCase
                 [
                     'title' => $production->title,
                     'description' => $production->description,
-                    'excerpt' => $production->excerpt
+                    'excerpt' => $production->excerpt,
+                    'organizations'=> [
+                        [
+                            'slug' => $production->organizations->first()->slug
+                        ]
+                    ]
                 ]
             ]]);
     }

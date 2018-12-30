@@ -8,7 +8,8 @@
         "title":"Pealkiri",
         "description":"Kirjeldus",
         "start_time": "Algus",
-        "end_time": "Lõpp"
+        "end_time": "Lõpp",
+        "organizers": "Korraldajad"
       }
     },
     "ui":{
