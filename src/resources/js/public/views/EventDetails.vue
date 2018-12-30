@@ -1,7 +1,7 @@
 <template>
     <div class="event-details">
         <div class="row">
-            <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+            <div class="col-md-12 col-lg-12">
 
                 <img class="img-fluid header-img"
                      :src="header_img"
@@ -9,12 +9,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="offset-lg-1 col-lg-2 col-event-meta">
+            <div class="col-lg-3 col-event-meta">
                 <p><span class="meta-label">
                 <i class="far fa-calendar"></i> {{ $t('event.attr.start_time')}}</span><br/>
                     <span class="meta-value">{{ startTime }}</span></p>
             </div>
-            <div class="col-lg-2 col-event-meta">
+            <div class="col-lg-3 col-event-meta">
                 <p><span class="meta-label">
                     <i class="far fa-calendar"></i> {{ $t('event.attr.end_time')}}</span><br/>
                     <span class="meta-value">{{ endTime }}</span></p>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+            <div class="col-md-12 col-lg-12">
                 <h1>{{ production.title }}</h1>
                 <vue-markdown :source="production.description"></vue-markdown>
             </div>
