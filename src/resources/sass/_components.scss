@@ -1,18 +1,4 @@
-.event-card {
-  img {
-    max-height: 30em;
-    object-fit: cover;
-  }
 
-  .rounded-bottom {
-
-    text-align: center;
-
-    li {
-      color: $white;
-    }
-  }
-}
 
 .nav-link {
   &.active {

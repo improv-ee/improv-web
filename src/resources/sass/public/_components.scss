@@ -1,0 +1,15 @@
+.event-card {
+  img {
+    height: 15em;
+    object-fit: cover;
+  }
+
+  .rounded-bottom {
+
+    text-align: center;
+
+    li {
+      color: $white;
+    }
+  }
+}
