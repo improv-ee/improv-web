@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EventStoreRequest;
+use App\Http\Requests\Event\DeleteEventRequest;
+use App\Http\Requests\Event\StoreEventRequest;
+use App\Http\Requests\Event\UpdateEventRequest;
 use App\Http\Resources\EventResource;
 use App\Http\Resources\ScheduleResource;
 use App\Orm\Event;
 use App\Orm\Production;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class EventController
@@ -43,7 +45,11 @@ class EventController extends Controller
         return ScheduleResource::collection($this->getNextEvents());
     }
 
-    public function store(EventStoreRequest $request)
+    /**
+     * @param StoreEventRequest $request
+     * @return JsonResource
+     */
+    public function store(StoreEventRequest $request) : JsonResource
     {
 
         $request->validate(['production.slug' => 'required|max:255']);
@@ -62,10 +68,14 @@ class EventController extends Controller
         return new EventResource($event);
     }
 
-    public function update($id, EventStoreRequest $request)
+    /**
+     * @param Event $event
+     * @param UpdateEventRequest $request
+     * @return JsonResource
+     */
+    public function update(Event $event, UpdateEventRequest $request): JsonResource
     {
 
-        $event = Event::where('uid', $id)->firstOrFail();
         $event->start_time = new Carbon($request->post('times')['start']);
         $event->end_time = new Carbon($request->post('times')['end']);
         $event->title = $request->post('title');
@@ -75,11 +85,13 @@ class EventController extends Controller
         return new EventResource($event);
     }
 
-    public function destroy($id)
+    /**
+     * @param Event $event
+     * @param DeleteEventRequest $request
+     * @throws \Exception
+     */
+    public function destroy(Event $event, DeleteEventRequest $request) : void
     {
-        $event = Event::where('uid', $id)
-            ->firstOrFail();
         $event->delete();
-
     }
 }

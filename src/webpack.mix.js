@@ -26,7 +26,7 @@ mix.js('resources/js/admin/app.js','public/js/admin')
 
 mix.webpackConfig({
     plugins: [
-        new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin({openAnalyzer: false}),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
 });

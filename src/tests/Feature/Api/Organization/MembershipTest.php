@@ -3,7 +3,6 @@
 namespace Tests\Feature\Api\Organization;
 
 use App\Events\Organization\UserJoined;
-use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

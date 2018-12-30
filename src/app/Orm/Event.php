@@ -34,4 +34,10 @@ protected $fillable = ['production_id','start_time','end_time'];
     {
         return $this->belongsTo('App\Orm\Production');
     }
+
+
+    public function getRouteKeyName()
+    {
+        return 'uid';
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Production\DeleteProductionRequest;
-use App\Http\Requests\Production\ProductionStoreRequest;
+use App\Http\Requests\Production\StoreProductionRequest;
 use App\Http\Requests\Production\UpdateProductionRequest;
 use App\Http\Resources\ProductionResource;
 use App\Orm\Image;
@@ -38,7 +38,7 @@ class ProductionController extends Controller
         return ProductionResource::collection($productions);
     }
 
-    public function store(ProductionStoreRequest $request)
+    public function store(StoreProductionRequest $request)
     {
         $production = new Production;
         $production->fill($request->all());

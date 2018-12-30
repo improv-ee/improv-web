@@ -8,11 +8,11 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class MembershipUpdateRequest
+ * Class UpdateMembershipRequest
  * @property Organization $organization
  * @property User $user
  */
-class MembershipUpdateRequest extends FormRequest
+class UpdateMembershipRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
