@@ -20,6 +20,8 @@
       "cancel":"Katkesta",
       "delete":"Kustuta",
       "validation_error":"Sisendandmed ei sobi",
+      "server_error_message": "Päringu töötlemine ebaõnnestus. Vea tekkimine on registreeritud ning see parandatakse tulevikus.",
+      "server_error":"Serveri viga",
       "page_not_found":"Lehte ei leitud",
       "page_not_found_description":"Soovitud lehe avamine ebaõnnestus"
     },

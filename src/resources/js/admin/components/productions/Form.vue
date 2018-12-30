@@ -16,13 +16,13 @@
                 </b-form-group>
 
                 <b-form-group :label="$t('production.img.header')"
-                label-for="header-img"
+                              label-for="header-img"
                               :description="$t('production.img.header_description')">
 
 
                     <div class="overlay-container" v-if="production.images.header" @click="removeHeaderImg()">
                         <img class="img-fluid" :src="production.images.header.url"
-                             :alt="$t('production.img.header')" />
+                             :alt="$t('production.img.header')"/>
                         <div class="img-overlay">
                             <span><i class="far fa-trash-alt fa-10x"></i></span>
                         </div>
@@ -77,22 +77,23 @@
             removeHeaderImg() {
                 this.form.header_img = null
             },
-            uploadHeaderImg(e){
+            uploadHeaderImg(e) {
                 let self = this;
                 let formData = new FormData();
                 formData.append('image', e.srcElement.files[0]);
-                axios.post('/api/images',formData, {
+                axios.post('/api/images', formData, {
                     onUploadProgress: this.uploadProgress,
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },
-                    errorHandle: false})
+                    errorHandle: false
+                })
                     .then(function (response) {
                         self.form.header_img = response.data.uid;
 
                         self.production.images.header.url = response.data.url;
 
-                }).catch((error) => {
+                    }).catch((error) => {
 
                     for (var i = 0; i < error.response.data.errors.image.length; i++) {
                         self.$notify({
@@ -106,8 +107,8 @@
 
                 })
             },
-            uploadProgress(progressEvent){
-                let percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+            uploadProgress(progressEvent) {
+                let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 console.log(percentCompleted);
             },
             onSubmit(evt) {
@@ -121,7 +122,16 @@
                             name: 'production.details',
                             params: {slug: response.data.data.slug}
                         })
-                    });
+                    }).catch(function (error) {
+                        if (error.response.status >= 500) {
+                            self.$notify({
+                                type: 'error',
+                                group: 'app',
+                                title: self.$t('ui.server_error'),
+                                text: self.$t('ui.server_error_message')
+                            });
+                        }
+                });
             }
         },
         mounted() {
@@ -141,7 +151,7 @@
                     title: production.title,
                     description: production.description,
                     excerpt: production.excerpt,
-                    header_img: production.images.header ? production.images.header.uid:null
+                    header_img: production.images.header ? production.images.header.uid : null
                 }
             }
         }

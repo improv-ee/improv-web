@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "15560290fa6f92f273a1a46e22ea6a0e",
-    "content-hash": "3d82f4a26bff76490ad6f7199e90edb4",
+    "hash": "33480a52de6f82ca9c11f3481bdaa0c5",
+    "content-hash": "9f4102e5b6b9be83131239aff7d13b2c",
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -1649,16 +1649,16 @@
         },
         {
             "name": "mnapoli/silly",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnapoli/silly.git",
-                "reference": "bd6d1ec6d1644a5dfd5325492f2f8d36037da32c"
+                "reference": "5f7f34f4db75685e6fe7d652c12d9a7b6e8034d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnapoli/silly/zipball/bd6d1ec6d1644a5dfd5325492f2f8d36037da32c",
-                "reference": "bd6d1ec6d1644a5dfd5325492f2f8d36037da32c",
+                "url": "https://api.github.com/repos/mnapoli/silly/zipball/5f7f34f4db75685e6fe7d652c12d9a7b6e8034d6",
+                "reference": "5f7f34f4db75685e6fe7d652c12d9a7b6e8034d6",
                 "shasum": ""
             },
             "require": {
@@ -1668,6 +1668,7 @@
                 "symfony/console": "~3.0|~4.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.12",
                 "mnapoli/phpunit-easymock": "~1.0",
                 "phpunit/phpunit": "~6.4"
             },
@@ -1690,7 +1691,7 @@
                 "micro-framework",
                 "silly"
             ],
-            "time": "2017-11-18 14:01:30"
+            "time": "2018-12-26 21:17:30"
         },
         {
             "name": "monolog/monolog",
@@ -1935,16 +1936,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.36.1",
+            "version": "1.36.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983"
+                "reference": "cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
-                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9",
+                "reference": "cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9",
                 "shasum": ""
             },
             "require": {
@@ -1989,7 +1990,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-11-22 18:23:02"
+            "time": "2018-12-28 10:07:33"
         },
         {
             "name": "nexmo/client",
@@ -3321,6 +3322,55 @@
                 "spatie"
             ],
             "time": "2018-12-16 00:49:22"
+        },
+        {
+            "name": "spatie/laravel-sluggable",
+            "version": "2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-sluggable.git",
+                "reference": "2f383e6957b544b200203ca717000b57189ca045"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/2f383e6957b544b200203ca717000b57189ca045",
+                "reference": "2f383e6957b544b200203ca717000b57189ca045",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+                "phpunit/phpunit": "^6.3|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Sluggable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate slugs when saving Eloquent models",
+            "homepage": "https://github.com/spatie/laravel-sluggable",
+            "keywords": [
+                "laravel-sluggable",
+                "spatie"
+            ],
+            "time": "2018-08-28 14:09:46"
         },
         {
             "name": "swiftmailer/swiftmailer",
