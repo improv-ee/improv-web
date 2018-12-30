@@ -1,5 +1,5 @@
 <template>
-    <div class="event-details">
+    <div class="event-details" v-if="production">
         <div class="row">
             <div class="col-md-12 col-lg-12">
 
@@ -55,8 +55,8 @@
             }
         },
         computed: {
-            header_img(images) {
-                return images.hasOwnProperty('header') ? images.header.url : '/img/production/default-header.jpg';
+            header_img() {
+                return this.production.images.hasOwnProperty('header') ? this.production.images.header.url : '/img/production/default-header.jpg';
             },
             startTime: function () {
                 return moment(this.event.times.start).format('Do MMMM HH:mm')
