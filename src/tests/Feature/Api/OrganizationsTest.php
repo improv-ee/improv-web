@@ -45,6 +45,16 @@ class OrganizationsTest extends ApiTestCase
         $this->assertNotNull($organization->deleted_at);
     }
 
+    public function testOrganizationCanNotBeDeletedByNonMember()
+    {
+        $this->actingAsLoggedInUser();
+        $organization = factory(Organization::class)->create();
+
+        $response = $this->delete('/api/organizations/' . $organization->slug);
+        $response->assertStatus(403);
+
+    }
+
     public function testOrganizationCanNotBeDeletedByNonAdmin()
     {
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_MEMBER);

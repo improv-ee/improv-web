@@ -4,7 +4,7 @@
         <div class="row" v-if="organizations.length">
             <div class="col-10 offset-1">
                 <b-card v-for="organization in organizations"
-                        :key="organization.slug"
+                        :key="organization.slug" v-if="organization.is_public"
                         img-top class="mb-2">
                     <p class="card-text">
                         {{ organization.name }}
@@ -16,22 +16,6 @@
                 </b-card>
             </div>
         </div>
-
-        <b-modal id="modal-new-organization" :title="$t('organization.create_new')"
-                 :ok-title="$t('ui.create')" :cancel-title="$t('ui.cancel')" @ok="createOrganization">
-            <b-form @submit.prevent="createOrganization">
-
-                <b-form-group
-                        :label="$t('organization.attr.name')"
-                        label-for="title">
-                    <b-form-input id="title"
-                                  type="text"
-                                  v-model="newOrganizationName"
-                                  required>
-                    </b-form-input>
-                </b-form-group>
-            </b-form>
-        </b-modal>
     </div>
 </template>
 
