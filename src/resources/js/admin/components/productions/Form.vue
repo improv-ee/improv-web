@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-10 offset-1">
 
-            <b-form @submit.prevent="onSubmit" v-if="production.slug">
+            <b-form @submit.prevent="onSubmit" v-if="showForm">
 
                 <b-form-group
                         :label="$t('production.attr.title')"
@@ -20,7 +20,8 @@
                               :description="$t('production.img.header_description')">
 
 
-                    <div class="overlay-container" v-if="production.images.header" @click="removeHeaderImg()">
+                    <div class="overlay-container" v-if="production.hasOwnProperty('images') && production.images.header && form.header_img"
+                         @click="removeHeaderImg()">
                         <img class="img-fluid" :src="production.images.header.url"
                              :alt="$t('production.img.header')"/>
                         <div class="img-overlay">
@@ -54,9 +55,10 @@
                     </b-form-textarea>
                 </b-form-group>
 
-                <b-button type="submit" variant="primary" class="btn-block">{{ $t('ui.edit') }}</b-button>
+                <b-button type="submit" variant="primary" class="btn-block">{{ mode === 'edit' ? $t('ui.edit') :
+                    $t('ui.create') }}
+                </b-button>
             </b-form>
-
 
         </div>
     </div>
@@ -65,11 +67,18 @@
 <script>
 
     export default {
-        props: ['production'],
+        props: {
+            "production": Object,
+            "mode": {
+                "type": String,
+                "default": "create"
+            }
+        },
         data() {
             return {
                 form: {},
-                ui: {}
+                ui: {},
+                showForm: false
             }
         },
 
@@ -103,19 +112,17 @@
                             text: error.response.data.errors.image[i]
                         });
                     }
-
-
                 })
             },
             uploadProgress(progressEvent) {
                 let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 console.log(percentCompleted);
             },
-            onSubmit(evt) {
+
+            create() {
                 let self = this;
 
-
-                axios.put('/api/productions/' + this.$route.params.slug, this.form)
+                axios.post('/api/productions', this.form)
                     .then(function (response) {
 
                         self.$router.push({
@@ -123,15 +130,43 @@
                             params: {slug: response.data.data.slug}
                         })
                     }).catch(function (error) {
-                        if (error.response.status >= 500) {
-                            self.$notify({
-                                type: 'error',
-                                group: 'app',
-                                title: self.$t('ui.server_error'),
-                                text: self.$t('ui.server_error_message')
-                            });
-                        }
+                    if (error.response.status >= 500) {
+                        self.$notify({
+                            type: 'error',
+                            group: 'app',
+                            title: self.$t('ui.server_error'),
+                            text: self.$t('ui.server_error_message')
+                        });
+                    }
                 });
+            },
+            edit() {
+                let self = this;
+
+                axios.put('/api/productions/' + self.production.slug, this.form)
+                    .then(function (response) {
+
+                        self.$router.push({
+                            name: 'production.details',
+                            params: {slug: response.data.data.slug}
+                        })
+                    }).catch(function (error) {
+                    if (error.response.status >= 500) {
+                        self.$notify({
+                            type: 'error',
+                            group: 'app',
+                            title: self.$t('ui.server_error'),
+                            text: self.$t('ui.server_error_message')
+                        });
+                    }
+                });
+            },
+            onSubmit() {
+                if (this.mode === 'edit') {
+                    this.edit();
+                } else {
+                    this.create();
+                }
             }
         },
         mounted() {
@@ -140,19 +175,23 @@
                     description: this.$t('production.attr.description_description') + ' ' + this.$t('ui.markdown_supported')
                 }
             }
+            if (this.mode === 'create') {
+                this.showForm=true
+            }
         },
         watch: {
 
             // When the component initializes, the production prop is not yet populated,
             // it will be fetched with async request. Wait for it to complete, then set initial form
             // state to those values
-            production: function (production) {
+            production: function (newProductionVal) {
                 this.form = {
-                    title: production.title,
-                    description: production.description,
-                    excerpt: production.excerpt,
-                    header_img: production.images.header ? production.images.header.uid : null
-                }
+                    title: newProductionVal.title,
+                    description: newProductionVal.description,
+                    excerpt: newProductionVal.excerpt,
+                    header_img: newProductionVal.images.header ? newProductionVal.images.header.uid : null
+                };
+                this.showForm = true;
             }
         }
 

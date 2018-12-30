@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class ProductionController extends Controller
 {
-    public function show(Production $production) : JsonResource
+    public function show(Production $production): JsonResource
     {
         return new ProductionResource($production);
     }
@@ -38,24 +38,32 @@ class ProductionController extends Controller
         return ProductionResource::collection($productions);
     }
 
-    public function store(StoreProductionRequest $request)
+    protected function saveProduction(Production $production, Request $request): Production
     {
-        $production = new Production;
         $production->fill($request->all());
-        $production->creator_id = $request->user()->id;
-        $production->save();
-        return new ProductionResource($production);
-    }
-
-    public function update(Production $production, UpdateProductionRequest $request)
-    {
 
         $image = Image::where('uid', $request->post('header_img'))->first();
 
         if ($image) {
             $production->header_img_id = $image->id;
         }
-        $production->fill($request->all())->save();
+
+        $production->creator_id = $request->user()->id;
+
+        $production->save();
+
+        return $production;
+    }
+
+    public function store(StoreProductionRequest $request)
+    {
+        $production = $this->saveProduction(new Production, $request);
+        return new ProductionResource($production);
+    }
+
+    public function update(Production $production, UpdateProductionRequest $request)
+    {
+        $production = $this->saveProduction($production, $request);
         return new ProductionResource($production);
     }
 

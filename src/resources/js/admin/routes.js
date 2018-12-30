@@ -3,6 +3,7 @@ import PageNotFound from '../views/PageNotFound'
 import ProductionsList from './views/productions/List'
 import ProductionDetails from './views/productions/Details'
 import ProductionEdit from './views/productions/Edit'
+import ProductionCreate from './views/productions/Create'
 import EventDetails from './views/events/Details'
 import EventEdit from './views/events/Edit'
 import ProfileSettings from './views/profile/Settings'
@@ -33,6 +34,11 @@ export default [
         component: EventEdit,
     },
     {
+        path: '/productions/create',
+        name: 'production.create',
+        component: ProductionCreate,
+    },
+    {
         path: '/productions/:slug',
         name: 'production.details',
         component: ProductionDetails,
@@ -41,6 +47,7 @@ export default [
         name: 'production.edit',
         component: ProductionEdit,
     },
+
     {
         path: '/profile/settings',
         name: 'profile.settings',

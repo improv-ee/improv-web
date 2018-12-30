@@ -72,6 +72,7 @@ class ProductionsTest extends ApiTestCase
         $this->assertDatabaseHas('production_translations', ['title' => 'Sad Margarita']);
     }
 
+
     public function testProductionCanBeEdited()
     {
         $user = $this->actingAsOrganizationMember();

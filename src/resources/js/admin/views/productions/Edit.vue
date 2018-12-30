@@ -1,5 +1,5 @@
 <template>
-    <production-form :production="production"></production-form>
+    <production-form :production="production" v-if="production" mode="edit"></production-form>
 </template>
 
 <script>
@@ -10,9 +10,10 @@
             }
         },
         mounted() {
-            axios.get('/api/productions/'+this.$route.params.slug)
+            let self = this;
+            axios.get('/api/productions/' + this.$route.params.slug)
                 .then(response => {
-                    this.production = response.data.data;
+                    self.production = response.data.data;
                 });
         }
     }
