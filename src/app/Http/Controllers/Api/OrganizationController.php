@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Organization\UpdateOrganizationRequest;
 use App\Http\Resources\OrganizationResource;
+use App\Orm\Filters\FilterTranslatedName;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\QueryBuilder\Filter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * Class OrganizationController
@@ -33,7 +36,9 @@ class OrganizationController extends Controller
 
     public function index(Request $request)
     {
-        $organizations = Organization::orderBy('created_at', 'desc')
+        $organizations = QueryBuilder::for(Organization::class)
+            ->allowedFilters(Filter::custom('name', FilterTranslatedName::class))
+            ->orderBy('created_at', 'desc')
             ->onlyMine($request->input('onlyMine', false))
             ->paginate(30);
         return OrganizationResource::collection($organizations);

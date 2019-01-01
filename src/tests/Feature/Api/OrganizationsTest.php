@@ -12,6 +12,18 @@ class OrganizationsTest extends ApiTestCase
     use DatabaseMigrations;
 
 
+    public function testOrganizationsListCanBeFilteredByName()
+    {
+        factory(Organization::class)->create(['name' => 'Ruutu10 team nr 1' ]);
+        factory(Organization::class)->create(['name' => 'Ruutu10 team nr 2']);
+        factory(Organization::class)->create(['name' => 'Ruutu10 majatiim']);
+        factory(Organization::class, 10)->create();
+
+        $response = $this->get('/api/organizations?filter[name]=Ruutu10');
+        $response->assertStatus(200)
+            ->assertJsonCount(3, 'data');
+    }
+
     public function testOrganizationCanBeCreated()
     {
         $user = $this->actingAsLoggedInUser();
@@ -111,7 +123,7 @@ class OrganizationsTest extends ApiTestCase
             ->assertJson(['data' => ['name' => $newInput['name']]]);
 
         $this->assertDatabaseHas('organization_translations', ['name' => $organization->name, 'description' => $newInput['description']]);
-        $this->assertDatabaseHas('organizations',['is_public'=>1,'id'=>$organization->id]);
+        $this->assertDatabaseHas('organizations', ['is_public' => 1, 'id' => $organization->id]);
     }
 
     public function testUserCanNotEditOrganizationIfNotAdmin()

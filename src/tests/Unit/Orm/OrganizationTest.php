@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Filters;
 
 use App\Orm\Organization;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "33480a52de6f82ca9c11f3481bdaa0c5",
-    "content-hash": "9f4102e5b6b9be83131239aff7d13b2c",
+    "hash": "152ff65552fb90c72ca68b5d1a01b151",
+    "content-hash": "6928f3ce17874f0257ff180316cf623d",
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -3322,6 +3322,63 @@
                 "spatie"
             ],
             "time": "2018-12-16 00:49:22"
+        },
+        {
+            "name": "spatie/laravel-query-builder",
+            "version": "1.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-query-builder.git",
+                "reference": "8c28dea5679b1481efc3c3c2c19a4cb0c1a86c9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/8c28dea5679b1481efc3c3c2c19a4cb0c1a86c9e",
+                "reference": "8c28dea5679b1481efc3c3c2c19a4cb0c1a86c9e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/http": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+                "phpunit/phpunit": "^6.1|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\QueryBuilder\\QueryBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\QueryBuilder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Vanderbist",
+                    "email": "alex@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily build Eloquent queries from API requests",
+            "homepage": "https://github.com/spatie/laravel-query-builder",
+            "keywords": [
+                "laravel-query-builder",
+                "spatie"
+            ],
+            "time": "2018-11-27 09:10:35"
         },
         {
             "name": "spatie/laravel-sluggable",
