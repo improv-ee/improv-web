@@ -122,8 +122,6 @@ class ProductionsTest extends ApiTestCase
     public function testProductionCanBeEdited()
     {
         $user = $this->actingAsOrganizationMember();
-
-
         $this->production->organizations()->attach($user->organizations()->first());
 
         $productionInput = array_replace($this->validProductionInput, ['title' => 'Tilt Improv Festival',
@@ -138,6 +136,19 @@ class ProductionsTest extends ApiTestCase
                 'excerpt' => $productionInput['excerpt']]]);
 
         $this->assertDatabaseHas('production_translations', ['title' => $productionInput['title']]);
+    }
+
+    public function testProductionImageCanBeRemoved()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $this->production->organizations()->attach($user->organizations()->first());
+
+        $productionInput = array_replace($this->validProductionInput, ['header_img' => '']);
+
+        $response = $this->put('/api/productions/' . $this->production->slug, $productionInput);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('productions', ['id' => $this->production->id, 'header_img_id' => null]);
     }
 
     public function testCanNotEditProductionNotOwnedByMyOrganization()

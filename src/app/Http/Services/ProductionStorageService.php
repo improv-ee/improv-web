@@ -19,13 +19,7 @@ class ProductionStorageService
     public function saveProduction(Production $production, Request $request): Production
     {
         $production->fill($request->all());
-
-        $image = Image::where('uid', $request->post('header_img'))->first();
-
-        if ($image) {
-            $production->header_img_id = $image->id;
-        }
-
+        $production->header_img_id = Image::where('uid', $request->post('header_img'))->first();
 
         $organizations = OrganizationTranslation::whereIn('slug', $request->input('organizations', []))
             ->pluck('organization_id');
