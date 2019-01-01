@@ -12,6 +12,8 @@
 
         <vue-markdown :source="production.description"></vue-markdown>
 
+        <h2>{{ $t('production.events') }}</h2>
+
         <div class="table-responsive">
             <table class="table table-clickable">
                 <thead>

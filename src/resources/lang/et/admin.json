@@ -4,7 +4,6 @@
       "markdown_supported":"Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
     },
     "nav": {
-      "productions": "Produktsioonid",
       "home": "Avaleht"
     },
     "dash": {
@@ -15,8 +14,8 @@
     },
     "event": {
       "attr": {
-        "title_description": "Etenduse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
-        "description_description": "Etenduse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
+        "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
+        "description_description": "Ürituse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
         "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
         "end_time_description": "Ürituse alguskuupäev- ja kella-aeg"
       }
@@ -44,20 +43,22 @@
     },
     "production": {
       "no_events": "Ühtegi sündmust pole lisatud",
-      "num_of_events": "Etendusi",
-      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem etenduse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>etenduse</i> aega.",
+      "num_of_events": "Üritusi",
+      "events":"Üritused",
+      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>ürituse</i> aega.",
       "create_new": "Uus produktsioon",
       "attr": {
         "title": "Pealkiri",
         "title_description": "Formaadi, lavastuse või festivali nimetus",
         "excerpt": "Lühikirjeldus",
-        "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga etenduse täispikk kirjeldus ei mahu.",
+        "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
         "description": "Kirjeldus",
-        "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\"."
+        "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
+        "organizers_description":"Vali organisatsioonid, kes seda produktsiooni korraldavad. N.B! Valitud organisatsioonid saavad õiguse produktsiooni andmeid muuta!"
       },
       "img": {
         "header": "Päise pilt",
-        "header_description": "Pilti kuvatakse etenduse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
+        "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
         "select_file": "Vali fail..."
       }
     }

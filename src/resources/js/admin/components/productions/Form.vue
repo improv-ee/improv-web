@@ -20,7 +20,8 @@
                               :description="$t('production.img.header_description')">
 
 
-                    <div class="overlay-container" v-if="production.hasOwnProperty('images') && production.images.header && form.header_img"
+                    <div class="overlay-container"
+                         v-if="production.hasOwnProperty('images') && production.images.header && form.header_img"
                          @click="removeHeaderImg()">
                         <img class="img-fluid" :src="production.images.header.url"
                              :alt="$t('production.img.header')"/>
@@ -55,6 +56,14 @@
                     </b-form-textarea>
                 </b-form-group>
 
+                <b-form-group
+                        :label="$t('event.attr.organizers')"
+                        :description="$t('production.attr.organizers_description')"
+                        label-for="production-organizers">
+
+                    <organization-select :options="production.organizations" v-model="form.organizations"></organization-select>
+                </b-form-group>
+
                 <b-button type="submit" variant="primary" class="btn-block">{{ mode === 'edit' ? $t('ui.edit') :
                     $t('ui.create') }}
                 </b-button>
@@ -65,8 +74,10 @@
 </template>
 
 <script>
+    import OrganizationSelect from '../organizations/OrganizationSelect'
 
     export default {
+        components: {OrganizationSelect},
         props: {
             "production": Object,
             "mode": {
@@ -174,9 +185,9 @@
                 help: {
                     description: this.$t('production.attr.description_description') + ' ' + this.$t('ui.markdown_supported')
                 }
-            }
+            };
             if (this.mode === 'create') {
-                this.showForm=true
+                this.showForm = true
             }
         },
         watch: {
@@ -185,10 +196,12 @@
             // it will be fetched with async request. Wait for it to complete, then set initial form
             // state to those values
             production: function (newProductionVal) {
+
                 this.form = {
                     title: newProductionVal.title,
                     description: newProductionVal.description,
                     excerpt: newProductionVal.excerpt,
+                    organizations: newProductionVal.organizations,
                     header_img: newProductionVal.images.header ? newProductionVal.images.header.uid : null
                 };
                 this.showForm = true;

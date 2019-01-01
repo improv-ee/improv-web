@@ -1,32 +1,40 @@
 {
   "et": {
-    "nav":{
-      "organizations": "Organisatsioonid"
+    "nav": {
+      "organizations": "Organisatsioonid",
+      "productions": "Produktsioonid"
+
     },
-    "event":{
+    "event": {
       "attr": {
-        "title":"Pealkiri",
-        "description":"Kirjeldus",
+        "title": "Pealkiri",
+        "description": "Kirjeldus",
         "start_time": "Algus",
         "end_time": "Lõpp",
         "organizers": "Korraldajad"
       }
     },
-    "ui":{
-      "create":"Sisesta",
-      "add_new":"Lisa uus",
-      "edit":"Muuda",
+    "ui": {
+      "create": "Sisesta",
+      "add_new": "Lisa uus",
+      "edit": "Muuda",
       "view_details": "Rohkem infot",
-      "cancel":"Katkesta",
-      "delete":"Kustuta",
-      "validation_error":"Sisendandmed ei sobi",
+      "cancel": "Katkesta",
+      "delete": "Kustuta",
+      "validation_error": "Sisendandmed ei sobi",
       "server_error_message": "Päringu töötlemine ebaõnnestus. Vea tekkimine on registreeritud ning see parandatakse tulevikus.",
-      "server_error":"Serveri viga",
-      "page_not_found":"Lehte ei leitud",
-      "page_not_found_description":"Soovitud lehe avamine ebaõnnestus"
-    },
-    "user":{
-      "username":"Kasutajanimi"
+      "server_error": "Serveri viga",
+      "page_not_found": "Lehte ei leitud",
+      "page_not_found_description": "Soovitud lehe avamine ebaõnnestus",
+      "search": {
+        "type_to_search": "Kirjuta, et otsida...",
+        "no_results": "Tulemusi ei leitud - proovi otsingut muuta",
+        "press_to_select": "Vajuta [Enter], et valida",
+        "and_number_others":"... ja {number} muud tulemust"
+      }
     }
+  },
+  "user": {
+    "username": "Kasutajanimi"
   }
 }
