@@ -23,7 +23,8 @@ class ImageController extends Controller
      * @param $id
      * @return null
      */
-    public function show($id){
+    public function show($id)
+    {
         return null;
     }
 

@@ -7,6 +7,7 @@ use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 
 /**
@@ -59,6 +60,25 @@ class Production extends Model implements Auditable
         return $query->whereIn('id', $productionIds);
     }
 
+    public function isMine(User $user = null) : bool {
+        if ($user === null) {
+            $user = Auth::user();
+        }
+
+        if ($user === null) {
+            return false;
+        }
+
+        $organizationIds = $user->organizations()->get()->pluck('id')->toArray();
+
+        return (bool)OrganizationProduction::where('production_id',$this->id)
+            ->whereIn('organization_id',$organizationIds)
+            ->count();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne|Image
+     */
     public function header_img()
     {
         return $this->hasOne('App\Orm\Image', 'id', 'header_img_id');
