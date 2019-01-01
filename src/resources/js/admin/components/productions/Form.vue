@@ -21,9 +21,9 @@
 
 
                     <div class="overlay-container"
-                         v-if="production.hasOwnProperty('images') && production.images.header && form.header_img"
+                         v-if="header_img_url"
                          @click="removeHeaderImg()">
-                        <img class="img-fluid" :src="production.images.header.url"
+                        <img class="img-fluid" :src="header_img_url"
                              :alt="$t('production.img.header')"/>
                         <div class="img-overlay">
                             <span><i class="far fa-trash-alt fa-10x"></i></span>
@@ -89,13 +89,15 @@
             return {
                 form: {},
                 ui: {},
-                showForm: false
+                showForm: false,
+                header_img_url: null
             }
         },
 
         methods: {
             removeHeaderImg() {
-                this.form.header_img = null
+                this.form.header_img = null;
+                this.header_img_url = null;
             },
             uploadHeaderImg(e) {
                 let self = this;
@@ -110,8 +112,7 @@
                 })
                     .then(function (response) {
                         self.form.header_img = response.data.uid;
-
-                        self.production.images.header.url = response.data.url;
+                        self.header_img_url = response.data.url;
 
                     }).catch((error) => {
 
@@ -204,6 +205,7 @@
                     organizations: newProductionVal.organizations,
                     header_img: newProductionVal.images.header ? newProductionVal.images.header.uid : null
                 };
+                this.header_img_url = this.form.header_img ? newProductionVal.images.header.url : null;
                 this.showForm = true;
             }
         }

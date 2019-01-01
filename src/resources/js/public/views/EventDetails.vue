@@ -1,5 +1,5 @@
 <template>
-    <div class="event-details" v-if="production">
+    <div class="event-details" v-if="production.slug && event.uid">
         <div class="row">
             <div class="col-md-12 col-lg-12">
 
@@ -30,7 +30,6 @@
                         </ul>
                     </span></p>
             </div>
-
         </div>
 
         <div class="row">
@@ -44,6 +43,7 @@
 
 <script>
     import VueMarkdown from 'vue-markdown'
+
     export default {
         components: {
             VueMarkdown
@@ -56,7 +56,7 @@
         },
         computed: {
             header_img() {
-                return this.production.images.hasOwnProperty('header') ? this.production.images.header.url : '/img/production/default-header.jpg';
+                return this.production.images.hasOwnProperty('header') && this.production.images.header != null ? this.production.images.header.url : '/img/production/default-header.jpg';
             },
             startTime: function () {
                 return moment(this.event.times.start).format('Do MMMM HH:mm')
