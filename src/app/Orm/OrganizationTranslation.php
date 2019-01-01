@@ -7,6 +7,15 @@ use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
+/**
+ * Class OrganizationTranslation
+ * @package App\Orm
+ * @property string name
+ * @property string locale
+ * @property string description
+ * @property string slug
+ * @property int organization_id
+ */
 class OrganizationTranslation extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable, HasSlug;

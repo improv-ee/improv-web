@@ -6,6 +6,11 @@ use App\Orm\Organization;
 use App\Orm\Production;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+/**
+ * Class ProductionsTest
+ * @package Tests\Feature\Api
+ * @covers \App\Http\Controllers\Api\ProductionController
+ */
 class ProductionsTest extends ApiTestCase
 {
     use DatabaseMigrations;
@@ -27,7 +32,7 @@ class ProductionsTest extends ApiTestCase
                     'title' => $production->title,
                     'description' => $production->description,
                     'excerpt' => $production->excerpt,
-                    'organizations'=> [
+                    'organizations' => [
                         [
                             'slug' => $production->organizations->first()->slug
                         ]
@@ -70,6 +75,32 @@ class ProductionsTest extends ApiTestCase
             ->assertJson(['data' => ['title' => 'Sad Margarita', 'slug' => 'sad-margarita']]);
 
         $this->assertDatabaseHas('production_translations', ['title' => 'Sad Margarita']);
+    }
+
+
+    public function testAddingOrganizationToProductionSavesItInDatabase()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $userOrganization = $user->organizations()->first();
+        $production = factory(Production::class)->create();
+        $newOrganization = factory(Organization::class)->create();
+
+        $production->organizations()->attach($userOrganization);
+
+        $input = $production->toArray();
+        $input['organizations'] = [$userOrganization->slug, $newOrganization->slug];
+        $response = $this->put('/api/productions/' . $production->slug, $input);
+
+        $response->assertStatus(200)
+            ->assertJson(['data' => [
+                'organizations' => [
+                    ['slug'=>$userOrganization->slug],
+                    ['slug'=>$newOrganization->slug]
+                ]
+            ]]);
+
+        $this->assertDatabaseHas('organization_production', ['organization_id' => $newOrganization->id, 'production_id' => $production->id]);
+        $this->assertDatabaseHas('organization_production', ['organization_id' => $userOrganization->id, 'production_id' => $production->id]);
     }
 
 

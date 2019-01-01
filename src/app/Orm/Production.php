@@ -9,6 +9,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use OwenIt\Auditing\Contracts\Auditable;
 
+/**
+ * Class Production
+ * @package App\Orm
+ * @property string $title
+ * @property string $description
+ * @property string $excerpt
+ * @property string $slug
+ * @property int $creator_id
+ * @property int $header_img_id
+ */
 class Production extends Model implements Auditable
 {
     use \Dimsav\Translatable\Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable;
@@ -24,6 +34,9 @@ class Production extends Model implements Auditable
         'deleted_at'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function organizations()
     {
         return $this->belongsToMany('App\Orm\Organization')->using('App\Orm\OrganizationProduction');

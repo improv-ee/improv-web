@@ -7,7 +7,7 @@ use App\Http\Requests\Production\DeleteProductionRequest;
 use App\Http\Requests\Production\StoreProductionRequest;
 use App\Http\Requests\Production\UpdateProductionRequest;
 use App\Http\Resources\ProductionResource;
-use App\Orm\Image;
+use App\Http\Services\ProductionStorageService;
 use App\Orm\Production;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -19,6 +19,17 @@ use Illuminate\Support\Facades\Auth;
  */
 class ProductionController extends Controller
 {
+    /**
+     * @var ProductionStorageService
+     */
+    private $productionStorageService;
+
+    public function __construct(ProductionStorageService $productionStorageService)
+    {
+        $this->productionStorageService = $productionStorageService;
+    }
+
+
     public function show(Production $production): JsonResource
     {
         return new ProductionResource($production);
@@ -38,32 +49,18 @@ class ProductionController extends Controller
         return ProductionResource::collection($productions);
     }
 
-    protected function saveProduction(Production $production, Request $request): Production
-    {
-        $production->fill($request->all());
-
-        $image = Image::where('uid', $request->post('header_img'))->first();
-
-        if ($image) {
-            $production->header_img_id = $image->id;
-        }
-
-        $production->creator_id = $request->user()->id;
-
-        $production->save();
-
-        return $production;
-    }
-
     public function store(StoreProductionRequest $request)
     {
-        $production = $this->saveProduction(new Production, $request);
+        $production = new Production;
+        $production->creator_id = $request->user()->id;
+
+        $production = $this->productionStorageService->saveProduction($production, $request);
         return new ProductionResource($production);
     }
 
     public function update(Production $production, UpdateProductionRequest $request)
     {
-        $production = $this->saveProduction($production, $request);
+        $production = $this->productionStorageService->saveProduction($production, $request);
         return new ProductionResource($production);
     }
 

@@ -17,13 +17,11 @@ class UpdateProductionRequest extends DeleteProductionRequest
      */
     public function rules()
     {
-        return[
+        return [
             'excerpt' => 'max:300|nullable',
-            'title'=>'max:255|required|min:3',
-            'description'=>'max:3000|nullable',
-//            'organizations' =>'required|'
+            'title' => 'max:255|required|min:3',
+            'description' => 'max:3000|nullable',
+            'organizations' => 'required|array|exists:organization_translations,slug'
         ];
     }
-
-
 }
