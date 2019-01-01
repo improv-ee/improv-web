@@ -9,14 +9,25 @@ This is the source code for https://improv.ee, a website dedicated to listing in
 
 ## Development
 
+Configuration instructions are provided for a Linux (Ubuntu) based development environment.
+
 ### Needs to be installed
 
-- Docker (latest)
-- Docker Compose (latest)
+- [Docker][] (latest)
+- [Docker Compose][] (latest)
+- `openssl` (`apt-get install openssl`)
+- [Composer][]
+- [npm][]
 
 ### Setup
 
-Add `dev.improv.ee` to `/etc/hosts` as `127.0.0.1`.
+Install vendor packages:
+
+```bash
+cd src
+composer install
+npm install
+```
 
 Run the setup script:
 
@@ -24,15 +35,36 @@ Run the setup script:
 ./setup.sh
 ```
 
-[Generate](https://github.com/FiloSottile/mkcert) a self-signed certificate for `dev.improv.ee`
-and place it into `docker/lb/certs/server.crt` (with CA chain, private key is in `server.key`).
+This will generate a new self-signed CA and certificates for local development. You need to
+install your new Certificate Authority into your web browser. [Here is how](https://wiki.wmtransfer.com/projects/webmoney/wiki/Installing_root_certificate_in_Mozilla_Firefox)
+to do it for Firefox (`Settings -> Certificate Authorities -> Add`). The CA file for importing
+is `docker/lb/certs/ca.crt`. If done correctly, this will make `https://` "green" for our dev domains:
+
+`dev.improv.ee` will be the frontend webserver
+`api.dev.improv.ee` will be the API
+
+DNS entries are already configured in global DNS to point to `127.0.0.1`.
+
+Review settings in `src/.env` - this will be your local conf.
 
 Bring up services:
 
 ```bash
-docker-compose build
 docker-compose up
 ```
+
+You need to bootstrap the database (once) and set up Laravel.
+
+```bash
+docker-compose run webserver bash
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan passport:install
+```
+
+If all goes well you should have Docker containers running, database bootstrapped and webpages
+(with green HTTPS) opening on `dev.improv.ee` and `api.dev.improv.ee`.
 
 ## Deployment to a DigitalOcean Droplet
 
@@ -71,3 +103,8 @@ Want to help? Great - submit a pull request or an issue.
 ## License
 
 Licensed under Apache-2.0 license.
+
+[Docker]: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+[Docker Compose]: https://docs.docker.com/compose/install/
+[Composer]: https://getcomposer.org/download/
+[npm]: https://www.npmjs.com/get-npm

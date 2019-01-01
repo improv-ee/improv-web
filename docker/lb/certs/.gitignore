@@ -1,2 +1,5 @@
-server.crt
-server.key
+*.crt
+*.key
+dhparam.pem
+*.csr
+ca.srl
