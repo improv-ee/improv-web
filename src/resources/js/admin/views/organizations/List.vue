@@ -69,7 +69,7 @@
                 }
 
                 let self = this;
-                axios.post('/api/organizations', {"name": this.newOrganizationName})
+                axios.post(config.apiUrl + '/organizations', {"name": this.newOrganizationName})
                     .then(function (response) {
                         self.$router.push({
                             name: 'organization.edit',
@@ -87,7 +87,7 @@
             },
 
             getResults(page = 1) {
-                axios.get('/api/organizations', {params: {page: page, onlyMine: 1}})
+                axios.get(config.apiUrl + '/organizations', {params: {page: page, onlyMine: 1}})
                     .then(response => {
                         this.organizations = response.data.data;
                     });

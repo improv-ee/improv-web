@@ -103,7 +103,7 @@
                 let self = this;
                 let formData = new FormData();
                 formData.append('image', e.srcElement.files[0]);
-                axios.post('/api/images', formData, {
+                axios.post(config.apiUrl + '/images', formData, {
                     onUploadProgress: this.uploadProgress,
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -134,7 +134,7 @@
             create() {
                 let self = this;
 
-                axios.post('/api/productions', this.form)
+                axios.post(config.apiUrl + '/productions', this.form)
                     .then(function (response) {
 
                         self.$router.push({
@@ -155,7 +155,7 @@
             edit() {
                 let self = this;
 
-                axios.put('/api/productions/' + self.production.slug, this.form)
+                axios.put(config.apiUrl + '/productions/' + self.production.slug, this.form)
                     .then(function (response) {
 
                         self.$router.push({

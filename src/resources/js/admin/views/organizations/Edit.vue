@@ -57,7 +57,7 @@
             onSubmit() {
                 let self = this;
 
-                axios.put('/api/organizations/' + this.$route.params.slug, this.form)
+                axios.put(config.apiUrl + '/organizations/' + this.$route.params.slug, this.form)
                     .then(function (response) {
 
                         self.$router.push({
@@ -68,7 +68,7 @@
             }
         },
         mounted() {
-            axios.get('/api/organizations/' + this.$route.params.slug)
+            axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
                 .then(response => {
                     this.organization = response.data.data;
                     this.form = {

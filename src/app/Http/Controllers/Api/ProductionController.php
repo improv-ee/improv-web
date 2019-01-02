@@ -41,6 +41,9 @@ class ProductionController extends Controller
         $query = Production::orderBy('created_at', 'desc');
 
         if ($request->input('onlyMine', false)) {
+            if (Auth::user() === null) {
+                return response(null,403);
+            }
             $query->belongingToUser(Auth::user());
         }
 

@@ -66,7 +66,7 @@
             },
             addEvent() {
                 let self = this;
-                axios.post('/api/events', {
+                axios.post(config.apiUrl + '/events', {
                     'production': {'slug': this.$route.params.slug},
                     'times': {
                         'start': moment().add(24, 'h').format(),
@@ -83,7 +83,7 @@
         },
         mounted() {
             let self = this;
-            axios.get('/api/productions/' + this.$route.params.slug)
+            axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
                 .then(response => {
                     self.production = response.data.data;
                     console.log(self.production)

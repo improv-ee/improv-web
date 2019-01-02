@@ -67,14 +67,14 @@
         },
         methods: {
             loadProduction: function (slug) {
-                axios.get('/api/productions/' + slug)
+                axios.get(config.apiUrl + '/productions/' + slug)
                     .then(response => {
                         this.production = response.data.data;
                     });
             }
         },
         created() {
-            axios.get('/api/events/' + this.$route.params.uid)
+            axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
                 .then(response => {
                     this.event = response.data.data;
                     this.loadProduction(this.event.production.slug)
