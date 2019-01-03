@@ -25,7 +25,7 @@
 
             loadOrganization() {
                 let self = this;
-                axios.get('/api/organizations/' + this.$route.params.slug)
+                axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
                     .then(response => {
                         self.organization = response.data.data;
                     });

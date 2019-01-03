@@ -24,7 +24,7 @@
             }
         },
         mounted() {
-            axios.get('/api/events/' + this.$route.params.uid)
+            axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
                 .then(response => {
                     this.event = response.data.data;
                 });

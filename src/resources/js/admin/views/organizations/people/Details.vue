@@ -43,7 +43,7 @@
         methods: {
             removeMember() {
                 let self = this;
-                axios.delete(`/api/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`)
+                axios.delete(`${config.apiUrl}/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`)
                     .then(function () {
                         self.$router.push({
                             name: 'organization.details',
@@ -54,7 +54,7 @@
             },
             loadMember() {
                 let self = this;
-                axios.get(`/api/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`)
+                axios.get(`${config.apiUrl}/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`)
                     .then(response => {
                         self.membership = response.data.data;
                         self.userRole = self.getCurrentRole(response.data.data.organization, self.$route.params.username);
@@ -62,7 +62,7 @@
             },
             changeMembership() {
                 let self = this;
-                axios.put(`/api/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`, {
+                axios.put(`${config.apiUrl}/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`, {
                     role: this.userRole
                 }).then(
                     self.$router.push({

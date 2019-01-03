@@ -4,6 +4,7 @@ namespace Tests\Feature\Api;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 
 class ImagesTest extends ApiTestCase
@@ -20,7 +21,7 @@ class ImagesTest extends ApiTestCase
         $testImage = UploadedFile::fake()->image('header.jpg', 800, 400);
 
         return [
-            'response' => $this->post('/api/images', ['image' => $testImage]),
+            'response' => $this->post($this->getApiUrl() . '/images', ['image' => $testImage]),
             'image' => $testImage
         ];
     }
@@ -38,7 +39,7 @@ class ImagesTest extends ApiTestCase
         $upload = $this->uploadValidImage();
         $response = $upload['response'];
 
-        $response->assertJson(['url' => url('storage/images', '', true) . '/' . $response->json()['uid']]);
+        $response->assertJson(['url' => $this->getWebUrl().'/storage/images/' . $response->json()['uid']]);
     }
 
 
@@ -60,7 +61,7 @@ class ImagesTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
         $testImage = UploadedFile::fake()->image('header.jpg', 50, 60);
-        $response = $this->post('/api/images', ['image' => $testImage]);
+        $response = $this->post($this->getApiUrl() . '/images', ['image' => $testImage]);
         $response->assertStatus(422);
     }
 
@@ -68,7 +69,7 @@ class ImagesTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
         $testImage = UploadedFile::fake()->image('header.jpg', 2001, 2001);
-        $response = $this->post('/api/images', ['image' => $testImage]);
+        $response = $this->post($this->getApiUrl() . '/images', ['image' => $testImage]);
         $response->assertStatus(422);
     }
 }

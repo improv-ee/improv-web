@@ -56,7 +56,7 @@
         methods: {
             onSubmit(evt) {
                 let self = this;
-                axios.put('/api/events/' + this.$route.params.uid, this.form)
+                axios.put(config.apiUrl + '/events/' + this.$route.params.uid, this.form)
                     .then(function (response) {
 
                         self.$router.push({

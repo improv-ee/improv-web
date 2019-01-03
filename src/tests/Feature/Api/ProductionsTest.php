@@ -39,8 +39,7 @@ class ProductionsTest extends ApiTestCase
      */
     public function testProductionInfoIsReturned()
     {
-
-        $response = $this->get('/api/productions');
+        $response = $this->get($this->getApiUrl().'/productions');
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
@@ -69,7 +68,7 @@ class ProductionsTest extends ApiTestCase
         $productions[2]->organizations()->attach($otherOrganization);
         $productions[4]->organizations()->attach($organization);
 
-        $response = $this->get('/api/productions?onlyMine=true');
+        $response = $this->get($this->getApiUrl() . '/productions?onlyMine=true');
 
         $response->assertStatus(200)->assertJsonCount(2, 'data')
             ->assertJson(['data' => [
@@ -86,7 +85,7 @@ class ProductionsTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
 
-        $response = $this->post('/api/productions', $this->validProductionInput);
+        $response = $this->post($this->getApiUrl() . '/productions', $this->validProductionInput);
         $response->assertStatus(201)
             ->assertJson(['data' => ['title' => $this->validProductionInput['title'], 'slug' => 'sad-margarita']]);
 
@@ -104,7 +103,7 @@ class ProductionsTest extends ApiTestCase
 
         $input = $this->production->toArray();
         $input['organizations'] = [$userOrganization->slug, $newOrganization->slug];
-        $response = $this->put('/api/productions/' . $this->production->slug, $input);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $input);
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
@@ -128,7 +127,7 @@ class ProductionsTest extends ApiTestCase
             'description' => 'First improv festival in Estonia',
             'excerpt' => 'Lots of shows, many nights of fun']);
 
-        $response = $this->put('/api/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
         $response->assertStatus(200)
             ->assertJson(['data' => ['title' => $productionInput['title'],
                 'description' => $productionInput['description'],
@@ -145,7 +144,7 @@ class ProductionsTest extends ApiTestCase
 
         $productionInput = array_replace($this->validProductionInput, ['header_img' => '']);
 
-        $response = $this->put('/api/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
 
         $response->assertStatus(200);
         $this->assertDatabaseHas('productions', ['id' => $this->production->id, 'header_img_id' => null]);
@@ -159,7 +158,7 @@ class ProductionsTest extends ApiTestCase
             'description' => 'First improv festival in Estonia',
             'excerpt' => 'Lots of shows, many nights of fun'];
 
-        $response = $this->put('/api/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
 
         $response->assertStatus(403);
     }
@@ -168,7 +167,7 @@ class ProductionsTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
 
-        $response = $this->post('/api/productions', ['title' => '']);
+        $response = $this->post($this->getApiUrl() . '/productions', ['title' => '']);
         $response->assertStatus(422)
             ->assertJson(['message' => 'The given data was invalid.']);
     }
@@ -177,7 +176,7 @@ class ProductionsTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
 
-        $response = $this->delete('/api/productions/' . $this->production->slug);
+        $response = $this->delete($this->getApiUrl() . '/productions/' . $this->production->slug);
         $response->assertStatus(403);
 
     }
@@ -187,7 +186,7 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
-        $response = $this->delete('/api/productions/' . $this->production->slug);
+        $response = $this->delete($this->getApiUrl() . '/productions/' . $this->production->slug);
 
         $response->assertStatus(200);
     }

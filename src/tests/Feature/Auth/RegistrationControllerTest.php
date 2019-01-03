@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class RegistrationControllerTest extends TestCase
@@ -18,16 +19,24 @@ class RegistrationControllerTest extends TestCase
         'password_confirmation' => 'wE6h0WkhD3rLwsRO8pp7',
     ];
 
+    protected function setUp()
+    {
+        parent::setUp();
+        Config::set('app.url', $this->getWebUrl());
+    }
+
+
     public function testUserCanSignUp()
     {
         $response = $this->post('/register', $this->userRegistrationFields);
-        $response->assertRedirect('https://localhost/admin');
+        $response->assertRedirect($this->getWebUrl().'/admin');
 
         $this->assertDatabaseHas('users', ['username' => $this->userRegistrationFields['username']]);
     }
 
     public function testUserCanNotSignupWithTakenUsername()
     {
+
         $user = factory(User::class)->create();
 
         $fields = $this->userRegistrationFields;
@@ -39,7 +48,6 @@ class RegistrationControllerTest extends TestCase
 
     public function testUserCanNotSignupWithPwnedPasswd()
     {
-
         $fields = $this->userRegistrationFields;
         $fields['password'] = 'monkey';
         $fields['password_confirmation'] = 'monkey';

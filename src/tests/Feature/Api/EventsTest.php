@@ -27,7 +27,7 @@ class EventsTest extends ApiTestCase
     {
         $event = factory(Event::class)->create();
 
-        $response = $this->get('/api/events/' . $event->uid);
+        $response = $this->get($this->getApiUrl() . '/events/' . $event->uid);
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
@@ -49,7 +49,7 @@ class EventsTest extends ApiTestCase
 
         $start = Carbon::now()->addHour();
         $end = Carbon::now()->addHours(2);
-        $response = $this->post('/api/events', [
+        $response = $this->post($this->getApiUrl() . '/events', [
             'times' => [
                 'start' => $start->toIso8601String(),
                 'end' => $end,
@@ -74,7 +74,7 @@ class EventsTest extends ApiTestCase
             'title' => 'Batman',
             'description' => 'Begins'];
 
-        $response = $this->put('/api/events/' . $event->uid, $eventInput);
+        $response = $this->put($this->getApiUrl() . '/events/' . $event->uid, $eventInput);
         $response->assertStatus(200)
             ->assertJson(['data' => ['times' => $eventInput['times']]]);
 
@@ -87,7 +87,7 @@ class EventsTest extends ApiTestCase
         $this->actingAsOrganizationMember();
         $event = factory(Event::class)->create();
 
-        $response = $this->put('/api/events/' . $event->uid);
+        $response = $this->put($this->getApiUrl() . '/events/' . $event->uid);
         $response->assertStatus(403);
     }
 
@@ -100,7 +100,7 @@ class EventsTest extends ApiTestCase
         $eventInput = ['times' => ['start' => '2018-09-13T16:00:00+00:00', 'end' => '2018-09-13T17:00:00+00:00'],
             'title' => '', 'description' => 'Bannon'];
 
-        $response = $this->put('/api/events/' . $event->uid, $eventInput);
+        $response = $this->put($this->getApiUrl() . '/events/' . $event->uid, $eventInput);
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('event_translations', ['title' => null, 'description' => 'Bannon']);
@@ -111,7 +111,7 @@ class EventsTest extends ApiTestCase
         $this->actingAsOrganizationMember();
         $event = factory(Event::class)->create();
 
-        $response = $this->delete('/api/events/' . $event->uid);
+        $response = $this->delete($this->getApiUrl() . '/events/' . $event->uid);
         $response->assertStatus(403);
 
     }
@@ -123,7 +123,7 @@ class EventsTest extends ApiTestCase
         $event = factory(Event::class)->create();
         $this->assignEventToUser($event, $user);
 
-        $response = $this->delete('/api/events/' . $event->uid);
+        $response = $this->delete($this->getApiUrl() . '/events/' . $event->uid);
         $response->assertStatus(200);
 
     }

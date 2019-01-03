@@ -46,7 +46,7 @@
             },
             findOrganization(query) {
                 return new Promise((resolve, reject) => {
-                    axios.get('/api/organizations', {params: {'filter[name]': query}})
+                    axios.get(config.apiUrl + '/organizations', {params: {'filter[name]': query}})
                         .then(function (response) {
 
                             let organizations = _.map(response.data.data, function (organization) {

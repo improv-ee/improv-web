@@ -30,7 +30,7 @@
         methods: {
 
             getResults(page = 1) {
-                axios.get('/api/organizations', {params: {page: page}})
+                axios.get(config.apiUrl + '/organizations', {params: {page: page}})
                     .then(response => {
                         this.organizations = response.data.data;
                     });

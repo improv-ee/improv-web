@@ -32,7 +32,7 @@
                 return '/' + this.resourceName + '/' + this.resourceId + '/edit';
             },
             deletePath: function () {
-                return '/api/' + this.resourceName + '/' + this.resourceId;
+                return config.apiUrl + '/' + this.resourceName + '/' + this.resourceId;
             },
             deleteRedirectUri: function () {
                 return this.deleteRedirect !== '' ? this.deleteRedirect : {name: this.resourceName};

@@ -48,7 +48,7 @@
                 for (let i = 0; i < this.members.length; i++) {
                     let self = this;
 
-                    axios.get('/api/users/' + this.members[i].username)
+                    axios.get(config.apiUrl + '/users/' + this.members[i].username)
                         .then(response => {
 
                             let roleLabel = self.members[i].role === 0 ? self.$i18n.t('organization.user.role.admin') : self.$i18n.t('organization.user.role.member');

@@ -27,7 +27,7 @@
             }
         },
         mounted() {
-            axios.get('/api/events/schedule')
+            axios.get(config.apiUrl + '/events/schedule')
                 .then(response => {
                     this.events = response.data.data;
                     this.featuredEvents = this.events.splice(0,2);

@@ -1,17 +1,18 @@
-version: "3"
+version: "3.7"
 
 services:
   webserver:
     build:
       context: .
+      target: dev
     ports:
       - "8800"
     deploy:
       replicas: 2
     networks:
-      - backend
-      - db
-      - mail
+      backend:
+      db:
+      mail:
     environment:
       - APP_ENV=local
       - APP_URL=dev.improv.ee
@@ -47,7 +48,10 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - backend
+      backend:
+        aliases:
+          - dev.improv.ee
+          - api.dev.improv.ee
     volumes:
       - ./docker/lb/certs:/etc/ssl/certs/lb:ro
     depends_on:
