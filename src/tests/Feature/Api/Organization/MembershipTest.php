@@ -21,7 +21,7 @@ class MembershipTest extends ApiTestCase
         $newMember = factory(User::class)->create();
 
         $response = $this->post(
-            sprintf('/api/organizations/%s/membership', $organization->slug),
+            sprintf($this->getApiUrl() . '/organizations/%s/membership', $organization->slug),
             [
                 'username' => $newMember->username,
             ]
@@ -40,7 +40,7 @@ class MembershipTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember();
         $org = $user->organizations()->first();
-        $response = $this->get('/api/organizations/' . $org->slug . '/membership/' . $user->username);
+        $response = $this->get($this->getApiUrl() . '/organizations/' . $org->slug . '/membership/' . $user->username);
 
 
         $response->assertStatus(200)
@@ -59,7 +59,7 @@ class MembershipTest extends ApiTestCase
 
         $this->assertDatabaseHas('organization_user', ['user_id' => $user->id, 'organization_id' => $org->id]);
 
-        $response = $this->post(sprintf('/api/organizations/%s/membership', $org->slug), ['username' => $user->username]);
+        $response = $this->post(sprintf($this->getApiUrl() . '/organizations/%s/membership', $org->slug), ['username' => $user->username]);
 
         $response->assertStatus(400)
             ->assertJsonStructure(['errors' => []]);
@@ -74,7 +74,7 @@ class MembershipTest extends ApiTestCase
 
         Event::fake();
 
-        $this->post(sprintf('/api/organizations/%s/membership', $organization->slug), ['username' => $newMember->username]);
+        $this->post(sprintf($this->getApiUrl() . '/organizations/%s/membership', $organization->slug), ['username' => $newMember->username]);
 
         Event::assertDispatched(UserJoined::class, function ($e) use ($organization) {
             return $e->organizationUser->organization_id === $organization->id;
@@ -88,7 +88,7 @@ class MembershipTest extends ApiTestCase
         $newMember = factory(User::class)->create();
 
         $response = $this->post(
-            sprintf('/api/organizations/%s/membership', $organization->slug),
+            sprintf($this->getApiUrl() . '/organizations/%s/membership', $organization->slug),
             [
                 'username' => $newMember->username,
             ]
@@ -105,7 +105,7 @@ class MembershipTest extends ApiTestCase
         $member = factory(OrganizationUser::class)
             ->create(['organization_id' => $organization->id]);
 
-        $response = $this->delete(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $member->user->username));
+        $response = $this->delete(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->slug, $member->user->username));
 
         $response->assertStatus(200);
         $this->assertDatabaseMissing('organization_user', ['user_id' => $member->user->username]);
@@ -119,7 +119,7 @@ class MembershipTest extends ApiTestCase
         $member = factory(OrganizationUser::class)
             ->create(['organization_id' => $organization->id]);
 
-        $response = $this->delete(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $member->user->username));
+        $response = $this->delete(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->slug, $member->user->username));
 
         $response->assertStatus(403);
     }
@@ -129,7 +129,7 @@ class MembershipTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $organization = $user->organizations()->first();
 
-        $response = $this->delete(sprintf('/api/organizations/%s/membership/%s', $organization->slug, 'batman'));
+        $response = $this->delete(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->slug, 'batman'));
 
         $response->assertStatus(404);
     }
@@ -142,7 +142,7 @@ class MembershipTest extends ApiTestCase
         $member = factory(OrganizationUser::class)
             ->create(['organization_id' => $organization->id]);
 
-        $response = $this->put(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
+        $response = $this->put(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->slug, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
 
         $response->assertStatus(200);
 
@@ -159,7 +159,7 @@ class MembershipTest extends ApiTestCase
         $member = factory(OrganizationUser::class)
             ->create(['organization_id' => $organization->id]);
 
-        $response = $this->put(sprintf('/api/organizations/%s/membership/%s', $organization->slug, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
+        $response = $this->put(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->slug, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
 
         $response->assertStatus(403);
 

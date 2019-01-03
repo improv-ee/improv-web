@@ -11,7 +11,7 @@
         },
         mounted() {
             let self = this;
-            axios.get('/api/productions/' + this.$route.params.slug)
+            axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
                 .then(response => {
                     self.production = response.data.data;
                 });

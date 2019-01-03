@@ -19,7 +19,7 @@ class OrganizationsTest extends ApiTestCase
         factory(Organization::class)->create(['name' => 'Ruutu10 majatiim']);
         factory(Organization::class, 10)->create();
 
-        $response = $this->get('/api/organizations?filter[name]=Ruutu10');
+        $response = $this->get($this->getApiUrl() . '/organizations?filter[name]=Ruutu10');
         $response->assertStatus(200)
             ->assertJsonCount(3, 'data');
     }
@@ -30,7 +30,7 @@ class OrganizationsTest extends ApiTestCase
 
 
         $name = 'Justice League';
-        $response = $this->post('/api/organizations', [
+        $response = $this->post($this->getApiUrl() . '/organizations', [
             'name' => $name
         ]);
 
@@ -50,7 +50,7 @@ class OrganizationsTest extends ApiTestCase
         $organization = $user->organizations()->first();
         $this->assertNull($organization->deleted_at);
 
-        $response = $this->delete('/api/organizations/' . $organization->slug);
+        $response = $this->delete($this->getApiUrl() . '/organizations/' . $organization->slug);
         $response->assertStatus(200);
 
         $organization->refresh();
@@ -62,7 +62,7 @@ class OrganizationsTest extends ApiTestCase
         $this->actingAsLoggedInUser();
         $organization = factory(Organization::class)->create();
 
-        $response = $this->delete('/api/organizations/' . $organization->slug);
+        $response = $this->delete($this->getApiUrl() . '/organizations/' . $organization->slug);
         $response->assertStatus(403);
 
     }
@@ -72,7 +72,7 @@ class OrganizationsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_MEMBER);
         $organization = $user->organizations()->first();
 
-        $response = $this->delete('/api/organizations/' . $organization->slug);
+        $response = $this->delete($this->getApiUrl() . '/organizations/' . $organization->slug);
         $response->assertStatus(403);
 
         $organization->refresh();
@@ -84,7 +84,7 @@ class OrganizationsTest extends ApiTestCase
         $user = $this->actingAsLoggedInUser();
 
         $organizationName = 'The Evil League of Evil';
-        $response = $this->post('/api/organizations', [
+        $response = $this->post($this->getApiUrl() . '/organizations', [
             'name' => $organizationName
         ]);
 
@@ -102,7 +102,7 @@ class OrganizationsTest extends ApiTestCase
 
         $user = $this->actingAsOrganizationMember();
 
-        $response = $this->post('/api/organizations', [
+        $response = $this->post($this->getApiUrl() . '/organizations', [
             'name' => $user->organizations()->first()->name
         ]);
 
@@ -117,7 +117,7 @@ class OrganizationsTest extends ApiTestCase
 
         $newInput = ['name' => $organization->name, 'is_public' => true, 'description' => 'new description'];
 
-        $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
+        $response = $this->put($this->getApiUrl() . '/organizations/' . $organization->slug, $newInput);
 
         $response->assertStatus(200)
             ->assertJson(['data' => ['name' => $newInput['name']]]);
@@ -133,7 +133,7 @@ class OrganizationsTest extends ApiTestCase
 
         $newInput = ['name' => 'X-Force'];
 
-        $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
+        $response = $this->put($this->getApiUrl() . '/organizations/' . $organization->slug, $newInput);
         $response->assertStatus(403);
     }
 
@@ -144,7 +144,7 @@ class OrganizationsTest extends ApiTestCase
 
         $newInput = ['name' => 'X-Force'];
 
-        $response = $this->put('/api/organizations/' . $organization->slug, $newInput);
+        $response = $this->put($this->getApiUrl() . '/organizations/' . $organization->slug, $newInput);
         $response->assertStatus(403);
     }
 
@@ -156,7 +156,7 @@ class OrganizationsTest extends ApiTestCase
         $member = factory(User::class)->create();
 
         factory(OrganizationUser::class)->create(['user_id' => $member->id, 'organization_id' => $organizations[0]->id]);
-        $response = $this->get('/api/organizations');
+        $response = $this->get($this->getApiUrl() . '/organizations');
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
@@ -175,7 +175,7 @@ class OrganizationsTest extends ApiTestCase
     {
         $organization = factory(Organization::class)->create();
 
-        $response = $this->get('/api/organizations/' . $organization->slug);
+        $response = $this->get($this->getApiUrl() . '/organizations/' . $organization->slug);
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
@@ -192,7 +192,7 @@ class OrganizationsTest extends ApiTestCase
         $organizations = factory(Organization::class, 3)->create();
         $organizations[0]->users()->attach($user, ['creator_id' => $user->id]);
 
-        $response = $this->get('/api/organizations?onlyMine=1');
+        $response = $this->get($this->getApiUrl() . '/organizations?onlyMine=1');
 
         $response->assertStatus(200)
             ->assertJson([

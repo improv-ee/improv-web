@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
 
-    return view('frontpage');
-});
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'HomeController@index');
 
 Auth::routes(['verify' => true]);
 

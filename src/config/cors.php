@@ -20,7 +20,7 @@ return [
         'allow_credentials' => false,
 
         'allow_origins' => [
-            env('WEB_DOMAIN'),
+            'https://'.env('WEB_DOMAIN'),
         ],
 
         'allow_methods' => [
@@ -35,6 +35,7 @@ return [
         'allow_headers' => [
             'Content-Type',
             'X-Auth-Token',
+            'X-XSRF-TOKEN',
             'X-CSRF-TOKEN',
             'X-Requested-With',
             'Origin',

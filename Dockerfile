@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.2-apache as base
 
 WORKDIR /var/www/
 
@@ -12,3 +12,10 @@ RUN rmdir /var/www/html && \
 COPY docker/webserver/000-default.conf /etc/apache2/sites-available/
 COPY docker/webserver/ports.conf /etc/apache2/
 COPY src /var/www/
+
+
+FROM base as dev
+
+COPY docker/lb/certs/ca.crt /usr/local/share/ca-certificates/
+
+RUN update-ca-certificates

@@ -43,7 +43,7 @@
                     return
                 }
                 let self = this;
-                axios.post('/api/productions', {"title": this.newProductionTitle})
+                axios.post(config.apiUrl + '/productions', {"title": this.newProductionTitle})
                     .then(function (response) {
                         self.$router.push({
                             name: 'production.edit',
@@ -53,7 +53,7 @@
             },
 
             getResults(page = 1) {
-                axios.get('/api/productions?onlyMine=true', {params: {page: page}})
+                axios.get(config.apiUrl + '/productions?onlyMine=true', {params: {page: page}})
                     .then(response => {
                         this.productions = response.data;
                     });

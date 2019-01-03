@@ -63,6 +63,14 @@ php artisan db:seed
 php artisan passport:install
 ```
 
+`passport:install` will output 2 clients. Copy the ID and client secret of the password client and
+add them to `.env` file. 
+
+```
+OAUTH_API_CLIENT_ID=2
+OAUTH_API_CLIENT_SECRET=xxxxxx
+```
+
 If all goes well you should have Docker containers running, database bootstrapped and webpages
 (with green HTTPS) opening on `dev.improv.ee` and `api.dev.improv.ee`.
 

@@ -53,7 +53,7 @@
         methods: {
             addMember() {
                 let self = this;
-                axios.post(`/api/organizations/${ this.$route.params.slug }/membership`, {username: this.newMemberUsername})
+                axios.post(`${config.apiUrl}/organizations/${ this.$route.params.slug }/membership`, {username: this.newMemberUsername})
                     .then(function () {
                         self.loadOrganization();
                     }).catch(function (error) {
@@ -70,7 +70,7 @@
             },
             loadOrganization() {
                 let self = this;
-                axios.get('/api/organizations/' + this.$route.params.slug)
+                axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
                     .then(response => {
                         self.organization = response.data.data;
                     });
