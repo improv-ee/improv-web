@@ -12,6 +12,12 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    public function getWebUrl()
+    {
+        return sprintf('https://'.getenv('WEB_DOMAIN'));
+    }
+
+
     /**
      * @param int $role
      * @return \Illuminate\Contracts\Auth\Authenticatable|User
@@ -20,7 +26,7 @@ abstract class TestCase extends BaseTestCase
     {
         $user = $this->actingAsLoggedInUser();
         $organization = factory(Organization::class)->create();
-        $organization->users()->attach($user, ['role' => $role, 'creator_id'=>$user->id]);
+        $organization->users()->attach($user, ['role' => $role, 'creator_id' => $user->id]);
         return Passport::actingAs($user);
     }
 
