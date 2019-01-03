@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c72d24bd2551ce1e0d863a1c61235677",
+    "hash": "07e2d722a262396da3a6d63b31181140",
     "content-hash": "99b4242d5c30e3c02b8900b100b4d0da",
     "packages": [
         {
@@ -1156,16 +1156,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v7.0.3",
+            "version": "v7.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "404b345775c91cd04443e77e8d6164b9727a3448"
+                "reference": "d7f24f6d4e95049b04369d60596d7a5b619a1dc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/404b345775c91cd04443e77e8d6164b9727a3448",
-                "reference": "404b345775c91cd04443e77e8d6164b9727a3448",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/d7f24f6d4e95049b04369d60596d7a5b619a1dc9",
+                "reference": "d7f24f6d4e95049b04369d60596d7a5b619a1dc9",
                 "shasum": ""
             },
             "require": {
@@ -1187,12 +1187,12 @@
             },
             "require-dev": {
                 "mockery/mockery": "~1.0",
-                "phpunit/phpunit": "~6.0"
+                "phpunit/phpunit": "~7.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0-dev"
+                    "dev-master": "7.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1221,7 +1221,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2018-10-22 14:47:22"
+            "time": "2019-01-02 10:25:07"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -1821,16 +1821,16 @@
         },
         {
             "name": "mpociot/laravel-apidoc-generator",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpociot/laravel-apidoc-generator.git",
-                "reference": "d13b0e1687de3af9168d94e9845dba48423707b0"
+                "reference": "20fdf9858a6381c475a3eb54df520fa374725513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/d13b0e1687de3af9168d94e9845dba48423707b0",
-                "reference": "d13b0e1687de3af9168d94e9845dba48423707b0",
+                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/20fdf9858a6381c475a3eb54df520fa374725513",
+                "reference": "20fdf9858a6381c475a3eb54df520fa374725513",
                 "shasum": ""
             },
             "require": {
@@ -1883,7 +1883,7 @@
                 "documentation",
                 "laravel"
             ],
-            "time": "2018-12-12 21:07:16"
+            "time": "2019-01-02 19:53:45"
         },
         {
             "name": "mpociot/reflection-docblock",
@@ -4900,16 +4900,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/cfd5dc225767ca154853752abc93aeec040fcf36",
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36",
                 "shasum": ""
             },
             "require": {
@@ -4946,7 +4946,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-29 20:33:41"
+            "time": "2018-10-30 17:29:25"
         },
         {
             "name": "windwalker/renderer",
