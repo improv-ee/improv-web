@@ -12,8 +12,8 @@ import BootstrapVue from 'bootstrap-vue'
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faClock, faArrowUp,faArrowDown,faChevronLeft,faChevronRight,faCalendarCheck  } from '@fortawesome/free-solid-svg-icons'
-import {faCalendar,faTrashAlt,faTimesCircle} from '@fortawesome/free-regular-svg-icons'
-library.add(faClock, faCalendar,faArrowUp,faArrowDown,faChevronLeft,faChevronRight,faCalendarCheck,faTrashAlt,faTimesCircle);
+import {faCalendar,faTrashAlt,faTimesCircle,faEdit} from '@fortawesome/free-regular-svg-icons'
+library.add(faClock, faCalendar,faArrowUp,faArrowDown,faChevronLeft,faChevronRight,faCalendarCheck,faTrashAlt,faTimesCircle, faEdit);
 dom.watch();
 
 
