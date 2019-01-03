@@ -36,8 +36,8 @@
     group: root
     mode: 0660
   with_items:
-  - server.crt
-  - server.key
+  - web.crt
+  - web.key
 
 - name: Copy Cloudflare IP list
   copy:
