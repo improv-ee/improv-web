@@ -2,16 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, HasApiTokens,SoftDeletes,HasRoles;
+    use Notifiable, HasApiTokens, SoftDeletes, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username'
+        'name', 'email', 'password', 'username'
     ];
 
     protected $dates = [
@@ -39,12 +39,22 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function organizations(){
+    public function organizations()
+    {
         return $this->belongsToMany('App\Orm\Organization')->using('App\Orm\OrganizationUser');
     }
 
     public function getRouteKeyName()
     {
         return 'username';
+    }
+
+    /**
+     * @param string $username
+     * @return User
+     */
+    public function findForPassport(string $username):User
+    {
+        return $this->where('username', $username)->first();
     }
 }

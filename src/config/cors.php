@@ -17,7 +17,7 @@ return [
      */
     'default_profile' => [
 
-        'allow_credentials' => true,
+        'allow_credentials' => false,
 
         'allow_origins' => [
             'https://'.env('WEB_DOMAIN'),

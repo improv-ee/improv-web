@@ -23,14 +23,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app['request']->server->set('HTTPS', 'on');
 
         Schema::defaultStringLength(191);
-
-        View::share('vueConfig', [
-            'organization' => ['roles' => [
-                'ROLE_ADMIN' => 0
-            ]
-            ],
-            'apiUrl' => sprintf('https://%s/v1', env('API_DOMAIN')),
-            'username' => Auth::user()->username ?? null]);
     }
 
     /**

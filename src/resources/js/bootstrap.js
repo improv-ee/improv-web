@@ -31,9 +31,7 @@ require('mdbootstrap');
  */
 
 window.axios = require('axios');
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.withCredentials = true;
 
 window.moment = require('moment');
 require('moment/locale/et');
@@ -53,5 +51,4 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-const configElement = document.getElementById( 'config' );
-window.config = JSON.parse( configElement.innerHTML );
+window.config = JSON.parse(document.getElementById('config').innerHTML);
