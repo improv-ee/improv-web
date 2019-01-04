@@ -52,3 +52,4 @@ if (token) {
 }
 
 window.config = JSON.parse(document.getElementById('config').innerHTML);
+console.info('Connection with backend API at ' + window.config.apiUrl);

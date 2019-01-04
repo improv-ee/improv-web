@@ -15,7 +15,7 @@ class StandardPolicy extends Policy
             ->addDirective(Directive::CONNECT, [
                 Keyword::SELF,
                 'https://api.dev.improv.ee',
-                'https://api.test.improv.ee',
+                'https://api-test.improv.ee',
                 'https://sentry.io'
             ])
             ->addDirective(Directive::FRAME_ANCESTORS, Keyword::NONE)
