@@ -22,6 +22,7 @@ script:
   - php src/artisan apidoc:generate
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
+  - chown -R www-data:www-data storage
   - docker build -t improv/improv-ee:$TAG .
 
 after_success:
