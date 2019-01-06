@@ -7,7 +7,7 @@ php:
   - 7.2
 
 before_script:
-  - cp src/.env.testing src/.env
+  - touch src/.env
 
 before_install:
   - sudo apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle
