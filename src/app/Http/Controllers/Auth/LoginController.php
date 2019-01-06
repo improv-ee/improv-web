@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\Token;
 
-class LoginController extends Controller
+class LoginController extends TokenProviderController
 {
     /*
     |--------------------------------------------------------------------------
@@ -50,32 +47,7 @@ class LoginController extends Controller
         return 'username';
     }
 
-    /**
-     * @param string $username
-     * @param string $password
-     * @return string
-     */
-    protected function getToken(string $username, string $password): ?string
-    {
-        $client = new Client;
 
-        try {
-            $response = $client->post(route('passport.token', ['post' => 1]), [
-                'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => env('OAUTH_API_CLIENT_ID'),
-                    'client_secret' => env('OAUTH_API_CLIENT_SECRET'),
-                    'username' => $username,
-                    'password' => $password,
-                    'scope' => '',
-                ]
-            ]);
-
-            return json_decode($response->getBody())->access_token;
-        } catch (ClientException $e) {
-            return null;
-        }
-    }
 
     /**
      * @param Request $request
@@ -115,7 +87,6 @@ class LoginController extends Controller
             Auth::logout();
             return redirect('/login');
         }
-
         // API token is stored in session, for use in subsequent requests (by the frontend)
         $request->session()->put('apiToken', $token);
 

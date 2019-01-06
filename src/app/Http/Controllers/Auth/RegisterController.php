@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Rules\ReservedUsername;
 use App\User;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+class RegisterController extends TokenProviderController
 {
     /*
     |--------------------------------------------------------------------------
@@ -71,5 +72,30 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+
+        $token = $this->getToken($request->input('username'), $request->input('password'));
+
+        // Fetching API token failed, no point of continuing
+        if ($token === null) {
+            Auth::logout();
+            return redirect('/login');
+        }
+
+        // API token is stored in session, for use in subsequent requests (by the frontend)
+        $request->session()->put('apiToken', $token);
+
+        return redirect($this->redirectPath());
     }
 }
