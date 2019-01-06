@@ -20,7 +20,7 @@ script:
   - php src/vendor/bin/parallel-lint --exclude src/vendor src
   - php src/vendor/bin/phpunit -c src/
   - php src/artisan apidoc:generate
-  - npm run prod
+  - cd src && npm run prod && cd ..
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
   - docker build -t improv/improv-ee:$TAG .
