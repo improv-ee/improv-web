@@ -39,23 +39,12 @@ class ImagesTest extends ApiTestCase
         $upload = $this->uploadValidImage();
         $response = $upload['response'];
 
-        $response->assertJson(['url' => $this->getWebUrl().'/storage/images/' . $response->json()['uid']]);
+        $expectedUrl =$this->getApiUrl().'/images/'.$response->json()['uid'];
+
+        // $this->getWebUrl().'/storage/images/' . $response->json()['uid']
+        $response->assertJson(['url' =>$expectedUrl]);
     }
 
-
-    public function testUploadedImageIsOptimized()
-    {
-        $upload = $this->uploadValidImage();
-        $uploadedFileSize = $upload['image']->getSize();
-        $files = Storage::disk('images')->files();
-        $storedFileSize = Storage::disk('images')->size($files[0]);
-
-        $this->assertLessThan(
-            $uploadedFileSize,
-            $storedFileSize,
-            'The file that was stored on disk should be smaller than what was uploaded - the image should have been optimized.'
-        );
-    }
 
     public function testTooSmallImageIsRejected()
     {

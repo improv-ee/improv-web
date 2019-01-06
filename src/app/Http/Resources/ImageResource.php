@@ -17,7 +17,7 @@ class ImageResource extends JsonResource
         return [
             'uid' => $this->uid,
             'filename' => $this->filename,
-            'url' => sprintf('https://%s/%s',env('WEB_DOMAIN'),'storage/images/' . $this->uid),
+            'url' => route('api.images.show', ['uid' => $this->uid]),
             'links' => [
                 'self' => route('api.images.show', ['uid' => $this->uid])
             ]

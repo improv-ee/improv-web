@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ImageResource;
 use App\Orm\Image;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
@@ -25,7 +26,14 @@ class ImageController extends Controller
      */
     public function show($id)
     {
-        return null;
+        $file = Storage::disk('images')->get('images/' . $id);
+
+        $finfo = finfo_open();
+        $mimeType = finfo_buffer($finfo, $file, FILEINFO_MIME_TYPE);
+        finfo_close($finfo);
+
+        return Response::create($file, 200, ['Content-Type' => $mimeType]);
+
     }
 
     /**
@@ -40,12 +48,22 @@ class ImageController extends Controller
         ]);
 
         $originalFileName = $request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storePublicly('', 'images');
-        $prefix = Storage::disk('images')->getDriver()->getAdapter()->getPathPrefix();
+
+        $path = $request->file('image')->store('', ['disk' => 'local']);
+
+        $prefix = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+
         ImageOptimizer::optimize($prefix . $path);
+        $contents = Storage::disk('local')->readStream($path);
+
+        $uid = sha1(random_int(PHP_INT_MIN,PHP_INT_MAX).uniqid());
+        $path = Storage::disk('images')->put('images/' . $uid, $contents, ['disk' => 'images', 'visibility' => 'private']);
+
+        Storage::disk('local')->delete($path);
+
 
         $image = new Image;
-        $image->uid = $path;
+        $image->uid = $uid;
         $image->creator_id = $request->user()->id;
         $image->filename = $originalFileName;
         $image->save();

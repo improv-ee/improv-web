@@ -16,6 +16,7 @@ class StandardPolicy extends Policy
                 Keyword::SELF,
                 'https://api.dev.improv.ee',
                 'https://api-test.improv.ee',
+                'https://api.scenepartner.eu',
                 'https://sentry.io'
             ])
             ->addDirective(Directive::FRAME_ANCESTORS, Keyword::NONE)
@@ -29,6 +30,9 @@ class StandardPolicy extends Policy
                 Keyword::SELF,
                 'data:',
                 'http://improv.ee',
+                'https://api.dev.improv.ee',
+                'https://scenepartner.eu',
+                'https://api.scenepartner.eu',
                 'https://secure.gravatar.com'
             ])
             ->addDirective(Directive::MEDIA, Keyword::SELF)

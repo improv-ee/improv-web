@@ -9,7 +9,7 @@ abstract class ApiTestCase extends TestCase
 
     public function getApiUrl()
     {
-        return '/v1';
+        return 'https://' . env('API_DOMAIN') . '/v1';
     }
 
 
