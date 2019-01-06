@@ -44,11 +44,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+
+        Route::get('/health', function () {
+            return 'OK';
+        });
+
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
 
-        //
     }
 
     /**
