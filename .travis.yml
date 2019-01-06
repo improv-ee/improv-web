@@ -14,7 +14,7 @@ before_install:
 
 install:
   - composer install -d src --no-interaction --dev
-  - cd src && npm install
+  - cd src && npm install && cd ..
 
 script:
   - php src/vendor/bin/parallel-lint --exclude src/vendor src
