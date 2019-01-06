@@ -28,6 +28,10 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
+
+        if (env('OAUTH_KEY_PATH', false)) {
+            Passport::loadKeysFrom(env('OAUTH_KEY_PATH'));
+        }
         Passport::tokensExpireIn(now()->addDays(7));
     }
 }
