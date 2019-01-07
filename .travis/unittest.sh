@@ -5,8 +5,6 @@ set -e
 cd src
 touch .env
 
-sudo apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle
-
 composer install --no-interaction --dev
 npm install
 

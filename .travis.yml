@@ -17,6 +17,6 @@ jobs:
     script: .travis/unittest.sh
   - stage: "Create build artifacts"
     script: .travis/build-webserver.sh
-    name: "Build Docker webserver image"
+    name: "🐳Build Docker webserver image"
   - name: "Create API doc"
     script: .travis/make-apidoc.sh
