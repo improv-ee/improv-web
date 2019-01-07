@@ -5,30 +5,18 @@ services:
 
 php:
   - 7.2
+  - 7.3
 
-before_script:
-  - touch src/.env
 
-before_install:
-  - sudo apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle
-
-install:
-  - composer install -d src --no-interaction --dev
-  - cd src && npm install && cd ..
-
-script:
-  - cd src && php artisan passport:keys && cd ..
-  - php src/vendor/bin/parallel-lint --exclude src/vendor src
-  - php src/vendor/bin/phpunit -c src/
-  - php src/artisan apidoc:generate
-  - cd src && npm run prod && cd ..
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
-  - docker build -t improv/improv-ee:$TAG .
-
-after_success:
-  - docker push improv/improv-ee:$TAG
-  - docker rmi improv/improv-ee:$TAG
-
-after_script:
-  - docker logout
+jobs:
+  include:
+  - stage: "Analyze build quality"
+    name: "Run static analysis tools on code"
+    script: .travis/static-analysis.sh
+  - name: "Run unit tests"
+    script: .travis/unittest.sh
+  - stage: "Create build artifacts"
+    script: .travis/build-webserver.sh
+    name: "Build Docker webserver image"
+  - name: "Create API doc"
+    script: .travis/make-apidoc.sh
