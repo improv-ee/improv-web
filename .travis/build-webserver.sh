@@ -9,8 +9,10 @@ cd src
 touch .env
 
 composer install --no-interaction --prefer-dist --no-dev
-npm install
 
+# hack to get cross-env working. Don't know why this happens or is required.
+npm install cross-env -g
+npm install
 npm run prod
 
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
