@@ -12,18 +12,15 @@ php:
   - 7.2
   - 7.3
 
-
 jobs:
   include:
   - stage: "Test"
     name: "Run static analysis tools on code"
     script: .travis/static-analysis.sh
-  - name: "Run unit tests"
-    script: .travis/unittest.sh
   - stage: "🐳Create build artifacts"
     script: .travis/build-webserver.sh
     name: "🐳Build Docker webserver image"
   - name: "📜Create API doc"
     script: .travis/make-apidoc.sh
 
-script: true
+script: .travis/unittest.sh
