@@ -26,7 +26,12 @@ mix.js('resources/js/admin/app.js','public/js/admin')
 
 mix.webpackConfig({
     plugins: [
-        new BundleAnalyzerPlugin({openAnalyzer: false}),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'disabled',
+            generateStatsFile: true,
+            statsOptions: { source: false }
+        }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
 });

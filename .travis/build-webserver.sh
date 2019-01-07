@@ -2,6 +2,8 @@
 
 set -e
 
+export NODE_ENV=production
+
 cd src
 
 touch .env
