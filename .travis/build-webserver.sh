@@ -2,8 +2,9 @@
 
 set -e
 
+cd src
 
-touch src/.env
+touch .env
 
 composer install --no-interaction --prefer-dist --no-dev
 npm install
