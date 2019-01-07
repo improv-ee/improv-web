@@ -15,8 +15,10 @@ jobs:
     script: .travis/static-analysis.sh
   - name: "Run unit tests"
     script: .travis/unittest.sh
-  - stage: "Create build artifacts"
+  - stage: "🐳Create build artifacts"
     script: .travis/build-webserver.sh
     name: "🐳Build Docker webserver image"
-  - name: "Create API doc"
+  - name: "📜Create API doc"
     script: .travis/make-apidoc.sh
+
+script: true

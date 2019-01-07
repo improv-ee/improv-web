@@ -5,9 +5,9 @@ set -e
 cd src
 touch .env
 
-composer install --no-interaction --dev
+composer install --no-interaction
 npm install
 
-php artisan passport:keys
+php artisan passport:install
 
 php vendor/bin/phpunit
