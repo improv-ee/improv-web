@@ -3,6 +3,11 @@ sudo: required
 services:
   - docker
 
+cache:
+  directories:
+  - src/node_modules
+  - src/vendor
+
 php:
   - 7.2
   - 7.3
