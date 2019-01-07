@@ -17,6 +17,15 @@ abstract class TestCase extends BaseTestCase
         return sprintf('https://'.getenv('WEB_DOMAIN'));
     }
 
+    protected function setUp()
+    {
+        parent::setUp();
+
+        if (!file_exists(Passport::keyPath('oauth-private.key'))) {
+            Artisan::call('passport:install');
+        }
+    }
+
 
     /**
      * @param int $role

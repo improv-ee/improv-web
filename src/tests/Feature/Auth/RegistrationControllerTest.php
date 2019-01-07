@@ -29,7 +29,6 @@ class RegistrationControllerTest extends TestCase
 
     public function testUserCanSignUp()
     {
-        $this->markTestSkipped('API url during testing is wrong, TODO');
         $response = $this->post('/register', $this->userRegistrationFields);
         $response->assertRedirect($this->getWebUrl().'/admin');
 

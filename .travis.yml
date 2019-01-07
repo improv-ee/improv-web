@@ -5,31 +5,22 @@ services:
 
 cache:
   directories:
-  - src/node_modules
-  - src/vendor
-
+    - "$HOME/.npm"
+    - "$HOME/.composer"
 php:
   - 7.2
 
+node_js: 8.9
+
 jobs:
   include:
-  - stage: "Test"
-    name: "Run static analysis tools on code"
+  - stage: "🤖 Run quality checks"
+    name: "🕵️ Run static analysis tools on code"
     script: .travis/static-analysis.sh
-  - stage: "🐳Create build artifacts"
+  - name: "✔️ Run unit tests"
+    script: .travis/unittest.sh
+  - stage: "🐳 Create build artifacts"
     script: .travis/build-webserver.sh
-    name: "🐳Build Docker webserver image"
-  - name: "📜Create API doc"
+    name: "🐳 Build Docker webserver image"
+  - name: "📜 Create API doc"
     script: .travis/make-apidoc.sh
-
-
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
-script: .travis/unittest.sh
-
-after_script:
-  - ./cc-test-reporter format-coverage --input-type=clover --prefix src/ tests/coverage.xml
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

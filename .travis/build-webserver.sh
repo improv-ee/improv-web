@@ -2,8 +2,6 @@
 
 set -e
 
-export NODE_ENV=production
-
 cd src
 
 touch .env
@@ -12,10 +10,11 @@ echo "Installing Composer dependencies"
 composer install --no-interaction --prefer-dist --no-dev
 
 echo "Installing NPM dependencies"
-npm install
+npm i -g npm@5.8.0
+npm ci
 
 echo "Generating static assets"
-npm run prod
+./node_modules/.bin/webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js
 
 cd ..
 
