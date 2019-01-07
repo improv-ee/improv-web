@@ -10,7 +10,7 @@ php:
 
 jobs:
   include:
-  - stage: "Analyze build quality"
+  - stage: "Test"
     name: "Run static analysis tools on code"
     script: .travis/static-analysis.sh
   - name: "Run unit tests"
