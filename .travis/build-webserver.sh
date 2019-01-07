@@ -10,8 +10,6 @@ touch .env
 
 composer install --no-interaction --prefer-dist --no-dev
 
-# hack to get cross-env working. Don't know why this happens or is required.
-npm install cross-env -g
 npm install
 npm run prod
 

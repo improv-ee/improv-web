@@ -5,7 +5,6 @@ services:
 
 cache:
   directories:
-  - src/node_modules
   - src/vendor
 
 php:
