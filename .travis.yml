@@ -17,6 +17,7 @@ install:
   - cd src && npm install && cd ..
 
 script:
+  - cd src && php artisan passport:keys && cd ..
   - php src/vendor/bin/parallel-lint --exclude src/vendor src
   - php src/vendor/bin/phpunit -c src/
   - php src/artisan apidoc:generate
