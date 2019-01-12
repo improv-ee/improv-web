@@ -1,7 +1,7 @@
 
 - name: Download latest version of source code
   git:
-    repo: 'https://github.com/improv-ee/improv-ee.git'
+    repo: 'https://github.com/improvision-eu/improvision-web.git'
     dest: /var/www/improv-ee
     version: master
     force: yes

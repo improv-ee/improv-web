@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://dev.improv.ee'),
+    'url' => env('APP_URL', 'https://web.local.improvision.eu'),
 
     /*
     |--------------------------------------------------------------------------
