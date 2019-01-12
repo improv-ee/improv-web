@@ -149,5 +149,5 @@ return [
      * If you want to use this, please be aware of the following rules:
      * - size: 230 x 52
      */
-    'logo' => public_path('img/docs-logo.png'),
+    'logo' => false,
 ];
