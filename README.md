@@ -1,9 +1,9 @@
 # improvision-web
 
 [![](https://img.shields.io/travis/improvision-eu/improvision-web.svg)](https://travis-ci.org/improvision-eu/improvision-web)
-[![Maintainability](https://api.codeclimate.com/v1/badges/d9ce787b2bf6972eddbc/maintainability)](https://codeclimate.com/github/improvision-eu/improvision-web/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/d9ce787b2bf6972eddbc/test_coverage)](https://codeclimate.com/github/improvision-eu/improvision-web/test_coverage)
-[![](https://img.shields.io/docker/pulls/improvision-eu/improvision-web.svg)](https://cloud.docker.com/u/improv/repository/docker/improvision-eu/improvision-web)
+[![Maintainability](https://api.codeclimate.com/v1/badges/50b00994c8be1c474693/maintainability)](https://codeclimate.com/github/improvision-eu/improvision-web/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/50b00994c8be1c474693/test_coverage)](https://codeclimate.com/github/improvision-eu/improvision-web/test_coverage)
+[![](https://img.shields.io/docker/pulls/improvision/improvision-web.svg)](https://cloud.docker.com/u/improvision/repository/registry-1.docker.io/improvision/improvision-web)
 
 This is the source code for https://improvision.eu, a website dedicated to listing information and events about improvised theatre.
 
