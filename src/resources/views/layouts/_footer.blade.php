@@ -15,22 +15,24 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="https://github.com/improvision-eu/improvision-web">GitHub</a>
+                        <a href="https://github.com/improvision-eu/improvision-web" target="_blank">GitHub</a>
                     </li>
                     <li>
-                        <a href="https://github.com/improvision-eu/improvision-web/wiki/Reporting-bugs-and-feature-requests">@lang('site.report_bug')</a>
+                        <a href="https://github.com/improvision-eu/improvision-web/wiki/Reporting-bugs-and-feature-requests"
+                        target="_blank">@lang('site.report_bug')</a>
                     </li>
+
                 </ul>
 
             </div>
 
             <div class="col-md-3 mb-md-0 mb-3">
 
-                <h5 class="text-uppercase"> </h5>
+                <h5 class="text-uppercase">{{ config('app.name') }}</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">&nbsp;</a>
+                        <a href="https://docs.improvision.eu" target="_blank">@lang('site.api_doc')</a>
                     </li>
                     <li>
                         <a href="#!">&nbsp;</a>
