@@ -16,7 +16,7 @@ Vue.use(VueRouter);
 Vue.use(Notifications);
 Vue.use(BootstrapVue);
 
-Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue'));
+Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue').default);
 
 
 const router = new VueRouter({
@@ -24,7 +24,7 @@ const router = new VueRouter({
     routes: routes,
 });
 
-const messages = _.merge(require('../../lang/et/public.json'),require('../../lang/et/common.json'));
+const messages = _.merge(require('../../lang/et/public.json'), require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
 
 const app = new Vue({

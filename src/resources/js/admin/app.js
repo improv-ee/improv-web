@@ -8,6 +8,12 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import BootstrapVue from 'bootstrap-vue'
 
+import ProductionTableRow from './components/productions/ProductionTableRow'
+import ProductionForm from './components/productions/Form'
+import EventForm from './components/events/Form'
+import LaravelVuePagination from 'laravel-vue-pagination'
+import CrudToolbar from './components/CrudToolbar'
+
 // Font Awesome bits
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -24,11 +30,11 @@ Vue.use(datePicker);
 Vue.use(Notifications);
 
 
-Vue.component('production-table-row', require('./components/productions/ProductionTableRow'));
-Vue.component('production-form', require('./components/productions/Form'));
-Vue.component('event-form', require('./components/events/Form'));
-Vue.component('pagination', require('laravel-vue-pagination'));
-Vue.component('crud-toolbar', require('./components/CrudToolbar'));
+Vue.component('production-table-row', ProductionTableRow);
+Vue.component('production-form', ProductionForm);
+Vue.component('event-form', EventForm);
+Vue.component('pagination', LaravelVuePagination);
+Vue.component('crud-toolbar', CrudToolbar);
 
 Vue.component(
     'passport-clients',
