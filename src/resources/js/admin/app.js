@@ -1,13 +1,11 @@
-
 require('../bootstrap');
-
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import datePicker from 'vue-bootstrap-datetimepicker';
 import Notifications from 'vue-notification'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import BootstrapVue from 'bootstrap-vue'
-
+import App from './App';
 import ProductionTableRow from './components/productions/ProductionTableRow'
 import ProductionForm from './components/productions/Form'
 import EventForm from './components/events/Form'
@@ -79,7 +77,7 @@ window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.confi
 
 const app = new Vue({
     el: '#app',
-    render: createElement => createElement(require('./App.vue')),
+    render: createElement => createElement(App),
     router,
     i18n
 });

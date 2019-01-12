@@ -81,7 +81,7 @@
             isAdmin: function () {
                 for (let i in this.organization.members) {
                     let member = this.organization.members[i];
-                    if (member.username === window.config.username && member.role === window.config.organization.ROLE_ADMIN) {
+                    if (member.username === window.config.username && member.role === 0) {
                         return true;
                     }
                 }

@@ -32,9 +32,9 @@
         "press_to_select": "Vajuta [Enter], et valida",
         "and_number_others":"... ja {number} muud tulemust"
       }
+    },
+    "user": {
+      "username": "Kasutajanimi"
     }
-  },
-  "user": {
-    "username": "Kasutajanimi"
   }
 }

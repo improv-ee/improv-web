@@ -17,6 +17,7 @@
 
 <script>
     import Multiselect from 'vue-multiselect';
+    _ = require('lodash');
 
     export default {
         components: {Multiselect},

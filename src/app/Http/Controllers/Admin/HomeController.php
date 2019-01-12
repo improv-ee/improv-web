@@ -21,11 +21,6 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $vueConfig = [
-            'organization' => [
-                'roles' => [
-                    'ROLE_ADMIN' => OrganizationUser::ROLE_ADMIN
-                ]
-            ],
             'token' => $request->session()->get('apiToken'),
             'apiUrl' => sprintf('https://%s/v1', env('API_DOMAIN')),
             'username' => Auth::user()->username ?? null

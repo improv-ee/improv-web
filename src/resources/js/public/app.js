@@ -5,6 +5,8 @@ import Notifications from 'vue-notification'
 import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import Event from './components/schedule-feed/Event';
+import App from './App';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import {faCalendar, faAddressCard} from "@fortawesome/free-regular-svg-icons";
@@ -16,7 +18,7 @@ Vue.use(VueRouter);
 Vue.use(Notifications);
 Vue.use(BootstrapVue);
 
-Vue.component('schedule-feed-event', require('./components/schedule-feed/Event.vue').default);
+Vue.component('schedule-feed-event', Event);
 
 
 const router = new VueRouter({
@@ -29,7 +31,7 @@ const i18n = new VueI18n({    locale: 'et',    messages});
 
 const app = new Vue({
     el: '#app',
-    render: createElement => createElement(require('./App.vue')),
+    render: createElement => createElement(App),
     router,
     i18n
 });
