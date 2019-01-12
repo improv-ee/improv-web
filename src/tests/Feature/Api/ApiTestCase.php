@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Api;
 
+use Illuminate\Support\Facades\Artisan;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 abstract class ApiTestCase extends TestCase
@@ -16,6 +18,7 @@ abstract class ApiTestCase extends TestCase
     public function setUp()
     {
         parent::setUp();
+
         $this->withHeader('Accept', 'application/json');
     }
 }

@@ -124,14 +124,25 @@ class ProductionsSeeder extends Seeder
         $pathinf = pathinfo($url['path']);
         $filename = md5($imageUrl).'.'.$pathinf['extension'];
 
+        $uid = sha1(random_int(PHP_INT_MIN,PHP_INT_MAX).uniqid());
+
 
         if ($this->isImageDownloadRequired($imageUrl,$filename)) {
-            Storage::disk('images')->put($filename, file_get_contents($imageUrl));
-            ImageOptimizer::optimize(storage_path('app/public/images/').$filename);
+
+            Storage::disk('local')->put($uid,file_get_contents($imageUrl));
+            $prefix = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+
+            ImageOptimizer::optimize($prefix.$uid);
+            $optimizedFile = Storage::disk('local')->readStream($uid);
+            Storage::disk('images')->put('images/'.$filename, $optimizedFile);
+
+            Storage::disk('local')->delete($uid);
+
         }
 
+
         $image = new Image;
-        $image->uid = $filename;
+        $image->uid = $uid;
         $image->creator_id = 1;
         $image->filename = $pathinf['basename'];
         $image->save();

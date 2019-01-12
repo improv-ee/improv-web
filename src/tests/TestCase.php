@@ -6,6 +6,7 @@ use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\Passport;
 
 abstract class TestCase extends BaseTestCase
@@ -14,7 +15,16 @@ abstract class TestCase extends BaseTestCase
 
     public function getWebUrl()
     {
-        return sprintf('https://'.getenv('WEB_DOMAIN'));
+        return '';
+    }
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        if (!file_exists(Passport::keyPath('oauth-private.key'))) {
+            Artisan::call('passport:install');
+        }
     }
 
 

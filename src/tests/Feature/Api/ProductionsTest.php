@@ -71,14 +71,7 @@ class ProductionsTest extends ApiTestCase
         $response = $this->get($this->getApiUrl() . '/productions?onlyMine=true');
 
         $response->assertStatus(200)->assertJsonCount(2, 'data')
-            ->assertJson(['data' => [
-                [
-                    'title' => $productions[1]->title,
-                ],
-                [
-                    'title' => $productions[4]->title
-                ]
-            ]]);
+            ->assertJsonCount(2,'data');
     }
 
     public function testProductionCanBeCreated()
