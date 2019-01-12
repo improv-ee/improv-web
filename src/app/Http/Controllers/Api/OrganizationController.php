@@ -38,7 +38,7 @@ class OrganizationController extends Controller
     {
         $organizations = QueryBuilder::for(Organization::class)
             ->allowedFilters(Filter::custom('name', FilterTranslatedName::class))
-            ->orderBy('created_at', 'desc')
+            ->orderBy('name', 'desc')
             ->onlyMine($request->input('onlyMine', false))
             ->paginate(30);
         return OrganizationResource::collection($organizations);

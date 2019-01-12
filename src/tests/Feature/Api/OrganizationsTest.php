@@ -153,6 +153,11 @@ class OrganizationsTest extends ApiTestCase
         $this->actingAsLoggedInUser();
 
         $organizations = factory(Organization::class, 2)->create();
+        $organizations[0]->name = 'Dragons';
+        $organizations[0]->save();
+        $organizations[1]->name = 'Vampires';
+        $organizations[1]->save();
+
         $member = factory(User::class)->create();
 
         factory(OrganizationUser::class)->create(['user_id' => $member->id, 'organization_id' => $organizations[0]->id]);
