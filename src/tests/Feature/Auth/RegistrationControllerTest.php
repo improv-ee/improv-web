@@ -20,13 +20,6 @@ class RegistrationControllerTest extends TestCase
         'password_confirmation' => 'wE6h0WkhD3rLwsRO8pp7',
     ];
 
-    protected function setUp()
-    {
-        parent::setUp();
-        Config::set('app.url', $this->getWebUrl());
-    }
-
-
     public function testUserCanSignUp()
     {
         $response = $this->post('/register', $this->userRegistrationFields);

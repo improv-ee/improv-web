@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
 
     public function getWebUrl()
     {
-        return sprintf('https://'.getenv('WEB_DOMAIN'));
+        return '';
     }
 
     protected function setUp()
