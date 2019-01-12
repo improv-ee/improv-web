@@ -13,7 +13,15 @@
 </template>
 
 <script>
-    export default {
+    import PassportAuthorizedClients from '../../components/passport/AuthorizedClients';
+    import PassportClients from '../../components/passport/Clients';
+    import PassportPersonalAccessTokens from '../../components/passport/PersonalAccessTokens';
 
+    export default {
+        components: {
+            PassportAuthorizedClients,
+            PassportClients,
+            PassportPersonalAccessTokens
+        },
     }
 </script>
