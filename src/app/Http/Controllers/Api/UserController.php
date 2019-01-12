@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\User;
 
+/**
+ * Class UserController
+ * @group Users
+ */
 class UserController extends Controller
 {
     public function show(User $user)

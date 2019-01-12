@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProductionController
- *
+ * @group Productions
  */
 class ProductionController extends Controller
 {
@@ -52,6 +52,11 @@ class ProductionController extends Controller
         return ProductionResource::collection($productions);
     }
 
+    /**
+     * @param StoreProductionRequest $request
+     * @return ProductionResource
+     * @authenticated
+     */
     public function store(StoreProductionRequest $request)
     {
         $production = new Production;
@@ -61,12 +66,24 @@ class ProductionController extends Controller
         return new ProductionResource($production);
     }
 
+    /**
+     * @param Production $production
+     * @param UpdateProductionRequest $request
+     * @return ProductionResource
+     * @authenticated
+     */
     public function update(Production $production, UpdateProductionRequest $request)
     {
         $production = $this->productionStorageService->saveProduction($production, $request);
         return new ProductionResource($production);
     }
 
+    /**
+     * @param Production $production
+     * @param DeleteProductionRequest $request
+     * @throws \Exception
+     * @authenticated
+     */
     public function destroy(Production $production, DeleteProductionRequest $request)
     {
         $production->delete();

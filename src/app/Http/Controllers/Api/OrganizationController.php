@@ -15,6 +15,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * Class OrganizationController
+ * @group Organizations
  *
  */
 class OrganizationController extends Controller
@@ -44,6 +45,13 @@ class OrganizationController extends Controller
         return OrganizationResource::collection($organizations);
     }
 
+    /**
+     * @param Request $request
+     * @return OrganizationResource
+     * @authenticated
+     * @bodyParam name string required Name of the organization. Example: Loose Moose
+     * @responseFile 200 api-doc/v1/responses//organizations/store.200.json
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -66,12 +74,23 @@ class OrganizationController extends Controller
         return new OrganizationResource($organization);
     }
 
+    /**
+     * @param Organization $organization
+     * @param UpdateOrganizationRequest $request
+     * @return OrganizationResource
+     * @authenticated
+     */
     public function update(Organization $organization, UpdateOrganizationRequest $request)
     {
         $organization->fill($request->all())->save();
         return new OrganizationResource($organization);
     }
 
+    /**
+     * @param Organization $organization
+     * @throws \Exception
+     * @authenticated
+     */
     public function destroy(Organization $organization)
     {
 

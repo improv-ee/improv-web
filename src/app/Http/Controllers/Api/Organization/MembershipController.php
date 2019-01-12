@@ -12,6 +12,10 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class MembershipController
+ * @group Organizations
+ */
 class MembershipController extends Controller
 {
 
@@ -24,7 +28,13 @@ class MembershipController extends Controller
         return new MembershipResource($membership);
     }
 
-
+    /**
+     * @param Organization $organization
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @authenticated
+     */
     public function store(Organization $organization, Request $request)
     {
 
@@ -49,6 +59,12 @@ class MembershipController extends Controller
         return response(null, 201);
     }
 
+    /**
+     * @param Organization $organization
+     * @param User $user
+     * @param UpdateMembershipRequest $request
+     * @authenticated
+     */
     public function update(Organization $organization, User $user, UpdateMembershipRequest $request){
 
         $membership = OrganizationUser::getMembership($user->id, $organization->id);
@@ -58,6 +74,12 @@ class MembershipController extends Controller
 
     }
 
+    /**
+     * @param Organization $organization
+     * @param User $user
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @authenticated
+     */
     public function destroy(Organization $organization, User $user)
     {
         $this->authorize('removeMember',$organization);

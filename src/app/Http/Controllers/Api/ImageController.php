@@ -13,6 +13,7 @@ use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 /**
  * Class ImageController
+ * @group Images
  *
  */
 class ImageController extends Controller
@@ -39,7 +40,8 @@ class ImageController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @authenticated
      */
     public function store(Request $request)
     {

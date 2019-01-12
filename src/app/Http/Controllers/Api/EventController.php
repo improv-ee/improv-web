@@ -48,6 +48,7 @@ class EventController extends Controller
     /**
      * @param StoreEventRequest $request
      * @return JsonResource
+     * @authenticated
      */
     public function store(StoreEventRequest $request) : JsonResource
     {
@@ -72,6 +73,7 @@ class EventController extends Controller
      * @param Event $event
      * @param UpdateEventRequest $request
      * @return JsonResource
+     * @authenticated
      */
     public function update(Event $event, UpdateEventRequest $request): JsonResource
     {
@@ -89,6 +91,7 @@ class EventController extends Controller
      * @param Event $event
      * @param DeleteEventRequest $request
      * @throws \Exception
+     * @authenticated
      */
     public function destroy(Event $event, DeleteEventRequest $request) : void
     {

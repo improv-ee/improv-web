@@ -15,7 +15,7 @@ return [
     /*
      * Generate a Postman collection in addition to HTML docs.
      */
-    'postman' => true,
+    'postman' => false,
 
     /*
      * The routes for which documentation should be generated.
@@ -33,13 +33,13 @@ return [
                 /*
                  * Match only routes whose domains match this pattern (use * as a wildcard to match any characters).
                  */
-                'domains' => ['*',],
+                'domains' => [env('API_DOMAIN')],
 
                 /*
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    'api/*',
+                    'v1/*',
                 ],
 
                 /*
@@ -110,7 +110,7 @@ return [
                     'env' => [
                         'APP_ENV' => 'documentation',
                         'APP_DEBUG' => false,
-                        // 'env_var' => 'value',
+                        'APP_URL' => 'https://api.improvision.eu',
                     ],
 
                     /*
@@ -149,5 +149,5 @@ return [
      * If you want to use this, please be aware of the following rules:
      * - size: 230 x 52
      */
-    'logo' => false,
+    'logo' => public_path('img/docs-logo.png'),
 ];
