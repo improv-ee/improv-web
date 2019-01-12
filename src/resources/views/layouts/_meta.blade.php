@@ -12,6 +12,6 @@
 
 <link rel="author" type="text/plain" href="humans.txt" />
 
-@if(isset($vueConfig)):
+@if(isset($vueConfig))
 <script id="config" type="application/json">@json($vueConfig)</script>
 @endif

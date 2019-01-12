@@ -1,7 +1,5 @@
 /node_modules
 /public/hot
-!public/docs/Dockerfile
-!public/docs/source/prepend.md
 public/docs/*
 /public/fonts/vendor
 /public/images/vendor
