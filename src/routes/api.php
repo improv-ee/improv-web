@@ -22,6 +22,8 @@ Route::resource('productions', 'Api\ProductionController', ['as' => 'api'])->onl
     'index', 'show'
 ]);
 
+Route::get('/', function(){return response(200,["title"=>"improvision.eu API","doc"=>"https://docs.improvision.eu"]);});
+
 Route::get('/events/schedule', 'Api\EventController@schedule', ['as' => 'api'])->name('api.events.schedule');
 
 Route::resource('events', 'Api\EventController', ['as' => 'api'])->only([
