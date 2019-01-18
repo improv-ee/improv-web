@@ -77,23 +77,6 @@ OAUTH_API_CLIENT_SECRET=xxxxxx
 If all goes well you should have Docker containers running, database bootstrapped and webpages
 (with green HTTPS) opening on `web.local.improvision.eu` and `api.local.improvision.eu`.
 
-## Deployment to a DigitalOcean Droplet
-
-```bash
-$ export DIGITALOCEAN_TOKEN=xxxx
-$ cd terraform
-$ terraform init
-$ terraform apply
-
-# Check that all resources created OK in DO
-# Map domain name to floating IP
-
-$ cd ../ansible
-
-# Save vault token
-$ nano .vault 
-$ ansible-playbook -i hosts playbooks/all.yml
-```
 
 ## Api Doc
 

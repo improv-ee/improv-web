@@ -1,9 +1,0 @@
-- name: Install webserver
-  hosts: webserver
-  roles:
-    - geerlingguy.apache
-    - geerlingguy.php
-    - geerlingguy.composer
-    - geerlingguy.nginx
-    - geerlingguy.nodejs
-    - webserver
