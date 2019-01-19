@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\App;
+use Laravel\Passport\Client as OauthClient;
 
 abstract class TokenProviderController extends Controller
 {
@@ -25,12 +26,20 @@ abstract class TokenProviderController extends Controller
 
         $client = new Client;
 
+        // Use the first available password grant client
+
+        $oauthClient = OauthClient::where('password_client', 1)
+            ->where('user_id', null)
+            ->where('revoked', 0)
+            ->orderBy('id','asc')
+            ->firstOrFail();
+
         try {
             $response = $client->post(route('passport.token', ['post' => 1]), [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => env('OAUTH_API_CLIENT_ID'),
-                    'client_secret' => env('OAUTH_API_CLIENT_SECRET'),
+                    'client_id' => $oauthClient->id,
+                    'client_secret' => $oauthClient->secret,
                     'username' => $username,
                     'password' => $password,
                     'scope' => '',
