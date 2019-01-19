@@ -49,6 +49,16 @@ class RouteServiceProvider extends ServiceProvider
             return 'OK';
         });
 
+        Route::domain(env('API_DOMAIN'))
+            ->get('/', function () {
+                return response()->json([
+                    "title" => "improvision.eu API",
+                    "doc" => "https://docs.improvision.eu",
+                    "homepage" => "https://improvision.eu"
+                ]);
+            });
+
+
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
@@ -65,9 +75,9 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::domain(env('WEB_DOMAIN'))
-             ->middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -80,9 +90,9 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::domain(env('API_DOMAIN'))
-             ->prefix('v1')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->prefix('v1')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }
