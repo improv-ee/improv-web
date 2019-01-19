@@ -24,8 +24,7 @@ class ApiLogWriter implements LogWriter
             'files' => $files,
             'clientIp' => $request->ip(),
             'method' => $method,
-            'user' => Auth::user()->id ?? 0,
-            'session' => $request->session()->getId()
+            'user' => Auth::user()->id ?? 0
         ]);
     }
 }
