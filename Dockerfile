@@ -10,7 +10,7 @@ RUN rmdir /var/www/html && \
     rm -rf /var/lib/apt/lists/*
 
 COPY docker/webserver/000-default.conf /etc/apache2/sites-available/
-COPY docker/webserver/ports.conf /etc/apache2/
+COPY docker/webserver/apache2.conf /etc/apache2/
 COPY src /var/www/
 
 RUN chown -R www-data:www-data storage
