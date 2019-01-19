@@ -35,7 +35,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['daily'],
         ],
 
         'single' => [
@@ -44,11 +44,34 @@ return [
             'level' => 'debug',
         ],
 
+        // Application log
         'daily' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => 'debug',
-            'days' => 7,
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\RotatingFileHandler::class,
+            'handler_with' => [
+                'filename' => storage_path('logs/laravel.log'),
+                'maxFiles' => 7
+            ],
+            'formatter' => \Monolog\Formatter\LogstashFormatter::class,
+            'formatter_with' => [
+                'applicationName' => 'improvision-web',
+                'contextPrefix' => ''
+            ],
+        ],
+
+        // Api request log
+        'api' => [
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\RotatingFileHandler::class,
+            'handler_with' => [
+                'filename' => storage_path('logs/api.log'),
+                'maxFiles' => 7
+            ],
+            'formatter' => \Monolog\Formatter\LogstashFormatter::class,
+            'formatter_with' => [
+                'applicationName' => 'improvision-api',
+                'contextPrefix' => ''
+            ],
         ],
 
         'slack' => [

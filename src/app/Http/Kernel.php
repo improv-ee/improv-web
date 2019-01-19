@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \Spatie\HttpLogger\Middlewares\HttpLogger::class,
             'throttle:60,1',
             'bindings',
             AuthenticateIfPossible::class,
