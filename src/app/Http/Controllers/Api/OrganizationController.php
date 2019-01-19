@@ -50,7 +50,7 @@ class OrganizationController extends Controller
      * @return OrganizationResource
      * @authenticated
      * @bodyParam name string required Name of the organization. Example: Loose Moose
-     * @responseFile 200 api-doc/v1/responses//organizations/store.200.json
+     * @responseFile 200 api-doc/v1/responses/organizations/store.200.json
      */
     public function store(Request $request)
     {

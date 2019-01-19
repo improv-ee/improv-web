@@ -29,9 +29,22 @@ const router = new VueRouter({
 const messages = _.merge(require('../../lang/et/public.json'), require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
 
-const app = new Vue({
-    el: '#app',
-    render: createElement => createElement(App),
-    router,
-    i18n
-});
+
+function bootApp() {
+
+    // Wait for async Axios request to load app config...
+    if (!window.config) {
+        setTimeout(bootApp, 50);
+        return
+    }
+    console.log('Initializing app...');
+
+    new Vue({
+        el: '#app',
+        render: createElement => createElement(App),
+        router,
+        i18n
+    });
+}
+
+bootApp();

@@ -1,13 +1,13 @@
-
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
 window.Vue = require('vue');
 
 import * as Sentry from '@sentry/browser'
+
 Sentry.init({
     dsn: 'https://4b357e3a9aa347229d1f452bf469f676@sentry.io/1314907',
-    integrations: [new Sentry.Integrations.Vue({ Vue })]
+    integrations: [new Sentry.Integrations.Vue({Vue})]
 });
 
 /**
@@ -20,7 +20,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-} catch (e) {}
+} catch (e) {
+}
 
 require('mdbootstrap');
 
@@ -51,5 +52,13 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-window.config = JSON.parse(document.getElementById('config').innerHTML);
-console.info('Connection with backend API at ' + window.config.apiUrl);
+console.log('Initializing app, requesting runtime config from backend...');
+axios.get('/getConfig')
+    .then(response => {
+        window.config = response.data;
+        console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');
+    }).catch(function (error) {
+        window.location.href = '/maintenance';
+        console.error('Fatal - unable to load app config');
+});
+

@@ -15,6 +15,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
+Route::get('/getConfig', 'HomeController@getConfig')->name('config');
+Route::get('/maintenance', 'HomeController@maintenance')->name('maintenance');
 
 Auth::routes(['verify' => true]);
 

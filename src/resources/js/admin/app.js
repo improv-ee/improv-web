@@ -72,12 +72,25 @@ const router = new VueRouter({
 const messages = _.merge(require('../../lang/et/admin.json'),require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
 
-window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.config.token;
 
+function bootApp() {
 
-const app = new Vue({
-    el: '#app',
-    render: createElement => createElement(App),
-    router,
-    i18n
-});
+    // Wait for async Axios request to load app config...
+    if (!window.config) {
+        setTimeout(bootApp, 50);
+        return
+    }
+    console.log('Initializing app...');
+
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.config.token;
+
+    new Vue({
+        el: '#app',
+        render: createElement => createElement(App),
+        router,
+        i18n
+    });
+}
+
+bootApp();
+

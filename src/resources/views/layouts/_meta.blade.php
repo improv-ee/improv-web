@@ -11,7 +11,3 @@
 <meta name="language" content="{{ app()->getLocale() }}" />
 
 <link rel="author" type="text/plain" href="humans.txt" />
-
-@if(isset($vueConfig))
-<script id="config" type="application/json">@json($vueConfig)</script>
-@endif

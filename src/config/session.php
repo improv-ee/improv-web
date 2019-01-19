@@ -122,10 +122,7 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        str_slug(env('APP_NAME', 'improvision'), '_').'_session'
-    ),
+    'cookie' => 'improvision_session',
 
     /*
     |--------------------------------------------------------------------------
