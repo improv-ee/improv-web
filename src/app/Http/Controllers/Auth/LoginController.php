@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Auth\BearerToken;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,20 +34,14 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/admin';
 
-    /**
-     * @var BearerToken
-     */
-    protected $bearerToken;
 
     /**
      * Create a new controller instance.
      *
-     * @param BearerToken $bearerToken
      */
-    public function __construct(BearerToken $bearerToken)
+    public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->bearerToken = $bearerToken;
     }
 
     public function username()
@@ -63,12 +57,11 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::user()->tokens->each(function (Token $token, $key) {
-            $token->delete();
-        });
-
+        Auth::user()->revokeWebTokens();
         return $this->parentLogout($request);
     }
+
+
 
 
     /**
@@ -87,15 +80,10 @@ class LoginController extends Controller
             return $response;
         }
 
-        // Now, get a new Passport API Bearer token for the logged in user
-        $token = $this->bearerToken->getToken($request->input('username'), $request->input('password'));
+        // Revoke previous sessions
+        Auth::user()->revokeWebTokens();
 
-        // Fetching API token failed, no point of continuing
-        if ($token === null) {
-            Auth::logout();
-            return redirect('/login');
-        }
-        // API token is stored in session, for use in subsequent requests (by the frontend)
+        $token = Auth::user()->createWebToken();
         $request->session()->put('apiToken', $token);
 
         return $response;

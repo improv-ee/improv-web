@@ -33,20 +33,14 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin';
-    /**
-     * @var BearerToken
-     */
-    protected $bearerToken;
 
     /**
      * Create a new controller instance.
      *
-     * @param BearerToken $bearerToken
      */
-    public function __construct(BearerToken $bearerToken)
+    public function __construct()
     {
         $this->middleware('guest');
-        $this->bearerToken = $bearerToken;
     }
 
     /**
@@ -92,15 +86,8 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
 
-        $token = $this->bearerToken->getToken($request->input('username'), $request->input('password'));
-
-        // Fetching API token failed, no point of continuing
-        if ($token === null) {
-            Auth::logout();
-            return redirect('/register');
-        }
-
-        // API token is stored in session, for use in subsequent requests (by the frontend)
+        // Create new web access token on signup
+        $token = $user->createWebToken();
         $request->session()->put('apiToken', $token);
 
         return redirect($this->redirectPath());

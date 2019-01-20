@@ -1,9 +1,3 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-</style>
-
 <template>
     <div>
         <div>
@@ -11,10 +5,10 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
-                            Personal Access Tokens
+                            {{ $t('user.profile.api_tokens') }}
                         </span>
 
-                        <a class="action-link" tabindex="-1" @click="showCreateTokenForm">
+                        <a class="btn" tabindex="-1" @click="showCreateTokenForm">
                             Create New Token
                         </a>
                     </div>
@@ -44,7 +38,7 @@
 
                                 <!-- Delete Button -->
                                 <td style="vertical-align: middle;">
-                                    <a class="action-link text-danger" @click="revoke(token)">
+                                    <a class="btn btn-danger" @click="revoke(token)">
                                         Delete
                                     </a>
                                 </td>
@@ -207,7 +201,9 @@
             getTokens() {
                 axios.get('/oauth/personal-access-tokens')
                         .then(response => {
-                            this.tokens = response.data;
+                            this.tokens = response.data.filter(function(token){
+                                return token.name !== 'web-token';
+                            });
                         });
             },
 

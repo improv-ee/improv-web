@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Laravel\Passport\Token;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasApiTokens, SoftDeletes, HasRoles;
+
+    const OAUTH_WEB_TOKEN_NAME = 'web-token';
 
     /**
      * The attributes that are mass assignable.
@@ -53,8 +56,29 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param string $username
      * @return User
      */
-    public function findForPassport(string $username):User
+    public function findForPassport(string $username): User
     {
         return $this->where('username', $username)->first();
+    }
+
+    /**
+     * @return string
+     */
+    public function createWebToken(): string
+    {
+        $token = $this->createToken(User::OAUTH_WEB_TOKEN_NAME);
+        return $token->accessToken;
+    }
+
+    /**
+     *
+     */
+    public function revokeWebTokens()
+    {
+        $this->tokens->each(function (Token $token, $key) {
+            if ($token->name === self::OAUTH_WEB_TOKEN_NAME) {
+                $token->revoke();
+            }
+        });
     }
 }

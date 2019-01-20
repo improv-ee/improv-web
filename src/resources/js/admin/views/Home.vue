@@ -6,10 +6,6 @@
                     <p class="mb-0">{{ $t('dash.greeting')}}</p>
                     <footer class="blockquote-footer">T. H. Ilves</footer>
                 </blockquote>
-
-                <p class="lead text-center">
-
-                </p>
             </div>
         </div>
     </div>

@@ -27,7 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        Passport::routes(function ($router) {
+            $router->forPersonalAccessTokens();
+        });
 
         if (env('OAUTH_KEY_PATH', false)) {
             Passport::loadKeysFrom(env('OAUTH_KEY_PATH'));

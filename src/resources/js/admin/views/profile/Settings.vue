@@ -1,10 +1,10 @@
 <template>
 
     <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-12">
+            <h1>{{ $t('user.profile.settings')}}</h1>
 
-            <passport-clients></passport-clients>
-            <passport-authorized-clients></passport-authorized-clients>
+            <h2>{{ $t('user.profile.api_tokens') }}</h2>
             <passport-personal-access-tokens></passport-personal-access-tokens>
 
         </div>
@@ -13,14 +13,10 @@
 </template>
 
 <script>
-    import PassportAuthorizedClients from '../../components/passport/AuthorizedClients';
-    import PassportClients from '../../components/passport/Clients';
     import PassportPersonalAccessTokens from '../../components/passport/PersonalAccessTokens';
 
     export default {
         components: {
-            PassportAuthorizedClients,
-            PassportClients,
             PassportPersonalAccessTokens
         },
     }

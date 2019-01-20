@@ -10,7 +10,11 @@
       "greeting": "Meie homne on meie endi teha. - Ilves"
     },
     "user": {
-      "not_found": "Sellist kasutajanime ei leitud"
+      "not_found": "Sellist kasutajanime ei leitud",
+      "profile": {
+        "settings": "Profiili seaded",
+        "api_tokens":"API võtmed"
+      }
     },
     "event": {
       "attr": {

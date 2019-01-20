@@ -13,14 +13,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User;
-        $user->password = Hash::make('stargate');
-        $user->email = 'ando@sqroot.eu';
-        $user->email_verified_at = now();
-        $user->username = 'ando.roots';
-        $user->name = 'Ando Roots';
-        $user->save();
-
         factory(User::class,30)->create();
     }
 }
