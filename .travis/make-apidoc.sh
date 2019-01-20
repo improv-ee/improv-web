@@ -3,12 +3,9 @@
 set -e
 cd src
 
-cp .env.testing .env
+cp .env.documentation .env
 composer install --no-interaction --dev
 
-
-export APP_URL=https://api.improvision.eu
-export APP_DEBUG=false
 
 php artisan migrate
 php artisan passport:install

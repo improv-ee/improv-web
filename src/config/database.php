@@ -52,6 +52,11 @@ return [
             'database' => ':memory:',
             'prefix' => '',
         ],
+        'sqlite-file' => [
+            'driver' => 'sqlite',
+            'database' => storage_path('sqlite.db'),
+            'prefix' => '',
+        ],
         'migration' => [
             'driver' => 'mysql',
             'host' => env('MIGRATION_DB_HOST', 'import-db'),
