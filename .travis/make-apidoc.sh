@@ -11,7 +11,7 @@ export APP_URL=https://api.improvision.eu
 export APP_DEBUG=false
 
 php artisan migrate
-php artisan passport:insall
+php artisan passport:install
 export OAUTH_TOKEN=$(php artisan apidoc:seed)
 
 php artisan apidoc:generate
