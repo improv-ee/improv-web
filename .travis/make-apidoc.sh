@@ -3,15 +3,22 @@
 set -e
 cd src
 
-cp .env.testing .env
+cp .env.documentation .env
+touch storage/sqlite.db
+
 composer install --no-interaction --dev
-php artisan passport:keys
-APP_URL=https://api.improvision.eu php artisan apidoc:generate
+
+
+php artisan migrate
+php artisan passport:install
+export OAUTH_TOKEN=$(php artisan apidoc:seed)
+
+php artisan apidoc:generate
 
 mv build/api-docs/Dockerfile public/docs/
 mv build/api-docs/source/prepend.md public/docs/source/
 
-APP_URL=https://api.improvision.eu php artisan apidoc:rebuild
+php artisan apidoc:rebuild
 
 cd public/docs
 rm -rf source

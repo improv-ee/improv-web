@@ -77,7 +77,7 @@ return [
                  * Specify headers to be added to the example requests
                  */
                 'headers' => [
-                    // 'Authorization' => 'Bearer: {token}',
+                    'Authorization' => 'Bearer xxxxxx',
                     // 'Api-Version' => 'v2',
                 ],
 
@@ -99,7 +99,10 @@ return [
                      * Note that you must specify the full parameter, including curly brackets and question marks if any.
                      */
                     'bindings' => [
-                        // '{user}' => 1
+                         '{user}' => 'rahel',
+                         '{organization}' => 'jaa',
+                         '{event}' => 'amv9z6a23',
+                         '{production}' => 'bifurkatsioonipunkt'
                     ],
 
                     /*
@@ -111,6 +114,7 @@ return [
                         'APP_ENV' => 'documentation',
                         'APP_DEBUG' => false,
                         'APP_URL' => 'https://api.improvision.eu',
+                        'API_DOMAIN'=>'api.local.improvision.eu'
                     ],
 
                     /*
@@ -119,7 +123,8 @@ return [
                     'headers' => [
                         'Content-Type' => 'application/json',
                         'Accept' => 'application/json',
-                        // 'key' => 'value',
+                        'Host'=> env('API_DOMAIN'),
+                        'Authorization' => 'Bearer '.env('OAUTH_TOKEN')
                     ],
 
                     /*

@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Auth;
 
-use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\App;
 use Laravel\Passport\Client as OauthClient;
 
-abstract class TokenProviderController extends Controller
-{
+class BearerToken {
     /**
      * @param string $username
      * @param string $password
      * @return string
      */
-    protected function getToken(string $username, string $password): ?string
+    public function getToken(string $username, string $password): ?string
     {
 
         // Skip token creating when unittests are running

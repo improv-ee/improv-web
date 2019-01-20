@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Auth\BearerToken;
+use App\Http\Controllers\Controller;
 use App\Rules\ReservedUsername;
 use App\User;
 use Illuminate\Http\Request;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends TokenProviderController
+class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -31,15 +33,20 @@ class RegisterController extends TokenProviderController
      * @var string
      */
     protected $redirectTo = '/admin';
+    /**
+     * @var BearerToken
+     */
+    protected $bearerToken;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param BearerToken $bearerToken
      */
-    public function __construct()
+    public function __construct(BearerToken $bearerToken)
     {
         $this->middleware('guest');
+        $this->bearerToken = $bearerToken;
     }
 
     /**
@@ -85,12 +92,12 @@ class RegisterController extends TokenProviderController
     protected function registered(Request $request, $user)
     {
 
-        $token = $this->getToken($request->input('username'), $request->input('password'));
+        $token = $this->bearerToken->getToken($request->input('username'), $request->input('password'));
 
         // Fetching API token failed, no point of continuing
         if ($token === null) {
             Auth::logout();
-            return redirect('/login');
+            return redirect('/register');
         }
 
         // API token is stored in session, for use in subsequent requests (by the frontend)

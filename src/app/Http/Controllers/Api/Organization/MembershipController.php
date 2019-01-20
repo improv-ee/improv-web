@@ -13,12 +13,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class MembershipController
  * @group Organizations
  */
 class MembershipController extends Controller
 {
 
+    /**
+     * Show organization membership
+     *
+     * Shows details about a Users role in an Organization
+     *
+     * @param Organization $organization
+     * @param User $user
+     * @return MembershipResource
+     * @authenticated
+     */
     public function show(Organization $organization, User $user)
     {
         $membership = OrganizationUser::where('organization_id', $organization->id)
@@ -29,6 +38,9 @@ class MembershipController extends Controller
     }
 
     /**
+     * Add a new Organization member
+     *
+     * @bodyParam username string required
      * @param Organization $organization
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -60,6 +72,9 @@ class MembershipController extends Controller
     }
 
     /**
+     * Change User's membership in Organization
+     *
+     * @bodyParam role int required User role in Organization. 0 - admin; 1 - regular member
      * @param Organization $organization
      * @param User $user
      * @param UpdateMembershipRequest $request
@@ -75,6 +90,8 @@ class MembershipController extends Controller
     }
 
     /**
+     * Remove User from Organization
+     *
      * @param Organization $organization
      * @param User $user
      * @throws \Illuminate\Auth\Access\AuthorizationException

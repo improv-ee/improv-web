@@ -7,11 +7,18 @@ use App\Http\Resources\UserResource;
 use App\User;
 
 /**
- * Class UserController
  * @group Users
+ *
+ * Users are identified by their `username` attribute.
  */
 class UserController extends Controller
 {
+    /**
+     * Show User details
+     *
+     * @param User $user
+     * @return UserResource
+     */
     public function show(User $user)
     {
         return new UserResource($user);
