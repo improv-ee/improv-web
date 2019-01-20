@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Auth\BearerToken;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\Token;
 
-class LoginController extends TokenProviderController
+class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -33,13 +35,19 @@ class LoginController extends TokenProviderController
     protected $redirectTo = '/admin';
 
     /**
+     * @var BearerToken
+     */
+    protected $bearerToken;
+
+    /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param BearerToken $bearerToken
      */
-    public function __construct()
+    public function __construct(BearerToken $bearerToken)
     {
         $this->middleware('guest')->except('logout');
+        $this->bearerToken = $bearerToken;
     }
 
     public function username()
@@ -80,7 +88,7 @@ class LoginController extends TokenProviderController
         }
 
         // Now, get a new Passport API Bearer token for the logged in user
-        $token = $this->getToken($request->input('username'), $request->input('password'));
+        $token = $this->bearerToken->getToken($request->input('username'), $request->input('password'));
 
         // Fetching API token failed, no point of continuing
         if ($token === null) {

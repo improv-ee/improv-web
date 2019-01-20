@@ -20,10 +20,10 @@ class ImageController extends Controller
 {
 
     /**
-     * Mocked, needs to exists for tests/apidoc
      *
      * @param $id
      * @return null
+     * @response {}
      */
     public function show($id)
     {

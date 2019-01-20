@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\Auth;
 class MembershipController extends Controller
 {
 
+    /**
+     * Show organization membership
+     *
+     * Shows details about a Users role in an Organization
+     *
+     * @param Organization $organization
+     * @param User $user
+     * @return MembershipResource
+     * @authenticated
+     */
     public function show(Organization $organization, User $user)
     {
         $membership = OrganizationUser::where('organization_id', $organization->id)

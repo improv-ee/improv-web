@@ -1,0 +1,23 @@
+{
+  "data": {
+    "organization": {
+      "name": "asd",
+      "slug": "asd",
+      "description": null,
+      "is_public": false,
+      "is_member": true,
+      "members": [
+        {
+          "username": "sfsfsf",
+          "role": 0
+        }
+      ]
+    },
+    "user": {
+      "name": "sdfsf",
+      "username": "sfsfsf",
+      "avatar": "https://secure.gravatar.com/avatar/d67350ed8d44c36737684483d988e46b?s=200&r=g&d=identicon"
+    },
+    "role": 0
+  }
+}
