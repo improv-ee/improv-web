@@ -70,9 +70,12 @@ If all goes well you should have Docker containers running, database bootstrappe
 (with green HTTPS) opening on `web.local.improvision.eu` and `api.local.improvision.eu`.
 
 
-## Api Doc
+## API documentation
 
-API documentation can be generated using https://github.com/mpociot/laravel-apidoc-generator
+API documentation is generated from API source code using [apidoc-generator](https://github.com/mpociot/laravel-apidoc-generator).
+To change it, change PHP code comments on API controllers (`src/app/Http/Controllers/Api/`).
+
+### Regenerate documentation
 
 Run:
 

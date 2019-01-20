@@ -4,6 +4,8 @@ set -e
 cd src
 
 cp .env.documentation .env
+touch storage/sqlite.db
+
 composer install --no-interaction --dev
 
 

@@ -20,9 +20,13 @@ class ImageController extends Controller
 {
 
     /**
+     * Get an Image
+     *
+     * Returns the specified Image. The Content-Type of the response is that of an image (image/png).
      *
      * @param $id
      * @return null
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      * @response {}
      */
     public function show($id)
@@ -38,6 +42,8 @@ class ImageController extends Controller
     }
 
     /**
+     * Save a new Image
+     *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException

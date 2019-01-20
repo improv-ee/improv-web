@@ -29,12 +29,23 @@ class ProductionController extends Controller
         $this->productionStorageService = $productionStorageService;
     }
 
-
+    /**
+     * Show Production details
+     *
+     * @param Production $production
+     * @return JsonResource
+     */
     public function show(Production $production): JsonResource
     {
         return new ProductionResource($production);
     }
 
+    /**
+     * List all Productions
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
 
@@ -53,8 +64,14 @@ class ProductionController extends Controller
     }
 
     /**
+     * Create a new Production
+     *
      * @param StoreProductionRequest $request
      * @return ProductionResource
+     * @bodyParam title string required
+     * @bodyParam description string
+     * @bodyParam excerpt string
+     * @bodyParam organizations array required List of Organizations who "own" this Production
      * @authenticated
      */
     public function store(StoreProductionRequest $request)
@@ -67,9 +84,15 @@ class ProductionController extends Controller
     }
 
     /**
+     * Update Production details
+     *
      * @param Production $production
      * @param UpdateProductionRequest $request
      * @return ProductionResource
+     * @bodyParam title string required
+     * @bodyParam description string
+     * @bodyParam excerpt string
+     * @bodyParam organizations array required List of Organizations who "own" this Production
      * @authenticated
      */
     public function update(Production $production, UpdateProductionRequest $request)
@@ -79,6 +102,8 @@ class ProductionController extends Controller
     }
 
     /**
+     * Delete a Production
+     *
      * @param Production $production
      * @param DeleteProductionRequest $request
      * @throws \Exception

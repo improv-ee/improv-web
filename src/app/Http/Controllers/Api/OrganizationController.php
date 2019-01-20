@@ -14,9 +14,12 @@ use Spatie\QueryBuilder\Filter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 /**
- * Class OrganizationController
  * @group Organizations
  *
+ * An Organization is a group of Users with a common identity. Simply put, an
+ * Organization can equal an improv group.
+ *
+ * An Organization is identified by its `slug` attribute.
  */
 class OrganizationController extends Controller
 {
@@ -27,6 +30,8 @@ class OrganizationController extends Controller
     }
 
     /**
+     * Show Organization details
+     *
      * @param Organization $organization
      * @return OrganizationResource
      */
@@ -35,6 +40,12 @@ class OrganizationController extends Controller
         return new OrganizationResource($organization);
     }
 
+    /**
+     * List all Organizations
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index(Request $request)
     {
         $organizations = QueryBuilder::for(Organization::class)
@@ -46,6 +57,8 @@ class OrganizationController extends Controller
     }
 
     /**
+     * Create a new Organization
+     *
      * @param Request $request
      * @return OrganizationResource
      * @authenticated
@@ -75,9 +88,14 @@ class OrganizationController extends Controller
     }
 
     /**
+     * Update an Organization
+     *
      * @param Organization $organization
      * @param UpdateOrganizationRequest $request
      * @return OrganizationResource
+     * @bodyParam name string required Name of the organization. Example: Loose Moose
+     * @bodyParam description string
+     * @bodyParam is_public boolean
      * @authenticated
      */
     public function update(Organization $organization, UpdateOrganizationRequest $request)
@@ -87,6 +105,8 @@ class OrganizationController extends Controller
     }
 
     /**
+     * Delete an Organization
+     *
      * @param Organization $organization
      * @throws \Exception
      * @authenticated
