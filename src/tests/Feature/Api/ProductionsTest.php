@@ -7,9 +7,8 @@ use App\Orm\Production;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
- * Class ProductionsTest
  * @package Tests\Feature\Api
- * @covers \App\Http\Controllers\Api\ProductionController
+ * @covers \App\Http\Controllers\Api\V1\ProductionController
  */
 class ProductionsTest extends ApiTestCase
 {

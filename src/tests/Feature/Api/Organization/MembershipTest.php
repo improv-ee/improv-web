@@ -9,6 +9,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
 use Tests\Feature\Api\ApiTestCase;
 
+/**
+ * @package Tests\Feature\Api\Organization
+ * @covers \App\Http\Controllers\Api\V1\Organization\MembershipController
+ */
 class MembershipTest extends ApiTestCase
 {
     use DatabaseMigrations;

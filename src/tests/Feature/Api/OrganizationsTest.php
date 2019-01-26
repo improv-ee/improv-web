@@ -7,6 +7,10 @@ use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+/**
+ * @covers \App\Http\Controllers\Api\V1\OrganizationController
+ * @package Tests\Feature\Api
+ */
 class OrganizationsTest extends ApiTestCase
 {
     use DatabaseMigrations;

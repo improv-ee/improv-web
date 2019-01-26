@@ -9,6 +9,10 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+/**
+ * @package Tests\Feature\Api
+ * @covers \App\Http\Controllers\Api\V1\EventController
+ */
 class EventsTest extends ApiTestCase
 {
     use DatabaseMigrations;

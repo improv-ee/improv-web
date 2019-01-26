@@ -7,6 +7,10 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * @package Tests\Feature\Api
+ * @covers \App\Http\Controllers\Api\V1\ImageController
+ */
 class ImagesTest extends ApiTestCase
 {
     use DatabaseMigrations;
