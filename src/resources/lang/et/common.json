@@ -1,5 +1,16 @@
 {
   "et": {
+    "app": {
+      "name": "Improvision"
+    },
+    "site": {
+      "footer_copyright_text": "Loodud armastusest impro vastu. Kooki segati näputäis spontaansust, naeru, pisaraid ning kirge.",
+      "footer_copyright_holder": "improvision.eu tiim",
+      "help_and_support": "Abimaterjalid",
+      "report_bug": "Teata veast",
+      "api_doc": "API dokumentatsioon",
+      "meta_description": "improvision.eu koondab impro-ürituste mängukava ning infot improteatri kohta"
+    },
     "nav": {
       "organizations": "Organisatsioonid",
       "productions": "Produktsioonid"

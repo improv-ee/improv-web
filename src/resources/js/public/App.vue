@@ -19,9 +19,16 @@
             </b-collapse>
         </b-navbar>
         <router-view></router-view>
+
+        <BottomNav></BottomNav>
     </div>
 </template>
 
 <script>
-    export default {}
+    import BottomNav from '../components/BottomNav';
+    export default {
+        components: {
+            BottomNav
+        }
+    }
 </script>
