@@ -1,4 +1,4 @@
-<header class="blog-header py-3">
+<header class="site-header py-3">
     <div class="row align-items-center">
         <div class="col-12 col-md-8">
             <h1>
