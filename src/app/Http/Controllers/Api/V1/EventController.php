@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Event\DeleteEventRequest;
 use App\Http\Requests\Event\StoreEventRequest;
 use App\Http\Requests\Event\UpdateEventRequest;
-use App\Http\Resources\EventResource;
-use App\Http\Resources\ScheduleResource;
+use App\Http\Resources\V1\EventResource;
+use App\Http\Resources\V1\ScheduleResource;
 use App\Orm\Event;
 use App\Orm\Production;
 use Carbon\Carbon;

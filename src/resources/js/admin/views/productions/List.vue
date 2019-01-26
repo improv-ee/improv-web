@@ -22,7 +22,7 @@
                 </tbody>
             </table>
         </div>
-        <pagination :data="productions.meta" @pagination-change-page="getResults"
+        <pagination v-if="productions.meta" :data="productions.meta" @pagination-change-page="getResults"
                     class="justify-content-center"></pagination>
 
     </div>

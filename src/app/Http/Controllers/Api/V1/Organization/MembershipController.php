@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api\Organization;
+namespace App\Http\Controllers\Api\V1\Organization;
 
 use App\Events\Organization\UserJoined;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Organization\UpdateMembershipRequest;
-use App\Http\Resources\Organization\MembershipResource;
+use App\Http\Resources\V1\Organization\MembershipResource;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;

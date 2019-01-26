@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ImageResource;
+use App\Http\Resources\V1\ImageResource;
 use App\Orm\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

@@ -19,33 +19,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('productions', 'Api\ProductionController', ['as' => 'api'])->only([
+Route::resource('productions', 'ProductionController', ['as' => 'api'])->only([
     'index', 'show'
 ]);
 
 
-Route::get('/events/schedule', 'Api\EventController@schedule', ['as' => 'api'])->name('api.events.schedule');
+Route::get('/events/schedule', 'EventController@schedule', ['as' => 'api'])->name('api.events.schedule');
 
-Route::resource('events', 'Api\EventController', ['as' => 'api'])->only([
+Route::resource('events', 'EventController', ['as' => 'api'])->only([
     'index', 'show'
 ]);
 
-Route::resource('organizations', 'Api\OrganizationController', ['as' => 'api'])->only([
+Route::resource('organizations', 'OrganizationController', ['as' => 'api'])->only([
     'index', 'show'
 ]);
-Route::resource('users', 'Api\UserController', ['as' => 'api'])->only(['show']);
+Route::resource('users', 'UserController', ['as' => 'api'])->only(['show']);
 
-Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['show']);
+Route::apiResource('images', 'ImageController', ['as' => 'api'])->only(['show']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('productions', 'Api\ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
+    Route::apiResource('productions', 'ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
 
-    Route::apiResource('organizations', 'Api\OrganizationController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
+    Route::apiResource('organizations', 'OrganizationController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
 
-    Route::apiResource('events', 'Api\EventController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
-    Route::apiResource('images', 'Api\ImageController', ['as' => 'api'])->only(['store']);
+    Route::apiResource('events', 'EventController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
+    Route::apiResource('images', 'ImageController', ['as' => 'api'])->only(['store']);
 
 
-    Route::apiResource('organizations.membership', 'Api\Organization\MembershipController', ['as' => 'api', 'parameters' => ['membership' => 'user']])->only(['show', 'store', 'destroy', 'update']);
+    Route::apiResource('organizations.membership', 'Organization\MembershipController', ['as' => 'api', 'parameters' => ['membership' => 'user']])->only(['show', 'store', 'destroy', 'update']);
 });
-

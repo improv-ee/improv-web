@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Production\DeleteProductionRequest;
 use App\Http\Requests\Production\StoreProductionRequest;
 use App\Http\Requests\Production\UpdateProductionRequest;
-use App\Http\Resources\ProductionResource;
+use App\Http\Resources\V1\ProductionResource;
 use App\Http\Services\ProductionStorageService;
 use App\Orm\Production;
 use Illuminate\Http\Request;

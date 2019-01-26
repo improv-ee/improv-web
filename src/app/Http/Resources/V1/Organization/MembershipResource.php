@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Resources\Organization;
+namespace App\Http\Resources\V1\Organization;
 
-use App\Http\Resources\OrganizationResource;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\V1\OrganizationResource;
+use App\Http\Resources\V1\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MembershipResource extends JsonResource
