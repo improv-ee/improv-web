@@ -31,11 +31,15 @@ class StandardPolicy extends Policy
                 'http://improv.ee',
                 'https://api.local.improvision.eu',
                 'https://api.improvision.eu',
-                'https://secure.gravatar.com'
+                'https://secure.gravatar.com',
+                'https://www.google-analytics.com'
             ])
             ->addDirective(Directive::MEDIA, Keyword::SELF)
             ->addDirective(Directive::OBJECT, Keyword::NONE)
-            ->addDirective(Directive::SCRIPT, Keyword::SELF)
+            ->addDirective(Directive::SCRIPT, [
+                Keyword::SELF,
+                'https://www.google-analytics.com'
+            ])
             ->addDirective(Directive::STYLE, [
                 Keyword::SELF,
                 Keyword::UNSAFE_INLINE,

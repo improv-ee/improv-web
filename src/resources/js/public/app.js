@@ -7,6 +7,8 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import Event from './components/schedule-feed/Event';
 import App from './App';
+import VueAnalytics from 'vue-analytics'
+
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import {faCalendar, faAddressCard} from "@fortawesome/free-regular-svg-icons";
@@ -25,6 +27,8 @@ const router = new VueRouter({
     mode: 'hash',
     routes: routes,
 });
+Vue.use(VueAnalytics, {id: 'UA-133334351-1', router});
+
 
 const messages = _.merge(require('../../lang/et/public.json'), require('../../lang/et/common.json'));
 const i18n = new VueI18n({    locale: 'et',    messages});
