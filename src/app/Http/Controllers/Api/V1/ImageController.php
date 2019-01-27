@@ -31,6 +31,11 @@ class ImageController extends Controller
      */
     public function show($id)
     {
+
+        if (!Storage::disk('images')->exists('images/' . $id)){
+            return response('',404);
+        }
+
         $file = Storage::disk('images')->get('images/' . $id);
 
         $finfo = finfo_open();
