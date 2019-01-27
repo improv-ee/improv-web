@@ -44,6 +44,7 @@ class StandardPolicy extends Policy
                 Keyword::SELF,
                 Keyword::UNSAFE_INLINE,
                 'https://fonts.googleapis.com'
-            ]);
+            ])
+        ->reportTo('https://sqroot.report-uri.com/r/d/csp/enforce');
     }
 }
