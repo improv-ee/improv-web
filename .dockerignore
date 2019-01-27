@@ -4,10 +4,9 @@ src/tests
 src/.editorconfig
 src/env.testing
 src/.gitignore
-src/composer.json
 src/composer.lock
 src/package.json
-src/package.lock
+src/package-lock.json
 src/phpunit.xml
 src/webpack.mix.js
 src/resources/js
