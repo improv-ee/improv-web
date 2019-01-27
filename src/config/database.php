@@ -46,6 +46,9 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'dump' => [
+                'timeout' => 60 * 5
+            ]
         ],
         'sqlite' => [
             'driver' => 'sqlite',
