@@ -17,7 +17,6 @@ class CreateOrganizationsTable extends Migration
             $table->increments('id');
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
-            $table->integer('header_img_id')->unsigned()->nullable()->default(null);
 
             $table->softDeletes();
             $table->timestamps();
@@ -25,11 +24,6 @@ class CreateOrganizationsTable extends Migration
             $table->foreign('creator_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('header_img_id')
-                ->references('id')
-                ->on('images')
                 ->onDelete('cascade');
         });
 

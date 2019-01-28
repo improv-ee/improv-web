@@ -5,7 +5,7 @@
 
         <h1>{{production.title}}</h1>
 
-        <img :src="production.images.header.url" v-if="production.images.header" :alt="production.title"
+        <img :src="production.images.header.urls.original" v-if="production.images.header" :alt="production.title"
              class="img-responsive header-img"/>
 
         <p class="lead">{{production.excerpt}}</p>
@@ -86,7 +86,6 @@
             axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
                 .then(response => {
                     self.production = response.data.data;
-                    console.log(self.production)
                 });
         }
     }

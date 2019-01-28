@@ -7,6 +7,7 @@ use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\Passport;
 
 abstract class TestCase extends BaseTestCase
@@ -25,6 +26,7 @@ abstract class TestCase extends BaseTestCase
         if (!file_exists(Passport::keyPath('oauth-private.key'))) {
             Artisan::call('passport:install');
         }
+        Storage::fake('media');
     }
 
 

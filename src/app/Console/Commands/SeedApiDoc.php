@@ -3,12 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Orm\Event;
-use App\Orm\Image;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\Orm\Production;
 use App\User;
 use Illuminate\Console\Command;
+use Spatie\MediaLibrary\Models\Media;
 
 class SeedApiDoc extends Command
 {
@@ -63,12 +63,10 @@ class SeedApiDoc extends Command
         factory(Production::class, 5)->create();
         factory(Production::class)->create(['slug'=>'bifurkatsioonipunkt']);
         factory(OrganizationUser::class, 3)->create();
-        factory(Image::class, 3)->create();
-        factory(Image::class)->create();
+        factory(Media::class, 3)->create();
 
         // "Login" the newly created user and get an API token for her
         // Output the token for usage in the API doc generator
         $this->line($user->createToken('apiDoc')->accessToken);
-
     }
 }

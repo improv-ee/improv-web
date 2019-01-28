@@ -1,5 +1,5 @@
 <template>
-    <production-form :production="{}" mode="create"></production-form>
+    <production-form :production="{organizations: []}" mode="create"></production-form>
 </template>
 
 <script>

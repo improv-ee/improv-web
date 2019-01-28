@@ -45,7 +45,7 @@
             },
         methods: {
             header_img(images) {
-                return images.hasOwnProperty('header') ? images.header.url : '/img/production/default-header.jpg';
+                return images.header ? images.header.urls.original : '/img/production/default-header.jpg';
             }
         }
     }

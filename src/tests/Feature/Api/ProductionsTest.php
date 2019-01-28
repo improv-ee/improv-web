@@ -5,6 +5,7 @@ namespace Tests\Feature\Api;
 use App\Orm\Organization;
 use App\Orm\Production;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @package Tests\Feature\Api
@@ -38,7 +39,7 @@ class ProductionsTest extends ApiTestCase
      */
     public function testProductionInfoIsReturned()
     {
-        $response = $this->get($this->getApiUrl().'/productions');
+        $response = $this->get($this->getApiUrl() . '/productions');
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
@@ -70,7 +71,7 @@ class ProductionsTest extends ApiTestCase
         $response = $this->get($this->getApiUrl() . '/productions?onlyMine=true');
 
         $response->assertStatus(200)->assertJsonCount(2, 'data')
-            ->assertJsonCount(2,'data');
+            ->assertJsonCount(2, 'data');
     }
 
     public function testProductionCanBeCreated()
@@ -134,12 +135,30 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
-        $productionInput = array_replace($this->validProductionInput, ['header_img' => '']);
+        $productionInput = array_replace($this->validProductionInput, ['images' => ['header' => ['content' => null]]]);
 
         $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
 
         $response->assertStatus(200);
-        $this->assertDatabaseHas('productions', ['id' => $this->production->id, 'header_img_id' => null]);
+        $this->assertCount(0, $this->production->getMedia('images'));
+    }
+
+
+    public function testProductionImageCanBeAdded()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $this->production->organizations()->attach($user->organizations()->first());
+        $this->production->getFirstMedia('images')->delete();
+
+        $productionInput = array_replace($this->validProductionInput, ['images' => ['header' => ['content' =>
+            base64_encode(UploadedFile::fake()->image('header.jpg', 900, 506)->get())
+        ]]]);
+
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+
+        $response->assertStatus(200);
+        $this->assertCount(1, $this->production->getMedia('images'));
+        $this->assertEquals('image/png' , $this->production->getFirstMedia('images')->mime_type);
     }
 
     public function testCanNotEditProductionNotOwnedByMyOrganization()

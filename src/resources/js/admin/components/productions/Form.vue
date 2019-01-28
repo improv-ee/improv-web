@@ -21,9 +21,9 @@
 
 
                     <div class="overlay-container"
-                         v-if="header_img_url"
+                         v-if="hasHeaderImage"
                          @click="removeHeaderImg()">
-                        <img class="img-fluid" :src="header_img_url"
+                        <img class="img-fluid" :src="form.images.header.urls.original"
                              :alt="$t('production.img.header')"/>
                         <div class="img-overlay">
                             <span><i class="far fa-trash-alt fa-10x"></i></span>
@@ -61,7 +61,8 @@
                         :description="$t('production.attr.organizers_description')"
                         label-for="production-organizers">
 
-                    <organization-select :options="production.organizations" v-model="form.organizations"></organization-select>
+                    <organization-select :options="production.organizations"
+                                         v-model="form.organizations"></organization-select>
                 </b-form-group>
 
                 <b-button type="submit" variant="primary" class="btn-block">{{ mode === 'edit' ? $t('ui.edit') :
@@ -87,44 +88,29 @@
         },
         data() {
             return {
-                form: {},
+                form: {
+                    organizations: []
+                },
                 ui: {},
-                showForm: false,
-                header_img_url: null
+                showForm: false
             }
         },
 
         methods: {
             removeHeaderImg() {
-                this.form.header_img = null;
-                this.header_img_url = null;
+                this.form.images.header['content'] = this.form.images.header.urls = null;
+            },
+            fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = error => reject(error);
+                });
             },
             uploadHeaderImg(e) {
                 let self = this;
-                let formData = new FormData();
-                formData.append('image', e.srcElement.files[0]);
-                axios.post(config.apiUrl + '/images', formData, {
-                    onUploadProgress: this.uploadProgress,
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    },
-                    errorHandle: false
-                })
-                    .then(function (response) {
-                        self.form.header_img = response.data.uid;
-                        self.header_img_url = response.data.url;
-
-                    }).catch((error) => {
-
-                    for (var i = 0; i < error.response.data.errors.image.length; i++) {
-                        self.$notify({
-                            type: 'error',
-                            group: 'app',
-                            title: self.$t('ui.validation_error'),
-                            text: error.response.data.errors.image[i]
-                        });
-                    }
-                })
+                this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
             },
             uploadProgress(progressEvent) {
                 let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
@@ -142,14 +128,16 @@
                             params: {slug: response.data.data.slug}
                         })
                     }).catch(function (error) {
-                    if (error.response.status >= 500) {
+
+                        let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
+
                         self.$notify({
-                            type: 'error',
-                            group: 'app',
-                            title: self.$t('ui.server_error'),
-                            text: self.$t('ui.server_error_message')
-                        });
-                    }
+                        type: 'error',
+                        group: 'app',
+                        title: self.$t('ui.server_error'),
+                        text: text
+                    });
+
                 });
             },
             edit() {
@@ -163,14 +151,14 @@
                             params: {slug: response.data.data.slug}
                         })
                     }).catch(function (error) {
-                    if (error.response.status >= 500) {
+                    let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
                         self.$notify({
                             type: 'error',
                             group: 'app',
                             title: self.$t('ui.server_error'),
-                            text: self.$t('ui.server_error_message')
+                            text: text
                         });
-                    }
+
                 });
             },
             onSubmit() {
@@ -181,6 +169,11 @@
                 }
             }
         },
+        computed: {
+            hasHeaderImage: function () {
+                return this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
+            }
+        },
         mounted() {
             this.ui = {
                 help: {
@@ -188,7 +181,7 @@
                 }
             };
             if (this.mode === 'create') {
-                this.showForm = true
+                this.showForm = true;
             }
         },
         watch: {
@@ -203,9 +196,14 @@
                     description: newProductionVal.description,
                     excerpt: newProductionVal.excerpt,
                     organizations: newProductionVal.organizations,
-                    header_img: newProductionVal.images.header ? newProductionVal.images.header.uid : null
+                    images: {
+                        header: {
+                            urls: {
+                                original: newProductionVal.images.header !== null ? newProductionVal.images.header.urls.original : null
+                            }
+                        }
+                    }
                 };
-                this.header_img_url = this.form.header_img ? newProductionVal.images.header.url : null;
                 this.showForm = true;
             }
         }

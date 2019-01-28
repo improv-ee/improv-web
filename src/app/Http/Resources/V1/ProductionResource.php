@@ -26,7 +26,12 @@ class ProductionResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'images' => [
-                'header' => $this->header_img_id ? new ImageResource($this->header_img) : null
+                'header' => $this->when($this->hasMedia('images'), [
+                    'urls' => [
+                        'original' => $this->getFirstMediaUrl('images')
+                    ]
+                ],null)
+
             ],
             'description' => $this->description,
             'excerpt' => $this->excerpt,

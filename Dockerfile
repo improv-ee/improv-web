@@ -4,8 +4,9 @@ WORKDIR /var/www/
 
 RUN rmdir /var/www/html && \
     apt-get update && \
-    apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle mysql-client && \
-    docker-php-ext-install gd pdo_mysql zip && \
+    apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle mysql-client libmagickwand-dev && \
+    docker-php-ext-install gd pdo_mysql zip exif && \
+    pecl install imagick && \
     a2enmod rewrite remoteip && \
     rm -rf /var/lib/apt/lists/*
 

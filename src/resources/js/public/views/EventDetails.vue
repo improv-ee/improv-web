@@ -56,7 +56,7 @@
         },
         computed: {
             header_img() {
-                return this.production.images.hasOwnProperty('header') && this.production.images.header != null ? this.production.images.header.url : '/img/production/default-header.jpg';
+                return this.production.images && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
             },
             startTime: function () {
                 return moment(this.event.times.start).format('Do MMMM HH:mm')

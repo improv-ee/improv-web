@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * Class Production
@@ -18,11 +20,10 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property string $excerpt
  * @property string $slug
  * @property int $creator_id
- * @property int $header_img_id
  */
-class Production extends Model implements Auditable
+class Production extends Model implements Auditable, HasMedia
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable;
+    use \Dimsav\Translatable\Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable, HasMediaTrait;
 
     public $translatedAttributes = ['title', 'slug', 'description', 'excerpt'];
     public $fillable = ['title', 'slug', 'description', 'excerpt'];
@@ -76,13 +77,6 @@ class Production extends Model implements Auditable
             ->count();
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne|Image
-     */
-    public function header_img()
-    {
-        return $this->hasOne('App\Orm\Image', 'id', 'header_img_id');
-    }
 
     public function events()
     {

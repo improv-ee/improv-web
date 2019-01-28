@@ -2,6 +2,7 @@
 
 use App\Orm\Event;
 use App\Orm\Image;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Orm\Production;
 use App\Orm\Organization;
@@ -80,16 +81,7 @@ class ProductionsSeeder extends Seeder
             ->where('meta_key', '_thumbnail_id')
             ->where('post_id', $em_event->post_id)
             ->first();
-        if ($thumbnail) {
-            $image_url = $importDb->table('wp_6_posts')
-                ->where('ID', $thumbnail->meta_value)
-                ->where('post_type', 'attachment')
-                ->first();
-            if ($image_url) {
-                $production->header_img_id = $this->importImage($image_url->guid);
-            }
 
-        }
 
         if (array_key_exists($em_event->event_owner, $organizations)) {
             $orgId = Organization::whereTranslation('name', $organizations[$em_event->event_owner]['name'])->first()->id;
@@ -103,64 +95,40 @@ class ProductionsSeeder extends Seeder
             $orgId = 2;
         }
 
+        DB::transaction(function () use ($production, $thumbnail,$orgId,$importDb) {
         $production->save();
         $production->organizations()->attach($orgId);
+        if ($thumbnail) {
+            $image_url = $importDb->table('wp_6_posts')
+                ->where('ID', $thumbnail->meta_value)
+                ->where('post_type', 'attachment')
+                ->first();
+
+            if ($image_url) {
+                $this->importImage($image_url->guid, $production);
+            }
+
+        }
+        });
+
         return $production;
     }
 
-    private function isImageDownloadRequired($imageUrl, $filename) {
-        if (!Storage::disk('images')->exists($filename)) {
-            return true;
-        }
-        return $this->getRemoteFileSize($imageUrl) != Storage::disk('images')->size($filename);
-    }
+
     /**
      * @param $imageUrl
+     * @param Production $production
      * @return mixed
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
      */
-    private function importImage($imageUrl)
+    private function importImage($imageUrl,Production $production)
     {
-        $url = parse_url($imageUrl);
-        $pathinf = pathinfo($url['path']);
-        $filename = md5($imageUrl).'.'.$pathinf['extension'];
 
         $uid = sha1(random_int(PHP_INT_MIN,PHP_INT_MAX).uniqid());
 
-
-        if ($this->isImageDownloadRequired($imageUrl,$filename)) {
-
-            Storage::disk('local')->put($uid,file_get_contents($imageUrl));
-            $prefix = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
-
-            ImageOptimizer::optimize($prefix.$uid);
-            $optimizedFile = Storage::disk('local')->readStream($uid);
-            Storage::disk('images')->put('images/'.$filename, $optimizedFile);
-
-            Storage::disk('local')->delete($uid);
-
-        }
-
-
-        $image = new Image;
-        $image->uid = $uid;
-        $image->creator_id = 1;
-        $image->filename = $pathinf['basename'];
-        $image->save();
-
-        return $image->id;
-    }
-
-    private function getRemoteFileSize($url){
-        $ch = curl_init($url);
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, TRUE);
-        curl_setopt($ch, CURLOPT_NOBODY, TRUE);
-
-        curl_exec($ch);
-        $size = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
-
-        curl_close($ch);
-        return $size;
+            $production->addMediaFromUrl($imageUrl)
+                ->withCustomProperties(['type' => 'header'])
+                ->setFileName($uid)
+                ->toMediaCollection('images');
     }
 }

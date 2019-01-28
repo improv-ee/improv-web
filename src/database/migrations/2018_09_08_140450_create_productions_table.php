@@ -15,7 +15,6 @@ class CreateProductionsTable extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('header_img_id')->unsigned()->nullable()->default(null);
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
             $table->softDeletes();
@@ -23,11 +22,6 @@ class CreateProductionsTable extends Migration
             $table->foreign('creator_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('header_img_id')
-                ->references('id')
-                ->on('images')
                 ->onDelete('cascade');
         });
 

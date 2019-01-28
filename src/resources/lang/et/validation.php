@@ -112,7 +112,7 @@ return [
     'uploaded'             => ':attribute ei õnnestunud laadida.',
     'url'                  => ':attribute vorming on vigane.',
     'reservedusername' => 'See kasutajanimi pole saadaval',
-
+    'not_valid_header'=>'Pilt ei sobi päise pildiks; peab olema .png, .jpeg või .webp fail, mille kõrgus on vahemikus :minHeight - :maxHeight ja laius vahemikus :minWidth - :maxWidth px.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
