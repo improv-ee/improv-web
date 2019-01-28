@@ -22,11 +22,6 @@ class EventsTest extends ApiTestCase
         return $event->production->organizations()->attach($user->organizations()->first());
     }
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
     public function testEventInfoIsReturned()
     {
         $event = factory(Event::class)->create();
@@ -43,6 +38,17 @@ class EventsTest extends ApiTestCase
                 'production' => ['slug' => $event->production->slug]
 
             ]]);
+    }
+
+
+    public function testEventScheduleIsReturned()
+    {
+        factory(Event::class, 2)->create();
+
+        $response = $this->get($this->getApiUrl() . '/events/schedule');
+
+        $response->assertStatus(200)
+            ->assertJsonCount(2,'data');
     }
 
     public function testEventCanBeCreated()
