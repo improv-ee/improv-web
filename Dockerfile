@@ -2,7 +2,7 @@ FROM php:7.2-apache as base
 
 WORKDIR /var/www/
 
-RUN rmdir /var/www/html && \
+RUN rm -rf /var/www/html /etc/apache2/conf-enabled/security.conf && \
     apt-get update && \
     apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle mysql-client libmagickwand-dev && \
     docker-php-ext-install gd pdo_mysql zip exif && \
