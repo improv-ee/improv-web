@@ -1,30 +1,38 @@
 <template>
     <div>
-        <p><span v-html="$t('production.list_intro')"></span></p>
-        <p class="text-right">
-            <b-button :to="{name: 'production.create'}" variant="primary"
-                   class="btn btn-sm mb-3">{{ $t("production.create_new") }}
-            </b-button>
-        </p>
+        <div v-if="organizations.length">
+            <p><span v-html="$t('production.list_intro')"></span></p>
 
-        <div class="table-responsive">
-            <table class="table table-hover table-clickable">
-                <thead class="thead-dark">
-                <tr>
-                    <th>{{ $t("production.attr.title") }}</th>
-                    <th>{{ $t("production.num_of_events") }}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <production-table-row :production="production"
-                                      v-for="production in productions.data"
-                                      :key="production.slug"></production-table-row>
-                </tbody>
-            </table>
+
+            <p class="text-right">
+                <b-button :to="{name: 'production.create'}" variant="primary"
+                          class="btn btn-sm mb-3">{{ $t("production.create_new") }}
+                </b-button>
+            </p>
+
+            <div v-if="productions.length">
+                <div class="table-responsive">
+                    <table class="table table-hover table-clickable">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>{{ $t("production.attr.title") }}</th>
+                            <th>{{ $t("production.num_of_events") }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <production-table-row :production="production"
+                                              v-for="production in productions.data"
+                                              :key="production.slug"></production-table-row>
+                        </tbody>
+                    </table>
+                </div>
+                <pagination v-if="productions.meta" :data="productions.meta" @pagination-change-page="getResults"
+                            class="justify-content-center"></pagination>
+            </div>
         </div>
-        <pagination v-if="productions.meta" :data="productions.meta" @pagination-change-page="getResults"
-                    class="justify-content-center"></pagination>
-
+        <p class="alert alert-danger" v-else>
+            {{ $t('production.you_dont_belong_to_any_org') }}
+        </p>
     </div>
 </template>
 
@@ -33,7 +41,8 @@
         data() {
             return {
                 productions: {},
-                newProductionTitle: ' '
+                newProductionTitle: ' ',
+                organizations: {}
             }
         },
         methods: {
@@ -57,10 +66,18 @@
                     .then(response => {
                         this.productions = response.data;
                     });
+            },
+
+            getOrganizations() {
+                axios.get(config.apiUrl + '/organizations?onlyMine=true')
+                    .then(response => {
+                        this.organizations = response.data.data;
+                    });
             }
         },
         mounted() {
-            this.getResults()
+            this.getResults();
+            this.getOrganizations();
         }
     }
 </script>

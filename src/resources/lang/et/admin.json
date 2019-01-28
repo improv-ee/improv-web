@@ -7,7 +7,7 @@
       "home": "Avaleht"
     },
     "dash": {
-      "greeting": "Meie homne on meie endi teha. - Ilves"
+      "greeting": "Meie homne on meie endi teha."
     },
     "user": {
       "not_found": "Sellist kasutajanime ei leitud",
@@ -47,6 +47,7 @@
     },
     "production": {
       "no_events": "Ühtegi sündmust pole lisatud",
+      "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi organisatsiooni - produktsioonide lisamiseks pead looma uue; või liituma vähemalt ühe organisatsiooniga.",
       "num_of_events": "Üritusi",
       "events":"Üritused",
       "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>ürituse</i> aega.",
