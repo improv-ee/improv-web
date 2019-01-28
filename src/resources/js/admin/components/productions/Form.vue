@@ -171,7 +171,7 @@
         },
         computed: {
             hasHeaderImage: function () {
-                return this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
+                return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
             }
         },
         mounted() {
@@ -199,7 +199,7 @@
                     images: {
                         header: {
                             urls: {
-                                original: newProductionVal.images.header !== null ? newProductionVal.images.header.urls.original : null
+                                original: newProductionVal.hasOwnProperty('images') && newProductionVal.images.header !== null ? newProductionVal.images.header.urls.original : null
                             }
                         }
                     }

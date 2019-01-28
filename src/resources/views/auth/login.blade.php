@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12 col-md-6 offset-md-3">
             <div class="card">
 
@@ -50,6 +50,11 @@
 
                 </div>
             </div>
+
+            <p class="alert alert-info mt-5">
+                Improvision on hetkel avatud beta-testimises. See tähendab, et süsteem on uus - esineb puudusi ning vigu.
+                Kui märkad viga, palun anna sellest meile teada. Palume testperioodil mõistvat suhtumist!
+            </p>
         </div>
 
     </div>
