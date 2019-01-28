@@ -7,7 +7,7 @@ RUN rm -rf /var/www/html /etc/apache2/conf-enabled/security.conf && \
     apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle mysql-client libmagickwand-dev && \
     docker-php-ext-install gd pdo_mysql zip exif && \
     pecl install imagick && \
-    a2enmod rewrite remoteip && \
+    a2enmod rewrite remoteip headers && \
     rm -rf /var/lib/apt/lists/*
 
 COPY docker/webserver/000-default.conf /etc/apache2/sites-available/
