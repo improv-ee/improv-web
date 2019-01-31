@@ -10,11 +10,14 @@ echo "Installing Composer dependencies"
 composer install --no-interaction --prefer-dist --no-dev
 
 echo "Installing NPM dependencies"
-npm i -g npm@5.8.0
+
+# Travis, by default, has older version of NPM
+# Upgrade it to a minimum acceptable version for us
+npm i -g npm@6.7.0
 npm ci
 
 echo "Generating static assets"
-./node_modules/.bin/webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js
+npm run production
 
 cd ..
 

@@ -1,10 +1,10 @@
-FROM php:7.2-apache as base
+FROM php:7.3-apache as base
 
 WORKDIR /var/www/
 
 RUN rm -rf /var/www/html /etc/apache2/conf-enabled/security.conf && \
     apt-get update && \
-    apt-get install -y libpng-dev jpegoptim optipng pngquant gifsicle mysql-client libmagickwand-dev && \
+    apt-get install -y libzip-dev libpng-dev jpegoptim optipng pngquant gifsicle mysql-client libmagickwand-dev && \
     docker-php-ext-install gd pdo_mysql zip exif && \
     pecl install imagick && \
     a2enmod rewrite remoteip headers && \
