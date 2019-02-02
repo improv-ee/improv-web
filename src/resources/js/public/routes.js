@@ -1,6 +1,5 @@
 import EventSchedule from './views/EventSchedule.vue'
 import EventDetails from './views/EventDetails.vue'
-import Newsletter from './views/Newsletter.vue'
 import PageNotFound from "../views/PageNotFound";
 import OrganizationsList from './views/organizations/List'
 import OrganizationDetails from './views/organizations/Details'
@@ -25,11 +24,6 @@ export default [
         path: '/organizations/:slug',
         name: 'organization.details',
         component: OrganizationDetails,
-    },
-    {
-        path: '/newsletter',
-        name: 'newsletter',
-        component: Newsletter,
     },
     { path: "*", component: PageNotFound }
 ];

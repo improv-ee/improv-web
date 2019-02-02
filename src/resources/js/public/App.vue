@@ -13,7 +13,6 @@
                     <b-nav-item exact :to="{ name: 'home' }">{{ $t("nav.schedule") }}</b-nav-item>
                     <b-nav-item exact :to="{ name: 'organizations' }">{{ $t("nav.organizations") }}</b-nav-item>
                     <b-nav-item href="https://pooltund.improv.ee">{{ $t("nav.podcast") }}</b-nav-item>
-                    <b-nav-item :to="{ name: 'newsletter' }">{{ $t("nav.newsletter") }}
                     </b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
