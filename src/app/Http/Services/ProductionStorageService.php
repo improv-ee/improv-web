@@ -29,12 +29,15 @@ class ProductionStorageService
 
             $media = $request->input('images.header.content', false);
 
-            if ($media) {
-                $this->addMedia($media, $production);
+            // Remove existing Media if it's explicitly requested, or
+            // if we want to replace it with a new image
+            if ($media === null || $media) {
+                $this->removeAllMedia($production);
             }
 
-            if ($media === null) {
-                $this->removeAllMedia($production);
+            // If new media content was uploaded..
+            if ($media) {
+                $this->addMedia($media, $production);
             }
 
             $production->organizations()->sync($organizations);
@@ -73,7 +76,6 @@ class ProductionStorageService
     private function removeAllMedia(Production $production)
     {
         foreach ($production->getMedia('images') as $media) {
-            Log::info($media->id);
             $media->delete();
         }
     }
