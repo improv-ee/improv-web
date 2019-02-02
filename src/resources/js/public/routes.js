@@ -3,6 +3,8 @@ import EventDetails from './views/EventDetails.vue'
 import PageNotFound from "../views/PageNotFound";
 import OrganizationsList from './views/organizations/List'
 import OrganizationDetails from './views/organizations/Details'
+import Contact from './views/Contact';
+
 
 export default [
     {
@@ -24,6 +26,11 @@ export default [
         path: '/organizations/:slug',
         name: 'organization.details',
         component: OrganizationDetails,
+    },
+    {
+        path: '/contact',
+        name: 'contact',
+        component: Contact
     },
     { path: "*", component: PageNotFound }
 ];

@@ -20,6 +20,9 @@
                                 <a href="https://github.com/improvision-eu/improvision-web/wiki/Reporting-bugs-and-feature-requests"
                                    target="_blank">{{ $t('site.report_bug') }}</a>
                             </li>
+                            <li>
+                                <router-link :to="'contact'">{{ $t('nav.contact') }}</router-link>
+                            </li>
 
                         </ul>
 
