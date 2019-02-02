@@ -16,5 +16,6 @@ return [
     'reset'    => 'Sinu parool on lähtestatud!',
     'sent'     => 'Oleme saatnud sulle e-postiga parooli lähtestamise lingi!',
     'token'    => 'See parooli lähtestamise tunnus on vigane.',
-    'user'     => 'Ei suutnud leida sellise e-posti aadressiga kasutajat.',
+    // This is negative password reset text, but we keep it identical to success case to avoid enumeration
+    'user'     => 'Oleme saatnud sulle e-postiga parooli lähtestamise lingi!',
 ];
