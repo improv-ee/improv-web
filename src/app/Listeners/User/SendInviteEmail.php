@@ -4,32 +4,22 @@ namespace App\Listeners\User;
 
 use App\Events\User\UserInvited;
 use App\Notifications\User\NewUserInvited;
-use App\User;
-use Clarkeash\Doorman\Facades\Doorman;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 
+/**
+ * Send invited user an e-mail with registration link
+ *
+ * @package App\Listeners\User
+ */
 class SendInviteEmail implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Handle the event.
      *
-     * @param  object $event
+     * @param UserInvited $event
      * @return void
      */
     public function handle(UserInvited $event)
@@ -42,7 +32,6 @@ class SendInviteEmail implements ShouldQueue
         ]);
 
         $notification =new NewUserInvited($event->invite->code, $event->inviter->name);
-
         Notification::send($event->invite, $notification);
     }
 }

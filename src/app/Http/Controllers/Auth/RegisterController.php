@@ -50,7 +50,6 @@ class RegisterController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function showRegistrationForm(Request $request)
     {

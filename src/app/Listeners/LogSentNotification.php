@@ -6,6 +6,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Whenever a Notification is sent, log it
+ *
+ * @package App\Listeners
+ */
 class LogSentNotification implements ShouldQueue
 {
     public function handle(NotificationSent $event)

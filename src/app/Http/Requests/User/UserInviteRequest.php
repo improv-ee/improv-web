@@ -24,7 +24,7 @@ class UserInviteRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'email|required'
+            'email'=>'email|required|unique:users'
         ];
     }
 }

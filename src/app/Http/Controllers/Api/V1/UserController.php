@@ -28,6 +28,14 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
+    /**
+     * Send an invitation to join the platform to an e-mail address
+     *
+     * @bodyParam email string required To whom to send the invitation to
+     *
+     * @param UserInviteRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function invite(UserInviteRequest $request)
     {
         $invite = Doorman::generate()
@@ -36,6 +44,8 @@ class UserController extends Controller
             ->make()
             ->first();
 
+        // "Converting" to an overwritten instance of Invite (vendor package does not support overwriting)
+        // Need to use custom model in order to serialize it
         $invite = Invite::findOrFail($invite->id);
 
         event(new UserInvited($invite, $request->user()));
