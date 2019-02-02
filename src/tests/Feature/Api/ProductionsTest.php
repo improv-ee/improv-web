@@ -76,7 +76,8 @@ class ProductionsTest extends ApiTestCase
 
     public function testProductionCanBeCreated()
     {
-        $this->actingAsOrganizationMember();
+        $user = $this->actingAsOrganizationMember();
+        $this->validProductionInput['organizations'][] = $user->organizations()->first()->slug;
 
         $response = $this->post($this->getApiUrl() . '/productions', $this->validProductionInput);
         $response->assertStatus(201)
@@ -116,8 +117,11 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
+        $organization = factory(Organization::class)->create();
+
         $productionInput = array_replace($this->validProductionInput, ['title' => 'Tilt Improv Festival',
             'description' => 'First improv festival in Estonia',
+            'organizations' => [$user->organizations()->first()->slug, $organization->slug],
             'excerpt' => 'Lots of shows, many nights of fun']);
 
         $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
@@ -135,7 +139,10 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
-        $productionInput = array_replace($this->validProductionInput, ['images' => ['header' => ['content' => null]]]);
+        $productionInput = array_replace($this->validProductionInput, [
+            'images' => ['header' => ['content' => null]],
+            'organizations'=>[$user->organizations()->first()->slug]
+        ]);
 
         $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
 
@@ -147,6 +154,8 @@ class ProductionsTest extends ApiTestCase
     public function testProductionImageCanBeAdded()
     {
         $user = $this->actingAsOrganizationMember();
+        $this->validProductionInput['organizations'] = [$user->organizations()->first()->slug];
+
         $this->production->organizations()->attach($user->organizations()->first());
         $this->production->getFirstMedia('images')->delete();
 
@@ -158,7 +167,28 @@ class ProductionsTest extends ApiTestCase
 
         $response->assertStatus(200);
         $this->assertCount(1, $this->production->getMedia('images'));
-        $this->assertEquals('image/png' , $this->production->getFirstMedia('images')->mime_type);
+        $this->assertEquals('image/png', $this->production->getFirstMedia('images')->mime_type);
+    }
+
+    /**
+     * Should not be able to create Productions for "other" Organizations
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function testProductionCreationFailsIfDoesntBelongToMyOrganization()
+    {
+        $this->actingAsOrganizationMember();
+        $organization = factory(Organization::class)->create();
+
+        $productionInput = array_replace($this->validProductionInput, [
+            'organizations' => [
+                $organization->slug
+            ]
+        ]);
+
+        $response = $this->post($this->getApiUrl() . '/productions', $productionInput);
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['organizations']);
     }
 
     public function testCanNotEditProductionNotOwnedByMyOrganization()

@@ -39,8 +39,10 @@ class UpdateProductionRequestTest extends TestCase
 
     public function testValidOrganizationListIsAccepted()
     {
+        $user = $this->actingAsOrganizationMember();
 
-        $validator = Validator::make($this->validInput, $this->request->rules());
+        $organizations = array_replace($this->validInput, ['organizations' => [$user->organizations()->first()->slug]]);
+        $validator = Validator::make($organizations, $this->request->rules());
         $fails = $validator->fails();
 
         $this->assertFalse($fails);

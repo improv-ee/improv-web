@@ -7,6 +7,8 @@
                 <b-form-group
                         :label="$t('production.attr.title')"
                         label-for="title"
+                        :invalid-feedback="invalidFeedback('title')"
+                        :state="getFieldState('title')"
                         :description="$t('production.attr.title_description')">
                     <b-form-input id="title"
                                   type="text"
@@ -17,6 +19,7 @@
 
                 <b-form-group :label="$t('production.img.header')"
                               label-for="header-img"
+
                               :description="$t('production.img.header_description')">
 
 
@@ -38,6 +41,8 @@
 
                 <b-form-group
                         :label="$t('production.attr.excerpt')"
+                        :invalid-feedback="invalidFeedback('excerpt')"
+                        :state="getFieldState('excerpt')"
                         :description="$t('production.attr.excerpt_description')"
                         label-for="excerpt">
                     <b-form-textarea id="excerpt"
@@ -48,6 +53,8 @@
                 <b-form-group
                         :label="$t('production.attr.description')"
                         :description="ui.help.description"
+                        :invalid-feedback="invalidFeedback('description')"
+                        :state="getFieldState('description')"
                         label-for="description">
                     <b-form-textarea id="description"
                                      type="text" rows="10"
@@ -59,6 +66,8 @@
                 <b-form-group
                         :label="$t('event.attr.organizers')"
                         :description="$t('production.attr.organizers_description')"
+                        :invalid-feedback="invalidFeedback('organizations')"
+                        :state="getFieldState('organizations')"
                         label-for="production-organizers">
 
                     <organization-select :options="production.organizations"
@@ -92,11 +101,21 @@
                     organizations: []
                 },
                 ui: {},
-                showForm: false
+                showForm: false,
+                errors: {}
             }
         },
 
         methods: {
+            getFieldState(field){
+                return !this.errors.hasOwnProperty(field);
+            },
+            invalidFeedback(field) {
+                if(!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
+                    return '';
+                }
+                return this.errors[field][0];
+            },
             removeHeaderImg() {
                 this.form.images.header['content'] = this.form.images.header.urls = null;
             },
@@ -126,17 +145,20 @@
                         self.$router.push({
                             name: 'production.details',
                             params: {slug: response.data.data.slug}
-                        })
+                        });
+                        self.errors = {};
+
                     }).catch(function (error) {
 
-                        let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
+                    let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
 
-                        self.$notify({
+                    self.$notify({
                         type: 'error',
                         group: 'app',
-                        title: self.$t('ui.server_error'),
-                        text: text
+                        title: text
                     });
+
+                    self.errors = error.response.data.errors;
 
                 });
             },
@@ -152,12 +174,12 @@
                         })
                     }).catch(function (error) {
                     let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
-                        self.$notify({
-                            type: 'error',
-                            group: 'app',
-                            title: self.$t('ui.server_error'),
-                            text: text
-                        });
+                    self.$notify({
+                        type: 'error',
+                        group: 'app',
+                        title: self.$t('ui.server_error'),
+                        text: text
+                    });
 
                 });
             },
