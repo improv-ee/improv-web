@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Auth\BearerToken;
 use App\Http\Controllers\Controller;
 use App\Orm\Invite;
 use App\Rules\ReservedUsername;
 use App\User;
 use Clarkeash\Doorman\Facades\Doorman;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -69,7 +68,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'username' => ['required', 'string', 'min:3', 'max:32', 'unique:users', new ReservedUsername],
             'email' => 'required|string|email|min:5|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed|pwned',
+            'password' => 'required|string|min:8|confirmed|pwned|different:name|different:username|different:email',
             'code' => 'required|doorman:email',
         ]);
     }
@@ -101,7 +100,9 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
 
+        $invite = Invite::where('code', $request->get('code'))->firstOrFail();
         Doorman::redeem($request->get('code'), $request->get('email'));
+        Log::info('Redeemed invitation code', ['invitation_id' => $invite->id, 'invited_user_id' => $user->id]);
 
         // Create new web access token on signup
         $token = $user->createWebToken();
