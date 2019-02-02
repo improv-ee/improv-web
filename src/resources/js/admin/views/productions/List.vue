@@ -13,10 +13,10 @@
             </b-button>
         </p>
 
-        <div v-if="productions.length">
+        <div v-if="productions.data.length">
             <div class="table-responsive">
                 <table class="table table-hover table-clickable">
-                    <thead class="thead-dark">
+                    <thead class="thead-light">
                     <tr>
                         <th>{{ $t("production.attr.title") }}</th>
                         <th>{{ $t("production.num_of_events") }}</th>
@@ -45,20 +45,6 @@
             }
         },
         methods: {
-            createProduction(e) {
-                e.preventDefault();
-                if (!this.newProductionTitle) {
-                    return
-                }
-                let self = this;
-                axios.post(config.apiUrl + '/productions', {"title": this.newProductionTitle})
-                    .then(function (response) {
-                        self.$router.push({
-                            name: 'production.edit',
-                            params: {slug: response.data.data.slug}
-                        })
-                    });
-            },
 
             getResults(page = 1) {
                 axios.get(config.apiUrl + '/productions?onlyMine=true', {params: {page: page}})

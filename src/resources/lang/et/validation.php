@@ -14,13 +14,13 @@ return [
 
     'accepted' => ':attribute tuleb aktsepteerida.',
     'active_url' => ':attribute ei ole kehtiv URL.',
-    'after' => ':attribute peab olema kuupäev pärast :date.',
-    'after_or_equal' => ':attribute peab olema kuupäev pärast või samastuma :date.',
+    'after' => ':attribute peab olema aeg peale :date.',
+    'after_or_equal' => ':attribute peab olema aeg peale (või sama) kui :date.',
     'alpha' => ':attribute võib sisaldada vaid tähemärke.',
     'alpha_dash' => ':attribute võib sisaldada vaid tähti, numbreid ja kriipse.',
     'alpha_num' => ':attribute võib sisaldada vaid tähti ja numbreid.',
     'array' => ':attribute peab olema massiiv.',
-    'before' => ':attribute peab olema kuupäev enne :date.',
+    'before' => ':attribute peab olema aeg enne :date.',
     'before_or_equal' => ':attribute peab olema kuupäev enne või samastuma :date.',
     'between' => [
         'numeric' => ':attribute peab olema :min ja :max vahel.',
@@ -150,7 +150,9 @@ return [
         'description'=> 'kirjeldus',
         'excerpt'=> 'lühikirjeldus',
         'username' => 'kasutajanimi',
-        'organizations'=>'organisatsioonid'
+        'organizations'=>'organisatsioonid',
+        'times.start' => 'algusaeg',
+        'times.end'=> 'lõpuaeg'
     ],
     'pwned' => 'Seda parooli ei saa kasutada, sest see on häkkeritele juba teada - parool on ilmunud andmelekkes.',
     'organization' => [

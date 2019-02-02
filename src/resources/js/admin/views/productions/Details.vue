@@ -16,7 +16,7 @@
 
         <div class="table-responsive">
             <table class="table table-clickable">
-                <thead>
+                <thead class="thead-light">
                 <tr>
                     <th>{{ $t('production.attr.title') }}</th>
                     <th>{{ $t('event.attr.start_time') }}</th>
