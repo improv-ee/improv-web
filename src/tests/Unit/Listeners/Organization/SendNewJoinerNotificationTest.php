@@ -3,7 +3,7 @@
 namespace Tests\Unit\Listeners\Organization;
 
 use App\Events\Organization\UserJoined;
-use App\Notifications\Organization\NewMemberApplication;
+use App\Notifications\Organization\YouWereAddedToOrganization;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
@@ -37,11 +37,11 @@ class SendNewJoinerNotificationTest extends TestCase
         event(new UserJoined($member));
 
         Notification::assertSentTo(
-            [$orgMemberJoiner], NewMemberApplication::class
+            [$orgMemberJoiner], YouWereAddedToOrganization::class
         );
 
         Notification::assertNotSentTo(
-            [$orgMember,$orgMemberAdmin2,$orgMemberAdmin1], NewMemberApplication::class
+            [$orgMember,$orgMemberAdmin2,$orgMemberAdmin1], YouWereAddedToOrganization::class
         );
 
     }

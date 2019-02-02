@@ -4,21 +4,12 @@ namespace App\Listeners\Organization;
 
 
 use App\Events\Organization\UserJoined;
-use App\Notifications\Organization\NewMemberApplication;
+use App\Notifications\Organization\YouWereAddedToOrganization;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Notification;
 
 class SendNewJoinerNotification implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Handle the event.
@@ -28,6 +19,6 @@ class SendNewJoinerNotification implements ShouldQueue
      */
     public function handle(UserJoined $event)
     {
-        Notification::send($event->organizationUser->user, new NewMemberApplication($event->organizationUser));
+        Notification::send($event->organizationUser->user, new YouWereAddedToOrganization($event->organizationUser));
     }
 }
