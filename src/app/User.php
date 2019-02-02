@@ -10,6 +10,13 @@ use Laravel\Passport\HasApiTokens;
 use Laravel\Passport\Token;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @package App
+ * @property string $username
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasApiTokens, SoftDeletes, HasRoles;

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Auth\BearerToken;
 use App\Http\Controllers\Controller;
+use App\Orm\Invite;
 use App\Rules\ReservedUsername;
 use App\User;
+use Clarkeash\Doorman\Facades\Doorman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -44,25 +46,39 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function showRegistrationForm(Request $request)
+    {
+
+        return view('auth.register', ['invitationCode' => $request->get('code')]);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'username' => ['required','string','min:3','max:32','unique:users', new ReservedUsername],
+            'username' => ['required', 'string', 'min:3', 'max:32', 'unique:users', new ReservedUsername],
             'email' => 'required|string|email|min:5|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed|pwned',
+            'code' => 'required|doorman:email',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -79,12 +95,14 @@ class RegisterController extends Controller
     /**
      * The user has been registered.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed $user
      * @return mixed
      */
     protected function registered(Request $request, $user)
     {
+
+        Doorman::redeem($request->get('code'), $request->get('email'));
 
         // Create new web access token on signup
         $token = $user->createWebToken();

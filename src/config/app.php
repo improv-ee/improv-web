@@ -156,6 +156,7 @@ return [
         OwenIt\Auditing\AuditingServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
+        Clarkeash\Doorman\Providers\DoormanServiceProvider::class,
 
 
         /*
@@ -216,7 +217,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Token'=>\Dirape\Token\Facades\Facade::class,
-        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        'Doorman' => Clarkeash\Doorman\Facades\Doorman::class,
 
     ],
 

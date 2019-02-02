@@ -6,7 +6,7 @@ namespace App\Listeners\Organization;
 use App\Events\Organization\UserJoined;
 use App\Notifications\Organization\NewMemberApplication;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Notification;
+use Illuminate\Support\Facades\Notification;
 
 class SendNewJoinerNotification implements ShouldQueue
 {
