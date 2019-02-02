@@ -3,7 +3,7 @@
 namespace App\Http\Generators;
 
 use DateTimeInterface;
-use Spatie\MediaLibrary\Models\Media;
+use App\Orm\Media;
 use Spatie\MediaLibrary\UrlGenerator\BaseUrlGenerator;
 
 /**
@@ -20,7 +20,7 @@ class MediaUrlGenerator extends BaseUrlGenerator
      */
     public function getUrl(): string
     {
-        return route('api.images.show', ['image' => $this->media->file_name]);
+        return route('api.images.show', ['image' => $this->media->file_name]).'?hash='.$this->media->getHash();
     }
 
     public function getPath(): string

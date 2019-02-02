@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use Spatie\MediaLibrary\Models\Media;
+use App\Orm\Media;
 
 /**
  * @group Images
@@ -23,17 +23,21 @@ class ImageController extends Controller
      */
     public function show($filename)
     {
-
-        $media = Media::where('file_name',$filename)->first();
+        /** @var \App\Orm\Media $media */
+        $media = Media::where('file_name', $filename)->first();
 
         if ($media === null) {
-            return response('',404);
+            return response('', 404);
         }
 
-        $path = $media->id.'/'.$media->file_name;
+        $path = $media->id . '/' . $media->file_name;
 
         $file = Storage::disk('media')->get($path);
 
-        return Response::create($file, 200, ['Content-Type' => $media->mime_type]);
+        return Response::create($file, 200, [
+            'Content-Type' => $media->mime_type,
+            'Cache-Control' => 'public, max-age=2592000',
+            'ETag' => $media->getHash()
+        ]);
     }
 }
