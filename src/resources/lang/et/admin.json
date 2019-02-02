@@ -12,8 +12,14 @@
     "user": {
       "not_found": "Sellist kasutajanime ei leitud",
       "profile": {
+        "email": "E-mail",
         "settings": "Profiili seaded",
-        "api_tokens":"API võtmed"
+        "api_tokens":"API võtmed",
+        "invite": {
+          "invite_new_user":"Kutsu uus kasutaja",
+          "send_invitation": "Saada kutse",
+          "invite_sent": "Kutse saadetud"
+        }
       }
     },
     "event": {

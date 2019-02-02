@@ -5,7 +5,6 @@
     <div class="btn-group" role="group" aria-label="{{ __('auth.login') }}">
     @guest
         <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ __('auth.login') }}</a>
-        <a class="btn btn-sm btn-primary" href="{{ route('register') }}">{{ __('auth.register') }}</a>
     @else
         <a class="btn btn-sm btn-primary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
             <form action="{{ url('/logout') }}" method="POST">

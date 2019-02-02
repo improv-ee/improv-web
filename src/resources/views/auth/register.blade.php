@@ -8,9 +8,16 @@
                 <div class="card-header">{{ __('auth.register') }}</div>
 
                 <div class="card-body">
+
+                    @if ($errors->has('code'))
+                    <p class="alert alert-danger">
+                        {{ $errors->first('code') }}
+                    </p>
+                    @endif
+
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        <input type="hidden" name="code" value="{{ $invitationCode }}" />
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('user.name') }}</label>
 
