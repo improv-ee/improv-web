@@ -11,9 +11,9 @@ import VueAnalytics from 'vue-analytics'
 
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
-import {faCalendar, faAddressCard} from "@fortawesome/free-regular-svg-icons";
+import {faCalendar, faAddressCard, faTimesCircle} from "@fortawesome/free-regular-svg-icons";
 import { faChevronRight  } from '@fortawesome/free-solid-svg-icons'
-library.add(faCalendar, faChevronRight, faAddressCard);
+library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle);
 dom.watch();
 
 Vue.use(VueRouter);

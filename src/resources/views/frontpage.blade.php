@@ -6,11 +6,12 @@
     @guest
         <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ __('auth.login') }}</a>
     @else
-        <a class="btn btn-sm btn-primary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
             <form action="{{ url('/logout') }}" method="POST">
+
+            <a class="btn btn-sm btn-primary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
                 {!! csrf_field() !!}
-                <button type="submit" class="btn btn-sm btn-primary">
-                    {{ __('auth.logout') }}
+                <button type="submit" title="{{ __('auth.logout') }}" class="btn btn-sm btn-light">
+                    <i class="far fa-times-circle"></i>
                 </button>
             </form>
     @endguest

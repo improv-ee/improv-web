@@ -6,8 +6,8 @@
     <a class="btn btn-sm btn-primary" href="#/profile/settings">{{ Auth::user()->name }}</a>
     <form action="{{ url('/logout') }}" method="POST">
         {!! csrf_field() !!}
-        <button type="submit" class="btn btn-sm btn-primary">
-            {{ __('auth.logout') }}
+        <button type="submit" title="{{ __('auth.logout') }}" class="btn btn-sm btn-light">
+            <i class="far fa-times-circle"></i>
         </button>
     </form>
     </div>
