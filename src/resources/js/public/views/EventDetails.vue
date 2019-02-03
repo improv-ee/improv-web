@@ -56,19 +56,19 @@
         },
         computed: {
             title: function(){
-                if (this.event.title){
+                if (this.event.title !== null){
                     return this.event.title;
                 }
                 return this.production.title;
             },
             description: function(){
-                if (this.event.description){
+                if (this.event.description !== null){
                     return this.event.description;
                 }
                 return this.production.description;
             },
             header_img() {
-                return this.production.images && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
+                return this.production.images && this.production.images.header && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
             },
             startTime: function () {
                 return moment(this.event.times.start).format('Do MMMM HH:mm')
