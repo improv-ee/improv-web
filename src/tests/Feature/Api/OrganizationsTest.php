@@ -199,6 +199,24 @@ class OrganizationsTest extends ApiTestCase
             ]]);
     }
 
+    public function testOrganizationListCanBeFilteredByVisibility()
+    {
+
+        $organizations = factory(Organization::class, 2)->create();
+        $organizations[0]->is_public = 0;
+        $organizations[0]->save();
+
+
+        $response = $this->get($this->getApiUrl() . '/organizations');
+        $response->assertStatus(200)->assertJsonCount(2,'data');
+
+        $response = $this->get($this->getApiUrl() . '/organizations?filter[is_public]=1');
+        $response->assertStatus(200)->assertJsonCount(1,'data');
+
+        $response = $this->get($this->getApiUrl() . '/organizations?filter[is_public]=0');
+        $response->assertStatus(200)->assertJsonCount(1,'data');
+    }
+
     public function testOrganizationInfoIsReturned()
     {
         $organization = factory(Organization::class)->create();

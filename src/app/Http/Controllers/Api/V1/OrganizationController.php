@@ -51,12 +51,14 @@ class OrganizationController extends Controller
      * List all Organizations
      *
      * @param Request $request
+     * @queryParam filter[is_public] Filter results based on Organizations 'is_public' [0|1] property
+     * @queryParam filter[onlyMine] Filter results based on my membership in the Organization
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request)
     {
         $organizations = QueryBuilder::for(Organization::class)
-            ->allowedFilters(Filter::custom('name', FilterTranslatedName::class))
+            ->allowedFilters(Filter::custom('name', FilterTranslatedName::class), Filter::exact('is_public'))
             ->orderBy('id', 'asc')
             ->onlyMine($request->input('onlyMine', false))
             ->paginate(30);

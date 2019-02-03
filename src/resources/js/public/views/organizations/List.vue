@@ -26,7 +26,7 @@
         methods: {
 
             getResults(page = 1) {
-                axios.get(config.apiUrl + '/organizations', {params: {page: page}})
+                axios.get(config.apiUrl + '/organizations', {params: {page: page, 'filter[is_public]': 1}})
                     .then(response => {
                         this.organizations = response.data.data;
                     });
