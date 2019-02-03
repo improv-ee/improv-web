@@ -14,7 +14,9 @@
     "nav": {
       "organizations": "Organisatsioonid",
       "productions": "Produktsioonid",
-      "contact":"Kontakt"
+      "contact":"Kontakt",
+      "terms": "Tingimused",
+      "privacy": "Privaatsus"
     },
     "contact": {
       "greeting":"Hei",

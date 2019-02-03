@@ -21,7 +21,7 @@
                                    target="_blank">{{ $t('site.report_bug') }}</a>
                             </li>
                             <li>
-                                <router-link :to="'contact'">{{ $t('nav.contact') }}</router-link>
+                                <a href="/#/contact">{{ $t('nav.contact') }}</a>
                             </li>
 
                         </ul>
@@ -39,12 +39,7 @@
                             <li>
                                 <a href="https://github.com/improvision-eu/improvision-web" target="_blank">GitHub</a>
                             </li>
-                            <li>
-                                <a href="#!">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="#!">&nbsp;</a>
-                            </li>
+
                         </ul>
 
                     </div>

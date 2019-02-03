@@ -4,6 +4,8 @@ import PageNotFound from "../views/PageNotFound";
 import OrganizationsList from './views/organizations/List'
 import OrganizationDetails from './views/organizations/Details'
 import Contact from './views/Contact';
+import Privacy from './views/Privacy';
+import Terms from './views/Terms';
 
 
 export default [
@@ -31,6 +33,16 @@ export default [
         path: '/contact',
         name: 'contact',
         component: Contact
+    },
+    {
+        path: '/privacy',
+        name: 'privacy',
+        component: Privacy
+    },
+    {
+        path: '/terms',
+        name: 'terms',
+        component: Terms
     },
     { path: "*", component: PageNotFound }
 ];
