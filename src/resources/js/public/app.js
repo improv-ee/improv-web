@@ -8,7 +8,7 @@ import routes from './routes'
 import Event from './components/schedule-feed/Event';
 import App from './App';
 import VueAnalytics from 'vue-analytics'
-
+import Meta from 'vue-meta';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import {faCalendar, faAddressCard, faTimesCircle} from "@fortawesome/free-regular-svg-icons";
@@ -19,6 +19,7 @@ dom.watch();
 Vue.use(VueRouter);
 Vue.use(Notifications);
 Vue.use(BootstrapVue);
+Vue.use(Meta);
 
 Vue.component('schedule-feed-event', Event);
 

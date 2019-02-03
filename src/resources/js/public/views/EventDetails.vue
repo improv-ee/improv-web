@@ -34,8 +34,8 @@
 
         <div class="row">
             <div class="col-md-12 col-lg-12">
-                <h1>{{ production.title }}</h1>
-                <vue-markdown :source="production.description"></vue-markdown>
+                <h1>{{ title }}</h1>
+                <vue-markdown :source="description"></vue-markdown>
             </div>
         </div>
     </div>
@@ -55,6 +55,18 @@
             }
         },
         computed: {
+            title: function(){
+                if (this.event.title){
+                    return this.event.title;
+                }
+                return this.production.title;
+            },
+            description: function(){
+                if (this.event.description){
+                    return this.event.description;
+                }
+                return this.production.description;
+            },
             header_img() {
                 return this.production.images && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
             },
@@ -79,6 +91,16 @@
                     this.event = response.data.data;
                     this.loadProduction(this.event.production.slug)
                 });
+        },
+        metaInfo () {
+            return {
+                title: this.title,
+                meta: [
+                    {property: 'og:image', content: this.header_img},
+                    {property: 'og:description', content: this.description},
+                    {property: 'og:title', content: this.title + ' - ' + this.$t('app.name')},
+                ]
+            }
         }
     }
 </script>

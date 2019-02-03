@@ -34,6 +34,11 @@
         },
         mounted() {
             this.getResults()
+        },
+        metaInfo () {
+            return {
+                title: this.$t('nav.organizations')
+            }
         }
     }
 </script>

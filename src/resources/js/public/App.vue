@@ -27,6 +27,9 @@
     export default {
         components: {
             BottomNav
+        },
+        metaInfo: {
+            titleTemplate: '%s - Improvision'
         }
     }
 </script>
