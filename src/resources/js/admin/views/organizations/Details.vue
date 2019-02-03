@@ -7,6 +7,10 @@
 
         <h1>{{ organization.name }}</h1>
 
+        <img :src="organization.images.header.urls.original" v-if="organization.images.header" :alt="organization.image"
+             class="img-responsive header-img"/>
+
+
         <vue-markdown :source="organization.description"></vue-markdown>
 
         <h2>{{ $t('organization.members') }}</h2>

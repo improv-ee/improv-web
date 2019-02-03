@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * @property \Illuminate\Database\Eloquent\Collection $users
  * @property \Illuminate\Database\Eloquent\Collection $admins
  */
-class Organization extends Model implements Auditable
+class Organization extends Model implements Auditable, HasMedia
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable;
+    use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, HasMediaTrait;
 
     public $translatedAttributes = ['name', 'description', 'slug'];
 

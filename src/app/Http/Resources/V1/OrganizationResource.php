@@ -32,7 +32,15 @@ class OrganizationResource extends JsonResource
             'description' => $this->description,
             'is_public' => $this->is_public,
             'is_member' => $this->when($request->user(), $this->isMember($request->user())),
-            'members' => iterator_to_array($this->getMembers())
+            'members' => iterator_to_array($this->getMembers()),
+            'images' => [
+                'header' => $this->when($this->hasMedia('images'), [
+                    'urls' => [
+                        'original' => $this->getFirstMediaUrl('images')
+                    ]
+                ],null)
+
+            ],
         ];
     }
 }

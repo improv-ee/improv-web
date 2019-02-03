@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Organization\UpdateOrganizationRequest;
 use App\Http\Resources\V1\OrganizationResource;
+use App\Http\Services\OrganizationStorageService;
 use App\Orm\Filters\FilterTranslatedName;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
@@ -24,9 +25,15 @@ use Spatie\QueryBuilder\QueryBuilder;
 class OrganizationController extends Controller
 {
 
-    public function __construct()
+    /**
+     * @var OrganizationStorageService
+     */
+    private $organizationStorageService;
+
+    public function __construct(OrganizationStorageService $organizationStorageService)
     {
         $this->authorizeResource(Organization::class, 'organization');
+        $this->organizationStorageService = $organizationStorageService;
     }
 
     /**
@@ -71,18 +78,8 @@ class OrganizationController extends Controller
             'name' => 'required|filled|unique:organization_translations|max:255|min:2',
         ]);
 
-        $organization = new Organization;
-
-        $organization->fill($request->all());
-        $organization->creator_id = $request->user()->id;
-        $organization->save();
-
-        $membership = new OrganizationUser;
-        $membership->user_id = Auth::user()->id;
-        $membership->role = OrganizationUser::ROLE_ADMIN;
-        $membership->creator_id = Auth::user()->id;
-        $membership->organization_id = $organization->id;
-        $membership->save();
+        $organization = $this->organizationStorageService->save(new Organization, $request);
+        $this->organizationStorageService->addCreatorAsMember($organization, $request->user());
 
         return new OrganizationResource($organization);
     }
@@ -100,7 +97,7 @@ class OrganizationController extends Controller
      */
     public function update(Organization $organization, UpdateOrganizationRequest $request)
     {
-        $organization->fill($request->all())->save();
+        $organization = $this->organizationStorageService->save($organization, $request);
         return new OrganizationResource($organization);
     }
 

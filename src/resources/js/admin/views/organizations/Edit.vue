@@ -6,6 +6,8 @@
 
                 <b-form-group
                         :label="$t('organization.attr.name')"
+                        :invalid-feedback="invalidFeedback('name')"
+                        :state="getFieldState('name')"
                         label-for="org-name">
                     <b-form-input id="org-name"
                                   type="text"
@@ -25,14 +27,38 @@
 
                 </b-form-group>
 
+                <b-form-group :label="$t('organization.image')"
+                              :invalid-feedback="invalidFeedback('images.header.content')"
+                              :state="getFieldState('images.header.content')"
+                              label-for="header-img">
+
+                    <div class="overlay-container"
+                         v-if="hasHeaderImage"
+                         @click="removeHeaderImg()">
+                        <img class="img-fluid" :src="form.images.header.urls.original"
+                             :alt="$t('organization.image')"/>
+                        <div class="img-overlay">
+                            <span><i class="far fa-trash-alt fa-10x"></i></span>
+                        </div>
+                    </div>
+
+
+                    <b-form-file @change="uploadHeaderImg" v-else
+                                 accept="image/jpeg, image/png, image/webp"
+                                 :placeholder="$t('production.img.select_file')"></b-form-file>
+                </b-form-group>
+
+
                 <b-form-group
                         :label="$t('organization.attr.description')"
+                        :invalid-feedback="invalidFeedback('description')"
+                        :state="getFieldState('description')"
                         :description="$t('ui.markdown_supported')"
                         label-for="org-description">
                     <b-form-textarea id="org-description"
                                   type="text"
-                                  rows="4"
-                                  max-rows="20"
+                                  rows="10"
+                                  max-rows="30"
                                   v-model="form.description">
                     </b-form-textarea>
                 </b-form-group>
@@ -50,10 +76,41 @@
         data() {
             return {
                 organization: {},
-                form: {}
+                form: {},
+                errors: {}
+            }
+        },
+        computed: {
+            hasHeaderImage: function () {
+                return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
             }
         },
         methods: {
+            getFieldState(field){
+                return !this.errors.hasOwnProperty(field);
+            },
+            invalidFeedback(field) {
+                if(!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
+                    return '';
+                }
+                return this.errors[field][0];
+            },
+            removeHeaderImg() {
+                this.form.images.header['content'] = this.form.images.header.urls = null;
+            },
+            fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = error => reject(error);
+                });
+            },
+            uploadHeaderImg(e) {
+                let self = this;
+                this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
+            },
+
             onSubmit() {
                 let self = this;
 
@@ -63,7 +120,11 @@
                         self.$router.push({
                             name: 'organization.details',
                             params: {slug: response.data.data.slug}
-                        })
+                        });
+                        self.errors = {};
+                    })
+                    .catch(function(error){
+                        self.errors = error.response.data.errors;
                     });
             }
         },
@@ -74,7 +135,14 @@
                     this.form = {
                         name: this.organization.name,
                         description: this.organization.description,
-                        is_public: this.organization.is_public
+                        is_public: this.organization.is_public,
+                        images: {
+                            header: {
+                                urls: {
+                                    original: this.organization.hasOwnProperty('images') && this.organization.images.header !== null ? this.organization.images.header.urls.original : null
+                                }
+                            }
+                        }
                     }
                 });
         },

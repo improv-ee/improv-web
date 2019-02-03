@@ -43,7 +43,7 @@ class ProductionStorageServiceTest extends TestCase
         $production->organizations()->attach($organizations[1]);
 
         $request = Request::create('/', 'POST', ['organizations' => [$organizations[0]->slug, $organizations[1]->slug]]);
-        $this->productionStorageService->saveProduction($production, $request);
+        $this->productionStorageService->save($production, $request);
 
         $this->assertEquals(2, $production->organizations()->count());
         $this->assertDatabaseHas('organization_production', ['production_id' => $production->id, 'organization_id' => $organizations[0]->id]);

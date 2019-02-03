@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Organization;
 
+use App\Rules\Base64HeaderImage;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -35,7 +36,8 @@ class UpdateOrganizationRequest extends FormRequest
                     ->whereNot('organization_id', $this->organization->id)
             ],
             'description' => 'max:3000',
-            'is_public' => 'boolean'
+            'is_public' => 'boolean',
+            'images.header.content' => ['nullable', new Base64HeaderImage]
         ];
     }
 }

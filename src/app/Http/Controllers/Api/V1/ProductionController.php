@@ -79,7 +79,7 @@ class ProductionController extends Controller
         $production = new Production;
         $production->creator_id = $request->user()->id;
 
-        $production = $this->productionStorageService->saveProduction($production, $request);
+        $production = $this->productionStorageService->save($production, $request);
         return new ProductionResource($production);
     }
 
@@ -97,7 +97,7 @@ class ProductionController extends Controller
      */
     public function update(Production $production, UpdateProductionRequest $request)
     {
-        $production = $this->productionStorageService->saveProduction($production, $request);
+        $production = $this->productionStorageService->save($production, $request);
         return new ProductionResource($production);
     }
 

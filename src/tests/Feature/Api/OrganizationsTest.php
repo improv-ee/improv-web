@@ -6,6 +6,7 @@ use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @covers \App\Http\Controllers\Api\V1\OrganizationController
@@ -128,6 +129,28 @@ class OrganizationsTest extends ApiTestCase
 
         $this->assertDatabaseHas('organization_translations', ['name' => $organization->name, 'description' => $newInput['description']]);
         $this->assertDatabaseHas('organizations', ['is_public' => 1, 'id' => $organization->id]);
+    }
+
+    public function testHeaderImageCanBeAdded()
+    {
+        $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
+
+        $organization = $user->organizations()->first();
+
+        $newInput = [
+            'name' => $organization->name,
+            'is_public' => true,
+            'description' => 'new description',
+            'images' => ['header' => ['content' =>
+                base64_encode(UploadedFile::fake()->image('header.png', 900, 506)->get())
+            ]]
+        ];
+
+        $response = $this->put($this->getApiUrl() . '/organizations/' . $organization->slug, $newInput);
+
+        $response->assertStatus(200);
+        $this->assertCount(1, $organization->getMedia('images'));
+        $this->assertEquals('image/png', $organization->getFirstMedia('images')->mime_type);
     }
 
     public function testUserCanNotEditOrganizationIfNotAdmin()
