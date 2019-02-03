@@ -4,6 +4,7 @@ public/docs/*
 /public/fonts/vendor
 /public/images/vendor
 /public/storage
+public/mix-manifest.json
 /storage/*.key
 storage/public
 /vendor

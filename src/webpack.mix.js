@@ -13,16 +13,16 @@ const webpack = require('webpack');
  |
  */
 
-mix.js('resources/js/public/app.js', 'public/js')
-    .sass('resources/sass/public/app.scss', 'public/css');
+mix.js('resources/js/public/app.js', 'public/js').version();
+mix.sass('resources/sass/public/app.scss', 'public/css').version();
 
 mix.js('resources/js/admin/app.js','public/js/admin')
     .autoload({
         'jquery': ['$', 'window.jQuery', 'jQuery'],
         'vue': ['Vue','window.Vue'],
         'moment': ['moment','window.moment'],
-    })
-    .sass('resources/sass/admin/admin.scss', 'public/css');
+    }).version();
+mix.sass('resources/sass/admin/admin.scss', 'public/css').version();
 
 mix.webpackConfig({
     plugins: [

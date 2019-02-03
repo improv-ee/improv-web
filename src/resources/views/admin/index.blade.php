@@ -21,9 +21,9 @@
 
 
 @section('scripts')
-    <script src="{{ asset('js/admin/app.js') }}"></script>
+    <script src="{{ mix('js/admin/app.js') }}"></script>
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/admin.css') }}" />
 @endsection
