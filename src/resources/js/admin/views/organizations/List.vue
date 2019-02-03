@@ -10,17 +10,10 @@
 
         <div class="row" v-if="organizations.length">
             <div class="col-10 offset-1">
-                <b-card v-for="organization in organizations"
-                        :key="organization.slug"
-                        img-top>
-                    <p class="card-text">
-                        {{ organization.name }}
-                    </p>
+                <organization-card v-for="organization in organizations"
+                                   :key="organization.slug"
+                                   :organization="organization"></organization-card>
 
-                    <b-button :to="{name: 'organization.details', params: {slug: organization.slug}}"
-                           variant="info"   class="btn">{{ $t('ui.view_details') }}</b-button>
-
-                </b-card>
             </div>
         </div>
 
@@ -51,7 +44,11 @@
 </template>
 
 <script>
+    import OrganizationCard from '../../../components/organization/OrganizationCard';
     export default {
+        components: {
+            OrganizationCard,
+        },
         data() {
             return {
                 organizations: [],
@@ -59,8 +56,6 @@
             }
         },
         methods: {
-
-
             createOrganization(e) {
 
                 if (!this.newOrganizationName.length) {
@@ -76,7 +71,7 @@
                             params: {slug: response.data.data.slug}
                         })
                     })
-                    .catch(function(error){
+                    .catch(function (error) {
                         Vue.notify({
                             group: 'app',
                             type: 'error',

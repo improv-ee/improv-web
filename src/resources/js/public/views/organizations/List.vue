@@ -3,24 +3,20 @@
 
         <div class="row" v-if="organizations.length">
             <div class="col-10 offset-1">
-                <b-card v-for="organization in organizations"
-                        :key="organization.slug" v-if="organization.is_public"
-                        img-top class="mb-2">
-                    <p class="card-text">
-                        {{ organization.name }}
-                    </p>
-
-                    <b-button :to="{name: 'organization.details', params: {slug: organization.slug}}"
-                              variant="info"   class="btn">{{ $t('ui.view_details') }}</b-button>
-
-                </b-card>
+                <organization-card v-for="organization in organizations"
+                                   :key="organization.slug"
+                                   :organization="organization"></organization-card>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import OrganizationCard from '../../../components/organization/OrganizationCard';
     export default {
+        components: {
+            OrganizationCard,
+        },
         data() {
             return {
                 organizations: [],
