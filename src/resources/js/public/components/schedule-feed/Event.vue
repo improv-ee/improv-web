@@ -11,7 +11,8 @@
         </div>
 
         <!-- Button -->
-        <a class="btn-floating btn-action ml-auto mr-4"><span><i class="fas fa-chevron-right pl-1"></i></span></a>
+        <router-link :to="{ name: 'events', params: { uid: event.uid }}" class="btn-floating btn-action ml-auto mr-4">
+        <span><i class="fas fa-chevron-right pl-1"></i></span></router-link>
 
         <div class="card-body align-items-start">
 
