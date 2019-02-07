@@ -24,6 +24,7 @@ class RegistrationControllerTest extends TestCase
         'email' => 'sam@sqroot.eu',
         'password' => 'wE6h0WkhD3rLwsRO8pp7',
         'password_confirmation' => 'wE6h0WkhD3rLwsRO8pp7',
+        'tos' => '1',
         'code'=> null
     ];
 
