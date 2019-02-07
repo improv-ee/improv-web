@@ -93,7 +93,7 @@
             <p>If you have any questions or feedback regarding this privacy policy, including if you feel Improvision
                 or someone within the Improvision community has violated it, or if you are concerned about Improvision’s
                 general philosophy
-                toward user privacy, please contact us at <code>support@improvision.eu</code>.</p>
+                toward user privacy, please contact us at <code class="reversed">ue.noisivorpmi@troppus</code>.</p>
 
         </div>
     </div>
@@ -108,3 +108,10 @@
         }
     }
 </script>
+
+<style>
+    .reversed {
+        unicode-bidi:bidi-override;
+        direction:rtl;
+    }
+</style>

@@ -42,6 +42,9 @@
                             <li>
                                 <a href="/#/privacy">{{ $t('nav.privacy') }}</a>
                             </li>
+ <li>
+                                <a href="/#/terms">{{ $t('nav.terms') }}</a>
+                            </li>
 
                         </ul>
 
