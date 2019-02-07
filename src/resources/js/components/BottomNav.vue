@@ -39,6 +39,9 @@
                             <li>
                                 <a href="https://github.com/improvision-eu/improvision-web" target="_blank">GitHub</a>
                             </li>
+                            <li>
+                                <a href="/#/privacy">{{ $t('nav.privacy') }}</a>
+                            </li>
 
                         </ul>
 
