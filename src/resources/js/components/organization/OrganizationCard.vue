@@ -2,7 +2,6 @@
     <b-card text-variant="white"
             overlay
             @click="goToOrg(organization)"
-            :title="organization.name"
             :img-src="getCardImage(organization)"
             :img-alt="organization.slug">
     </b-card>
@@ -29,16 +28,6 @@
 <style scoped>
     .card-img {
         max-height: 20rem;
-    }
-
-    h4.card-title {
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.34);
-        text-transform: uppercase;
-        padding: 1rem;
-    }
-    .card-img-overlay {
-        padding: 0;
     }
 
     .card {

@@ -2,7 +2,7 @@
     <div>
 
         <div class="row" v-if="organizations.length">
-            <div class="col-10 offset-1">
+            <div class="col-12">
                 <organization-card v-for="organization in organizations"
                                    :key="organization.slug"
                                    :organization="organization"></organization-card>
