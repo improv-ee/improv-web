@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Log;
 
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Log;
  *
  * @package App\Listeners
  */
-class LogSentNotification implements ShouldQueue
+class LogSentNotification
 {
     public function handle(NotificationSent $event)
     {
