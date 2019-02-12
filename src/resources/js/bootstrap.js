@@ -7,7 +7,11 @@ import * as Sentry from '@sentry/browser'
 
 Sentry.init({
     dsn: 'https://4b357e3a9aa347229d1f452bf469f676@sentry.io/1314907',
-    integrations: [new Sentry.Integrations.Vue({Vue})]
+    integrations: [new Sentry.Integrations.Vue({Vue})],
+    whitelistUrls: [
+        'https://improvision.eu',
+        'https://api.improvision.eu'
+    ]
 });
 
 /**

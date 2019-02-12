@@ -5,8 +5,12 @@ Site: https://sqroot.eu
 Twitter: @SQRooted
 Location: Tallinn, Estonia
 
-/* THANKS */
 Eva Valdna
+Location: Tallinn, Estonia
+
+/* THANKS */
+
+Giulia De Benedetto - Logo (Noun project)
 
 /* SITE */
 Standards: HTML5, CSS3
