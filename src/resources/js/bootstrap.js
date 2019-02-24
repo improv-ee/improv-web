@@ -17,8 +17,8 @@ Sentry.init({
     ],
     beforeSend(event) {
         // Check if it is an exception, if so, show the report dialog
-        if (event.exception) {
-            console.error(event.exception);
+        console.error(event);
+        if (event.exception && event.exception.mechanism.handled !== true) {
             Sentry.showReportDialog();
         }
         return event;
