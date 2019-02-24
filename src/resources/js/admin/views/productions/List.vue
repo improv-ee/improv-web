@@ -13,7 +13,7 @@
             </b-button>
         </p>
 
-        <div v-if="productions.data.length">
+        <div v-if="productions.data && productions.data.length">
             <div class="table-responsive">
                 <table class="table table-hover table-clickable">
                     <thead class="thead-light">
