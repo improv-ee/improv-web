@@ -1,27 +1,34 @@
 <template>
-    <div>
+    <div class="row">
+        <side-nav></side-nav>
+        <div class="col-10">
+            <h1>{{ $t('user.profile.invite.invite_new_user') }}</h1>
+            <b-form @submit.prevent="inviteUser">
 
-        <h1>{{ $t('user.profile.invite.invite_new_user') }}</h1>
-        <b-form @submit.prevent="inviteUser">
-
-            <b-form-group
-                    :label="$t('user.profile.email')"
-                    label-for="email">
-                <b-form-input id="email"
-                              type="email"
-                              v-model="form.email"
-                              required>
-                </b-form-input>
-            </b-form-group>
-            <b-button type="submit" variant="primary" class="btn-block">{{ $t('user.profile.invite.send_invitation') }}
-            </b-button>
-        </b-form>
+                <b-form-group
+                        :label="$t('user.profile.email')"
+                        label-for="email">
+                    <b-form-input id="email"
+                                  type="email"
+                                  v-model="form.email"
+                                  required>
+                    </b-form-input>
+                </b-form-group>
+                <b-button type="submit" variant="primary" class="btn-block">{{
+                    $t('user.profile.invite.send_invitation') }}
+                </b-button>
+            </b-form>
+        </div>
     </div>
 </template>
 
 <script>
+    import SideNav from '../../components/profile/SideNav';
 
     export default {
+        components: {
+            SideNav
+        },
         data() {
             return {
                 form: {

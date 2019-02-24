@@ -7,6 +7,8 @@ import ProductionCreate from './views/productions/Create'
 import EventDetails from './views/events/Details'
 import EventEdit from './views/events/Edit'
 import ProfileSettings from './views/profile/Settings'
+import ApiTokens from './views/profile/ApiTokens'
+import InviteUser from './views/profile/Invite'
 import OrganizationsList from './views/organizations/List'
 import OrganizationDetails from './views/organizations/Details'
 import OrganizationEdit from './views/organizations/Edit'
@@ -52,6 +54,16 @@ export default [
         path: '/profile/settings',
         name: 'profile.settings',
         component: ProfileSettings,
+    },
+    {
+        path: '/profile/tokens',
+        name: 'profile.api.tokens',
+        component: ApiTokens,
+    },
+    {
+        path: '/profile/invite',
+        name: 'profile.invite',
+        component: InviteUser,
     },
     {
         path: '/organizations',
