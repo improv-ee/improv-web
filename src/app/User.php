@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Laravel\Passport\Token;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -17,9 +18,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $email
  * @property string $password
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use Notifiable, HasApiTokens, SoftDeletes, HasRoles;
+    use Notifiable, HasApiTokens, SoftDeletes, HasRoles,\OwenIt\Auditing\Auditable;
 
     const OAUTH_WEB_TOKEN_NAME = 'web-token';
 
