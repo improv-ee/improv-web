@@ -11,7 +11,14 @@ Sentry.init({
     whitelistUrls: [
         'https://improvision.eu',
         'https://api.improvision.eu'
-    ]
+    ],
+    beforeSend(event) {
+        // Check if it is an exception, if so, show the report dialog
+        if (event.exception) {
+            Sentry.showReportDialog();
+        }
+        return event;
+    }
 });
 
 /**
