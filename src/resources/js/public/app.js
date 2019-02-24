@@ -9,6 +9,7 @@ import Event from './components/schedule-feed/Event';
 import App from './App';
 import VueAnalytics from 'vue-analytics'
 import Meta from 'vue-meta';
+import VueProgressBar from 'vue-progressbar';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
 import {faCalendar, faAddressCard, faTimesCircle} from "@fortawesome/free-regular-svg-icons";
@@ -22,6 +23,21 @@ Vue.use(BootstrapVue);
 Vue.use(Meta);
 
 Vue.component('schedule-feed-event', Event);
+
+const progressBarOptions = {
+    color: '#007bff',
+    failedColor: '#CC0000',
+    thickness: '5px',
+    transition: {
+        speed: '2.0s',
+        opacity: '0.6s',
+        termination: 800
+    },
+    autoRevert: true,
+    location: 'top'
+};
+
+Vue.use(VueProgressBar, progressBarOptions);
 
 
 const router = new VueRouter({

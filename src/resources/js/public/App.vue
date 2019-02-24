@@ -1,5 +1,6 @@
 <template>
     <div>
+        <vue-progress-bar></vue-progress-bar>
         <notifications group="app" position="top center"/>
 
 
@@ -24,12 +25,15 @@
 
 <script>
     import BottomNav from '../components/BottomNav';
+    import { progress } from '../mixins/progress';
+
     export default {
         components: {
             BottomNav
         },
         metaInfo: {
             titleTemplate: '%s - Improvision'
-        }
+        },
+        mixins: [progress]
     }
 </script>

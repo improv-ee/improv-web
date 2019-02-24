@@ -11,6 +11,7 @@ import ProductionForm from './components/productions/Form'
 import EventForm from './components/events/Form'
 import LaravelVuePagination from 'laravel-vue-pagination'
 import CrudToolbar from './components/CrudToolbar'
+import VueProgressBar from 'vue-progressbar';
 
 // Font Awesome bits
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
@@ -38,6 +39,22 @@ Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue')
 );
+
+
+const progressBarOptions = {
+    color: '#007bff',
+    failedColor: '#CC0000',
+    thickness: '5px',
+    transition: {
+        speed: '2.0s',
+        opacity: '0.6s',
+        termination: 800
+    },
+    autoRevert: true,
+    location: 'top'
+};
+
+Vue.use(VueProgressBar, progressBarOptions);
 
 $.extend(true, $.fn.datetimepicker.defaults, {
     locale: 'et',

@@ -1,6 +1,7 @@
 <template>
 
     <div>
+        <vue-progress-bar></vue-progress-bar>
         <notifications group="app" position="top center" width="50%" :duration="5000"/>
 
         <b-navbar toggleable="md" id="top-nav" type="dark" variant="default">
@@ -30,9 +31,13 @@
 
 <script>
     import BottomNav from '../components/BottomNav';
+    import { progress } from '../mixins/progress';
+
+
     export default {
         components: {
             BottomNav
-        }
+        },
+        mixins: [progress]
     }
 </script>

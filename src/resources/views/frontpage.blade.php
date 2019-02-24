@@ -19,9 +19,7 @@
 @endsection
 
 @section('content')
-            <div id="app">
-                @include('loading')
-            </div>
+            <div id="app"></div>
 @endsection
 
 @section('scripts')
