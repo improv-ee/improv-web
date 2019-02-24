@@ -5,37 +5,26 @@ export class Production {
     }
 
     getTitle() {
-
-        if (!this.production.hasOwnProperty('title') || this.production.title === null) {
-            return null;
-        }
-
-        return this.production.title;
+        return _.get(this.production, 'title', null);
     }
 
     hasHeaderImg() {
-        return this.production.hasOwnProperty('images') && this.production.hasOwnProperty('header');
+        return !!_.get(this.production, 'images.header');
     }
 
     getHeaderImgUrl() {
         if (!this.hasHeaderImg()) {
             return null;
         }
-        return this.production.images.header.urls.original;
+        return _.get(this.production, 'images.header.urls.original');
     }
 
     getExcerpt() {
-        if (!this.production.hasOwnProperty('excerpt')) {
-            return null;
-        }
-        return this.production.excerpt;
+        return _.get(this.production, 'excerpt', null);
     }
 
     getDescription() {
-        if (!this.production.hasOwnProperty('description')) {
-            return null;
-        }
-        return this.production.description;
+        return _.get(this.production, 'excerpt', null);
     }
 
     hasEvents() {
@@ -43,6 +32,9 @@ export class Production {
     }
 
     getEvents() {
+        if (!this.production){
+            return null;
+        }
         return this.production.events;
     }
 }
