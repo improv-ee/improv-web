@@ -15,6 +15,10 @@ Sentry.init({
         'https://improvision.eu',
         'https://api.improvision.eu'
     ],
+    // https://docs.sentry.io/workflow/releases
+    // Keep release in VCS at "improvision-web@dev", this will be search-replaced
+    // by Travis build (build-webserver.sh)
+    release: "improvision-web@dev",
     beforeSend(event) {
         // Check if it is an exception, if so, show the report dialog
         console.error(event);
