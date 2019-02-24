@@ -1,43 +1,44 @@
 <template>
-    <div>
-        <div class="row">
-            <div class="col-12 col-md-6 mb-5" v-for="event in featuredEvents" :key="event.uid">
-                <schedule-feed-event :event="event"></schedule-feed-event>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-12 col-md-6 col-lg-4 mb-3"
-                 v-for="event in events"
-                 :key="event.uid">
-
-                <schedule-feed-event :event="event"></schedule-feed-event>
-
-            </div>
-        </div>
-
+  <div>
+    <div class="row">
+      <div
+        v-for="event in featuredEvents"
+        :key="event.uid"
+        class="col-12 col-md-6 mb-5">
+        <schedule-feed-event :event="event" />
+      </div>
     </div>
+    <div class="row mb-2">
+      <div
+        v-for="event in events"
+        :key="event.uid"
+        class="col-12 col-md-6 col-lg-4 mb-3">
+        <schedule-feed-event :event="event" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                events: [],
-                featuredEvents: []
-            }
-        },
-        mounted() {
-            axios.get(config.apiUrl + '/events/schedule')
-                .then(response => {
-                    this.events = response.data.data;
-                    this.featuredEvents = this.events.splice(0, 2);
+export default {
+	data() {
+		return {
+			events: [],
+			featuredEvents: []
+		};
+	},
+	mounted() {
+		axios.get(config.apiUrl + '/events/schedule')
+			.then(response => {
+				this.events = response.data.data;
+				this.featuredEvents = this.events.splice(0, 2);
 
-                });
-        },
-        metaInfo() {
-            return {
-                title: this.$t('nav.schedule')
-            }
-        }
-    }
+			});
+	},
+	metaInfo() {
+		return {
+			title: this.$t('nav.schedule')
+		};
+	}
+};
 </script>

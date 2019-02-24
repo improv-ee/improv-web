@@ -1,82 +1,110 @@
 <template>
-    <multiselect v-model="selectedOrganizations" label="name" track-by="slug"
-                 :placeholder="$t('ui.search.type_to_search')" :selectLabel="$t('ui.search.press_to_select')"
-                 open-direction="bottom" :options="organizations" :multiple="true" :searchable="true"
-                 :loading="isLoading" :internal-search="false" :clear-on-select="false" :close-on-select="false"
-                 :options-limit="20" :limit="20" :limit-text="limitText" :max-height="600" :show-no-results="false"
-                 :hide-selected="true" @search-change="asyncFind">
-
-        <template slot="clear" slot-scope="props">
-            <div class="multiselect__clear" v-if="selectedOrganizations.length"
-                 @mousedown.prevent.stop="clearAll(props.search)"></div>
-        </template>
-        <span slot="noResult">{{ $t('ui.search.no_results') }}</span>
-        <span slot="noOptions">{{ $t('ui.search.no_results') }}</span>
-    </multiselect>
+  <multiselect
+    v-model="selectedOrganizations"
+    label="name"
+    track-by="slug"
+    :placeholder="$t('ui.search.type_to_search')"
+    :select-label="$t('ui.search.press_to_select')"
+    open-direction="bottom"
+    :options="organizations"
+    :multiple="true"
+    :searchable="true"
+    :loading="isLoading"
+    :internal-search="false"
+    :clear-on-select="false"
+    :close-on-select="false"
+    :options-limit="20"
+    :limit="20"
+    :limit-text="limitText"
+    :max-height="600"
+    :show-no-results="false"
+    :hide-selected="true"
+    @search-change="asyncFind">
+    <template
+      slot="clear"
+      slot-scope="props">
+      <div
+        v-if="selectedOrganizations.length"
+        class="multiselect__clear"
+        @mousedown.prevent.stop="clearAll(props.search)" />
+    </template>
+    <span slot="noResult">{{ $t('ui.search.no_results') }}</span>
+    <span slot="noOptions">{{ $t('ui.search.no_results') }}</span>
+  </multiselect>
 </template>
 
 <script>
-    import Multiselect from 'vue-multiselect';
-    _ = require('lodash');
+import Multiselect from 'vue-multiselect';
+import lodash from 'lodash';
 
-    export default {
-        components: {Multiselect},
-        props: ['value', 'options'],
-        data() {
-            return {
-                selectedOrganizations: [],
-                organizations: [],
-                isLoading: false
-            }
-        },
+export default {
+	components: {Multiselect},
+	props: {
+		value: {
+			type: String,
+			default: ''
+		},
+		options: {
+			type: Array,
+			default: function () {
+				return [];
+			}
+		}
+	},
+	data() {
+		return {
+			selectedOrganizations: [],
+			organizations: [],
+			isLoading: false
+		};
+	},
+	watch: {
+		selectedOrganizations: function () {
 
-        methods: {
-            limitText(count) {
-                return $t('ui.search.and_number_others', {number: count});
-            },
+			let slugs = lodash.map(this.selectedOrganizations, function (organization) {
+				return organization.slug;
+			});
 
-            asyncFind: _.debounce(function (query) {
-                this.isLoading = true;
-                this.findOrganization(query).then(response => {
-                    this.organizations = response;
-                    this.isLoading = false
-                })
-            }, 300),
-            clearAll() {
-                this.selectedOrganizations = [];
-            },
-            findOrganization(query) {
-                return new Promise((resolve, reject) => {
-                    axios.get(config.apiUrl + '/organizations', {params: {'filter[name]': query}})
-                        .then(function (response) {
+			this.$emit('input', slugs);
+		}
+	},
+	mounted() {
+		this.selectedOrganizations = this.value;
+		this.organizations = this.options;
+	},
+	methods: {
+		limitText(count) {
+			return this.$t('ui.search.and_number_others', {number: count});
+		},
 
-                            let organizations = _.map(response.data.data, function (organization) {
-                                return _.pick(organization, ['name', 'slug']);
-                            });
+		asyncFind: lodash.debounce(function (query) {
+			this.isLoading = true;
+			this.findOrganization(query).then(response => {
+				this.organizations = response;
+				this.isLoading = false;
+			});
+		}, 300),
+		clearAll() {
+			this.selectedOrganizations = [];
+		},
+		findOrganization(query) {
+			return new Promise((resolve, reject) => {
+				axios.get(config.apiUrl + '/organizations', {params: {'filter[name]': query}})
+					.then(function (response) {
 
-                            resolve(organizations);
-                        })
-                        .catch(function () {
-                            reject();
-                        });
-                })
-            }
-        },
-        watch: {
-            selectedOrganizations: function () {
+						let organizations = lodash.map(response.data.data, function (organization) {
+							return lodash.pick(organization, ['name', 'slug']);
+						});
 
-                let slugs = _.map(this.selectedOrganizations, function (organization) {
-                    return organization.slug;
-                });
-
-                this.$emit('input', slugs);
-            }
-        },
-        mounted() {
-            this.selectedOrganizations = this.value;
-            this.organizations = this.options;
-        }
-    }
+						resolve(organizations);
+					})
+					.catch(function () {
+						reject();
+					});
+			});
+		}
+	}
+};
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

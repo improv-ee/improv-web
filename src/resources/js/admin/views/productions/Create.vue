@@ -1,9 +1,11 @@
 <template>
-    <production-form :production="{organizations: []}" mode="create"></production-form>
+  <production-form
+    :production="{organizations: []}"
+    mode="create" />
 </template>
 
 <script>
-    export default {
+export default {
 
-    }
+};
 </script>

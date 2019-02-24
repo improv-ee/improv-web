@@ -15,8 +15,10 @@ node_js: 8.9
 jobs:
   include:
   - stage: "🤖 Run quality checks"
-    name: "🕵️ Run static analysis tools on code"
-    script: .travis/static-analysis.sh
+    name: "🕵️ Run static analysis tools on frontend JS/Vue code"
+    script: .travis/static-js.sh
+  - name: "🕵️ Run static analysis tools on backend PHP code"
+    script: .travis/static-php.sh
   - name: "✔️ Run unit tests"
     script: .travis/unittest.sh
   - stage: "🐳 Create build artifacts"

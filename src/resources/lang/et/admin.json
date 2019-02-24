@@ -64,7 +64,7 @@
       "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi organisatsiooni - produktsioonide lisamiseks pead looma uue; või liituma vähemalt ühe organisatsiooniga.",
       "num_of_events": "Üritusi",
       "events": "Üritused",
-      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>ürituse</i> aega.",
+      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
       "create_new": "Uus produktsioon",
       "attr": {
         "title": "Pealkiri",

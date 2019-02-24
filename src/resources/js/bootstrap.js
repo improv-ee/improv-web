@@ -1,32 +1,34 @@
+/* eslint-disable no-console */
+
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
 window.Vue = require('vue');
 
-import * as Sentry from '@sentry/browser'
+import * as Sentry from '@sentry/browser';
 
 Sentry.init({
-    dsn: 'https://4b357e3a9aa347229d1f452bf469f676@sentry.io/1314907',
-    integrations: [new Sentry.Integrations.Vue({Vue})],
-    ignoreErrors: [
-        '[vue-analytics]'
-    ],
-    whitelistUrls: [
-        'https://improvision.eu',
-        'https://api.improvision.eu'
-    ],
-    // https://docs.sentry.io/workflow/releases
-    // Keep release in VCS at "improvision-web@dev", this will be search-replaced
-    // by Travis build (build-webserver.sh)
-    release: "improvision-web@dev",
-    beforeSend(event) {
-        // Check if it is an exception, if so, show the report dialog
-        console.error(event);
-        if (event.exception && event.exception.mechanism.handled !== true) {
-            Sentry.showReportDialog();
-        }
-        return event;
-    }
+	dsn: 'https://4b357e3a9aa347229d1f452bf469f676@sentry.io/1314907',
+	integrations: [new Sentry.Integrations.Vue({Vue})],
+	ignoreErrors: [
+		'[vue-analytics]'
+	],
+	whitelistUrls: [
+		'https://improvision.eu',
+		'https://api.improvision.eu'
+	],
+	// https://docs.sentry.io/workflow/releases
+	// Keep release in VCS at "improvision-web@dev", this will be search-replaced
+	// by Travis build (build-webserver.sh)
+	release: 'improvision-web@dev',
+	beforeSend(event) {
+		// Check if it is an exception, if so, show the report dialog
+		console.error(event);
+		if (event.exception && event.exception.mechanism.handled !== true) {
+			Sentry.showReportDialog();
+		}
+		return event;
+	}
 });
 
 /**
@@ -35,12 +37,8 @@ Sentry.init({
  * code may be modified to fit the specific needs of your application.
  */
 
-try {
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
-} catch (e) {
-}
+window.$ = window.jQuery = require('jquery');
+require('bootstrap');
 
 require('mdbootstrap');
 
@@ -66,18 +64,19 @@ moment.locale('et');
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 console.log('Initializing app, requesting runtime config from backend...');
 axios.get('/getConfig')
-    .then(response => {
-        window.config = response.data;
-        console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');
-    }).catch(function (error) {
-        window.location.href = '/maintenance';
-        console.error('Fatal - unable to load app config');
-});
+	.then(response => {
+		window.config = response.data;
+		console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');
+	}).catch(function (error) {
+		window.location.href = '/maintenance';
+		console.error('Fatal - unable to load app config!');
+		console.error(error);
+	});
 

@@ -1,43 +1,57 @@
 <template>
+  <div>
+    <vue-progress-bar />
+    <notifications
+      group="app"
+      position="top center"
+      width="50%"
+      :duration="5000" />
 
-    <div>
-        <vue-progress-bar></vue-progress-bar>
-        <notifications group="app" position="top center" width="50%" :duration="5000"/>
+    <b-navbar
+      id="top-nav"
+      toggleable="md"
+      type="dark"
+      variant="default">
+      <b-navbar-toggle target="nav_collapse" />
 
-        <b-navbar toggleable="md" id="top-nav" type="dark" variant="default">
+      <b-collapse
+        id="nav_collapse"
+        is-nav>
+        <b-navbar-nav>
+          <b-nav-item
+            exact
+            to="/">
+            {{ $t("nav.home") }}
+          </b-nav-item>
+          <b-nav-item :to="{ name: 'productions' }">
+            {{ $t("nav.productions") }}
+          </b-nav-item>
+          <b-nav-item :to="{ name: 'organizations' }">
+            {{ $t("nav.organizations") }}
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
 
-            <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-
-            <b-collapse is-nav id="nav_collapse">
-
-                <b-navbar-nav>
-                    <b-nav-item exact to="/">{{ $t("nav.home") }}</b-nav-item>
-                    <b-nav-item :to="{ name: 'productions' }">{{ $t("nav.productions") }}</b-nav-item>
-                    <b-nav-item :to="{ name: 'organizations' }">{{ $t("nav.organizations") }}
-                    </b-nav-item>
-                </b-navbar-nav>
-            </b-collapse>
-        </b-navbar>
-
-        <div class="row">
-            <div class="col-12 admin-content">
-                <router-view></router-view>
-            </div>
-        </div>
-
-        <BottomNav></BottomNav>
+    <div class="row">
+      <div class="col-12 admin-content">
+        <router-view />
+      </div>
     </div>
+
+    <BottomNav />
+  </div>
 </template>
 
 <script>
-    import BottomNav from '../components/BottomNav';
-    import { progress } from '../mixins/progress';
+import BottomNav from '../components/BottomNav';
+import { progress } from '../mixins/progress';
 
 
-    export default {
-        components: {
-            BottomNav
-        },
-        mixins: [progress]
-    }
+export default {
+	components: {
+		BottomNav
+	},
+	mixins: [progress]
+};
 </script>
