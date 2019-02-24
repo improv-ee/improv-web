@@ -38,7 +38,8 @@ class StandardPolicy extends Policy
             ->addDirective(Directive::OBJECT, Keyword::NONE)
             ->addDirective(Directive::SCRIPT, [
                 Keyword::SELF,
-                'https://www.google-analytics.com'
+                'https://www.google-analytics.com',
+                'https://sentry.io'
             ])
             ->addDirective(Directive::STYLE, [
                 Keyword::SELF,
