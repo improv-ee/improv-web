@@ -3,6 +3,7 @@
         <div class="col-sm">
             <h2>{{ $t('nav.terms') }}</h2>
 
+            <p class="lead">Effective date: Feb 24 2019</p>
 
             <p>
                 This site is brand new and we're not lawyers - so we don't yet have fancy legalese as our terms of service.
@@ -29,6 +30,14 @@
 
             <h3>Third party stuff</h3>
             <p>We post links to external sites, but we are not responsible for what you find there. Click on your own risk.</p>
+
+            <h3>Security research</h3>
+            <p>
+                Security research is allowed, if the researcher follows commonly accepted white-hat researcher best practices and responsible disclosure.
+                Avoid intentionally harming the operation of this service and accessing non-public information of other profiles.
+            </p>
+
+            <p>Contact information for reporting found vulnerabilities is at <a href="/security.txt">/security.txt</a>.</p>
 
             <h3>Liability</h3>
             <p>We provide this service on best faith, best effort basis. We are not responsible if the service breaks or information is lost, but we do try to fix it. We are not responsible if your account gets compromised
