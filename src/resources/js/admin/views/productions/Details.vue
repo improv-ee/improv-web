@@ -3,14 +3,14 @@
         <crud-toolbar resource-name="productions"
                       :resource-id="this.$route.params.slug"></crud-toolbar>
 
-        <h1>{{production.title}}</h1>
+        <h1>{{production.getTitle()}}</h1>
 
-        <img :src="production.images.header.urls.original" v-if="production.images.header" :alt="production.title"
+        <img :src="production.getHeaderImgUrl()" v-if="production.hasHeaderImg()" :alt="production.getTitle()"
              class="img-responsive header-img"/>
 
-        <p class="lead">{{production.excerpt}}</p>
+        <p class="lead">{{production.getExcerpt()}}</p>
 
-        <vue-markdown :source="production.description"></vue-markdown>
+        <vue-markdown :source="production.getDescription()"></vue-markdown>
 
         <h2>{{ $t('production.events') }}</h2>
 
@@ -23,7 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr @click="openEvent(event.uid)" v-for="event in production.events" v-if="production.events">
+                <tr @click="openEvent(event.uid)" v-for="event in production.getEvents()" v-if="production.hasEvents()">
                     <td>{{ event.title || production.title }}</td>
                     <td>{{ formatTime(event.times.start) }}</td>
                 </tr>
@@ -46,7 +46,8 @@
 </template>
 
 <script>
-    import VueMarkdown from 'vue-markdown'
+    import VueMarkdown from 'vue-markdown';
+    import {Production} from '../../../models/production';
 
     export default {
         components: {
@@ -54,7 +55,7 @@
         },
         data() {
             return {
-                production: null,
+                production: new Production(),
             }
         },
         methods: {
@@ -85,7 +86,7 @@
             let self = this;
             axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
                 .then(response => {
-                    self.production = response.data.data;
+                    self.production = new Production(response.data.data);
                 });
         }
     }
