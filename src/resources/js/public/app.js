@@ -29,9 +29,9 @@ const progressBarOptions = {
     failedColor: '#CC0000',
     thickness: '5px',
     transition: {
-        speed: '2.0s',
+        speed: '0.2s',
         opacity: '0.6s',
-        termination: 800
+        termination: 300
     },
     autoRevert: true,
     location: 'top'

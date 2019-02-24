@@ -1,7 +1,7 @@
 {
   "et": {
-    "ui":{
-      "markdown_supported":"Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
+    "ui": {
+      "markdown_supported": "Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
     },
     "nav": {
       "home": "Avaleht"
@@ -13,12 +13,19 @@
       "not_found": "Sellist kasutajanime ei leitud",
       "profile": {
         "email": "E-mail",
+        "name": "Nimi",
+        "avatar": "Avatar",
         "settings": "Profiili seaded",
-        "api_tokens":"API võtmed",
+        "api_tokens": "API võtmed",
         "invite": {
-          "invite_new_user":"Kutsu uus kasutaja",
+          "invite_new_user": "Kutsu uus kasutaja",
           "send_invitation": "Saada kutse",
           "invite_sent": "Kutse saadetud"
+        }
+      },
+      "settings":{
+        "api": {
+          "tokens_intro": "Improvision pakub masinatele liidestumiseks tehnilist API-t. See võimaldab Improvisioniga ühendada teisi veebilehti ning süsteeme. API kasutamiseks on vaja luua personaalne API võti. Dokumentatsiooni API kasutamisest leiad {apiDoc}."
         }
       }
     },
@@ -35,14 +42,14 @@
       "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
       "create_new": "Uus organisatsioon",
       "members": "Liikmed",
-      "add_member":"Lisa uus liige",
+      "add_member": "Lisa uus liige",
       "remove_member": "Eemalda organisatsioonist",
-      "name_taken":"Selle nimega organisatsioon on juba loodud, palun vali teine nimi. Kui see organisatsioon kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
+      "name_taken": "Selle nimega organisatsioon on juba loodud, palun vali teine nimi. Kui see organisatsioon kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
       "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
       "attr": {
         "name": "Nimi",
         "description": "Kirjeldus",
-        "is_public":"Näita avalikus nimekirjas"
+        "is_public": "Näita avalikus nimekirjas"
       },
       "user": {
         "role": {
@@ -56,7 +63,7 @@
       "no_events": "Ühtegi sündmust pole lisatud",
       "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi organisatsiooni - produktsioonide lisamiseks pead looma uue; või liituma vähemalt ühe organisatsiooniga.",
       "num_of_events": "Üritusi",
-      "events":"Üritused",
+      "events": "Üritused",
       "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. <i>Produktsioon</i> on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat <i>ürituse</i> aega.",
       "create_new": "Uus produktsioon",
       "attr": {
@@ -66,7 +73,7 @@
         "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
         "description": "Kirjeldus",
         "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
-        "organizers_description":"Vali organisatsioonid, kes seda produktsiooni korraldavad. N.B! Valitud organisatsioonid saavad õiguse produktsiooni andmeid muuta!"
+        "organizers_description": "Vali organisatsioonid, kes seda produktsiooni korraldavad. N.B! Valitud organisatsioonid saavad õiguse produktsiooni andmeid muuta!"
       },
       "img": {
         "header": "Päise pilt",
