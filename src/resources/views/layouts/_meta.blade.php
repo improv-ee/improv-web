@@ -11,3 +11,4 @@
 <meta name="language" content="{{ app()->getLocale() }}" />
 
 <link rel="author" type="text/plain" href="humans.txt" />
+<link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
