@@ -62,12 +62,6 @@
   </div>
 </template>
 
-<style>
-    .reversed {
-        unicode-bidi:bidi-override;
-        direction:rtl;
-    }
-</style>
 <script>
 export default {
 	metaInfo() {

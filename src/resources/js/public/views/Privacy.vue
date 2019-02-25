@@ -126,10 +126,3 @@ export default {
 	}
 };
 </script>
-
-<style>
-    .reversed {
-        unicode-bidi:bidi-override;
-        direction:rtl;
-    }
-</style>

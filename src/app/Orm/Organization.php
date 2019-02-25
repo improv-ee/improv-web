@@ -14,6 +14,10 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 /**
  * @property \Illuminate\Database\Eloquent\Collection $users
  * @property \Illuminate\Database\Eloquent\Collection $admins
+ * @property string email
+ * @property string facebook_url
+ * @property string homepage_url
+ * @property int is_public
  */
 class Organization extends Model implements Auditable, HasMedia
 {
@@ -27,7 +31,7 @@ class Organization extends Model implements Auditable, HasMedia
         'deleted_at'
     ];
 
-    protected $fillable = ['name', 'description', 'is_public'];
+    protected $fillable = ['name', 'description', 'is_public', 'homepage_url', 'facebook_url', 'email'];
 
     protected $casts = [
         'is_public' => 'boolean',

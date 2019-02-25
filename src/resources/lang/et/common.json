@@ -24,6 +24,13 @@
       "platform_description":"improvision.eu on platvorm truppidele ja publikule etenduste mängukava avaldamiseks ning impro-info jagamiseks.",
       "contact": "Meiega saab ühendust e-mailil {email}"
     },
+    "organization":{
+      "attr": {
+        "email":"E-mail",
+        "homepage_url":"Koduleht",
+        "facebook_url":"Facebook leht"
+      }
+    },
     "event": {
       "attr": {
         "title": "Pealkiri",

@@ -11,7 +11,9 @@ $factory->define(App\Orm\Organization::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(3),
         'creator_id' => $user->id,
-        'is_public' => true
-
+        'is_public' => true,
+        'email' => $faker->email,
+        'homepage_url'=>$faker->url,
+        'facebook_url'=>$faker->url
     ];
 });

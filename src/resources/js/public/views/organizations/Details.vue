@@ -7,6 +7,41 @@
       :alt="organization.image"
       class="img-responsive header-img">
 
+    <div class="row">
+      <div
+        v-if="organization.email"
+        class="col-lg-3 col-object-meta">
+        <p>
+          <span class="meta-label">
+            <i class="far fa-envelope-open" /> {{ $t('organization.attr.email') }}</span><br>
+          <span class="meta-value">{{ organization.email }}</span>
+        </p>
+      </div>
+      <div
+        v-if="organization.urls.homepage"
+        class="col-lg-3 col-object-meta">
+        <p>
+          <span class="meta-label">
+            <i class="fas fa-external-link-alt" /> {{ $t('organization.attr.homepage_url') }}</span><br>
+          <span class="meta-value">
+            <a
+              :href="organization.urls.homepage"
+              target="_blank">{{ organization.urls.homepage }}</a></span>
+        </p>
+      </div>
+      <div
+        v-if="organization.urls.facebook"
+        class="col-lg-3 col-object-meta">
+        <p>
+          <span class="meta-label">
+            <i class="fab fa-facebook" /> {{ $t('organization.attr.facebook_url') }}</span><br>
+          <span class="meta-value"><a
+            :href="organization.urls.facebook"
+            target="_blank">{{ organization.urls.facebook }}</a></span>
+        </p>
+      </div>
+    </div>
+
     <vue-markdown :source="organization.description" />
   </div>
 </template>

@@ -26,6 +26,44 @@
           </b-form-checkbox>
         </b-form-group>
 
+
+        <b-form-group
+          :label="$t('organization.attr.email')"
+          :invalid-feedback="invalidFeedback('email')"
+          :state="getFieldState('email')"
+          label-for="org-email">
+          <b-form-input
+            id="org-email"
+            v-model="form.email"
+            type="email"
+            maxlength="255" />
+        </b-form-group>
+
+
+        <b-form-group
+          :label="$t('organization.attr.homepage_url')"
+          :invalid-feedback="invalidFeedback('homepage_url')"
+          :state="getFieldState('homepage_url')"
+          label-for="org-homepage_url">
+          <b-form-input
+            id="org-homepage_url"
+            v-model="form.homepage_url"
+            type="text" />
+        </b-form-group>
+
+
+        <b-form-group
+          :label="$t('organization.attr.facebook_url')"
+          :invalid-feedback="invalidFeedback('facebook_url')"
+          :state="getFieldState('facebook_url')"
+          label-for="org-facebook_url">
+          <b-form-input
+            id="org-facebook_url"
+            v-model="form.facebook_url"
+            type="text" />
+        </b-form-group>
+
+
         <b-form-group
           :label="$t('organization.image')"
           :invalid-feedback="invalidFeedback('images.header.content')"
@@ -101,6 +139,9 @@ export default {
 					name: this.organization.name,
 					description: this.organization.description,
 					is_public: this.organization.is_public,
+					facebook_url: this.organization.urls.facebook,
+					homepage_url: this.organization.urls.homepage,
+					email: this.organization.email,
 					images: {
 						header: {
 							urls: {
@@ -112,11 +153,11 @@ export default {
 			});
 	},
 	methods: {
-		getFieldState(field){
+		getFieldState(field) {
 			return !this.errors.hasOwnProperty(field);
 		},
 		invalidFeedback(field) {
-			if(!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
+			if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
 				return '';
 			}
 			return this.errors[field][0];
@@ -149,7 +190,7 @@ export default {
 					});
 					self.errors = {};
 				})
-				.catch(function(error){
+				.catch(function (error) {
 					self.errors = error.response.data.errors;
 				});
 		}

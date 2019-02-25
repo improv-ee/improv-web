@@ -93,8 +93,11 @@ class OrganizationController extends Controller
      * @param UpdateOrganizationRequest $request
      * @return OrganizationResource
      * @bodyParam name string required Name of the organization. Example: Loose Moose
-     * @bodyParam description string
-     * @bodyParam is_public boolean
+     * @bodyParam description string Long (markdown-enabled) description of the organization
+     * @bodyParam is_public boolean Whether or not to show this organization on public (not logged in) pages. This does not mean the organization is hidden from API responses.
+     * @bodyParam email string Organization contact e-mail (public)
+     * @bodyParam string facebook_url Organization Facebook page full URL or null
+     * @bodyParam string homepage_url Organization website full URL or null
      * @authenticated
      */
     public function update(Organization $organization, UpdateOrganizationRequest $request)

@@ -13,3 +13,8 @@
     }
   }
 }
+
+.reversed {
+  unicode-bidi:bidi-override;
+  direction:rtl;
+}

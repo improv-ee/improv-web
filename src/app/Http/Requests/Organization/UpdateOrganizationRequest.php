@@ -36,6 +36,9 @@ class UpdateOrganizationRequest extends FormRequest
                     ->whereNot('organization_id', $this->organization->id)
             ],
             'description' => 'max:3000',
+            'email' => ['nullable', 'email'],
+            'homepage_url' => ['nullable', 'url', 'starts_with:http'],
+            'facebook_url' => ['nullable', 'url', 'starts_with:https://www.facebook.com'],
             'is_public' => 'boolean',
             'images.header.content' => ['nullable', new Base64HeaderImage]
         ];

@@ -12,9 +12,10 @@ import Meta from 'vue-meta';
 import VueProgressBar from 'vue-progressbar';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
-import {faCalendar, faAddressCard, faTimesCircle} from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight  } from '@fortawesome/free-solid-svg-icons';
-library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle);
+import {faCalendar, faAddressCard, faTimesCircle, faEnvelopeOpen} from '@fortawesome/free-regular-svg-icons';
+import { faChevronRight, faExternalLinkAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook  } from '@fortawesome/free-brands-svg-icons';
+library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle, faFacebook, faEnvelopeOpen,faExternalLinkAlt);
 dom.watch();
 
 Vue.use(VueRouter);

@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * @group Organizations
+ * @group Organization members
  */
 class MembershipController extends Controller
 {
