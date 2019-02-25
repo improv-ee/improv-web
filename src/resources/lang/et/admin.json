@@ -40,12 +40,12 @@
     "organization": {
       "image": "Pilt",
       "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
-      "create_new": "Uus organisatsioon",
+      "create_new": "Uus trupp",
       "members": "Liikmed",
       "add_member": "Lisa uus liige",
       "remove_member": "Eemalda organisatsioonist",
-      "name_taken": "Selle nimega organisatsioon on juba loodud, palun vali teine nimi. Kui see organisatsioon kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
-      "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
+      "name_taken": "Selle nimega trupp on juba loodud, palun vali teine nimi. Kui see trupp kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
+      "you_dont_have_any": "Sa ei kuulu hetkel ühtegi truppi. Olemasoleva trupi haldaja saab sind oma truppi kutsuda (räägi temaga). Samuti saad sa asutada uue trupi.",
       "attr": {
         "name": "Nimi",
         "description": "Kirjeldus",
@@ -61,10 +61,10 @@
     },
     "production": {
       "no_events": "Ühtegi sündmust pole lisatud",
-      "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi organisatsiooni - produktsioonide lisamiseks pead looma uue; või liituma vähemalt ühe organisatsiooniga.",
+      "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi truppi - produktsioonide lisamiseks pead looma uue; või liituma vähemalt ühe organisatsiooniga.",
       "num_of_events": "Üritusi",
       "events": "Üritused",
-      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
+      "list_intro": "See tabel näitab kõiki produktsioone, mida sinu trupid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
       "create_new": "Uus produktsioon",
       "attr": {
         "title": "Pealkiri",
@@ -73,7 +73,7 @@
         "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
         "description": "Kirjeldus",
         "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
-        "organizers_description": "Vali organisatsioonid, kes seda produktsiooni korraldavad. N.B! Valitud organisatsioonid saavad õiguse produktsiooni andmeid muuta!"
+        "organizers_description": "Vali trupid, kes seda produktsiooni korraldavad. N.B! Valitud trupid saavad õiguse produktsiooni andmeid muuta!"
       },
       "img": {
         "header": "Päise pilt",
