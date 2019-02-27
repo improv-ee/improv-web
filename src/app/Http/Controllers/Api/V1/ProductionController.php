@@ -71,7 +71,7 @@ class ProductionController extends Controller
      * @bodyParam title string required
      * @bodyParam description string
      * @bodyParam excerpt string
-     * @bodyParam organizations array required List of Organizations who "own" this Production
+     * @bodyParam organizations.* string required List of Organizations who "own" this Production
      * @authenticated
      */
     public function store(StoreProductionRequest $request)
@@ -92,7 +92,7 @@ class ProductionController extends Controller
      * @bodyParam title string required
      * @bodyParam description string
      * @bodyParam excerpt string
-     * @bodyParam organizations array required List of Organizations who "own" this Production
+     * @bodyParam organizations.* string required List of Organizations who "own" this Production
      * @authenticated
      */
     public function update(Production $production, UpdateProductionRequest $request)
