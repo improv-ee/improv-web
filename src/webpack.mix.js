@@ -39,7 +39,7 @@ mix.webpackConfig({
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
       analyzerMode: 'disabled',
-      generateStatsFile: true,
+      generateStatsFile: false,
       statsOptions: {source: false}
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

@@ -25,6 +25,7 @@
       "contact": "Meiega saab ühendust e-mailil {email}"
     },
     "organization":{
+      "image": "Pilt",
       "attr": {
         "email":"E-mail",
         "homepage_url":"Koduleht",

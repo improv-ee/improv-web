@@ -38,7 +38,6 @@
       }
     },
     "organization": {
-      "image": "Pilt",
       "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
       "create_new": "Uus trupp",
       "members": "Liikmed",
