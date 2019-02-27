@@ -34,65 +34,65 @@
 <script>
 
 export default {
-	props: {
-		members: {
-			type: Array,
-			default: function () {
-				return [];
-			}
-		},
-		organizationSlug: {
-			type: String,
-			default: ''
-		}
-	},
-	data: function () {
-		return {
-			items: [],
-			fields: {
-				avatar: {
-					sortable: false
-				},
-				username: {
-					label: 'username',
-					sortable: true
-				},
-				role: {
-					label: 'role',
-					sortable: true
-				}
-			}
-		};
-	},
-	watch: {
-		members: function () {
-			this.refresh();
-		}
-	},
-	mounted() {
-		this.fields.username.label = this.$i18n.t('user.username');
-		this.fields.role.label = this.$i18n.t('organization.user.role.role');
-		this.refresh();
-	},
-	methods: {
-		refresh() {
-			this.items = [];
-			for (let i = 0; i < this.members.length; i++) {
-				let self = this;
+    props: {
+        members: {
+            type: Array,
+            default: function () {
+                return [];
+            }
+        },
+        organizationSlug: {
+            type: String,
+            default: ''
+        }
+    },
+    data: function () {
+        return {
+            items: [],
+            fields: {
+                avatar: {
+                    sortable: false
+                },
+                username: {
+                    label: 'username',
+                    sortable: true
+                },
+                role: {
+                    label: 'role',
+                    sortable: true
+                }
+            }
+        };
+    },
+    watch: {
+        members: function () {
+            this.refresh();
+        }
+    },
+    mounted() {
+        this.fields.username.label = this.$i18n.t('user.username');
+        this.fields.role.label = this.$i18n.t('organization.user.role.role');
+        this.refresh();
+    },
+    methods: {
+        refresh() {
+            this.items = [];
+            for (let i = 0; i < this.members.length; i++) {
+                let self = this;
 
-				axios.get(config.apiUrl + '/users/' + this.members[i].username)
-					.then(response => {
+                axios.get(config.apiUrl + '/users/' + this.members[i].username)
+                    .then(response => {
 
-						let roleLabel = self.members[i].role === 0 ? self.$i18n.t('organization.user.role.admin') : self.$i18n.t('organization.user.role.member');
-						self.items.push({
-							'avatar': response.data.data.avatar,
-							'username': self.members[i].username,
-							role: roleLabel
-						});
-					});
+                        let roleLabel = self.members[i].role === 0 ? self.$i18n.t('organization.user.role.admin') : self.$i18n.t('organization.user.role.member');
+                        self.items.push({
+                            'avatar': response.data.data.avatar,
+                            'username': self.members[i].username,
+                            role: roleLabel
+                        });
+                    });
 
-			}
-		}
-	}
+            }
+        }
+    }
 };
 </script>

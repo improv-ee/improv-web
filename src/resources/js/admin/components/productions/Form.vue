@@ -96,149 +96,149 @@
 import OrganizationSelect from '../organizations/OrganizationSelect';
 
 export default {
-	components: {OrganizationSelect},
-	props: {
-		'production': {
-			type: Object,
-			default: function () {
-				return {};
-			}
-		},
-		'mode': {
-			'type': String,
-			'default': 'create'
-		}
-	},
-	data() {
-		return {
-			form: {
-				organizations: []
-			},
-			ui: {},
-			showForm: false,
-			errors: {}
-		};
-	},
-	computed: {
-		hasHeaderImage: function () {
-			return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
-		}
-	},
-	watch: {
+    components: {OrganizationSelect},
+    props: {
+        'production': {
+            type: Object,
+            default: function () {
+                return {};
+            }
+        },
+        'mode': {
+            'type': String,
+            'default': 'create'
+        }
+    },
+    data() {
+        return {
+            form: {
+                organizations: []
+            },
+            ui: {},
+            showForm: false,
+            errors: {}
+        };
+    },
+    computed: {
+        hasHeaderImage: function () {
+            return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
+        }
+    },
+    watch: {
 
-		// When the component initializes, the production prop is not yet populated,
-		// it will be fetched with async request. Wait for it to complete, then set initial form
-		// state to those values
-		production: function (newProductionVal) {
+        // When the component initializes, the production prop is not yet populated,
+        // it will be fetched with async request. Wait for it to complete, then set initial form
+        // state to those values
+        production: function (newProductionVal) {
 
-			this.form = {
-				title: newProductionVal.title,
-				description: newProductionVal.description,
-				excerpt: newProductionVal.excerpt,
-				organizations: newProductionVal.organizations,
-				images: {
-					header: {
-						urls: {
-							original: newProductionVal.hasOwnProperty('images') && newProductionVal.images.header !== null ? newProductionVal.images.header.urls.original : null
-						}
-					}
-				}
-			};
-			this.showForm = true;
-		}
-	},
-	mounted() {
-		this.ui = {
-			help: {
-				description: this.$t('production.attr.description_description') + ' ' + this.$t('ui.markdown_supported')
-			}
-		};
-		if (this.mode === 'create') {
-			this.showForm = true;
-		}
-	},
+            this.form = {
+                title: newProductionVal.title,
+                description: newProductionVal.description,
+                excerpt: newProductionVal.excerpt,
+                organizations: newProductionVal.organizations,
+                images: {
+                    header: {
+                        urls: {
+                            original: newProductionVal.hasOwnProperty('images') && newProductionVal.images.header !== null ? newProductionVal.images.header.urls.original : null
+                        }
+                    }
+                }
+            };
+            this.showForm = true;
+        }
+    },
+    mounted() {
+        this.ui = {
+            help: {
+                description: this.$t('production.attr.description_description') + ' ' + this.$t('ui.markdown_supported')
+            }
+        };
+        if (this.mode === 'create') {
+            this.showForm = true;
+        }
+    },
 
-	methods: {
-		getFieldState(field) {
-			return !this.errors.hasOwnProperty(field);
-		},
-		invalidFeedback(field) {
-			if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
-				return '';
-			}
-			return this.errors[field][0];
-		},
-		removeHeaderImg() {
-			this.form.images.header['content'] = this.form.images.header.urls = null;
-		},
-		fileToBase64(file) {
-			return new Promise((resolve, reject) => {
-				const reader = new FileReader();
-				reader.readAsDataURL(file);
-				reader.onload = () => resolve(reader.result);
-				reader.onerror = error => reject(error);
-			});
-		},
-		uploadHeaderImg(e) {
-			let self = this;
-			this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
-		},
+    methods: {
+        getFieldState(field) {
+            return !this.errors.hasOwnProperty(field);
+        },
+        invalidFeedback(field) {
+            if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
+                return '';
+            }
+            return this.errors[field][0];
+        },
+        removeHeaderImg() {
+            this.form.images.header['content'] = this.form.images.header.urls = null;
+        },
+        fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        },
+        uploadHeaderImg(e) {
+            let self = this;
+            this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
+        },
 
-		create() {
-			let self = this;
+        create() {
+            let self = this;
 
-			axios.post(config.apiUrl + '/productions', this.form)
-				.then(function (response) {
+            axios.post(config.apiUrl + '/productions', this.form)
+                .then(function (response) {
 
-					self.$router.push({
-						name: 'production.details',
-						params: {slug: response.data.data.slug}
-					});
-					self.errors = {};
+                    self.$router.push({
+                        name: 'production.details',
+                        params: {slug: response.data.data.slug}
+                    });
+                    self.errors = {};
 
-				}).catch(function (error) {
+                }).catch(function (error) {
 
-					let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
+                    let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
 
-					self.$notify({
-						type: 'error',
-						group: 'app',
-						title: text
-					});
+                    self.$notify({
+                        type: 'error',
+                        group: 'app',
+                        title: text
+                    });
 
-					self.errors = error.response.data.errors;
+                    self.errors = error.response.data.errors;
 
-				});
-		},
-		edit() {
-			let self = this;
+                });
+        },
+        edit() {
+            let self = this;
 
-			axios.put(config.apiUrl + '/productions/' + self.production.slug, this.form)
-				.then(function (response) {
+            axios.put(config.apiUrl + '/productions/' + self.production.slug, this.form)
+                .then(function (response) {
 
-					self.$router.push({
-						name: 'production.details',
-						params: {slug: response.data.data.slug}
-					});
-				}).catch(function (error) {
-					let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
-					self.$notify({
-						type: 'error',
-						group: 'app',
-						title: self.$t('ui.server_error'),
-						text: text
-					});
+                    self.$router.push({
+                        name: 'production.details',
+                        params: {slug: response.data.data.slug}
+                    });
+                }).catch(function (error) {
+                    let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
+                    self.$notify({
+                        type: 'error',
+                        group: 'app',
+                        title: self.$t('ui.server_error'),
+                        text: text
+                    });
 
-				});
-		},
-		onSubmit() {
-			if (this.mode === 'edit') {
-				this.edit();
-			} else {
-				this.create();
-			}
-		}
-	}
+                });
+        },
+        onSubmit() {
+            if (this.mode === 'edit') {
+                this.edit();
+            } else {
+                this.create();
+            }
+        }
+    }
 
 };
 </script>

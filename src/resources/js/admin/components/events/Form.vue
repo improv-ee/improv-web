@@ -65,62 +65,62 @@
 
 <script>
 export default {
-	props: {
-		event: {
-			type: Object,
-			default: function () {
-				return {};
-			}
-		}
-	},
-	data() {
-		return {
-			form: {},
-			errors: {}
-		};
-	},
-	watch: {
+    props: {
+        event: {
+            type: Object,
+            default: function () {
+                return {};
+            }
+        }
+    },
+    data() {
+        return {
+            form: {},
+            errors: {}
+        };
+    },
+    watch: {
 
-		// When the component initializes, the event prop is not yet populated,
-		// it will be fetched with async request. Wait for it to complete, then set initial form
-		// state to those values
-		event: function (event) {
+        // When the component initializes, the event prop is not yet populated,
+        // it will be fetched with async request. Wait for it to complete, then set initial form
+        // state to those values
+        event: function (event) {
 
-			this.form = {
-				title: event.title,
-				description: event.description,
-				excerpt: event.excerpt,
-				times: {end: moment(event.times.end), start: moment(event.times.start)}
-			};
-		}
-	},
+            this.form = {
+                title: event.title,
+                description: event.description,
+                excerpt: event.excerpt,
+                times: {end: moment(event.times.end), start: moment(event.times.start)}
+            };
+        }
+    },
 
-	methods: {
-		getFieldState(field) {
-			return !this.errors.hasOwnProperty(field);
-		},
-		invalidFeedback(field) {
-			if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
-				return '';
-			}
-			return this.errors[field][0];
-		},
-		onSubmit() {
-			let self = this;
-			axios.put(config.apiUrl + '/events/' + this.$route.params.uid, this.form)
-				.then(function () {
+    methods: {
+        getFieldState(field) {
+            return !this.errors.hasOwnProperty(field);
+        },
+        invalidFeedback(field) {
+            if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
+                return '';
+            }
+            return this.errors[field][0];
+        },
+        onSubmit() {
+            let self = this;
+            axios.put(config.apiUrl + '/events/' + this.$route.params.uid, this.form)
+                .then(function () {
 
-					self.$router.push({
-						name: 'event.details',
-						params: {uid: self.$route.params.uid}
-					});
-					self.errors = {};
-				})
-				.catch(function (error) {
-					self.errors = error.response.data.errors;
-				});
-		}
-	}
+                    self.$router.push({
+                        name: 'event.details',
+                        params: {uid: self.$route.params.uid}
+                    });
+                    self.errors = {};
+                })
+                .catch(function (error) {
+                    self.errors = error.response.data.errors;
+                });
+        }
+    }
 
 };
 </script>

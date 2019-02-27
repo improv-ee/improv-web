@@ -46,32 +46,32 @@
 
 <script>
 export default {
-	data() {
-		return {
-			productions: {},
-			newProductionTitle: ' ',
-			organizations: {}
-		};
-	},
-	mounted() {
-		this.getResults();
-		this.getOrganizations();
-	},
-	methods: {
+    data() {
+        return {
+            productions: {},
+            newProductionTitle: ' ',
+            organizations: {}
+        };
+    },
+    mounted() {
+        this.getResults();
+        this.getOrganizations();
+    },
+    methods: {
 
-		getResults(page = 1) {
-			axios.get(config.apiUrl + '/productions?onlyMine=true', {params: {page: page}})
-				.then(response => {
-					this.productions = response.data;
-				});
-		},
+        getResults(page = 1) {
+            axios.get(config.apiUrl + '/productions?onlyMine=true', {params: {page: page}})
+                .then(response => {
+                    this.productions = response.data;
+                });
+        },
 
-		getOrganizations() {
-			axios.get(config.apiUrl + '/organizations?onlyMine=true')
-				.then(response => {
-					this.organizations = response.data.data;
-				});
-		}
-	}
+        getOrganizations() {
+            axios.get(config.apiUrl + '/organizations?onlyMine=true')
+                .then(response => {
+                    this.organizations = response.data.data;
+                });
+        }
+    }
 };
 </script>

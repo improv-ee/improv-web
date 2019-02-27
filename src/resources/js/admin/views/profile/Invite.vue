@@ -29,42 +29,42 @@
 import SideNav from '../../components/profile/SideNav';
 
 export default {
-	components: {
-		SideNav
-	},
-	data() {
-		return {
-			form: {
-				email: ''
-			}
-		};
-	},
-	methods: {
-		inviteUser() {
-			let self = this;
-			axios.post(config.apiUrl + '/user/invite', this.form)
-				.then(function () {
+    components: {
+        SideNav
+    },
+    data() {
+        return {
+            form: {
+                email: ''
+            }
+        };
+    },
+    methods: {
+        inviteUser() {
+            let self = this;
+            axios.post(config.apiUrl + '/user/invite', this.form)
+                .then(function () {
 
-					self.$notify({
-						type: 'success',
-						group: 'app',
-						title: self.$t('user.profile.invite.invite_sent')
-					});
+                    self.$notify({
+                        type: 'success',
+                        group: 'app',
+                        title: self.$t('user.profile.invite.invite_sent')
+                    });
 
-					self.form.email = null;
-				}).catch(function (error) {
+                    self.form.email = null;
+                }).catch(function (error) {
 
-					let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
+                    let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
 
-					self.$notify({
-						type: 'error',
-						group: 'app',
-						title: self.$t('ui.server_error'),
-						text: text
-					});
+                    self.$notify({
+                        type: 'error',
+                        group: 'app',
+                        title: self.$t('ui.server_error'),
+                        text: text
+                    });
 
-				});
-		}
-	}
+                });
+        }
+    }
 };
 </script>

@@ -16,31 +16,31 @@
 <script>
 import OrganizationCard from '../../../components/organization/OrganizationCard';
 export default {
-	components: {
-		OrganizationCard,
-	},
-	data() {
-		return {
-			organizations: [],
-			newOrganizationName: '',
-		};
-	},
-	mounted() {
-		this.getResults();
-	},
-	methods: {
+    components: {
+        OrganizationCard,
+    },
+    data() {
+        return {
+            organizations: [],
+            newOrganizationName: '',
+        };
+    },
+    mounted() {
+        this.getResults();
+    },
+    methods: {
 
-		getResults(page = 1) {
-			axios.get(config.apiUrl + '/organizations', {params: {page: page, 'filter[is_public]': 1}})
-				.then(response => {
-					this.organizations = response.data.data;
-				});
-		}
-	},
-	metaInfo () {
-		return {
-			title: this.$t('nav.organizations')
-		};
-	}
+        getResults(page = 1) {
+            axios.get(config.apiUrl + '/organizations', {params: {page: page, 'filter[is_public]': 1}})
+                .then(response => {
+                    this.organizations = response.data.data;
+                });
+        }
+    },
+    metaInfo () {
+        return {
+            title: this.$t('nav.organizations')
+        };
+    }
 };
 </script>

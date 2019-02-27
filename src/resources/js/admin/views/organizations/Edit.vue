@@ -119,82 +119,82 @@
 
 <script>
 export default {
-	data() {
-		return {
-			organization: {},
-			form: {},
-			errors: {}
-		};
-	},
-	computed: {
-		hasHeaderImage: function () {
-			return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
-		}
-	},
-	mounted() {
-		axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
-			.then(response => {
-				this.organization = response.data.data;
-				this.form = {
-					name: this.organization.name,
-					description: this.organization.description,
-					is_public: this.organization.is_public,
-					facebook_url: this.organization.urls.facebook,
-					homepage_url: this.organization.urls.homepage,
-					email: this.organization.email,
-					images: {
-						header: {
-							urls: {
-								original: this.organization.hasOwnProperty('images') && this.organization.images.header !== null ? this.organization.images.header.urls.original : null
-							}
-						}
-					}
-				};
-			});
-	},
-	methods: {
-		getFieldState(field) {
-			return !this.errors.hasOwnProperty(field);
-		},
-		invalidFeedback(field) {
-			if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
-				return '';
-			}
-			return this.errors[field][0];
-		},
-		removeHeaderImg() {
-			this.form.images.header['content'] = this.form.images.header.urls = null;
-		},
-		fileToBase64(file) {
-			return new Promise((resolve, reject) => {
-				const reader = new FileReader();
-				reader.readAsDataURL(file);
-				reader.onload = () => resolve(reader.result);
-				reader.onerror = error => reject(error);
-			});
-		},
-		uploadHeaderImg(e) {
-			let self = this;
-			this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
-		},
+    data() {
+        return {
+            organization: {},
+            form: {},
+            errors: {}
+        };
+    },
+    computed: {
+        hasHeaderImage: function () {
+            return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
+        }
+    },
+    mounted() {
+        axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
+            .then(response => {
+                this.organization = response.data.data;
+                this.form = {
+                    name: this.organization.name,
+                    description: this.organization.description,
+                    is_public: this.organization.is_public,
+                    facebook_url: this.organization.urls.facebook,
+                    homepage_url: this.organization.urls.homepage,
+                    email: this.organization.email,
+                    images: {
+                        header: {
+                            urls: {
+                                original: this.organization.hasOwnProperty('images') && this.organization.images.header !== null ? this.organization.images.header.urls.original : null
+                            }
+                        }
+                    }
+                };
+            });
+    },
+    methods: {
+        getFieldState(field) {
+            return !this.errors.hasOwnProperty(field);
+        },
+        invalidFeedback(field) {
+            if (!this.errors.hasOwnProperty(field) || !this.errors[field].length) {
+                return '';
+            }
+            return this.errors[field][0];
+        },
+        removeHeaderImg() {
+            this.form.images.header['content'] = this.form.images.header.urls = null;
+        },
+        fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        },
+        uploadHeaderImg(e) {
+            let self = this;
+            this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
+        },
 
-		onSubmit() {
-			let self = this;
+        onSubmit() {
+            let self = this;
 
-			axios.put(config.apiUrl + '/organizations/' + this.$route.params.slug, this.form)
-				.then(function (response) {
+            axios.put(config.apiUrl + '/organizations/' + this.$route.params.slug, this.form)
+                .then(function (response) {
 
-					self.$router.push({
-						name: 'organization.details',
-						params: {slug: response.data.data.slug}
-					});
-					self.errors = {};
-				})
-				.catch(function (error) {
-					self.errors = error.response.data.errors;
-				});
-		}
-	},
+                    self.$router.push({
+                        name: 'organization.details',
+                        params: {slug: response.data.data.slug}
+                    });
+                    self.errors = {};
+                })
+                .catch(function (error) {
+                    self.errors = error.response.data.errors;
+                });
+        }
+    },
 
 };
 </script>

@@ -8,18 +8,18 @@
 <script>
 
 export default {
-	props: {
-		production: {
-			type: Object, default: function () {
-				return {};
-			}
-		}
-	},
-	methods: {
-		openProduction(slug) {
-			this.$router.push({name: 'production.details', params: {slug: slug}});
-		}
-	}
+    props: {
+        production: {
+            type: Object, default: function () {
+                return {};
+            }
+        }
+    },
+    methods: {
+        openProduction(slug) {
+            this.$router.push({name: 'production.details', params: {slug: slug}});
+        }
+    }
 
 };
 </script>

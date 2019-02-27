@@ -9,26 +9,26 @@
 
 <script>
 export default {
-	props: {
-		organization: {
-			type: Object,
-			default: function () {
-				return {};
-			}
-		}
-	},
-	methods: {
+    props: {
+        organization: {
+            type: Object,
+            default: function () {
+                return {};
+            }
+        }
+    },
+    methods: {
 
-		getCardImage(organization) {
-			if (organization.images && organization.images.header && organization.images.header.urls) {
-				return organization.images.header.urls.original;
-			}
-			return '/img/production/default-header.jpg';
-		},
-		goToOrg(organization) {
-			this.$router.push({name: 'organization.details', params: {slug: organization.slug}});
-		}
-	}
+        getCardImage(organization) {
+            if (organization.images && organization.images.header && organization.images.header.urls) {
+                return organization.images.header.urls.original;
+            }
+            return '/img/production/default-header.jpg';
+        },
+        goToOrg(organization) {
+            this.$router.push({name: 'organization.details', params: {slug: organization.slug}});
+        }
+    }
 };
 </script>
 

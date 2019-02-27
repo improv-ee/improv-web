@@ -44,12 +44,12 @@ import BottomNav from '../components/BottomNav';
 import { progress } from '../mixins/progress';
 
 export default {
-	components: {
-		BottomNav
-	},
-	metaInfo: {
-		titleTemplate: '%s - Improvision'
-	},
-	mixins: [progress]
+    components: {
+        BottomNav
+    },
+    metaInfo: {
+        titleTemplate: '%s - Improvision'
+    },
+    mixins: [progress]
 };
 </script>

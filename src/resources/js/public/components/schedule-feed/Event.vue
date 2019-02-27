@@ -44,42 +44,42 @@ var moment = require('moment');
 moment.locale('et');
 
 export default {
-	props: {
-		'event': {
-			type: Object,
-			default: function () {
-				return {};
-			}
-		}
-	},
-	computed: {
-		start_time: function () {
-			return moment(this.event.times.start).format('Do MMMM HH:mm');
-		},
-		title: function () {
-			if (this.event.title) {
-				return this.event.title;
-			}
-			return this.event.production.title;
-		},
-		excerpt: function () {
-			if (this.event.production.excerpt) {
-				return this.event.production.excerpt;
-			}
+    props: {
+        'event': {
+            type: Object,
+            default: function () {
+                return {};
+            }
+        }
+    },
+    computed: {
+        start_time: function () {
+            return moment(this.event.times.start).format('Do MMMM HH:mm');
+        },
+        title: function () {
+            if (this.event.title) {
+                return this.event.title;
+            }
+            return this.event.production.title;
+        },
+        excerpt: function () {
+            if (this.event.production.excerpt) {
+                return this.event.production.excerpt;
+            }
 
-			if (this.event.description) {
-				return _.truncate(this.event.description, {length: 200});
-			}
-			if (this.event.production.description) {
-				return _.truncate(this.event.production.description, {length: 200});
-			}
-			return null;
-		}
-	},
-	methods: {
-		header_img(images) {
-			return images.header ? images.header.urls.original : '/img/production/default-header.jpg';
-		}
-	}
+            if (this.event.description) {
+                return _.truncate(this.event.description, {length: 200});
+            }
+            if (this.event.production.description) {
+                return _.truncate(this.event.production.description, {length: 200});
+            }
+            return null;
+        }
+    },
+    methods: {
+        header_img(images) {
+            return images.header ? images.header.urls.original : '/img/production/default-header.jpg';
+        }
+    }
 };
 </script>

@@ -26,7 +26,7 @@
           <span class="meta-value">
             <a
               :href="organization.getHomepageUrl()"
-              target="_blank">{{ organization.getHomepageUrl() }}</a></span>
+              target="_blank">{{ organization.getHomepageUrl(true) }}</a></span>
         </p>
       </div>
       <div
@@ -37,7 +37,7 @@
             <i class="fab fa-facebook" /> {{ $t('organization.attr.facebook_url') }}</span><br>
           <span class="meta-value"><a
             :href="organization.getFacebookUrl()"
-            target="_blank">{{ organization.getFacebookUrl() }}</a></span>
+            target="_blank">{{ organization.getFacebookUrl(true) }}</a></span>
         </p>
       </div>
     </div>
@@ -52,39 +52,39 @@ import VueMarkdown from 'vue-markdown';
 import { Organization } from '../../../models/organization';
 
 export default {
-	components: {
-		VueMarkdown
-	},
-	data() {
-		return {
-			organization: new Organization()
-		};
-	},
-	mounted() {
-		this.loadOrganization();
-	},
-	methods: {
-		loadOrganization() {
-			let self = this;
-			axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
-				.then(response => {
-					self.organization = new Organization(response.data.data);
-				});
-		}
+    components: {
+        VueMarkdown
+    },
+    data() {
+        return {
+            organization: new Organization()
+        };
+    },
+    mounted() {
+        this.loadOrganization();
+    },
+    methods: {
+        loadOrganization() {
+            let self = this;
+            axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
+                .then(response => {
+                    self.organization = new Organization(response.data.data);
+                });
+        }
 
-	},
-	metaInfo() {
-		return {
-			title: this.organization.getName(),
-			meta: [
-				{
-					property: 'og:image',
-					content: this.organization.getHeaderImgUrl()
-				},
-				{property: 'og:description', content: this.organization.getDescription()},
-				{property: 'og:title', content: this.organization.getName() + ' - ' + this.$t('app.name')},
-			]
-		};
-	}
+    },
+    metaInfo() {
+        return {
+            title: this.organization.getName(),
+            meta: [
+                {
+                    property: 'og:image',
+                    content: this.organization.getHeaderImgUrl()
+                },
+                {property: 'og:description', content: this.organization.getDescription()},
+                {property: 'og:title', content: this.organization.getName() + ' - ' + this.$t('app.name')},
+            ]
+        };
+    }
 };
 </script>

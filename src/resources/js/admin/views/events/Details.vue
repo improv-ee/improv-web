@@ -34,24 +34,24 @@
 
 <script>
 export default {
-	data() {
-		return {
-			event: {},
-		};
-	},
-	computed: {
-		startTime: function () {
-			return moment(this.event.times.start).format('Do MMMM HH:mm');
-		},
-		endTime: function () {
-			return moment(this.event.times.end).format('HH:mm');
-		}
-	},
-	mounted() {
-		axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
-			.then(response => {
-				this.event = response.data.data;
-			});
-	}
+    data() {
+        return {
+            event: {},
+        };
+    },
+    computed: {
+        startTime: function () {
+            return moment(this.event.times.start).format('Do MMMM HH:mm');
+        },
+        endTime: function () {
+            return moment(this.event.times.end).format('HH:mm');
+        }
+    },
+    mounted() {
+        axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
+            .then(response => {
+                this.event = response.data.data;
+            });
+    }
 };
 </script>

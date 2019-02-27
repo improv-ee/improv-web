@@ -26,24 +26,24 @@ Vue.use(Meta);
 Vue.component('schedule-feed-event', Event);
 
 const progressBarOptions = {
-	color: '#007bff',
-	failedColor: '#CC0000',
-	thickness: '5px',
-	transition: {
-		speed: '0.2s',
-		opacity: '0.6s',
-		termination: 300
-	},
-	autoRevert: true,
-	location: 'top'
+    color: '#007bff',
+    failedColor: '#CC0000',
+    thickness: '5px',
+    transition: {
+        speed: '0.2s',
+        opacity: '0.6s',
+        termination: 300
+    },
+    autoRevert: true,
+    location: 'top'
 };
 
 Vue.use(VueProgressBar, progressBarOptions);
 
 
 const router = new VueRouter({
-	mode: 'hash',
-	routes: routes,
+    mode: 'hash',
+    routes: routes,
 });
 Vue.use(VueAnalytics, {id: 'UA-133334351-1', router});
 
@@ -54,20 +54,20 @@ const i18n = new VueI18n({    locale: 'et',    messages});
 
 function bootApp() {
 
-	// Wait for async Axios request to load app config...
-	if (!window.config) {
-		setTimeout(bootApp, 50);
-		return;
-	}
-	// eslint-disable-next-line no-console
-	console.log('Initializing app...');
+    // Wait for async Axios request to load app config...
+    if (!window.config) {
+        setTimeout(bootApp, 50);
+        return;
+    }
+    // eslint-disable-next-line no-console
+    console.log('Initializing app...');
 
-	new Vue({
-		el: '#app',
-		render: createElement => createElement(App),
-		router,
-		i18n
-	});
+    new Vue({
+        el: '#app',
+        render: createElement => createElement(App),
+        router,
+        i18n
+    });
 }
 
 bootApp();

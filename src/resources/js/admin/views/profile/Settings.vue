@@ -47,20 +47,20 @@
 import SideNav from '../../components/profile/SideNav';
 
 export default {
-	components: {
-		SideNav
-	},
-	data() {
-		return {
-			form: {}
-		};
-	},
-	mounted() {
-		let self = this;
-		axios.get(config.apiUrl + '/users/' + window.config.username)
-			.then(response => {
-				self.form = response.data.data;
-			});
-	}
+    components: {
+        SideNav
+    },
+    data() {
+        return {
+            form: {}
+        };
+    },
+    mounted() {
+        let self = this;
+        axios.get(config.apiUrl + '/users/' + window.config.username)
+            .then(response => {
+                self.form = response.data.data;
+            });
+    }
 };
 </script>

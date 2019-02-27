@@ -56,50 +56,50 @@
 <script>
 import OrganizationCard from '../../../components/organization/OrganizationCard';
 export default {
-	components: {
-		OrganizationCard,
-	},
-	data() {
-		return {
-			organizations: [],
-			newOrganizationName: '',
-		};
-	},
-	mounted() {
-		this.getResults();
-	},
-	methods: {
-		createOrganization(e) {
+    components: {
+        OrganizationCard,
+    },
+    data() {
+        return {
+            organizations: [],
+            newOrganizationName: '',
+        };
+    },
+    mounted() {
+        this.getResults();
+    },
+    methods: {
+        createOrganization(e) {
 
-			if (!this.newOrganizationName.length) {
-				e.preventDefault();
-				return;
-			}
+            if (!this.newOrganizationName.length) {
+                e.preventDefault();
+                return;
+            }
 
-			let self = this;
-			axios.post(config.apiUrl + '/organizations', {'name': this.newOrganizationName})
-				.then(function (response) {
-					self.$router.push({
-						name: 'organization.edit',
-						params: {slug: response.data.data.slug}
-					});
-				})
-				.catch(function () {
-					Vue.notify({
-						group: 'app',
-						type: 'error',
-						title: self.$t('ui.validation_error'),
-						text: self.$t('organization.name_taken')
-					});
-				});
-		},
+            let self = this;
+            axios.post(config.apiUrl + '/organizations', {'name': this.newOrganizationName})
+                .then(function (response) {
+                    self.$router.push({
+                        name: 'organization.edit',
+                        params: {slug: response.data.data.slug}
+                    });
+                })
+                .catch(function () {
+                    Vue.notify({
+                        group: 'app',
+                        type: 'error',
+                        title: self.$t('ui.validation_error'),
+                        text: self.$t('organization.name_taken')
+                    });
+                });
+        },
 
-		getResults(page = 1) {
-			axios.get(config.apiUrl + '/organizations', {params: {page: page, onlyMine: 1}})
-				.then(response => {
-					this.organizations = response.data.data;
-				});
-		}
-	}
+        getResults(page = 1) {
+            axios.get(config.apiUrl + '/organizations', {params: {page: page, onlyMine: 1}})
+                .then(response => {
+                    this.organizations = response.data.data;
+                });
+        }
+    }
 };
 </script>

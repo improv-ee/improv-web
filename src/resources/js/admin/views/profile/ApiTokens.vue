@@ -15,14 +15,14 @@ import PassportPersonalAccessTokens from '../../components/passport/PersonalAcce
 import SideNav from '../../components/profile/SideNav';
 
 export default {
-	components: {
-		PassportPersonalAccessTokens,
-		SideNav
-	},
-	data(){
-		return {
-			apiDoc: '<a href="https://docs.improvision.eu" target="_blank">docs.improvision.eu</a>'
-		};
-	}
+    components: {
+        PassportPersonalAccessTokens,
+        SideNav
+    },
+    data(){
+        return {
+            apiDoc: '<a href="https://docs.improvision.eu" target="_blank">docs.improvision.eu</a>'
+        };
+    }
 };
 </script>

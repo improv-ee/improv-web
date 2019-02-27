@@ -9,40 +9,40 @@ import Terms from './views/Terms';
 
 
 export default [
-	{
-		path: '/',
-		name: 'home',
-		component: EventSchedule
-	},
-	{
-		path: '/events/:uid',
-		name: 'events',
-		component: EventDetails,
-	},
-	{
-		path: '/organizations',
-		name: 'organizations',
-		component: OrganizationsList,
-	},
-	{
-		path: '/organizations/:slug',
-		name: 'organization.details',
-		component: OrganizationDetails,
-	},
-	{
-		path: '/contact',
-		name: 'contact',
-		component: Contact
-	},
-	{
-		path: '/privacy',
-		name: 'privacy',
-		component: Privacy
-	},
-	{
-		path: '/terms',
-		name: 'terms',
-		component: Terms
-	},
-	{ path: '*', component: PageNotFound }
+    {
+        path: '/',
+        name: 'home',
+        component: EventSchedule
+    },
+    {
+        path: '/events/:uid',
+        name: 'events',
+        component: EventDetails,
+    },
+    {
+        path: '/organizations',
+        name: 'organizations',
+        component: OrganizationsList,
+    },
+    {
+        path: '/organizations/:slug',
+        name: 'organization.details',
+        component: OrganizationDetails,
+    },
+    {
+        path: '/contact',
+        name: 'contact',
+        component: Contact
+    },
+    {
+        path: '/privacy',
+        name: 'privacy',
+        component: Privacy
+    },
+    {
+        path: '/terms',
+        name: 'terms',
+        component: Terms
+    },
+    { path: '*', component: PageNotFound }
 ];

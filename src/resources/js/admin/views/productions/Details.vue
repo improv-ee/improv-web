@@ -66,44 +66,44 @@ import VueMarkdown from 'vue-markdown';
 import {Production} from '../../../models/production';
 
 export default {
-	components: {
-		VueMarkdown
-	},
-	data() {
-		return {
-			production: new Production(),
-		};
-	},
-	mounted() {
-		let self = this;
-		axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
-			.then(response => {
-				self.production = new Production(response.data.data);
-			});
-	},
-	methods: {
-		formatTime(date) {
-			return moment(date).format('Do MMMM HH:mm');
-		},
-		openEvent(uid) {
-			this.$router.push({name: 'event.details', params: {uid: uid}});
-		},
-		addEvent() {
-			let self = this;
-			axios.post(config.apiUrl + '/events', {
-				'production': {'slug': this.$route.params.slug},
-				'times': {
-					'start': moment().add(24, 'h').format(),
-					'end': moment().add(25, 'h').format()
-				}
-			})
-				.then(response => {
-					self.$router.push({
-						name: 'event.edit',
-						params: {uid: response.data.data.uid}
-					});
-				});
-		}
-	}
+    components: {
+        VueMarkdown
+    },
+    data() {
+        return {
+            production: new Production(),
+        };
+    },
+    mounted() {
+        let self = this;
+        axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
+            .then(response => {
+                self.production = new Production(response.data.data);
+            });
+    },
+    methods: {
+        formatTime(date) {
+            return moment(date).format('Do MMMM HH:mm');
+        },
+        openEvent(uid) {
+            this.$router.push({name: 'event.details', params: {uid: uid}});
+        },
+        addEvent() {
+            let self = this;
+            axios.post(config.apiUrl + '/events', {
+                'production': {'slug': this.$route.params.slug},
+                'times': {
+                    'start': moment().add(24, 'h').format(),
+                    'end': moment().add(25, 'h').format()
+                }
+            })
+                .then(response => {
+                    self.$router.push({
+                        name: 'event.edit',
+                        params: {uid: response.data.data.uid}
+                    });
+                });
+        }
+    }
 };
 </script>

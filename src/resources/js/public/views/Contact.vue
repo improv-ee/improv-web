@@ -15,11 +15,11 @@
 <script>
 
 export default {
-	data() {
-		return {
-			// Spambot scraper protection, reverse the e-mail
-			contactEmail: '<span class="reversed">ue.noisivorpmi@troppus</span>'
-		};
-	}
+    data() {
+        return {
+            // Spambot scraper protection, reverse the e-mail
+            contactEmail: '<span class="reversed">ue.noisivorpmi@troppus</span>'
+        };
+    }
 };
 </script>

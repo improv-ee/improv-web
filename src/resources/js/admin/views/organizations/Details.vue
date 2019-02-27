@@ -56,56 +56,56 @@ import MemberTable from '../../components/organizations/MemberTable';
 import VueMarkdown from 'vue-markdown';
 
 export default {
-	components: {
-		MemberTable,
-		VueMarkdown
-	},
-	data() {
-		return {
-			organization: {},
-			newMemberUsername: null
-		};
-	},
-	computed: {
-		isAdmin: function () {
-			for (let i in this.organization.members) {
-				let member = this.organization.members[i];
-				if (member.username === window.config.username && member.role === 0) {
-					return true;
-				}
-			}
-			return false;
-		}
-	},
-	mounted() {
-		this.loadOrganization();
-	},
-	methods: {
-		addMember() {
-			let self = this;
-			axios.post(`${config.apiUrl}/organizations/${ this.$route.params.slug }/membership`, {username: this.newMemberUsername})
-				.then(function () {
-					self.loadOrganization();
-				}).catch(function (error) {
-					if (error.response.status === 422) {
-						Vue.notify({
-							group: 'app',
-							type: 'error',
-							title: self.$t('ui.validation_error'),
-							text: self.$t('user.not_found')
-						});
-					}
-				});
+    components: {
+        MemberTable,
+        VueMarkdown
+    },
+    data() {
+        return {
+            organization: {},
+            newMemberUsername: null
+        };
+    },
+    computed: {
+        isAdmin: function () {
+            for (let i in this.organization.members) {
+                let member = this.organization.members[i];
+                if (member.username === window.config.username && member.role === 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    },
+    mounted() {
+        this.loadOrganization();
+    },
+    methods: {
+        addMember() {
+            let self = this;
+            axios.post(`${config.apiUrl}/organizations/${ this.$route.params.slug }/membership`, {username: this.newMemberUsername})
+                .then(function () {
+                    self.loadOrganization();
+                }).catch(function (error) {
+                    if (error.response.status === 422) {
+                        Vue.notify({
+                            group: 'app',
+                            type: 'error',
+                            title: self.$t('ui.validation_error'),
+                            text: self.$t('user.not_found')
+                        });
+                    }
+                });
 
-		},
-		loadOrganization() {
-			let self = this;
-			axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
-				.then(response => {
-					self.organization = response.data.data;
-				});
-		}
+        },
+        loadOrganization() {
+            let self = this;
+            axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
+                .then(response => {
+                    self.organization = response.data.data;
+                });
+        }
 
-	}
+    }
 };
 </script>

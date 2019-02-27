@@ -119,10 +119,10 @@
 </template>
 <script>
 export default {
-	metaInfo() {
-		return {
-			title: this.$t('nav.privacy')
-		};
-	}
+    metaInfo() {
+        return {
+            title: this.$t('nav.privacy')
+        };
+    }
 };
 </script>

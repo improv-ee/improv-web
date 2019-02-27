@@ -64,10 +64,10 @@
 
 <script>
 export default {
-	metaInfo() {
-		return {
-			title: this.$t('nav.terms')
-		};
-	}
+    metaInfo() {
+        return {
+            title: this.$t('nav.terms')
+        };
+    }
 };
 </script>

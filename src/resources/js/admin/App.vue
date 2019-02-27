@@ -49,9 +49,9 @@ import { progress } from '../mixins/progress';
 
 
 export default {
-	components: {
-		BottomNav
-	},
-	mixins: [progress]
+    components: {
+        BottomNav
+    },
+    mixins: [progress]
 };
 </script>

@@ -38,72 +38,72 @@ import Multiselect from 'vue-multiselect';
 import lodash from 'lodash';
 
 export default {
-	components: {Multiselect},
-	props: {
-		value: {
-			type: String,
-			default: ''
-		},
-		options: {
-			type: Array,
-			default: function () {
-				return [];
-			}
-		}
-	},
-	data() {
-		return {
-			selectedOrganizations: [],
-			organizations: [],
-			isLoading: false
-		};
-	},
-	watch: {
-		selectedOrganizations: function () {
+    components: {Multiselect},
+    props: {
+        value: {
+            type: String,
+            default: ''
+        },
+        options: {
+            type: Array,
+            default: function () {
+                return [];
+            }
+        }
+    },
+    data() {
+        return {
+            selectedOrganizations: [],
+            organizations: [],
+            isLoading: false
+        };
+    },
+    watch: {
+        selectedOrganizations: function () {
 
-			let slugs = lodash.map(this.selectedOrganizations, function (organization) {
-				return organization.slug;
-			});
+            let slugs = lodash.map(this.selectedOrganizations, function (organization) {
+                return organization.slug;
+            });
 
-			this.$emit('input', slugs);
-		}
-	},
-	mounted() {
-		this.selectedOrganizations = this.value;
-		this.organizations = this.options;
-	},
-	methods: {
-		limitText(count) {
-			return this.$t('ui.search.and_number_others', {number: count});
-		},
+            this.$emit('input', slugs);
+        }
+    },
+    mounted() {
+        this.selectedOrganizations = this.value;
+        this.organizations = this.options;
+    },
+    methods: {
+        limitText(count) {
+            return this.$t('ui.search.and_number_others', {number: count});
+        },
 
-		asyncFind: lodash.debounce(function (query) {
-			this.isLoading = true;
-			this.findOrganization(query).then(response => {
-				this.organizations = response;
-				this.isLoading = false;
-			});
-		}, 300),
-		clearAll() {
-			this.selectedOrganizations = [];
-		},
-		findOrganization(query) {
-			return new Promise((resolve, reject) => {
-				axios.get(config.apiUrl + '/organizations', {params: {'filter[name]': query}})
-					.then(function (response) {
+        asyncFind: lodash.debounce(function (query) {
+            this.isLoading = true;
+            this.findOrganization(query).then(response => {
+                this.organizations = response;
+                this.isLoading = false;
+            });
+        }, 300),
+        clearAll() {
+            this.selectedOrganizations = [];
+        },
+        findOrganization(query) {
+            return new Promise((resolve, reject) => {
+                axios.get(config.apiUrl + '/organizations', {params: {'filter[name]': query}})
+                    .then(function (response) {
 
-						let organizations = lodash.map(response.data.data, function (organization) {
-							return lodash.pick(organization, ['name', 'slug']);
-						});
+                        let organizations = lodash.map(response.data.data, function (organization) {
+                            return lodash.pick(organization, ['name', 'slug']);
+                        });
 
-						resolve(organizations);
-					})
-					.catch(function () {
-						reject();
-					});
-			});
-		}
-	}
+                        resolve(organizations);
+                    })
+                    .catch(function () {
+                        reject();
+                    });
+            });
+        }
+    }
 };
 </script>
 

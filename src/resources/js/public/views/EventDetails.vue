@@ -55,62 +55,62 @@
 import VueMarkdown from 'vue-markdown';
 
 export default {
-	components: {
-		VueMarkdown
-	},
-	data() {
-		return {
-			event: {},
-			production: {}
-		};
-	},
-	computed: {
-		title: function(){
-			if (this.event.title !== null){
-				return this.event.title;
-			}
-			return this.production.title;
-		},
-		description: function(){
-			if (this.event.description !== null){
-				return this.event.description;
-			}
-			return this.production.description;
-		},
-		header_img() {
-			return this.production.images && this.production.images.header && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
-		},
-		startTime: function () {
-			return moment(this.event.times.start).format('Do MMMM HH:mm');
-		},
-		endTime: function () {
-			return moment(this.event.times.end).format('HH:mm');
-		}
-	},
-	created() {
-		axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
-			.then(response => {
-				this.event = response.data.data;
-				this.loadProduction(this.event.production.slug);
-			});
-	},
-	methods: {
-		loadProduction: function (slug) {
-			axios.get(config.apiUrl + '/productions/' + slug)
-				.then(response => {
-					this.production = response.data.data;
-				});
-		}
-	},
-	metaInfo () {
-		return {
-			title: this.title,
-			meta: [
-				{property: 'og:image', content: this.header_img},
-				{property: 'og:description', content: this.description},
-				{property: 'og:title', content: this.title + ' - ' + this.$t('app.name')},
-			]
-		};
-	}
+    components: {
+        VueMarkdown
+    },
+    data() {
+        return {
+            event: {},
+            production: {}
+        };
+    },
+    computed: {
+        title: function(){
+            if (this.event.title !== null){
+                return this.event.title;
+            }
+            return this.production.title;
+        },
+        description: function(){
+            if (this.event.description !== null){
+                return this.event.description;
+            }
+            return this.production.description;
+        },
+        header_img() {
+            return this.production.images && this.production.images.header && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
+        },
+        startTime: function () {
+            return moment(this.event.times.start).format('Do MMMM HH:mm');
+        },
+        endTime: function () {
+            return moment(this.event.times.end).format('HH:mm');
+        }
+    },
+    created() {
+        axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
+            .then(response => {
+                this.event = response.data.data;
+                this.loadProduction(this.event.production.slug);
+            });
+    },
+    methods: {
+        loadProduction: function (slug) {
+            axios.get(config.apiUrl + '/productions/' + slug)
+                .then(response => {
+                    this.production = response.data.data;
+                });
+        }
+    },
+    metaInfo () {
+        return {
+            title: this.title,
+            meta: [
+                {property: 'og:image', content: this.header_img},
+                {property: 'og:description', content: this.description},
+                {property: 'og:title', content: this.title + ' - ' + this.$t('app.name')},
+            ]
+        };
+    }
 };
 </script>

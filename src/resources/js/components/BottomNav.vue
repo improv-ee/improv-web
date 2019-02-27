@@ -69,18 +69,18 @@
 </template>
 <script>
 export default {
-	data() {
-		return {
-			appVersion: null
-		};
-	},
-	computed: {
-		currentYear: function () {
-			return (new Date()).getFullYear();
-		}
-	},
-	mounted() {
-		this.appVersion = config.release.version + '@' + config.release.timestamp;
-	}
+    data() {
+        return {
+            appVersion: null
+        };
+    },
+    computed: {
+        currentYear: function () {
+            return (new Date()).getFullYear();
+        }
+    },
+    mounted() {
+        this.appVersion = config.release.version + '@' + config.release.timestamp;
+    }
 };
 </script>

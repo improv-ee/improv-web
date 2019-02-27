@@ -21,24 +21,24 @@
 
 <script>
 export default {
-	data() {
-		return {
-			events: [],
-			featuredEvents: []
-		};
-	},
-	mounted() {
-		axios.get(config.apiUrl + '/events/schedule')
-			.then(response => {
-				this.events = response.data.data;
-				this.featuredEvents = this.events.splice(0, 2);
+    data() {
+        return {
+            events: [],
+            featuredEvents: []
+        };
+    },
+    mounted() {
+        axios.get(config.apiUrl + '/events/schedule')
+            .then(response => {
+                this.events = response.data.data;
+                this.featuredEvents = this.events.splice(0, 2);
 
-			});
-	},
-	metaInfo() {
-		return {
-			title: this.$t('nav.schedule')
-		};
-	}
+            });
+    },
+    metaInfo() {
+        return {
+            title: this.$t('nav.schedule')
+        };
+    }
 };
 </script>
