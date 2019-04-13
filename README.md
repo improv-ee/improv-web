@@ -1,11 +1,11 @@
-# improvision-web
+# improv-web
 
-[![](https://img.shields.io/travis/improvision-eu/improvision-web.svg)](https://travis-ci.org/improvision-eu/improvision-web)
+[![](https://img.shields.io/travis/improv-ee/improv-web.svg)](https://travis-ci.org/improvision-eu/improvision-web)
 [![Maintainability](https://api.codeclimate.com/v1/badges/50b00994c8be1c474693/maintainability)](https://codeclimate.com/github/improvision-eu/improvision-web/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/50b00994c8be1c474693/test_coverage)](https://codeclimate.com/github/improvision-eu/improvision-web/test_coverage)
 [![](https://img.shields.io/docker/pulls/improvision/improvision-web.svg)](https://cloud.docker.com/u/improvision/repository/registry-1.docker.io/improvision/improvision-web)
 
-This is the source code for https://improvision.eu, a website dedicated to listing information and events about improvised theatre.
+This is the source code for https://improv.ee, a website dedicated to listing information and events about improvised theatre.
 
 **It is very much in development stages.**
 
@@ -43,8 +43,8 @@ install your new Certificate Authority into your web browser. [Here is how](http
 to do it for Firefox (`Settings -> Certificate Authorities -> Add`). The CA file for importing
 is `docker/lb/certs/ca.crt`. If done correctly, this will make `https://` "green" for our dev domains:
 
-`web.local.improvision.eu` will be the frontend webserver
-`api.local.improvision.eu` will be the API
+`web.local.improv.ee` will be the frontend webserver
+`api.local.improv.ee` will be the API
 
 DNS entries are already configured in global DNS to point to `127.0.0.1`.
 
@@ -67,7 +67,7 @@ php artisan passport:install
 ```
 
 If all goes well you should have Docker containers running, database bootstrapped and webpages
-(with green HTTPS) opening on `web.local.improvision.eu` and `api.local.improvision.eu`.
+(with green HTTPS) opening on `web.local.improv.ee` and `api.local.improv.ee`.
 
 
 ## API documentation

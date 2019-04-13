@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => env('APP_NAME', 'improvision'),
+        'name' => env('APP_NAME', 'improv-web'),
 
         'source' => [
 
@@ -80,7 +80,7 @@ return [
             /*
              * The filename prefix used for the backup zip file.
              */
-            'filename_prefix' => 'improvision-',
+            'filename_prefix' => 'improv-web',
 
             /*
              * The disk names on which the backups will be stored.
@@ -146,7 +146,7 @@ return [
      */
     'monitor_backups' => [
         [
-            'name' => env('APP_NAME', 'improvision'),
+            'name' => env('APP_NAME', 'improv-web'),
             'disks' => ['backups'],
             'health_checks' => [
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,

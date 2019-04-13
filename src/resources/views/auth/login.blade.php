@@ -51,7 +51,7 @@
             </div>
 
             <p class="alert alert-info mt-5">
-                Improvision on hetkel avatud beta-testimises. See tähendab, et süsteem on uus - esineb puudusi ning vigu.
+                Improv.ee on hetkel avatud beta-testimises. See tähendab, et süsteem on uus - esineb puudusi ning vigu.
                 Kui märkad viga, palun anna sellest meile teada. Palume testperioodil mõistvat suhtumist!
             </p>
         </div>

@@ -52,9 +52,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::domain(env('API_DOMAIN'))
             ->get('/', function () {
                 return response()->json([
-                    "title" => "improvision.eu API",
-                    "doc" => "https://docs.improvision.eu",
-                    "homepage" => "https://improvision.eu"
+                    "title" => "improv.ee API",
+                    "doc" => "https://docs.improv.ee",
+                    "homepage" => "https://improv.ee"
                 ]);
             });
 

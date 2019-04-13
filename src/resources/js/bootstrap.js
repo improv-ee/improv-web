@@ -14,13 +14,13 @@ Sentry.init({
         '[vue-analytics]'
     ],
     whitelistUrls: [
-        'https://improvision.eu',
-        'https://api.improvision.eu'
+        'https://improv.ee',
+        'https://api.improv.ee'
     ],
     // https://docs.sentry.io/workflow/releases
     // Keep release in VCS at "improvision-web@dev", this will be search-replaced
     // by Travis build (build-webserver.sh)
-    release: 'improvision-web@dev',
+    release: 'webapp@dev',
     beforeSend(event) {
         // Check if it is an exception, if so, show the report dialog
         console.error(event);

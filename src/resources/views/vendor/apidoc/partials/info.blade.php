@@ -9,12 +9,12 @@ Please note the API is currently a preview only. We give no guarantees on uptime
 
 # Getting access to the API
 
-The API is open for everyone to use. The base URL for the API is `https://api.improvision.eu/`.
-The API is versioned with URI prefixes, so `https://api.improvision.eu/v1/` would be API version 1.
+The API is open for everyone to use. The base URL for the API is `https://api.improv.ee/`.
+The API is versioned with URI prefixes, so `https://api.improv.ee/v1/` would be API version 1.
 
 ## Obtaining the access token
 
-You need a registrered user account on [improvision.eu](https://improvision.eu) in order to access the API.
+You need a registrered user account on [improv.ee](https://improv.ee) in order to access the API.
 Go to your user profile settings, your API token is listed there.
 
 The API has both public and authenticated endpoints. Public endpoints are read-only. All authenticated endpoints

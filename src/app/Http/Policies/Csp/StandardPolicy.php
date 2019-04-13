@@ -14,8 +14,8 @@ class StandardPolicy extends Policy
         $this->addDirective(Directive::BASE, Keyword::SELF)
             ->addDirective(Directive::CONNECT, [
                 Keyword::SELF,
-                'https://api.local.improvision.eu',
-                'https://api.improvision.eu',
+                'https://api.local.improv.ee',
+                'https://api.improv.ee',
                 'https://sentry.io'
             ])
             ->addDirective(Directive::FRAME_ANCESTORS, Keyword::NONE)
@@ -29,8 +29,8 @@ class StandardPolicy extends Policy
                 Keyword::SELF,
                 'data:',
                 'http://improv.ee',
-                'https://api.local.improvision.eu',
-                'https://api.improvision.eu',
+                'https://api.local.improv.ee',
+                'https://api.improv.ee',
                 'https://secure.gravatar.com',
                 'https://www.google-analytics.com'
             ])

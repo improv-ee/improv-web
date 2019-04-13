@@ -10,10 +10,10 @@ return [
     ],
     'user' => [
         'invitation_mail' => [
-            'you_have_been_invited_to_join' => ':name kutsus sind liituma keskkonnaga Improvision.',
-            'app_intro' => 'Improvision on platvorm improviseerijatele ning publikule info vahetamiseks',
+            'you_have_been_invited_to_join' => ':name kutsus sind liituma keskkonnaga Improv.ee.',
+            'app_intro' => 'Improv.ee on platvorm improviseerijatele ning publikule info vahetamiseks',
             'action_button' => 'Loo konto',
-            'subject' => 'Kutse liituma Improvision keskkonnaga'
+            'subject' => 'Kutse liituma Improv.ee keskkonnaga'
         ]
     ]
 ];

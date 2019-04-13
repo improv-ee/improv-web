@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Improvision'),
+    'name' => env('APP_NAME', 'Improv.ee'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://web.local.improvision.eu'),
+    'url' => env('APP_URL', 'https://web.local.improv.ee'),
 
     /*
     |--------------------------------------------------------------------------

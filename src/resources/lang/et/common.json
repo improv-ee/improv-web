@@ -1,15 +1,15 @@
 {
   "et": {
     "app": {
-      "name": "Improvision"
+      "name": "Improv.ee"
     },
     "site": {
       "footer_copyright_text": "Loodud armastusest impro vastu. Kooki segati näputäis spontaansust, naeru, pisaraid ning kirge.",
-      "footer_copyright_holder": "improvision.eu tiim",
+      "footer_copyright_holder": "improv.ee tiim",
       "help_and_support": "Abimaterjalid",
       "report_bug": "Teata veast",
       "api_doc": "API dokumentatsioon",
-      "meta_description": "improvision.eu koondab impro-ürituste mängukava ning infot improteatri kohta"
+      "meta_description": "improv.ee koondab impro-ürituste mängukava ning infot improteatri kohta"
     },
     "nav": {
       "organizations": "Trupid",
@@ -20,8 +20,8 @@
     },
     "contact": {
       "greeting":"Hei",
-      "intro":"Me oleme improvsion.eu, improviseeritud teatrile pühendunud veebileht.",
-      "platform_description":"improvision.eu on platvorm truppidele ja publikule etenduste mängukava avaldamiseks ning impro-info jagamiseks.",
+      "intro":"Me oleme improv.ee, improviseeritud teatrile pühendunud veebileht.",
+      "platform_description":"improv.ee on platvorm truppidele ja publikule etenduste mängukava avaldamiseks ning impro-info jagamiseks.",
       "contact": "Meiega saab ühendust e-mailil {email}"
     },
     "organization":{

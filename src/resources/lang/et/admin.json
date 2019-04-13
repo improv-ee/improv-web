@@ -25,7 +25,7 @@
       },
       "settings":{
         "api": {
-          "tokens_intro": "Improvision pakub masinatele liidestumiseks tehnilist API-t. See võimaldab Improvisioniga ühendada teisi veebilehti ning süsteeme. API kasutamiseks on vaja luua personaalne API võti. Dokumentatsiooni API kasutamisest leiad {apiDoc}."
+          "tokens_intro": "Improv.ee pakub masinatele liidestumiseks tehnilist API-t. See võimaldab Improvisioniga ühendada teisi veebilehti ning süsteeme. API kasutamiseks on vaja luua personaalne API võti. Dokumentatsiooni API kasutamisest leiad {apiDoc}."
         }
       }
     },

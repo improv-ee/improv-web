@@ -19,7 +19,7 @@
           <ul class="list-unstyled">
             <li>
               <a
-                href="https://github.com/improvision-eu/improvision-web/wiki/Reporting-bugs-and-feature-requests"
+                href="https://github.com/improv-ee/improv-web/wiki/Reporting-bugs-and-feature-requests"
                 target="_blank">{{ $t('site.report_bug') }}</a>
             </li>
             <li>
@@ -36,12 +36,12 @@
           <ul class="list-unstyled">
             <li>
               <a
-                href="https://docs.improvision.eu"
+                href="https://docs.improv.ee"
                 target="_blank">{{ $t('site.api_doc') }}</a>
             </li>
             <li>
               <a
-                href="https://github.com/improvision-eu/improvision-web"
+                href="https://github.com/improv-ee/improv-web"
                 target="_blank">GitHub</a>
             </li>
             <li>

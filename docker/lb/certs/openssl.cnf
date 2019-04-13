@@ -8,11 +8,11 @@ ST = Harjumaa
 L = Tallinn
 O = Improv
 OU = Development
-CN = web.local.improvision.eu
+CN = web.local.improv.ee
 [v3_req]
 keyUsage = keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = web.local.improvision.eu
-DNS.2 = api.local.improvision.eu
+DNS.1 = web.local.improv.ee
+DNS.2 = api.local.improv.ee

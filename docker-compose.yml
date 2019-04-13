@@ -15,7 +15,7 @@ services:
       mail:
     environment:
       - APP_ENV=local
-      - APP_URL=web.local.improvision.eu
+      - APP_URL=web.local.improv.ee
     volumes:
       - ./src:/var/www/
     depends_on:
@@ -32,7 +32,7 @@ services:
       - mail
     environment:
       - APP_ENV=local
-      - APP_URL=web.local.improvision.eu
+      - APP_URL=web.local.improv.ee
     volumes:
       - ./src:/var/www/
     depends_on:
@@ -50,8 +50,8 @@ services:
     networks:
       backend:
         aliases:
-          - web.local.improvision.eu
-          - api.local.improvision.eu
+          - web.local.improv.ee
+          - api.local.improv.ee
     volumes:
       - ./docker/lb/certs:/etc/ssl/certs/lb:ro
     depends_on:

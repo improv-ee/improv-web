@@ -13,11 +13,11 @@
       </p>
 
       <h3>Acceptance of terms</h3>
-      <p>By using <code>improvision.eu</code>, you agree to all the terms on this page.</p>
+      <p>By using <code>improv.ee</code>, you agree to all the terms on this page.</p>
 
       <h3>Description of service</h3>
       <p>
-        <code>improvision.eu</code> is a website where you can get information about improvisational theatre and events. This information is crowdsourced, meaning you
+        <code>improv.ee</code> is a website where you can get information about improvisational theatre and events. This information is crowdsourced, meaning you
         have the opportunity to provide it. The service will sometimes break without warning.
       </p>
 
@@ -57,7 +57,7 @@
       <p>You can get banned from this site and/or your account terminated. This will usually happen if you violate our terms.</p>
 
       <h3>Questions?</h3>
-      <p>You can get in touch with us by <code class="reversed">ue.noisivorpmi@troppus</code>. If you don't agree with any of the terms here; or if you want to make us better, join us - Improvision is open source at GitHub. You can submit a pull request or otherwise help us out.</p>
+      <p>You can get in touch with us by <code class="reversed">ue.noisivorpmi@troppus</code>. If you don't agree with any of the terms here; or if you want to make us better, join us - Improv.ee is open source at GitHub. You can submit a pull request or otherwise help us out.</p>
     </div>
   </div>
 </template>

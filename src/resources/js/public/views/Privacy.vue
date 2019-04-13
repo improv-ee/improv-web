@@ -7,17 +7,17 @@
         Effective date: Feb 08 2019
       </p>
 
-      <p>Improvision ("us", "we") operates this website (<code>improvision.eu</code>).</p>
+      <p>Improv.ee ("us", "we") operates this website (<code>improv.ee</code>).</p>
 
       <h3>What we know about you</h3>
 
       <p>
-        If you register an account with Improvision, we’ll have access to your e-mail address and any additional
+        If you register an account with Improv.ee, we’ll have access to your e-mail address and any additional
         personal information you choose to provide us.
       </p>
 
       <p>
-        If you browse Improvision.eu, with or without a login, we know for a limited time that a user at your IP
+        If you browse Improv.ee.eu, with or without a login, we know for a limited time that a user at your IP
         address has visited pages on the site.
         We collect data on what pages you browse and how you behave on our site to do analytics, with the sole
         purpose of improving our service.
@@ -79,7 +79,7 @@
       inform site improvements.
       Google Universal Analytics is a service hosted on Google’s servers, and is our primary analytics tool. It is
       activated by a JavaScript snippet that loads on every page to send visitor behavioral information to Google.
-      Improvision uses this information to understand how visitors use our site. Sometimes Improvision will run
+      Improv.ee uses this information to understand how visitors use our site. Sometimes Improv.ee will run
       A/B tests, where Google Analytics will track cookies set on users to divide them into groups that get
       slightly different pages to see which perform better. Visitors who have Do Not Track enabled will not have
       any information sent to Google’s servers for use in analytics.
@@ -109,8 +109,8 @@
 
       <h3>Questions?</h3>
       <p>
-        If you have any questions or feedback regarding this privacy policy, including if you feel Improvision
-        or someone within the Improvision community has violated it, or if you are concerned about Improvision’s
+        If you have any questions or feedback regarding this privacy policy, including if you feel Improv.ee
+        or someone within the Improv.ee community has violated it, or if you are concerned about Improv.ee’s
         general philosophy
         toward user privacy, please contact us at <code class="reversed">ue.noisivorpmi@troppus</code>.
       </p>

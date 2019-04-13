@@ -113,8 +113,8 @@ return [
                     'env' => [
                         'APP_ENV' => 'documentation',
                         'APP_DEBUG' => false,
-                        'APP_URL' => 'https://api.improvision.eu',
-                        'API_DOMAIN'=>'api.local.improvision.eu'
+                        'APP_URL' => 'https://api.improv.ee',
+                        'API_DOMAIN'=>'api.local.improv.ee'
                     ],
 
                     /*

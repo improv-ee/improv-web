@@ -21,7 +21,7 @@ export default {
     },
     data(){
         return {
-            apiDoc: '<a href="https://docs.improvision.eu" target="_blank">docs.improvision.eu</a>'
+            apiDoc: '<a href="https://docs.improv.ee" target="_blank">docs.improv.ee</a>'
         };
     }
 };

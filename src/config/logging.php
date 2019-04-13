@@ -54,7 +54,7 @@ return [
             ],
             'formatter' => \Monolog\Formatter\LogstashFormatter::class,
             'formatter_with' => [
-                'applicationName' => 'improvision-web',
+                'applicationName' => 'improv-web',
                 'contextPrefix' => ''
             ],
         ],
@@ -69,7 +69,7 @@ return [
             ],
             'formatter' => \Monolog\Formatter\LogstashFormatter::class,
             'formatter_with' => [
-                'applicationName' => 'improvision-api',
+                'applicationName' => 'improv-api',
                 'contextPrefix' => ''
             ],
         ],

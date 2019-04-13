@@ -48,7 +48,7 @@ export default {
         BottomNav
     },
     metaInfo: {
-        titleTemplate: '%s - Improvision'
+        titleTemplate: '%s - Improv.ee'
     },
     mixins: [progress]
 };
