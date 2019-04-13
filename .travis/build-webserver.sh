@@ -13,7 +13,7 @@ else
       export RELEASE="$TRAVIS_TAG"
 fi
 
-sed -i "s/improvision-web@dev/improvision-web@$RELEASE/g" resources/js/bootstrap.js
+sed -i "s/improv-web@dev/improv-web@$RELEASE/g" resources/js/bootstrap.js
 echo "RELEASE_VERSION=${RELEASE}" >> .env
 RELEASE_TIME=`date +%s` echo "RELEASE_TIME=${RELEASE_TIME}" >> .env
 
@@ -34,9 +34,9 @@ cd ..
 
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
-docker build -t improvision/improvision-web:$TAG .
+docker build -t improv/improv-web:$TAG .
 
-docker push improvision/improvision-web:$TAG
-docker rmi improvision/improvision-web:$TAG
+docker push improv/improv-web:$TAG
+docker rmi improv/improv-web:$TAG
 
 docker logout

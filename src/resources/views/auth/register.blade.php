@@ -79,7 +79,7 @@
                                            name="password" required>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         {{  __('user.password_help') }} <a
-                                                href="https://github.com/improvision-eu/improvision-web/wiki/Password-requirements"
+                                                href="https://github.com/improv-ee/improv-web/wiki/Password-requirements"
                                                 target="_blank">{{ __('site.more_info') }}</a>
                                     </small>
                                     @if ($errors->has('password'))

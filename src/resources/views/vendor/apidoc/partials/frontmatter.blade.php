@@ -10,4 +10,4 @@ includes:
 search: true
 
 toc_footers:
-- <a href='https://github.com/improvision-eu/improvision-web#api-documentation'>Modify this doc in GitHub</a>
+- <a href='https://github.com/improv-ee/improv-web#api-documentation'>Modify this doc in GitHub</a>

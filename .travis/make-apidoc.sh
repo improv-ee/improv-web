@@ -25,9 +25,9 @@ rm -rf source
 
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
-docker build -t improvision/api-docs:$TAG .
+docker build -t improv/api-docs:$TAG .
 
-docker push improvision/api-docs:$TAG
-docker rmi improvision/api-docs:$TAG
+docker push improv/api-docs:$TAG
+docker rmi improv/api-docs:$TAG
 
 docker logout
