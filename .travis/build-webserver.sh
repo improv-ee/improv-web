@@ -8,14 +8,16 @@ cd src
 # See https://docs.travis-ci.com/user/environment-variables/
 if [ -z "$TRAVIS_TAG" ]
 then
-      export RELEASE="$TRAVIS_COMMIT"
+      export RELEASE=$(git rev-parse --short HEAD)
 else
       export RELEASE="$TRAVIS_TAG"
 fi
 
 sed -i "s/improv-web@dev/improv-web@$RELEASE/g" resources/js/bootstrap.js
 echo "RELEASE_VERSION=${RELEASE}" >> .env
-RELEASE_TIME=`date +%s` echo "RELEASE_TIME=${RELEASE_TIME}" >> .env
+
+export RELEASE_TIME=`date +%s`
+echo "RELEASE_TIME=${RELEASE_TIME}" >> .env
 
 echo "Installing Composer dependencies"
 composer install --no-interaction --prefer-dist --no-dev
