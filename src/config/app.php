@@ -53,6 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'https://web.local.improv.ee'),
+    'api_url' => sprintf('https://%s', env('API_DOMAIN')),
 
     /*
     |--------------------------------------------------------------------------
