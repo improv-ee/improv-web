@@ -8,6 +8,10 @@ Location: Tallinn, Estonia
 Eva Valdna
 Location: Tallinn, Estonia
 
+Rahel Otsa
+Site: https://rahelotsa.ee
+Location: Tallinn, Estonia
+
 /* THANKS */
 
 Giulia De Benedetto - Logo (Noun project)
