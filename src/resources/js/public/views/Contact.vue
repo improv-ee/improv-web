@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             // Spambot scraper protection, reverse the e-mail
-            contactEmail: '<span class="reversed">ue.noisivorpmi@troppus</span>'
+            contactEmail: '<span class="reversed">ee.vorpmi@troppus</span>'
         };
     }
 };
