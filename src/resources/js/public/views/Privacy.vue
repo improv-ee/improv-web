@@ -54,8 +54,7 @@
       <p>
         We do our best to secure the data you provide us. This involves using industry best security practices
         such as encryption, strong passwords and principle of least access.
-        We are not a large organization and cannot guarantee the absolute security of your data. Additionally,
-        you are responsible for your personal account security
+        You are responsible for your personal account security
         by using a strong, secure and unique password.
       </p>
 
