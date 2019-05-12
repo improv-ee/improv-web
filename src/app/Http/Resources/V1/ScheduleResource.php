@@ -32,6 +32,7 @@ class ScheduleResource extends JsonResource
                 ],
                 'description'=>$this->production->description,
                 'excerpt'=>$this->production->excerpt,
+                'tags' => TagResource::collection($this->production->tags)
             ],
             'times' => [
                 'start'=>$this->start_time->toIso8601String(),

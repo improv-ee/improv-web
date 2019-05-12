@@ -56,7 +56,6 @@
     </div>
 
     <div class="footer-copyright text-center">
-      <p>{{ $t('site.footer_copyright_text') }}</p>
       <p>
         © 2013 - {{ currentYear }}
         <a href="/humans.txt">{{ $t('site.footer_copyright_holder') }}</a>

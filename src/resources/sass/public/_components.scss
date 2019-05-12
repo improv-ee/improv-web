@@ -6,11 +6,32 @@
 
   .rounded-bottom {
 
-    text-align: center;
-
-    li {
-      color: $white;
+    [class^=float] {
+      padding: 1em .5em;
     }
+
+    .float-right {
+      text-align: right;
+    }
+
+    .float-left {
+      text-align: left;
+    }
+
+    .event-tags {
+      text-align: center;
+      margin-top: .5em;
+
+      .badge {
+        margin-right: 1em;
+        font-size: $font-size-lg;
+        font-variant: small-caps;
+        letter-spacing: .1em;
+      }
+    }
+
+    color: $white;
+    padding: 1em .5em;
   }
 }
 

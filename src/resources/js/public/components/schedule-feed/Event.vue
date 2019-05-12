@@ -29,12 +29,26 @@
     </div>
 
 
-    <div class="rounded-bottom deep-purple pt-3">
-      <ul class="list-unstyled list-inline font-small">
-        <li class="list-inline-item">
-          <i class="far fa-calendar" /> {{ start_time }}
-        </li>
-      </ul>
+    <div class="rounded-bottom deep-purple">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center">
+            <i class="far fa-calendar" /> {{ start_time }}
+          </div>
+        </div>
+      </div>
+      <div
+        v-if="event.production.tags.length > 0"
+        class="row">
+        <div class="col-12 event-tags">
+          <span
+            v-for="tag in event.production.tags"
+            :key="tag.slug"
+            class="badge badge-primary">
+            {{ tag.name }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +59,7 @@ moment.locale('et');
 
 export default {
     props: {
-        'event': {
+        event: {
             type: Object,
             default: function () {
                 return {};
