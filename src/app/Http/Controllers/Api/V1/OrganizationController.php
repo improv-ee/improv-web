@@ -53,6 +53,7 @@ class OrganizationController extends Controller
      * @param Request $request
      * @queryParam filter[is_public] Filter results based on Organizations 'is_public' [0|1] property
      * @queryParam filter[onlyMine] Filter results based on my membership in the Organization
+     * @queryParam filter[name] Filter results based on Organization's 'name'
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request)

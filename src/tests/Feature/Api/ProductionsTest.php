@@ -4,8 +4,10 @@ namespace Tests\Feature\Api;
 
 use App\Orm\Organization;
 use App\Orm\Production;
+use App\Orm\Tag;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @package Tests\Feature\Api
@@ -17,6 +19,7 @@ class ProductionsTest extends ApiTestCase
 
     protected $validProductionInput = [
         'title' => 'Sad Margarita',
+        'tags' => [],
         'organizations' => []
     ];
 
@@ -25,22 +28,22 @@ class ProductionsTest extends ApiTestCase
      */
     protected $production;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->production = factory(Production::class)->create();
         $this->validProductionInput['organizations'] = [$this->production->organizations()->first()->slug];
+        $this->validProductionInput['tags'] = [Tag::first()->slug];
     }
 
     /**
-     * A basic test example.
-     *
      * @return void
      */
     public function testProductionInfoIsReturned()
     {
         $response = $this->get($this->getApiUrl() . '/productions');
 
+        $tag = Tag::first();
         $response->assertStatus(200)
             ->assertJson(['data' => [
                 [
@@ -50,6 +53,12 @@ class ProductionsTest extends ApiTestCase
                     'organizations' => [
                         [
                             'slug' => $this->production->organizations->first()->slug
+                        ]
+                    ],
+                    'tags' => [
+                        [
+                            'slug' => $tag->slug,
+                            'name' => $tag->name
                         ]
                     ]
                 ]
@@ -141,7 +150,7 @@ class ProductionsTest extends ApiTestCase
 
         $productionInput = array_replace($this->validProductionInput, [
             'images' => ['header' => ['content' => null]],
-            'organizations'=>[$user->organizations()->first()->slug]
+            'organizations' => [$user->organizations()->first()->slug]
         ]);
 
         $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
@@ -231,4 +240,28 @@ class ProductionsTest extends ApiTestCase
 
         $response->assertStatus(200);
     }
+
+    public function testTagsCanBeAddedToExistingProduction()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $this->production->organizations()->attach($user->organizations()->first());
+
+        $tag = Tag::first();
+
+        $productionInput = array_replace($this->validProductionInput, ['title' => 'Tilt Improv Festival',
+            'excerpt' => 'Lots of shows, many nights of fun',
+            'organizations' => [$user->organizations()->first()->slug],
+            'tags' => [$tag->slug]
+        ]);
+
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+
+        $response->assertStatus(200)
+            ->assertJson(['data' => [
+                'tags' => [
+                    ['name'=>$tag->name, 'slug' => $tag->slug]
+                ]
+            ]]);
+    }
+
 }

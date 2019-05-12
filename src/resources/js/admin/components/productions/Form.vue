@@ -75,9 +75,23 @@
           :invalid-feedback="invalidFeedback('organizations')"
           :state="getFieldState('organizations')"
           label-for="production-organizers">
-          <organization-select
+          <multi-select
             v-model="form.organizations"
+            options-api-path="/organizations"
             :options="production.organizations" />
+        </b-form-group>
+
+
+        <b-form-group
+          :label="$t('event.attr.tags')"
+          :description="$t('production.attr.tags_description')"
+          :invalid-feedback="invalidFeedback('tags')"
+          :state="getFieldState('tags')"
+          label-for="production-tags">
+          <multi-select
+            v-model="form.tags"
+            options-api-path="/tags"
+            :options="production.tags" />
         </b-form-group>
 
         <b-button
@@ -93,10 +107,10 @@
 </template>
 
 <script>
-import OrganizationSelect from '../organizations/OrganizationSelect';
+import MultiSelect from '../MultiSelect';
 
 export default {
-    components: {OrganizationSelect},
+    components: {MultiSelect},
     props: {
         'production': {
             type: Object,
@@ -112,7 +126,8 @@ export default {
     data() {
         return {
             form: {
-                organizations: []
+                organizations: [],
+                tags: []
             },
             ui: {},
             showForm: false,
@@ -136,6 +151,7 @@ export default {
                 description: newProductionVal.description,
                 excerpt: newProductionVal.excerpt,
                 organizations: newProductionVal.organizations,
+                tags: newProductionVal.tags,
                 images: {
                     header: {
                         urls: {

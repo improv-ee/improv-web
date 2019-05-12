@@ -2,13 +2,22 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Minimal\OrganizationResource;
+use App\Orm\Organization;
 use App\Orm\Production;
+use App\Orm\Tag;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Collection;
 
 /**
- * Class ProductionResource
  * @package App\Http\Resources
  * @property Production $this
+ * @property Organization|Collection $organizations
+ * @property Tag|Collection $tags
+ * @property string $excerpt
+ * @property string $description
+ * @property string $slug
+ * @property string $title
  */
 class ProductionResource extends JsonResource
 {
@@ -30,27 +39,14 @@ class ProductionResource extends JsonResource
                     'urls' => [
                         'original' => $this->getFirstMediaUrl('images')
                     ]
-                ],null)
+                ], null)
 
             ],
             'description' => $this->description,
             'excerpt' => $this->excerpt,
-            'organizations' => $this->when($this->organizations()->count(), $this->getOrganizationCollection())
+            'organizations' => $this->when($this->organizations()->count(), OrganizationResource::collection($this->organizations)),
+            'tags' => $this->when($this->tags()->count(), TagResource::collection($this->tags))
         ];
     }
 
-    /**
-     * @return array
-     */
-    private function getOrganizationCollection()
-    {
-        $organizations = [];
-        foreach ($this->organizations()->get() as $organization) {
-            $organizations[] = [
-                'slug' => $organization->slug,
-                'name' => $organization->name
-            ];
-        }
-        return $organizations;
-    }
 }
