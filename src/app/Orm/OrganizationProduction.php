@@ -9,9 +9,8 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property Production production
  * @property Organization organization
  */
-class OrganizationProduction extends Pivot implements Auditable
+class OrganizationProduction extends Pivot
 {
-    use \OwenIt\Auditing\Auditable;
 
     const ROLE_ADMIN = 0;
     const ROLE_MEMBER = 1;

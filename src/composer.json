@@ -17,7 +17,7 @@
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "mpociot/laravel-apidoc-generator": "^3.3",
-        "owen-it/laravel-auditing": "^9.0",
+        "owen-it/laravel-auditing": "^9.2",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
         "spatie/laravel-backup": "^6.0",

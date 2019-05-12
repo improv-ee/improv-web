@@ -75,8 +75,9 @@
           :invalid-feedback="invalidFeedback('organizations')"
           :state="getFieldState('organizations')"
           label-for="production-organizers">
-          <organization-select
+          <multi-select
             v-model="form.organizations"
+            options-api-path="/organizations"
             :options="production.organizations" />
         </b-form-group>
 
@@ -87,8 +88,9 @@
           :invalid-feedback="invalidFeedback('tags')"
           :state="getFieldState('tags')"
           label-for="production-tags">
-          <tag-select
+          <multi-select
             v-model="form.tags"
+            options-api-path="/tags"
             :options="production.tags" />
         </b-form-group>
 
@@ -105,11 +107,10 @@
 </template>
 
 <script>
-import OrganizationSelect from '../organizations/OrganizationSelect';
-import TagSelect from './TagSelect';
+import MultiSelect from '../MultiSelect';
 
 export default {
-    components: {OrganizationSelect, TagSelect},
+    components: {MultiSelect},
     props: {
         'production': {
             type: Object,

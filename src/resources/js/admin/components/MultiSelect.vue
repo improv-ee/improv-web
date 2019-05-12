@@ -1,12 +1,12 @@
 <template>
   <multiselect
-    v-model="selectedTags"
+    v-model="selectedItems"
     label="name"
     track-by="slug"
     :placeholder="$t('ui.search.type_to_search')"
     :select-label="$t('ui.search.press_to_select')"
     open-direction="bottom"
-    :options="tags"
+    :options="selectableOptions"
     :multiple="true"
     :searchable="true"
     :loading="isLoading"
@@ -24,7 +24,7 @@
       slot="clear"
       slot-scope="props">
       <div
-        v-if="selectedTags.length"
+        v-if="selectedItems.length"
         class="multiselect__clear"
         @mousedown.prevent.stop="clearAll(props.search)" />
     </template>
@@ -40,6 +40,10 @@ import lodash from 'lodash';
 export default {
     components: {Multiselect},
     props: {
+        optionsApiPath:{
+            type: String,
+            required: true
+        },
         value: {
             type: Array,
             default: function () {
@@ -55,24 +59,29 @@ export default {
     },
     data() {
         return {
-            selectedTags: [],
-            tags: [],
+            selectedItems: [],
+            selectableOptions: [],
             isLoading: false
         };
     },
     watch: {
-        selectedTags: function () {
+        selectedItems: function () {
 
-            let slugs = lodash.map(this.selectedTags, function (organization) {
-                return organization.slug;
+            let slugs = lodash.map(this.selectedItems, function (item) {
+                return item.slug;
             });
 
             this.$emit('input', slugs);
         }
     },
     mounted() {
-        this.selectedTags = this.value;
-        this.tags = this.options;
+        this.selectedItems = this.value;
+        this.selectableOptions = this.options;
+
+        // Do an initial search for options with an empty query on component load
+        // This pre-loads a list of options, so that when the selectbox is first
+        // opened, it would be populated with possible options
+        this.asyncFind('');
     },
     methods: {
         limitText(count) {
@@ -81,24 +90,24 @@ export default {
 
         asyncFind: lodash.debounce(function (query) {
             this.isLoading = true;
-            this.findTag(query).then(response => {
-                this.tags = response;
+            this.findOptions(query).then(response => {
+                this.selectableOptions = response;
                 this.isLoading = false;
             });
         }, 300),
         clearAll() {
-            this.selectedTags = [];
+            this.selectedItems = [];
         },
-        findTag(query) {
+        findOptions(query) {
             return new Promise((resolve, reject) => {
-                axios.get(config.apiUrl + '/tags', {params: {'filter[name]': query}})
+                axios.get(config.apiUrl + this.optionsApiPath, {params: {'filter[name]': query}})
                     .then(function (response) {
 
-                        let tags = lodash.map(response.data.data, function (organization) {
-                            return lodash.pick(organization, ['name', 'slug']);
+                        let options = lodash.map(response.data.data, function (item) {
+                            return lodash.pick(item, ['name', 'slug']);
                         });
 
-                        resolve(tags);
+                        resolve(options);
                     })
                     .catch(function () {
                         reject();
