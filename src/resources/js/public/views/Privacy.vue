@@ -54,8 +54,7 @@
       <p>
         We do our best to secure the data you provide us. This involves using industry best security practices
         such as encryption, strong passwords and principle of least access.
-        We are not a large organization and cannot guarantee the absolute security of your data. Additionally,
-        you are responsible for your personal account security
+        You are responsible for your personal account security
         by using a strong, secure and unique password.
       </p>
 
@@ -112,7 +111,7 @@
         If you have any questions or feedback regarding this privacy policy, including if you feel Improv.ee
         or someone within the Improv.ee community has violated it, or if you are concerned about Improv.ee’s
         general philosophy
-        toward user privacy, please contact us at <code class="reversed">ue.noisivorpmi@troppus</code>.
+        toward user privacy, please contact us at <code class="reversed">ee.vorpmi@troppus</code>.
       </p>
     </div>
   </div>

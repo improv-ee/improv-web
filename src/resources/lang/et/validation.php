@@ -93,6 +93,7 @@ return [
     'present' => ':attribute väli peab olema esindatud.',
     'regex' => ':attribute vorming on vigane.',
     'required' => ':attribute väli on nõutud.',
+    'starts_with' => ':attribute peab algama ühega järgmistest väärtustest: :values',
     'required_if' => ':attribute väli on nõutud, kui :other on :value.',
     'required_unless' => ':attribute väli on nõutud, välja arvatud, kui :other on :values.',
     'required_with' => ':attribute väli on nõutud, kui :values on esindatud.',
@@ -113,6 +114,7 @@ return [
     'url' => ':attribute vorming on vigane.',
     'reservedusername' => 'See kasutajanimi pole saadaval',
     'not_valid_header' => 'Pilt ei sobi päise pildiks; peab olema .png, .jpeg või .webp fail, mille kõrgus on vahemikus :minHeight - :maxHeight ja laius vahemikus :minWidth - :maxWidth px.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -152,10 +154,12 @@ return [
         'username' => 'kasutajanimi',
         'organizations'=>'organisatsioonid',
         'times.start' => 'algusaeg',
+        'tags' => 'märksõna',
         'times.end'=> 'lõpuaeg'
     ],
     'pwned' => 'Seda parooli ei saa kasutada, sest see on häkkeritele juba teada - parool on ilmunud andmelekkes.',
     'organization' => [
         'list_must_contain_mine' => 'Organisatsioonide nimekirjas peab olema vähemalt üks organisatsioon, mille liige sa oled.'
-    ]
+    ],
+    'tag_does_not_exist' => ':attribute sisaldab väärtust, mida ei eksisteeri',
 ];

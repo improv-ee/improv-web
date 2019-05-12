@@ -57,7 +57,7 @@
       <p>You can get banned from this site and/or your account terminated. This will usually happen if you violate our terms.</p>
 
       <h3>Questions?</h3>
-      <p>You can get in touch with us by <code class="reversed">ue.noisivorpmi@troppus</code>. If you don't agree with any of the terms here; or if you want to make us better, join us - Improv.ee is open source at GitHub. You can submit a pull request or otherwise help us out.</p>
+      <p>You can get in touch with us by <code class="reversed">ee.vorpmi@troppus</code>. If you don't agree with any of the terms here; or if you want to make us better, join us - Improv.ee is open source at GitHub. You can submit a pull request or otherwise help us out.</p>
     </div>
   </div>
 </template>

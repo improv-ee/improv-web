@@ -4,13 +4,16 @@ namespace App\Orm;
 
 use App\User;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\Tags\HasTags;
 
 /**
  * Class Production
@@ -23,7 +26,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  */
 class Production extends Model implements Auditable, HasMedia
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable, HasMediaTrait;
+    use Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable, HasMediaTrait, HasTags;
 
     public $translatedAttributes = ['title', 'slug', 'description', 'excerpt'];
     public $fillable = ['title', 'slug', 'description', 'excerpt'];
@@ -81,5 +84,26 @@ class Production extends Model implements Auditable, HasMedia
     public function events()
     {
         return $this->hasMany('App\Orm\Event');
+    }
+
+    /**
+     * Overwrite spatie-tags package's default Tag model
+     *
+     * @return string
+     */
+    public static function getTagClassName(): string
+    {
+        return Tag::class;
+    }
+
+    /**
+     * Overwrite spatie-tags package's default Tag model
+     * @return MorphToMany
+     */
+    public function tags(): MorphToMany
+    {
+        return $this
+            ->morphToMany(self::getTagClassName(), 'taggable', 'taggables', null, 'tag_id')
+            ->orderBy('order_column');
     }
 }

@@ -28,7 +28,7 @@ class RegistrationControllerTest extends TestCase
         'code'=> null
     ];
 
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         Artisan::call('passport:install');

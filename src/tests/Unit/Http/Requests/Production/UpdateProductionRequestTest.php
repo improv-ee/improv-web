@@ -28,7 +28,7 @@ class UpdateProductionRequestTest extends TestCase
     protected $request;
 
 
-    public function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         $this->request = new UpdateProductionRequest;

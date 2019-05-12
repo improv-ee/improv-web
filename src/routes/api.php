@@ -37,6 +37,11 @@ Route::resource('events', 'EventController', ['as' => 'api'])->only([
 Route::resource('organizations', 'OrganizationController', ['as' => 'api'])->only([
     'index', 'show'
 ]);
+
+Route::resource('tags', 'TagController', ['as' => 'api'])->only([
+    'index'
+]);
+
 Route::resource('users', 'UserController', ['as' => 'api'])->only(['show']);
 
 Route::apiResource('images', 'ImageController', ['as' => 'api'])->only(['show']);

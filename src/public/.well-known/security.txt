@@ -1,7 +1,7 @@
 # https://securitytxt.org
 Contact: mailto:support@improv.ee
 Encryption: https://keybase.io/anroots/pgp_keys.asc
-Acknowledgments: https://github.com/improvision-eu/improvision-web/blob/master/README.md
+Acknowledgments: https://github.com/improv-ee/improv-web/blob/master/README.md
 Preferred-Languages: en
 Canonical: https://improv.ee/.well-known/security.txt
 Policy: https://improv.ee/#/terms

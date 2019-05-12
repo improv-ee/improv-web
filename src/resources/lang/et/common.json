@@ -38,7 +38,8 @@
         "description": "Kirjeldus",
         "start_time": "Algus",
         "end_time": "Lõpp",
-        "organizers": "Korraldajad"
+        "organizers": "Korraldajad",
+        "tags": "Märksõnad"
       }
     },
     "ui": {
