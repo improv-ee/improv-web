@@ -72,7 +72,8 @@
         "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
         "description": "Kirjeldus",
         "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
-        "organizers_description": "Vali trupid, kes seda produktsiooni korraldavad. N.B! Valitud trupid saavad õiguse produktsiooni andmeid muuta!"
+        "organizers_description": "Vali trupid, kes seda produktsiooni korraldavad. N.B! Valitud trupid saavad õiguse produktsiooni andmeid muuta!",
+        "tags_description": "Lisa produktsioonile märksõnu, mis aitavad seda kirjeldada. Näiteks, kas tegemist on töötoa või etendusega?"
       },
       "img": {
         "header": "Päise pilt",

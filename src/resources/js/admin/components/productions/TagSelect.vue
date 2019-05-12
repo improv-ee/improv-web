@@ -1,12 +1,12 @@
 <template>
   <multiselect
-    v-model="selectedOrganizations"
+    v-model="selectedTags"
     label="name"
     track-by="slug"
     :placeholder="$t('ui.search.type_to_search')"
     :select-label="$t('ui.search.press_to_select')"
     open-direction="bottom"
-    :options="organizations"
+    :options="tags"
     :multiple="true"
     :searchable="true"
     :loading="isLoading"
@@ -24,7 +24,7 @@
       slot="clear"
       slot-scope="props">
       <div
-        v-if="selectedOrganizations.length"
+        v-if="selectedTags.length"
         class="multiselect__clear"
         @mousedown.prevent.stop="clearAll(props.search)" />
     </template>
@@ -55,15 +55,15 @@ export default {
     },
     data() {
         return {
-            selectedOrganizations: [],
-            organizations: [],
+            selectedTags: [],
+            tags: [],
             isLoading: false
         };
     },
     watch: {
-        selectedOrganizations: function () {
+        selectedTags: function () {
 
-            let slugs = lodash.map(this.selectedOrganizations, function (organization) {
+            let slugs = lodash.map(this.selectedTags, function (organization) {
                 return organization.slug;
             });
 
@@ -71,8 +71,8 @@ export default {
         }
     },
     mounted() {
-        this.selectedOrganizations = this.value;
-        this.organizations = this.options;
+        this.selectedTags = this.value;
+        this.tags = this.options;
     },
     methods: {
         limitText(count) {
@@ -81,24 +81,24 @@ export default {
 
         asyncFind: lodash.debounce(function (query) {
             this.isLoading = true;
-            this.findOrganization(query).then(response => {
-                this.organizations = response;
+            this.findTag(query).then(response => {
+                this.tags = response;
                 this.isLoading = false;
             });
         }, 300),
         clearAll() {
-            this.selectedOrganizations = [];
+            this.selectedTags = [];
         },
-        findOrganization(query) {
+        findTag(query) {
             return new Promise((resolve, reject) => {
-                axios.get(config.apiUrl + '/organizations', {params: {'filter[name]': query}})
+                axios.get(config.apiUrl + '/tags', {params: {'filter[name]': query}})
                     .then(function (response) {
 
-                        let organizations = lodash.map(response.data.data, function (organization) {
+                        let tags = lodash.map(response.data.data, function (organization) {
                             return lodash.pick(organization, ['name', 'slug']);
                         });
 
-                        resolve(organizations);
+                        resolve(tags);
                     })
                     .catch(function () {
                         reject();

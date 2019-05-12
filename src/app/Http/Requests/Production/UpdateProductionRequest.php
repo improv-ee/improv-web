@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\Production;
 
+use App\Orm\Tag;
 use App\Rules\Base64HeaderImage;
 use App\Rules\ContainsMyOrganization;
+use App\Rules\TagExists;
 
 /**
  * Class UpdateProductionRequest
@@ -25,6 +27,7 @@ class UpdateProductionRequest extends DeleteProductionRequest
             'title' => 'max:255|required|min:3',
             'description' => 'max:3000|nullable',
             'organizations' => ['required', 'array', 'exists:organization_translations,slug', new ContainsMyOrganization],
+            'tags' => ['nullable', 'array', new TagExists(Tag::TYPE_PRODUCTION)],
             'images.header.content' => ['nullable', new Base64HeaderImage]
         ];
     }

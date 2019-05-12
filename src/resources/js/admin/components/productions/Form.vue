@@ -80,6 +80,18 @@
             :options="production.organizations" />
         </b-form-group>
 
+
+        <b-form-group
+          :label="$t('event.attr.tags')"
+          :description="$t('production.attr.tags_description')"
+          :invalid-feedback="invalidFeedback('tags')"
+          :state="getFieldState('tags')"
+          label-for="production-tags">
+          <tag-select
+            v-model="form.tags"
+            :options="production.tags" />
+        </b-form-group>
+
         <b-button
           type="submit"
           variant="primary"
@@ -94,9 +106,10 @@
 
 <script>
 import OrganizationSelect from '../organizations/OrganizationSelect';
+import TagSelect from './TagSelect';
 
 export default {
-    components: {OrganizationSelect},
+    components: {OrganizationSelect, TagSelect},
     props: {
         'production': {
             type: Object,
@@ -112,7 +125,8 @@ export default {
     data() {
         return {
             form: {
-                organizations: []
+                organizations: [],
+                tags: []
             },
             ui: {},
             showForm: false,
@@ -136,6 +150,7 @@ export default {
                 description: newProductionVal.description,
                 excerpt: newProductionVal.excerpt,
                 organizations: newProductionVal.organizations,
+                tags: newProductionVal.tags,
                 images: {
                     header: {
                         urls: {
