@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Akaunting\Language\Middleware\SetLocale;
 use App\Http\Middleware\AuthenticateIfPossible;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Spatie\Cors\Cors;
@@ -38,6 +39,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Spatie\Csp\AddCspHeaders::class,
+            SetLocale::class
         ],
 
         'api' => [

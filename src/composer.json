@@ -7,6 +7,7 @@
     "type": "project",
     "require": {
         "php": "^7.2.17",
+        "akaunting/language": "^1.0",
         "askedio/laravel-soft-cascade": "^5.6",
         "clarkeash/doorman": "^2.1",
         "dimsav/laravel-translatable": "^9.2",
