@@ -1,83 +1,83 @@
 {
   "ui": {
-    "markdown_supported": "Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
+    "markdown_supported": "You can use <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown syntax</a> to add formatting to the text."
   },
   "nav": {
     "home": "Home"
   },
   "dash": {
-    "greeting": "Meie homne on meie endi teha."
+    "greeting": "Our tomorrow is of our own making."
   },
   "user": {
-    "not_found": "Sellist kasutajanime ei leitud",
+    "not_found": "No such username exists",
     "profile": {
       "email": "E-mail",
-      "name": "Nimi",
+      "name": "Name",
       "avatar": "Avatar",
-      "settings": "Profiili seaded",
-      "api_tokens": "API võtmed",
+      "settings": "profile settings",
+      "api_tokens": "API keys",
       "invite": {
-        "invite_new_user": "Kutsu uus kasutaja",
-        "send_invitation": "Saada kutse",
-        "invite_sent": "Kutse saadetud"
+        "invite_new_user": "Invite new user",
+        "send_invitation": "Send invite",
+        "invite_sent": "Invite sent"
       }
     },
     "settings": {
       "api": {
-        "tokens_intro": "Improv.ee pakub masinatele liidestumiseks tehnilist API-t. See võimaldab Improvisioniga ühendada teisi veebilehti ning süsteeme. API kasutamiseks on vaja luua personaalne API võti. Dokumentatsiooni API kasutamisest leiad {apiDoc}."
+        "tokens_intro": "Improv.ee offers a technical API for integrating 3rd party systems. You'll need to use a personal API token in order to authenticate to the API. API documentation is available at {apiDoc}."
       }
     }
   },
   "event": {
     "attr": {
-      "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
-      "description_description": "Ürituse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
-      "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
-      "end_time_description": "Ürituse alguskuupäev- ja kella-aeg"
+      "title_description": "Event sub-title, if it differs from production title. A visitor sees both titles. Leave this blank, if the event does not use a sub-title.",
+      "description_description": "Event description, if this concrete occurance needs extra details that differ from that of the Production. Can be left blank.",
+      "start_time_description": "Event start date and time",
+      "end_time_description": "Event end date and time"
     }
   },
   "organization": {
-    "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
-    "create_new": "Uus trupp",
-    "members": "Liikmed",
-    "add_member": "Lisa uus liige",
-    "remove_member": "Eemalda organisatsioonist",
-    "name_taken": "Selle nimega trupp on juba loodud, palun vali teine nimi. Kui see trupp kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
-    "you_dont_have_any": "Sa ei kuulu hetkel ühtegi truppi. Olemasoleva trupi haldaja saab sind oma truppi kutsuda (räägi temaga). Samuti saad sa asutada uue trupi.",
+    "list_intro": "An Organization is a group of improvisers who work and perform together. An Organization has a name, list of members, description and other attributes. Organizations can create productions - performances, workshops and festivals.",
+    "create_new": "New Organization",
+    "members": "members",
+    "add_member": "Add new member",
+    "remove_member": "Remove from organization",
+    "name_taken": "An Organization with this name already exists (you'll need to use a different name). If this organization belongs to you, talk to your group and ask whoever created the organization to add you as a member instead.",
+    "you_dont_have_any": "You don't currently belong to any Organizations. You can either be invited to become a member of an existing Organization (talk to the Organization administrator); or create your own brand new Organization.",
     "attr": {
-      "name": "Nimi",
-      "description": "Kirjeldus",
-      "is_public": "Näita avalikus nimekirjas"
+      "name": "Name",
+      "description": "Description",
+      "is_public": "Show in public roster"
     },
     "user": {
       "role": {
-        "role": "Roll",
-        "admin": "Omanik",
-        "member": "Liige"
+        "role": "Role",
+        "admin": "Admin",
+        "member": "Member"
       }
     }
   },
   "production": {
-    "no_events": "Ühtegi sündmust pole lisatud",
-    "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi truppi - produktsioonide lisamiseks pead looma uue; või liituma vähemalt ühe organisatsiooniga.",
-    "num_of_events": "Üritusi",
-    "events": "Üritused",
-    "list_intro": "See tabel näitab kõiki produktsioone, mida sinu trupid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
-    "create_new": "Uus produktsioon",
+    "no_events": "No events have been added",
+    "you_dont_belong_to_any_org": "You don't belong to any Organization yet. In order to create Productions, you'll either need to join or found an Organization.",
+    "num_of_events": "Number of events",
+    "events": "Events",
+    "list_intro": "This table shows all Productions, that have been created by any of your organizations. A Production is a concept of a show, workshop or a festival. Once Production has multiple Events (happening times).",
+    "create_new": "New Production",
     "attr": {
-      "title": "Pealkiri",
-      "title_description": "Formaadi, lavastuse või festivali nimetus",
-      "excerpt": "Lühikirjeldus",
-      "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
-      "description": "Kirjeldus",
-      "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
-      "organizers_description": "Vali trupid, kes seda produktsiooni korraldavad. N.B! Valitud trupid saavad õiguse produktsiooni andmeid muuta!",
-      "tags_description": "Lisa produktsioonile märksõnu, mis aitavad seda kirjeldada. Näiteks, kas tegemist on töötoa või etendusega?"
+      "title": "Title",
+      "title_description": "Format, show, festival or workshop title",
+      "excerpt": "Excerpt",
+      "excerpt_description": "Excerpt is a shortened description of the production that is shown as a preview in the Schedule.",
+      "description": "Description",
+      "description_description": "What is this Production? What can the participants expect? This is where you get to sell your Production and provide all needed details.",
+      "organizers_description": "Choose Organizations who are involved with this Production. Chosen Organizations will get permissions to change this Production's details!",
+      "tags_description": "Add any number of Tags that help to describe this Production. For example, for workshops, add Tag 'Workshop'."
     },
     "img": {
-      "header": "Päise pilt",
-      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
-      "select_file": "Vali fail..."
+      "header": "Header image",
+      "header_description": "This image will be shown in the header of the event page. The picture should be in 16:9 format and at least 600px in height.",
+      "select_file": "Select file..."
     }
   }
 }
