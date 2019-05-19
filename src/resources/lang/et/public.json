@@ -1,17 +1,14 @@
 {
-  "et": {
-    "nav": {
-      "schedule": "Kava",
-      "podcast": "Raadiosaade",
-      "home": "Avaleht"
-    },
-
-    "production": {
-      "attr": {
-        "title": "Pealkiri",
-        "excerpt": "Lühikirjeldus",
-        "description": "Kirjeldus"
-      }
+  "nav": {
+    "schedule": "Kava",
+    "podcast": "Raadiosaade",
+    "home": "Avaleht"
+  },
+  "production": {
+    "attr": {
+      "title": "Pealkiri",
+      "excerpt": "Lühikirjeldus",
+      "description": "Kirjeldus"
     }
   }
 }

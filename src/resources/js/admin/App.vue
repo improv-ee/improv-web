@@ -30,6 +30,7 @@
             {{ $t("nav.organizations") }}
           </b-nav-item>
         </b-navbar-nav>
+        <nav-language-switcher />
       </b-collapse>
     </b-navbar>
 
@@ -46,11 +47,12 @@
 <script>
 import BottomNav from '../components/BottomNav';
 import { progress } from '../mixins/progress';
-
+import NavLanguageSwitcher from '../components/NavLanguageSwitcher';
 
 export default {
     components: {
-        BottomNav
+        BottomNav,
+        NavLanguageSwitcher
     },
     mixins: [progress]
 };

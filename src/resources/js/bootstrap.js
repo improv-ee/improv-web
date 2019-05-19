@@ -53,7 +53,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.moment = require('moment');
 require('moment/locale/et');
-moment.locale('et');
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -75,8 +74,7 @@ axios.get('/getConfig')
         window.config = response.data;
         console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');
     }).catch(function (error) {
-        window.location.href = '/maintenance';
         console.error('Fatal - unable to load app config!');
         console.error(error);
+        window.location.href = '/maintenance';
     });
-

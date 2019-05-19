@@ -17,3 +17,14 @@ body {
     padding: 1.5rem;
   }
 }
+
+.lang-selector {
+  img {
+    height: 1em;
+    filter: grayscale(40%);
+  }
+
+  a {
+    text-align: center;
+  }
+}

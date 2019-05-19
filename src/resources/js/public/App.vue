@@ -31,6 +31,8 @@
             {{ $t("nav.podcast") }}
           </b-nav-item>
         </b-navbar-nav>
+
+        <nav-language-switcher />
       </b-collapse>
     </b-navbar>
     <router-view />
@@ -42,14 +44,16 @@
 <script>
 import BottomNav from '../components/BottomNav';
 import { progress } from '../mixins/progress';
+import NavLanguageSwitcher from '../components/NavLanguageSwitcher';
 
 export default {
     components: {
-        BottomNav
+        BottomNav,
+        NavLanguageSwitcher
     },
+    mixins: [progress],
     metaInfo: {
         titleTemplate: '%s - Improv.ee'
-    },
-    mixins: [progress]
+    }
 };
 </script>
