@@ -4,6 +4,7 @@ namespace App\Http;
 
 use Akaunting\Language\Middleware\SetLocale;
 use App\Http\Middleware\AuthenticateIfPossible;
+use App\Http\Middleware\SetApiLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Spatie\Cors\Cors;
 
@@ -47,6 +48,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
             AuthenticateIfPossible::class,
+            SetApiLocale::class
 
         ],
     ];
