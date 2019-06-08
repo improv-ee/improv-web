@@ -13,6 +13,7 @@
         "dimsav/laravel-translatable": "^9.2",
         "dirape/token": "^2.1",
         "fideloper/proxy": "^4.0",
+        "joggapp/laravel-google-translate": "^2.0",
         "laravel/framework": "5.8.*",
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",

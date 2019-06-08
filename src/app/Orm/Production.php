@@ -35,14 +35,6 @@ class Production extends Model implements Auditable, HasMedia
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];
 
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'creating' => ProductionCreating::class,
-    ];
 
     protected $softCascade = ['events'];
 

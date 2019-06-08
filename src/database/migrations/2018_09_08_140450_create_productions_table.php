@@ -35,6 +35,7 @@ class CreateProductionsTable extends Migration
             $table->text('description')->nullable()->default(null);
             $table->text('excerpt')->nullable()->default(null);
             $table->char('locale', 2)->index();
+            $table->boolean('auto_translated')->default(false)->comment('If true, indicates this translation was made by a machine');
 
             $table->unique(['production_id', 'locale']);
             $table->foreign('production_id')->references('id')->on('productions')->onDelete('cascade');
