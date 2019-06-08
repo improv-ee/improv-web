@@ -208,7 +208,7 @@ export default {
 
                     self.$router.push({
                         name: 'production.details',
-                        params: {slug: response.data.data.slug}
+                        params: {uid: response.data.data.uid}
                     });
                     self.errors = {};
 
@@ -229,12 +229,12 @@ export default {
         edit() {
             let self = this;
 
-            axios.put(config.apiUrl + '/productions/' + self.production.slug, this.form)
+            axios.put(config.apiUrl + '/productions/' + self.production.uid, this.form)
                 .then(function (response) {
 
                     self.$router.push({
                         name: 'production.details',
-                        params: {slug: response.data.data.slug}
+                        params: {uid: response.data.data.uid}
                     });
                 }).catch(function (error) {
                     let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');

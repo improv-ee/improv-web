@@ -13,10 +13,10 @@ class Event extends Model implements AuditableInterface
 {
     use Translatable, DirapeToken, SoftDeletes, Auditable;
 
-    protected $DT_Column='uid';
-    protected $DT_settings=['type'=>DT_Unique,'size'=>10,'special_chr'=>false];
-    public $translatedAttributes = ['description','title'];
-protected $fillable = ['production_id','start_time','end_time'];
+    protected $DT_Column = 'uid';
+    protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];
+    public $translatedAttributes = ['description', 'title'];
+    protected $fillable = ['production_id', 'start_time', 'end_time'];
     protected $dates = [
         'created_at',
         'updated_at',
@@ -24,11 +24,6 @@ protected $fillable = ['production_id','start_time','end_time'];
         'end_time',
         'deleted_at'
     ];
-
-    public function setProductionIdAttribute($value) {
-        $this->attributes['production_id'] = $value;
-        $this->setToken();
-    }
 
     public function production()
     {

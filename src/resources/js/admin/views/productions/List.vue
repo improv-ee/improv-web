@@ -30,7 +30,7 @@
           <tbody>
             <production-table-row
               v-for="production in productions.data"
-              :key="production.slug"
+              :key="production.uid"
               :production="production" />
           </tbody>
         </table>

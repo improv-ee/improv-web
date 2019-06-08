@@ -2,7 +2,7 @@
   <div>
     <crud-toolbar
       resource-name="productions"
-      :resource-id="this.$route.params.slug" />
+      :resource-id="this.$route.params.uid" />
 
     <h1>{{ production.getTitle() }}</h1>
 
@@ -76,7 +76,7 @@ export default {
     },
     mounted() {
         let self = this;
-        axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
+        axios.get(config.apiUrl + '/productions/' + this.$route.params.uid)
             .then(response => {
                 self.production = new Production(response.data.data);
             });
@@ -91,7 +91,7 @@ export default {
         addEvent() {
             let self = this;
             axios.post(config.apiUrl + '/events', {
-                'production': {'slug': this.$route.params.slug},
+                'production': {'uid': this.$route.params.uid},
                 'times': {
                     'start': moment().add(24, 'h').format(),
                     'end': moment().add(25, 'h').format()

@@ -1,5 +1,5 @@
 <template>
-  <tr @click="openProduction(production.slug)">
+  <tr @click="openProduction(production.uid)">
     <td>{{ production.title }}</td>
     <td>{{ production.events.length }}</td>
   </tr>
@@ -16,8 +16,8 @@ export default {
         }
     },
     methods: {
-        openProduction(slug) {
-            this.$router.push({name: 'production.details', params: {slug: slug}});
+        openProduction(uid) {
+            this.$router.push({name: 'production.details', params: {uid: uid}});
         }
     }
 

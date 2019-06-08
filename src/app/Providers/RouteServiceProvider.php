@@ -32,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('production', function ($value) {
-            return Production::whereTranslation('slug', $value)->first() ?? abort(404);
+            return Production::where('uid', $value)->first() ?? abort(404);
         });
 
     }

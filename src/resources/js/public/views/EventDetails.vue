@@ -1,13 +1,13 @@
 <template>
   <div
-    v-if="production.slug && event.uid"
+    v-if="production.uid && event.uid"
     class="event-details">
     <div class="row">
       <div class="col-md-12 col-lg-12">
         <img
           class="img-fluid header-img"
           :src="header_img"
-          :alt="event.production.slug">
+          :alt="event.production.uid">
       </div>
     </div>
     <div class="row">
@@ -91,12 +91,12 @@ export default {
         axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
             .then(response => {
                 this.event = response.data.data;
-                this.loadProduction(this.event.production.slug);
+                this.loadProduction(this.event.production.uid);
             });
     },
     methods: {
-        loadProduction: function (slug) {
-            axios.get(config.apiUrl + '/productions/' + slug)
+        loadProduction: function (uid) {
+            axios.get(config.apiUrl + '/productions/' + uid)
                 .then(response => {
                     this.production = response.data.data;
                 });

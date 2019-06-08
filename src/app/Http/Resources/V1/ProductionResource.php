@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
  * @property Tag|Collection $tags
  * @property string $excerpt
  * @property string $description
- * @property string $slug
+ * @property string $uid
  * @property string $title
  */
 class ProductionResource extends JsonResource
@@ -33,7 +33,7 @@ class ProductionResource extends JsonResource
         return [
             'events' => EventResource::collection($this->events),
             'title' => $this->title,
-            'slug' => $this->slug,
+            'uid' => $this->uid,
             'images' => [
                 'header' => $this->when($this->hasMedia('images'), [
                     'urls' => [

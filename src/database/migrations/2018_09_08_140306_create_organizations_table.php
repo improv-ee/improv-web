@@ -18,6 +18,18 @@ class CreateOrganizationsTable extends Migration
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
 
+            $table->string('email', 255)
+                ->nullable()
+                ->default(null);
+
+            $table->string('homepage_url', 255)
+                ->nullable()
+                ->default(null);
+
+            $table->string('facebook_url', 255)
+                ->nullable()
+                ->default(null);
+
             $table->softDeletes();
             $table->timestamps();
 

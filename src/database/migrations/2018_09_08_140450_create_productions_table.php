@@ -15,6 +15,7 @@ class CreateProductionsTable extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('uid', 64);
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
             $table->softDeletes();
@@ -23,6 +24,8 @@ class CreateProductionsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->unique(['uid']);
         });
 
         Schema::create('production_translations', function (Blueprint $table) {
@@ -31,11 +34,9 @@ class CreateProductionsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable()->default(null);
             $table->text('excerpt')->nullable()->default(null);
-            $table->string('slug', 190);
             $table->char('locale', 2)->index();
 
             $table->unique(['production_id', 'locale']);
-            $table->unique(['slug']);
             $table->foreign('production_id')->references('id')->on('productions')->onDelete('cascade');
         });
     }

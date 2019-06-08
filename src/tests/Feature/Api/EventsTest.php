@@ -35,7 +35,7 @@ class EventsTest extends ApiTestCase
                 'times' => [
                     'start' => $event->start_time->toIso8601String(),
                     'end' => $event->end_time->toIso8601String()],
-                'production' => ['slug' => $event->production->slug]
+                'production' => ['uid' => $event->production->uid]
 
             ]]);
     }
@@ -64,12 +64,12 @@ class EventsTest extends ApiTestCase
                 'start' => $start->toIso8601String(),
                 'end' => $end,
             ],
-            'production' => ['slug' => $production->slug]
+            'production' => ['uid' => $production->uid]
         ]);
 
         $response->assertStatus(201)
             ->assertJson(['data' => ['times' => ['start' => $start->toIso8601String()],
-                'production' => ['slug' => $production->slug]]]);
+                'production' => ['uid' => $production->uid]]]);
 
         $this->assertDatabaseHas('events', ['start_time' => $start]);
     }

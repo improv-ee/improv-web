@@ -72,7 +72,6 @@ class ProductionsSeeder extends Seeder
     {
         $production = new Production;
         $production->title = html_entity_decode($em_event->event_name);
-        $production->slug = $em_event->event_slug ?: $em_event->event_name;
         $production->description = strip_tags(html_entity_decode($em_event->post_content));
         $production->excerpt = strip_tags(html_entity_decode($em_event->post_content));
         $production->creator_id = 1;

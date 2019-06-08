@@ -3,7 +3,7 @@
     <crud-toolbar
       resource-name="events"
       :resource-id="$route.params.uid"
-      :delete-redirect="{name: 'production.details', params: {slug: event.production.slug}}" />
+      :delete-redirect="{name: 'production.details', params: {uid: event.production.uid}}" />
 
 
     <h1>{{ event.title }}</h1>

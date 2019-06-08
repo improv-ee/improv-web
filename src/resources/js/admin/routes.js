@@ -41,11 +41,11 @@ export default [
         component: ProductionCreate,
     },
     {
-        path: '/productions/:slug',
+        path: '/productions/:uid',
         name: 'production.details',
         component: ProductionDetails,
     }, {
-        path: '/productions/:slug/edit',
+        path: '/productions/:uid/edit',
         name: 'production.edit',
         component: ProductionEdit,
     },

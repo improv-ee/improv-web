@@ -61,7 +61,7 @@ class SeedApiDoc extends Command
         factory(Event::class, 5)->create();
         factory(Event::class)->create(['uid' => 'amv9z6a23']);
         factory(Production::class, 5)->create();
-        factory(Production::class)->create(['slug'=>'bifurkatsioonipunkt']);
+        factory(Production::class)->create();
         factory(OrganizationUser::class, 3)->create();
         factory(Media::class, 3)->create();
 

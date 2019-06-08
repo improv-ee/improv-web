@@ -27,6 +27,7 @@ abstract class TestCase extends BaseTestCase
             Artisan::call('passport:install');
         }
         Storage::fake('media');
+        app()->setLocale('et');
     }
 
 

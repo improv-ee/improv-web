@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('uid', 190);
+            $table->string('uid', 64);
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->boolean('is_public')->default(false);
