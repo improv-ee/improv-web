@@ -10,6 +10,7 @@ $factory->define(App\Orm\Organization::class, function (Faker $faker) {
 
     return [
         'name' => $faker->sentence(3),
+        'description' => $faker->sentence(30),
         'creator_id' => $user->id,
         'is_public' => true,
         'email' => $faker->email,

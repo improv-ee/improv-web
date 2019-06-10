@@ -44,6 +44,7 @@ class CreateEventsTable extends Migration
             $table->string('title')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->char('locale', 2)->index();
+            $table->boolean('auto_translated')->default(false)->comment('If true, indicates this translation was made by a machine');
 
             $table->unique(['event_id', 'locale']);
             $table->foreign('event_id')

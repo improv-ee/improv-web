@@ -3,25 +3,10 @@
 namespace App\Observers;
 
 use App\Orm\Production;
-use App\Orm\ProductionTranslation;
-use Illuminate\Support\Facades\App;
-use JoggApp\GoogleTranslate\GoogleTranslate;
 
 class ProductionObserver
 {
-    /**
-     * @var GoogleTranslate
-     */
-    private $translator;
-
-    /**
-     * ProductionObserver constructor.
-     * @param GoogleTranslate $translator
-     */
-    public function __construct(GoogleTranslate $translator)
-    {
-        $this->translator = $translator;
-    }
+    use OrmDefaultTranslationTrait;
 
     /**
      * Handle the app orm production "created" event.
@@ -32,29 +17,9 @@ class ProductionObserver
     public function created(Production $production)
     {
 
-        // If locale is not the fallback (en), add a default en translation
-        if (!App::isLocale(config('app.fallback_locale'))) {
+        if ($this->shouldTranslate()) {
             $this->addDefaultTranslation($production);
         }
-    }
-
-    /**
-     * Create a new Translation for the fallback_locale
-     *
-     * @param Production $production
-     */
-    private function addDefaultTranslation(Production $production)
-    {
-        $defaultLocale = config('app.fallback_locale');
-
-        $translation = $production->getNewTranslation($defaultLocale);
-        $translation->production_id = $production->id;
-        $translation->title = $this->translator->justTranslate($production->title, $defaultLocale);
-        $translation->description = $this->translator->justTranslate($production->description, $defaultLocale);
-        $translation->excerpt = $this->translator->justTranslate($production->excerpt, $defaultLocale);
-        $translation->auto_translated = 1;
-
-        $translation->save();
     }
 
     /**

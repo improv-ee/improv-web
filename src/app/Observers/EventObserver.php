@@ -6,6 +6,24 @@ use App\Orm\Event;
 
 class EventObserver
 {
+
+    use OrmDefaultTranslationTrait;
+
+    /**
+     * Handle the app orm event "created" event.
+     *
+     * @param  Event $event
+     * @return void
+     */
+    public function created(Event $event)
+    {
+
+        if ($this->shouldTranslate()) {
+            $this->addDefaultTranslation($event);
+        }
+    }
+
+
     /**
      * Handle the event "creating" event.
      *

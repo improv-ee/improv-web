@@ -46,6 +46,8 @@ class CreateOrganizationsTable extends Migration
             $table->text('description')->nullable()->default(null);
             $table->string('slug');
             $table->char('locale', 2)->index();
+            $table->boolean('auto_translated')->default(false)->comment('If true, indicates this translation was made by a machine');
+
 
             $table->unique(['name', 'locale']);
             $table->unique(['slug', 'locale']);

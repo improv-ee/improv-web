@@ -22,6 +22,14 @@ class OrganizationTranslation extends Model implements Auditable
     public $timestamps = false;
     protected $fillable = ['name', 'description'];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'auto_translated' => 'boolean',
+    ];
 
     public function setNameAttribute($value)
     {

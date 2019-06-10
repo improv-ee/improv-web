@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Observers\EventObserver;
+use App\Observers\OrganizationObserver;
 use App\Observers\ProductionObserver;
 use App\Orm\Event;
+use App\Orm\Organization;
 use App\Orm\Production;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         // If this section grows too big, refactor into a dedicated service provider
         Production::observe(ProductionObserver::class);
         Event::observe(EventObserver::class);
+        Organization::observe(OrganizationObserver::class);
     }
 
     /**
