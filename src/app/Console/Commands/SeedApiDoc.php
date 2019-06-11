@@ -48,7 +48,7 @@ class SeedApiDoc extends Command
         $user = factory(User::class)->create(['username' => 'rahel']);
 
         factory(Organization::class, 5)->create();
-        $organization = factory(Organization::class)->create(['slug' => 'jaa', 'name' => 'Jaa']);
+        $organization = factory(Organization::class)->create(['name' => 'Jaa']);
 
         $member = new OrganizationUser;
         $member->user_id = $user->id;

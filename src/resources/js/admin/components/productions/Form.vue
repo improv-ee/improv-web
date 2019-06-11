@@ -77,6 +77,7 @@
           label-for="production-organizers">
           <multi-select
             v-model="form.organizations"
+            track-by="uid"
             options-api-path="/organizations"
             :options="production.organizations" />
         </b-form-group>
@@ -90,6 +91,7 @@
           label-for="production-tags">
           <multi-select
             v-model="form.tags"
+            track-by="slug"
             options-api-path="/tags"
             :options="production.tags" />
         </b-form-group>

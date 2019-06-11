@@ -1,10 +1,10 @@
 <template>
-  <div v-if="organization.slug">
+  <div v-if="organization.uid">
     <crud-toolbar
       resource-name="organizations"
       :show-edit="isAdmin"
       :show-delete="isAdmin"
-      :resource-id="$route.params.slug" />
+      :resource-id="$route.params.uid" />
 
 
     <h1>{{ organization.name }}</h1>
@@ -22,7 +22,7 @@
 
     <member-table
       :members="organization.members"
-      :organization-slug="this.$route.params.slug" />
+      :organization-uid="this.$route.params.uid" />
 
 
     <b-form
@@ -83,7 +83,7 @@ export default {
     methods: {
         addMember() {
             let self = this;
-            axios.post(`${config.apiUrl}/organizations/${ this.$route.params.slug }/membership`, {username: this.newMemberUsername})
+            axios.post(`${config.apiUrl}/organizations/${ this.$route.params.uid }/membership`, {username: this.newMemberUsername})
                 .then(function () {
                     self.loadOrganization();
                 }).catch(function (error) {
@@ -100,7 +100,7 @@ export default {
         },
         loadOrganization() {
             let self = this;
-            axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
+            axios.get(config.apiUrl + '/organizations/' + this.$route.params.uid)
                 .then(response => {
                     self.organization = response.data.data;
                 });

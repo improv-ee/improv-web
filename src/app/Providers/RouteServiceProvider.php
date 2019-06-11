@@ -28,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::bind('organization', function ($value) {
-            return Organization::whereTranslation('slug', $value)->first() ?? abort(404);
+            return Organization::where('uid', $value)->first() ?? abort(404);
         });
 
         Route::bind('production', function ($value) {

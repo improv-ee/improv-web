@@ -33,8 +33,8 @@
             <ul class="list-inline">
               <li
                 v-for="organization in production.organizations"
-                :key="organization.slug">
-                <router-link :to="{name: 'organization.details', params: {slug: organization.slug}}">{{ organization.name }}</router-link>
+                :key="organization.uid">
+                <router-link :to="{name: 'organization.details', params: {uid: organization.uid}}">{{ organization.name }}</router-link>
               </li>
             </ul>
           </span>

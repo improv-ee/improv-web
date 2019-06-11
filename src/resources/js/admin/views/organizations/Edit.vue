@@ -132,7 +132,7 @@ export default {
         }
     },
     mounted() {
-        axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
+        axios.get(config.apiUrl + '/organizations/' + this.$route.params.uid)
             .then(response => {
                 this.organization = response.data.data;
                 this.form = {
@@ -181,12 +181,12 @@ export default {
         onSubmit() {
             let self = this;
 
-            axios.put(config.apiUrl + '/organizations/' + this.$route.params.slug, this.form)
+            axios.put(config.apiUrl + '/organizations/' + this.$route.params.uid, this.form)
                 .then(function (response) {
 
                     self.$router.push({
                         name: 'organization.details',
-                        params: {slug: response.data.data.slug}
+                        params: {uid: response.data.data.uid}
                     });
                     self.errors = {};
                 })

@@ -66,7 +66,7 @@ export default {
     methods: {
         loadOrganization() {
             let self = this;
-            axios.get(config.apiUrl + '/organizations/' + this.$route.params.slug)
+            axios.get(config.apiUrl + '/organizations/' + this.$route.params.uid)
                 .then(response => {
                     self.organization = new Organization(response.data.data);
                 });

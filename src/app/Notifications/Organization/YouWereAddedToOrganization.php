@@ -51,7 +51,7 @@ class YouWereAddedToOrganization extends Notification implements ShouldQueue
             ->subject(__('notification.organization.new_member.subject'))
             ->greeting(__('notification.organization.new_member.greeting', ['name' => $this->organizationUser->user->name]))
             ->line(__('notification.organization.new_member.you_joined', ['org' => $org->name]))
-            ->action(__('notification.organization.new_member.view_org'), url('/admin/#/organizations/' . $org->slug));
+            ->action(__('notification.organization.new_member.view_org'), url('/admin/#/organizations/' . $org->uid));
     }
 
     /**

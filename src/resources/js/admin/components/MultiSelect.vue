@@ -2,7 +2,7 @@
   <multiselect
     v-model="selectedItems"
     label="name"
-    track-by="slug"
+    :track-by="trackBy"
     :placeholder="$t('ui.search.type_to_search')"
     :select-label="$t('ui.search.press_to_select')"
     open-direction="bottom"
@@ -55,6 +55,11 @@ export default {
             default: function () {
                 return [];
             }
+        },
+        trackBy: {
+            type: String,
+            required: true,
+            default: 'uid'
         }
     },
     data() {
@@ -67,11 +72,11 @@ export default {
     watch: {
         selectedItems: function () {
 
-            let slugs = lodash.map(this.selectedItems, function (item) {
-                return item.slug;
+            let items = lodash.map(this.selectedItems, function (item) {
+                return item[this.trackBy];
             });
 
-            this.$emit('input', slugs);
+            this.$emit('input', items);
         }
     },
     mounted() {
@@ -100,11 +105,11 @@ export default {
         },
         findOptions(query) {
             return new Promise((resolve, reject) => {
+                let self = this;
                 axios.get(config.apiUrl + this.optionsApiPath, {params: {'filter[name]': query}})
                     .then(function (response) {
-
                         let options = lodash.map(response.data.data, function (item) {
-                            return lodash.pick(item, ['name', 'slug']);
+                            return lodash.pick(item, ['name', self.trackBy]);
                         });
 
                         resolve(options);

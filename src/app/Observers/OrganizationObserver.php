@@ -33,7 +33,7 @@ class OrganizationObserver
      */
     public function creating(Organization $organization)
     {
-       //
+        $organization->setToken();
     }
 
     /**

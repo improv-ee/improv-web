@@ -71,17 +71,17 @@ export default [
         component: OrganizationsList,
     },
     {
-        path: '/organizations/:slug',
+        path: '/organizations/:uid',
         name: 'organization.details',
         component: OrganizationDetails,
     },
     {
-        path: '/organizations/:slug/edit',
+        path: '/organizations/:uid/edit',
         name: 'organization.edit',
         component: OrganizationEdit,
     },
     {
-        path: '/organizations/:slug/people/:username',
+        path: '/organizations/:uid/people/:username',
         name: 'organizations.people.details',
         component: OrganizationPeopleDetails
     },

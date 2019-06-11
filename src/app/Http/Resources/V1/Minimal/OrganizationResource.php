@@ -22,7 +22,7 @@ class OrganizationResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'slug' => $this->slug
+            'uid' => $this->uid
         ];
     }
 }

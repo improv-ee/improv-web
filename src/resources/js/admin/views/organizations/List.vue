@@ -16,7 +16,7 @@
       <div class="col-10 offset-1">
         <organization-card
           v-for="organization in organizations"
-          :key="organization.slug"
+          :key="organization.uid"
           :organization="organization" />
       </div>
     </div>
@@ -81,7 +81,7 @@ export default {
                 .then(function (response) {
                     self.$router.push({
                         name: 'organization.edit',
-                        params: {slug: response.data.data.slug}
+                        params: {uid: response.data.data.uid}
                     });
                 })
                 .catch(function () {
