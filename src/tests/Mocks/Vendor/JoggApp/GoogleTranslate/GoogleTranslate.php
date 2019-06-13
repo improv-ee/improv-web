@@ -2,6 +2,8 @@
 
 namespace Tests\Mocks\Vendor\JoggApp\GoogleTranslate;
 
+use JoggApp\GoogleTranslate\GoogleTranslateClient;
+
 /**
  * Mocked version of the vendor class for unit tests
  *
@@ -11,6 +13,10 @@ namespace Tests\Mocks\Vendor\JoggApp\GoogleTranslate;
  */
 class GoogleTranslate extends \JoggApp\GoogleTranslate\GoogleTranslate
 {
+    public function __construct(GoogleTranslateClient $client = null)
+    {
+
+    }
 
     public function detectLanguage($input): array
     {

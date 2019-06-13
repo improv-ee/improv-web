@@ -5,13 +5,12 @@ namespace Tests;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
-use Illuminate\Container\Container;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use JoggApp\GoogleTranslate\GoogleTranslate;
 use Laravel\Passport\Passport;
-use Tests\Mocks\Vendor\JoggApp\GoogleTranslate\GoogleTranslate as GoogleTranslateMock;
+use Tests\Mocks\Vendor\JoggApp\GoogleTranslate\GoogleTranslate as MockGoogleTranslate;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -67,6 +66,9 @@ abstract class TestCase extends BaseTestCase
     private function setupMocks()
     {
         Storage::fake('media');
-        Container::getInstance()->bind(GoogleTranslate::class, GoogleTranslateMock::class);
+
+        app()->bind(GoogleTranslate::class, function () {
+            return new MockGoogleTranslate;
+        });
     }
 }
