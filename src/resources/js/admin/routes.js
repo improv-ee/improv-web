@@ -41,11 +41,11 @@ export default [
         component: ProductionCreate,
     },
     {
-        path: '/productions/:slug',
+        path: '/productions/:uid',
         name: 'production.details',
         component: ProductionDetails,
     }, {
-        path: '/productions/:slug/edit',
+        path: '/productions/:uid/edit',
         name: 'production.edit',
         component: ProductionEdit,
     },
@@ -71,17 +71,17 @@ export default [
         component: OrganizationsList,
     },
     {
-        path: '/organizations/:slug',
+        path: '/organizations/:uid',
         name: 'organization.details',
         component: OrganizationDetails,
     },
     {
-        path: '/organizations/:slug/edit',
+        path: '/organizations/:uid/edit',
         name: 'organization.edit',
         component: OrganizationEdit,
     },
     {
-        path: '/organizations/:slug/people/:username',
+        path: '/organizations/:uid/people/:username',
         name: 'organizations.people.details',
         component: OrganizationPeopleDetails
     },

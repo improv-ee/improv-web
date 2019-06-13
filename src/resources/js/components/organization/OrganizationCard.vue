@@ -3,7 +3,7 @@
     text-variant="white"
     overlay
     :img-src="getCardImage(organization)"
-    :img-alt="organization.slug"
+    :img-alt="organization.name"
     @click="goToOrg(organization)" />
 </template>
 
@@ -26,7 +26,7 @@ export default {
             return '/img/production/default-header.jpg';
         },
         goToOrg(organization) {
-            this.$router.push({name: 'organization.details', params: {slug: organization.slug}});
+            this.$router.push({name: 'organization.details', params: {uid: organization.uid}});
         }
     }
 };

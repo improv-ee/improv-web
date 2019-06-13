@@ -17,6 +17,7 @@ return [
     'reset' => 'Your password has been reset!',
     'sent' => 'We have e-mailed your password reset link!',
     'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    // This is negative password reset text, but we keep it identical to success case to avoid enumeration
+    'user' => "We have e-mailed your password reset link!",
 
 ];

@@ -1,3 +1,6 @@
+import {translationsEt} from '../../lang/et/public';
+import {translationsEn} from '../../lang/en/public';
+
 require('../bootstrap');
 
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
@@ -48,8 +51,30 @@ const router = new VueRouter({
 Vue.use(VueAnalytics, {id: 'UA-133334351-1', router});
 
 
-const messages = _.merge(require('../../lang/et/public.json'), require('../../lang/et/common.json'));
-const i18n = new VueI18n({    locale: 'et',    messages});
+const messages = {
+    'en': translationsEn,
+    'et': translationsEt,
+};
+
+const i18n = new VueI18n({
+    locale: 'et',
+    fallbackLocale: 'et',
+    messages
+});
+
+
+function setI18nLanguage (lang) {
+
+    // eslint-disable-next-line no-console
+    console.debug('Setting locale to ' + lang);
+
+    i18n.locale = lang;
+    window.axios.defaults.headers.common['Accept-Language'] = lang;
+    moment.locale(lang);
+    document.querySelector('html').setAttribute('lang', lang);
+
+    return lang;
+}
 
 
 function bootApp() {
@@ -61,6 +86,9 @@ function bootApp() {
     }
     // eslint-disable-next-line no-console
     console.log('Initializing app...');
+
+    // Set language
+    setI18nLanguage(window.config.languages.current);
 
     new Vue({
         el: '#app',

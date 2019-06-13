@@ -32,7 +32,7 @@ class ProductionsTest extends ApiTestCase
     {
         parent::setUp();
         $this->production = factory(Production::class)->create();
-        $this->validProductionInput['organizations'] = [$this->production->organizations()->first()->slug];
+        $this->validProductionInput['organizations'] = [$this->production->organizations()->first()->uid];
         $this->validProductionInput['tags'] = [Tag::first()->slug];
     }
 
@@ -52,7 +52,7 @@ class ProductionsTest extends ApiTestCase
                     'excerpt' => $this->production->excerpt,
                     'organizations' => [
                         [
-                            'slug' => $this->production->organizations->first()->slug
+                            'uid' => $this->production->organizations->first()->uid
                         ]
                     ],
                     'tags' => [
@@ -86,11 +86,11 @@ class ProductionsTest extends ApiTestCase
     public function testProductionCanBeCreated()
     {
         $user = $this->actingAsOrganizationMember();
-        $this->validProductionInput['organizations'][] = $user->organizations()->first()->slug;
+        $this->validProductionInput['organizations'][] = $user->organizations()->first()->uid;
 
         $response = $this->post($this->getApiUrl() . '/productions', $this->validProductionInput);
         $response->assertStatus(201)
-            ->assertJson(['data' => ['title' => $this->validProductionInput['title'], 'slug' => 'sad-margarita']]);
+            ->assertJson(['data' => ['title' => $this->validProductionInput['title']]]);
 
         $this->assertDatabaseHas('production_translations', ['title' => $this->validProductionInput['title']]);
     }
@@ -105,14 +105,14 @@ class ProductionsTest extends ApiTestCase
         $this->production->organizations()->attach($userOrganization);
 
         $input = $this->production->toArray();
-        $input['organizations'] = [$userOrganization->slug, $newOrganization->slug];
-        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $input);
+        $input['organizations'] = [$userOrganization->uid, $newOrganization->uid];
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->uid, $input);
 
         $response->assertStatus(200)
             ->assertJson(['data' => [
                 'organizations' => [
-                    ['slug' => $userOrganization->slug],
-                    ['slug' => $newOrganization->slug]
+                    ['uid' => $userOrganization->uid],
+                    ['uid' => $newOrganization->uid]
                 ]
             ]]);
 
@@ -130,14 +130,14 @@ class ProductionsTest extends ApiTestCase
 
         $productionInput = array_replace($this->validProductionInput, ['title' => 'Tilt Improv Festival',
             'description' => 'First improv festival in Estonia',
-            'organizations' => [$user->organizations()->first()->slug, $organization->slug],
+            'organizations' => [$user->organizations()->first()->uid, $organization->uid],
             'excerpt' => 'Lots of shows, many nights of fun']);
 
-        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->uid, $productionInput);
         $response->assertStatus(200)
             ->assertJson(['data' => ['title' => $productionInput['title'],
                 'description' => $productionInput['description'],
-                'slug' => 'tilt-improv-festival',
+                'title' => 'Tilt Improv Festival',
                 'excerpt' => $productionInput['excerpt']]]);
 
         $this->assertDatabaseHas('production_translations', ['title' => $productionInput['title']]);
@@ -150,10 +150,10 @@ class ProductionsTest extends ApiTestCase
 
         $productionInput = array_replace($this->validProductionInput, [
             'images' => ['header' => ['content' => null]],
-            'organizations' => [$user->organizations()->first()->slug]
+            'organizations' => [$user->organizations()->first()->uid]
         ]);
 
-        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->uid, $productionInput);
 
         $response->assertStatus(200);
         $this->assertCount(0, $this->production->getMedia('images'));
@@ -163,7 +163,7 @@ class ProductionsTest extends ApiTestCase
     public function testProductionImageCanBeAdded()
     {
         $user = $this->actingAsOrganizationMember();
-        $this->validProductionInput['organizations'] = [$user->organizations()->first()->slug];
+        $this->validProductionInput['organizations'] = [$user->organizations()->first()->uid];
 
         $this->production->organizations()->attach($user->organizations()->first());
         $this->production->getFirstMedia('images')->delete();
@@ -172,7 +172,7 @@ class ProductionsTest extends ApiTestCase
             base64_encode(UploadedFile::fake()->image('header.jpg', 900, 506)->get())
         ]]]);
 
-        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->uid, $productionInput);
 
         $response->assertStatus(200);
         $this->assertCount(1, $this->production->getMedia('images'));
@@ -191,7 +191,7 @@ class ProductionsTest extends ApiTestCase
 
         $productionInput = array_replace($this->validProductionInput, [
             'organizations' => [
-                $organization->slug
+                $organization->uid
             ]
         ]);
 
@@ -208,7 +208,7 @@ class ProductionsTest extends ApiTestCase
             'description' => 'First improv festival in Estonia',
             'excerpt' => 'Lots of shows, many nights of fun'];
 
-        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->uid, $productionInput);
 
         $response->assertStatus(403);
     }
@@ -226,7 +226,7 @@ class ProductionsTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
 
-        $response = $this->delete($this->getApiUrl() . '/productions/' . $this->production->slug);
+        $response = $this->delete($this->getApiUrl() . '/productions/' . $this->production->uid);
         $response->assertStatus(403);
 
     }
@@ -236,13 +236,14 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
-        $response = $this->delete($this->getApiUrl() . '/productions/' . $this->production->slug);
+        $response = $this->delete($this->getApiUrl() . '/productions/' . $this->production->uid);
 
         $response->assertStatus(200);
     }
 
     public function testTagsCanBeAddedToExistingProduction()
     {
+
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
@@ -250,11 +251,11 @@ class ProductionsTest extends ApiTestCase
 
         $productionInput = array_replace($this->validProductionInput, ['title' => 'Tilt Improv Festival',
             'excerpt' => 'Lots of shows, many nights of fun',
-            'organizations' => [$user->organizations()->first()->slug],
+            'organizations' => [$user->organizations()->first()->uid],
             'tags' => [$tag->slug]
         ]);
 
-        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->slug, $productionInput);
+        $response = $this->put($this->getApiUrl() . '/productions/' . $this->production->uid, $productionInput);
 
         $response->assertStatus(200)
             ->assertJson(['data' => [

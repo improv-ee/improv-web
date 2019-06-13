@@ -85,6 +85,18 @@ $ php artisan apidoc:generate
 
 Open `public/doc/index.html` with a local webbrowser.
 
+## External services in use
+
+### AWS S3
+
+S3 buckets are used for data storage (ex: uploaded images). See `config/filesystems.php` for more.
+
+### Google Cloud
+
+Google Translate is used for translating text - see `config/googletranslate.php` for more
+
+
+
 ## Contributing
 
 Want to help? Great - submit a pull request or an issue.

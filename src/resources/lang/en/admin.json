@@ -1,0 +1,83 @@
+{
+  "ui": {
+    "markdown_supported": "You can use <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown syntax</a> to add formatting to the text."
+  },
+  "nav": {
+    "home": "Home"
+  },
+  "dash": {
+    "greeting": "Our tomorrow is of our own making."
+  },
+  "user": {
+    "not_found": "No such username exists",
+    "profile": {
+      "email": "E-mail",
+      "name": "Name",
+      "avatar": "Avatar",
+      "settings": "profile settings",
+      "api_tokens": "API keys",
+      "invite": {
+        "invite_new_user": "Invite new user",
+        "send_invitation": "Send invite",
+        "invite_sent": "Invite sent"
+      }
+    },
+    "settings": {
+      "api": {
+        "tokens_intro": "Improv.ee offers a technical API for integrating 3rd party systems. You'll need to use a personal API token in order to authenticate to the API. API documentation is available at {apiDoc}."
+      }
+    }
+  },
+  "event": {
+    "attr": {
+      "title_description": "Event sub-title, if it differs from production title. A visitor sees both titles. Leave this blank, if the event does not use a sub-title.",
+      "description_description": "Event description, if this concrete occurance needs extra details that differ from that of the Production. Can be left blank.",
+      "start_time_description": "Event start date and time",
+      "end_time_description": "Event end date and time"
+    }
+  },
+  "organization": {
+    "list_intro": "An Organization is a group of improvisers who work and perform together. An Organization has a name, list of members, description and other attributes. Organizations can create productions - performances, workshops and festivals.",
+    "create_new": "New Organization",
+    "members": "members",
+    "add_member": "Add new member",
+    "remove_member": "Remove from organization",
+    "name_taken": "An Organization with this name already exists (you'll need to use a different name). If this organization belongs to you, talk to your group and ask whoever created the organization to add you as a member instead.",
+    "you_dont_have_any": "You don't currently belong to any Organizations. You can either be invited to become a member of an existing Organization (talk to the Organization administrator); or create your own brand new Organization.",
+    "attr": {
+      "name": "Name",
+      "description": "Description",
+      "is_public": "Show in public roster"
+    },
+    "user": {
+      "role": {
+        "role": "Role",
+        "admin": "Admin",
+        "member": "Member"
+      }
+    }
+  },
+  "production": {
+    "no_events": "No events have been added",
+    "you_dont_belong_to_any_org": "You don't belong to any Organization yet. In order to create Productions, you'll either need to join or found an Organization.",
+    "num_of_events": "Number of events",
+    "events": "Events",
+    "list_intro": "This table shows all Productions, that have been created by any of your organizations. A Production is a concept of a show, workshop or a festival. Once Production has multiple Events (happening times).",
+    "create_new": "New Production",
+    "attr": {
+      "title": "Title",
+      "title_description": "Format, show, festival or workshop title",
+      "excerpt": "Excerpt",
+      "excerpt_description": "Excerpt is a shortened description of the production that is shown as a preview in the Schedule.",
+      "description": "Description",
+      "description_description": "What is this Production? What can the participants expect? This is where you get to sell your Production and provide all needed details.",
+      "organizers_description": "Choose Organizations who are involved with this Production. Chosen Organizations will get permissions to change this Production's details!",
+      "tags_description": "Add any number of Tags that help to describe this Production. For example, for workshops, add Tag 'Workshop'."
+    },
+    "img": {
+      "header": "Header image",
+      "header_description": "This image will be shown in the header of the event page. The picture should be in 16:9 format and at least 600px in height.",
+      "select_file": "Select file..."
+    }
+  }
+}

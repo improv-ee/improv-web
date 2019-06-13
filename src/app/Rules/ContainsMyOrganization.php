@@ -7,9 +7,9 @@ use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Validates that a list of Organizations (by slug) contains at least one Organization that the current user belongs to
+ * Validates that a list of Organizations (by uid) contains at least one Organization that the current user belongs to
  *
- * Input $value = ['slug-1', 'slug-2']
+ * Input $value = ['da1aFa', 'aj7Fa']
  *
  * @package App\Rules
  */
@@ -52,7 +52,7 @@ class ContainsMyOrganization implements Rule
     }
 
     /**
-     * Get a list of Organization slugs where the User is a member of
+     * Get a list of Organization uid-s where the User is a member of
      *
      * @param User $user
      * @return array
@@ -61,7 +61,7 @@ class ContainsMyOrganization implements Rule
     {
         return $user->organizations()
             ->get()
-            ->pluck('slug')
+            ->pluck('uid')
             ->toArray();
     }
 }

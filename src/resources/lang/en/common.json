@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Improv.ee"
+  },
+  "site": {
+    "footer_copyright_holder": "improv.ee team",
+    "help_and_support": "Support",
+    "report_bug": "Report bug",
+    "api_doc": "API documentation",
+    "meta_description": "improv.ee brings together improvised theatre event schedule and information"
+  },
+  "nav": {
+    "organizations": "Organizations",
+    "productions": "Productions",
+    "contact": "Contact",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  },
+  "contact": {
+    "greeting": "Hey",
+    "intro": "We are improv.ee, a webpage dedicated to improvised theatre.",
+    "platform_description": "improv.ee is a platform for ensables and groups to publish their event schedule and other improviser info.",
+    "contact": "You can contact us by e-mail at {email}"
+  },
+  "organization": {
+    "image": "Image",
+    "attr": {
+      "email": "E-mail",
+      "homepage_url": "Webpage",
+      "facebook_url": "Facebook page"
+    }
+  },
+  "event": {
+    "attr": {
+      "title": "Title",
+      "description": "Description",
+      "start_time": "Start",
+      "end_time": "End",
+      "organizers": "Organizers",
+      "tags": "Tags"
+    }
+  },
+  "ui": {
+    "create": "Create",
+    "add_new": "Create new",
+    "edit": "Edit",
+    "view_details": "More details",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "validation_error": "Input validation error",
+    "server_error_message": "Request processing failed - there's something wrong with our servers. Sorry. This error was logged for the developers. If this is blocking you, please contact us to report it.",
+    "server_error": "Server error",
+    "page_not_found": "Page not found",
+    "page_not_found_description": "Could not find the scene you were looking for...",
+    "search": {
+      "type_to_search": "Type to search...",
+      "no_results": "No results - try changing the query",
+      "press_to_select": "Press [Enter] to select",
+      "and_number_others": "... and {number} other results"
+    }
+  },
+  "user": {
+    "username": "Username"
+  }
+}

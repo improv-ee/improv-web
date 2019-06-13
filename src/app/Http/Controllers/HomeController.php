@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,11 @@ class HomeController extends Controller
                 'release' => [
                     'version' => getenv('RELEASE_VERSION', 'dev'),
                     'timestamp' => getenv('RELEASE_TIME', null)
-                ]
+                ],
+                'languages' => [
+                    'supported' => config('language.allowed'),
+                    'current' => app::getLocale()
+                ],
             ])->withHeaders(['Cache-Control' => 'private']);
     }
 

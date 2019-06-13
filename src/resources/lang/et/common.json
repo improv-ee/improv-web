@@ -1,67 +1,65 @@
 {
-  "et": {
-    "app": {
-      "name": "Improv.ee"
-    },
-    "site": {
-      "footer_copyright_holder": "improv.ee tiim",
-      "help_and_support": "Abimaterjalid",
-      "report_bug": "Teata veast",
-      "api_doc": "API dokumentatsioon",
-      "meta_description": "improv.ee koondab impro-ürituste mängukava ning infot improteatri kohta"
-    },
-    "nav": {
-      "organizations": "Trupid",
-      "productions": "Produktsioonid",
-      "contact":"Kontakt",
-      "terms": "Tingimused",
-      "privacy": "Privaatsus"
-    },
-    "contact": {
-      "greeting":"Hei",
-      "intro":"Me oleme improv.ee, improviseeritud teatrile pühendunud veebileht.",
-      "platform_description":"improv.ee on platvorm truppidele ja publikule etenduste mängukava avaldamiseks ning impro-info jagamiseks.",
-      "contact": "Meiega saab ühendust e-mailil {email}"
-    },
-    "organization":{
-      "image": "Pilt",
-      "attr": {
-        "email":"E-mail",
-        "homepage_url":"Koduleht",
-        "facebook_url":"Facebook leht"
-      }
-    },
-    "event": {
-      "attr": {
-        "title": "Pealkiri",
-        "description": "Kirjeldus",
-        "start_time": "Algus",
-        "end_time": "Lõpp",
-        "organizers": "Korraldajad",
-        "tags": "Märksõnad"
-      }
-    },
-    "ui": {
-      "create": "Sisesta",
-      "add_new": "Lisa uus",
-      "edit": "Muuda",
-      "view_details": "Rohkem infot",
-      "cancel": "Katkesta",
-      "delete": "Kustuta",
-      "validation_error": "Sisendandmed ei sobi",
-      "server_error_message": "Päringu töötlemine ebaõnnestus. Vea tekkimine on registreeritud ning see parandatakse tulevikus.",
-      "server_error": "Serveri viga",
-      "page_not_found": "Lehte ei leitud",
-      "page_not_found_description": "Soovitud lehe avamine ebaõnnestus",
-      "search": {
-        "type_to_search": "Kirjuta, et otsida...",
-        "no_results": "Tulemusi ei leitud - proovi otsingut muuta",
-        "press_to_select": "Vajuta [Enter], et valida",
-        "and_number_others":"... ja {number} muud tulemust"
-      }
-    },
-    "user": {
-      "username": "Kasutajanimi"
+  "app": {
+    "name": "Improv.ee"
+  },
+  "site": {
+    "footer_copyright_holder": "improv.ee tiim",
+    "help_and_support": "Abimaterjalid",
+    "report_bug": "Teata veast",
+    "api_doc": "API dokumentatsioon",
+    "meta_description": "improv.ee koondab impro-ürituste mängukava ning infot improteatri kohta"
+  },
+  "nav": {
+    "organizations": "Trupid",
+    "productions": "Produktsioonid",
+    "contact": "Kontakt",
+    "terms": "Tingimused",
+    "privacy": "Privaatsus"
+  },
+  "contact": {
+    "greeting": "Hei",
+    "intro": "Me oleme improv.ee, improviseeritud teatrile pühendunud veebileht.",
+    "platform_description": "improv.ee on platvorm truppidele ja publikule etenduste mängukava avaldamiseks ning impro-info jagamiseks.",
+    "contact": "Meiega saab ühendust e-mailil {email}"
+  },
+  "organization": {
+    "image": "Pilt",
+    "attr": {
+      "email": "E-mail",
+      "homepage_url": "Koduleht",
+      "facebook_url": "Facebook leht"
     }
+  },
+  "event": {
+    "attr": {
+      "title": "Pealkiri",
+      "description": "Kirjeldus",
+      "start_time": "Algus",
+      "end_time": "Lõpp",
+      "organizers": "Korraldajad",
+      "tags": "Märksõnad"
+    }
+  },
+  "ui": {
+    "create": "Sisesta",
+    "add_new": "Lisa uus",
+    "edit": "Muuda",
+    "view_details": "Rohkem infot",
+    "cancel": "Katkesta",
+    "delete": "Kustuta",
+    "validation_error": "Sisendandmed ei sobi",
+    "server_error_message": "Päringu töötlemine ebaõnnestus. Vea tekkimine on registreeritud ning see parandatakse tulevikus.",
+    "server_error": "Serveri viga",
+    "page_not_found": "Lehte ei leitud",
+    "page_not_found_description": "Soovitud lehe avamine ebaõnnestus",
+    "search": {
+      "type_to_search": "Kirjuta, et otsida...",
+      "no_results": "Tulemusi ei leitud - proovi otsingut muuta",
+      "press_to_select": "Vajuta [Enter], et valida",
+      "and_number_others": "... ja {number} muud tulemust"
+    }
+  },
+  "user": {
+    "username": "Kasutajanimi"
   }
 }

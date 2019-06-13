@@ -3,6 +3,7 @@
 namespace App\Orm;
 
 use App\User;
+use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,16 +15,20 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 /**
  * @property \Illuminate\Database\Eloquent\Collection $users
  * @property \Illuminate\Database\Eloquent\Collection $admins
- * @property string email
- * @property string facebook_url
- * @property string homepage_url
- * @property int is_public
+ * @property string $email
+ * @property string $uid
+ * @property string $facebook_url
+ * @property string $homepage_url
+ * @property int $is_public
  */
 class Organization extends Model implements Auditable, HasMedia
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, HasMediaTrait;
+    use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, HasMediaTrait, DirapeToken;
 
-    public $translatedAttributes = ['name', 'description', 'slug'];
+    protected $DT_Column = 'uid';
+    protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];
+
+    public $translatedAttributes = ['name', 'description'];
 
     protected $dates = [
         'created_at',
@@ -86,7 +91,7 @@ class Organization extends Model implements Auditable, HasMedia
      */
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'uid';
     }
 
     /**

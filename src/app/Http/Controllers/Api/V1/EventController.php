@@ -83,7 +83,7 @@ class EventController extends Controller
      * @bodyParam times.end date required End time
      * @bodyParam title string Title of the Event, if different from that of the Production
      * @bodyParam description string Description of the Event, if different from that of the Production
-     * @bodyParam production.slug string required Production to which the event belongs under
+     * @bodyParam production.uid string required Production to which the event belongs under
      * @param StoreEventRequest $request
      * @return JsonResource
      * @authenticated
@@ -91,9 +91,9 @@ class EventController extends Controller
     public function store(StoreEventRequest $request) : JsonResource
     {
 
-        $request->validate(['production.slug' => 'required|max:255']);
+        $request->validate(['production.uid' => 'required|max:64']);
 
-        $production = Production::whereTranslation('slug', $request->post('production')['slug'])
+        $production = Production::where('uid', $request->post('production')['uid'])
             ->firstOrFail();
 
         $event = new Event;

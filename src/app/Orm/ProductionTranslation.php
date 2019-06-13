@@ -5,15 +5,31 @@ namespace App\Orm;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
+/**
+ * Class ProductionTranslation
+ * @property int $production_id
+ * @property string $description
+ * @property string $title
+ * @property string $locale
+ * @property string $excerpt
+ * @property boolean $auto_translated
+ */
 class ProductionTranslation extends Model implements Auditable
 {
-    use \OwenIt\Auditing\Auditable, HasSlug;
+    use \OwenIt\Auditing\Auditable;
 
     public $timestamps = false;
     protected $fillable = ['title', 'description', 'excerpt'];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'auto_translated' => 'boolean',
+    ];
 
     public function setDescriptionAttribute($value)
     {
@@ -28,17 +44,6 @@ class ProductionTranslation extends Model implements Auditable
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = trim($value);
-    }
-
-    /**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->slugsShouldBeNoLongerThan(50);
     }
 
 }

@@ -25,7 +25,7 @@ export default [
         component: OrganizationsList,
     },
     {
-        path: '/organizations/:slug',
+        path: '/organizations/:uid',
         name: 'organization.details',
         component: OrganizationDetails,
     },

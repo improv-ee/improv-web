@@ -1,3 +1,6 @@
+import {translationsEt} from '../../lang/et/admin';
+import {translationsEn} from '../../lang/en/admin';
+
 require('../bootstrap');
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import datePicker from 'vue-bootstrap-datetimepicker';
@@ -75,8 +78,28 @@ const router = new VueRouter({
     routes: routes
 });
 
-const messages = _.merge(require('../../lang/et/admin.json'),require('../../lang/et/common.json'));
-const i18n = new VueI18n({    locale: 'et',    messages});
+const messages = {
+    'en': translationsEn,
+    'et': translationsEt,
+};
+const i18n = new VueI18n({
+    locale: 'et',
+    fallbackLocale: 'et',
+    messages
+});
+
+function setI18nLanguage (lang) {
+
+    // eslint-disable-next-line no-console
+    console.debug('Setting locale to ' + lang);
+
+    i18n.locale = lang;
+    window.axios.defaults.headers.common['Accept-Language'] = lang;
+    moment.locale(lang);
+    document.querySelector('html').setAttribute('lang', lang);
+
+    return lang;
+}
 
 
 function bootApp() {
@@ -88,6 +111,9 @@ function bootApp() {
     }
     // eslint-disable-next-line no-console
     console.log('Initializing app...');
+
+    // Set language
+    setI18nLanguage(window.config.languages.current);
 
     window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.config.token;
 

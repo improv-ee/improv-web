@@ -21,7 +21,7 @@ class ScheduleResource extends JsonResource
             'description'=>$this->description,
             'production'=> [
                 'title' => $this->production->title,
-                'slug' => $this->production->slug,
+                'uid' => $this->production->uid,
                 'images' => [
                     'header' => $this->when($this->production->hasMedia('images'), [
                         'urls' => [
@@ -40,7 +40,7 @@ class ScheduleResource extends JsonResource
             ],
             'links' => [
                 'self' => route('api.events.show',['uid'=>$this->uid]),
-                'production' => route('api.productions.show',['id'=>$this->production->slug])
+                'production' => route('api.productions.show',['id'=>$this->production->uid])
             ]
         ];
     }

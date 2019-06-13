@@ -6,7 +6,7 @@
       <div class="col-12">
         <organization-card
           v-for="organization in organizations"
-          :key="organization.slug"
+          :key="organization.uid"
           :organization="organization" />
       </div>
     </div>

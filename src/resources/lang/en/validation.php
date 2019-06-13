@@ -141,6 +141,25 @@ return [
     |
     */
 
-    'attributes' => [],
+
+    'attributes' => [
+        'password' => 'password',
+        'email' => 'e-mail',
+        'name' => 'name',
+        'image' => 'image',
+        'title'=>'title',
+        'description'=> 'description',
+        'excerpt'=> 'excerpt',
+        'username' => 'username',
+        'organizations'=>'organizations',
+        'times.start' => 'start time',
+        'tags' => 'tags',
+        'times.end'=> 'end time'
+    ],
+    'pwned' => 'Can not use this password, because it has been published in known data breaches',
+    'organization' => [
+        'list_must_contain_mine' => 'There must be at least one organization where you belong to.'
+    ],
+    'tag_does_not_exist' => ':attribute contains a value that does not exist in the database',
 
 ];

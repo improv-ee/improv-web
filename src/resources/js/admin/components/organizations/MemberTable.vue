@@ -12,7 +12,7 @@
       slot="avatar"
       slot-scope="data">
       <router-link
-        :to="{ name: 'organizations.people.details', params: { slug: organizationSlug, username: data.item.username }}">
+        :to="{ name: 'organizations.people.details', params: { uid: organizationUid, username: data.item.username }}">
         <img
           class="img-thumbnail"
           :src="data.value"
@@ -24,7 +24,7 @@
       slot="username"
       slot-scope="data">
       <router-link
-        :to="{ name: 'organizations.people.details', params: { slug: organizationSlug, username: data.value }}">
+        :to="{ name: 'organizations.people.details', params: { uid: organizationUid, username: data.value }}">
         {{ data.value }}
       </router-link>
     </template>
@@ -41,7 +41,7 @@ export default {
                 return [];
             }
         },
-        organizationSlug: {
+        organizationUid: {
             type: String,
             default: ''
         }

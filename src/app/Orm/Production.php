@@ -2,9 +2,11 @@
 
 namespace App\Orm;
 
+use App\Events\Production\ProductionCreating;
 use App\User;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Dimsav\Translatable\Translatable;
+use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,15 +23,18 @@ use Spatie\Tags\HasTags;
  * @property string $title
  * @property string $description
  * @property string $excerpt
- * @property string $slug
+ * @property string $uid
  * @property int $creator_id
  */
 class Production extends Model implements Auditable, HasMedia
 {
-    use Translatable, SoftDeletes, SoftCascadeTrait, \OwenIt\Auditing\Auditable, HasMediaTrait, HasTags;
+    use Translatable, SoftDeletes, SoftCascadeTrait,DirapeToken, \OwenIt\Auditing\Auditable, HasMediaTrait, HasTags;
 
-    public $translatedAttributes = ['title', 'slug', 'description', 'excerpt'];
-    public $fillable = ['title', 'slug', 'description', 'excerpt'];
+    public $translatedAttributes = ['title', 'description', 'excerpt'];
+    public $fillable = ['title', 'description', 'excerpt'];
+    protected $DT_Column = 'uid';
+    protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];
+
 
     protected $softCascade = ['events'];
 
@@ -106,4 +111,11 @@ class Production extends Model implements Auditable, HasMedia
             ->morphToMany(self::getTagClassName(), 'taggable', 'taggables', null, 'tag_id')
             ->orderBy('order_column');
     }
+
+
+    public function getRouteKeyName()
+    {
+        return 'uid';
+    }
+
 }

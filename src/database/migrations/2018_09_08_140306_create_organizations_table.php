@@ -15,8 +15,21 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('uid', 64);
             $table->boolean('is_public')->default(false);
             $table->integer('creator_id')->unsigned();
+
+            $table->string('email', 255)
+                ->nullable()
+                ->default(null);
+
+            $table->string('homepage_url', 255)
+                ->nullable()
+                ->default(null);
+
+            $table->string('facebook_url', 255)
+                ->nullable()
+                ->default(null);
 
             $table->softDeletes();
             $table->timestamps();
@@ -25,6 +38,8 @@ class CreateOrganizationsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            $table->unique(['uid']);
+
         });
 
         Schema::create('organization_translations', function (Blueprint $table) {
@@ -32,11 +47,11 @@ class CreateOrganizationsTable extends Migration
             $table->integer('organization_id')->unsigned();
             $table->string('name');
             $table->text('description')->nullable()->default(null);
-            $table->string('slug');
             $table->char('locale', 2)->index();
+            $table->boolean('auto_translated')->default(false)->comment('If true, indicates this translation was made by a machine');
+
 
             $table->unique(['name', 'locale']);
-            $table->unique(['slug', 'locale']);
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
 
         });

@@ -77,6 +77,7 @@
           label-for="production-organizers">
           <multi-select
             v-model="form.organizations"
+            track-by="uid"
             options-api-path="/organizations"
             :options="production.organizations" />
         </b-form-group>
@@ -90,6 +91,7 @@
           label-for="production-tags">
           <multi-select
             v-model="form.tags"
+            track-by="slug"
             options-api-path="/tags"
             :options="production.tags" />
         </b-form-group>
@@ -208,7 +210,7 @@ export default {
 
                     self.$router.push({
                         name: 'production.details',
-                        params: {slug: response.data.data.slug}
+                        params: {uid: response.data.data.uid}
                     });
                     self.errors = {};
 
@@ -229,12 +231,12 @@ export default {
         edit() {
             let self = this;
 
-            axios.put(config.apiUrl + '/productions/' + self.production.slug, this.form)
+            axios.put(config.apiUrl + '/productions/' + self.production.uid, this.form)
                 .then(function (response) {
 
                     self.$router.push({
                         name: 'production.details',
-                        params: {slug: response.data.data.slug}
+                        params: {uid: response.data.data.uid}
                     });
                 }).catch(function (error) {
                     let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');

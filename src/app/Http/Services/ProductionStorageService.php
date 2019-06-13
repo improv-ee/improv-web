@@ -3,7 +3,7 @@
 namespace App\Http\Services;
 
 use App\Http\Services\Traits\SavesMediaTrait;
-use App\Orm\OrganizationTranslation;
+use App\Orm\Organization;
 use App\Orm\Production;
 use App\Orm\Tag;
 use Illuminate\Http\Request;
@@ -22,8 +22,8 @@ class ProductionStorageService
     {
         $production->fill($request->all());
 
-        $organizations = OrganizationTranslation::whereIn('slug', $request->input('organizations', []))
-            ->pluck('organization_id');
+        $organizations = Organization::whereIn('uid', $request->input('organizations', []))
+            ->pluck('id');
 
         DB::transaction(function () use ($production, $organizations, $request) {
             $production->save();

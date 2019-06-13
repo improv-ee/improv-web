@@ -12,7 +12,6 @@ $factory->define(Production::class, function (Faker $faker) {
         'title' => $faker->sentence(3),
         'description' => $faker->sentence(100),
         'excerpt' => $faker->sentence(10),
-        'slug' => Str::slug(($faker->sentence(4))),
         'creator_id' => $user->id
     ];
 })->afterCreating(Production::class, function (Production $production, Faker $faker) {

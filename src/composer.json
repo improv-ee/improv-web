@@ -7,11 +7,13 @@
     "type": "project",
     "require": {
         "php": "^7.2.17",
+        "akaunting/language": "^1.0",
         "askedio/laravel-soft-cascade": "^5.6",
         "clarkeash/doorman": "^2.1",
         "dimsav/laravel-translatable": "^9.2",
         "dirape/token": "^2.1",
         "fideloper/proxy": "^4.0",
+        "joggapp/laravel-google-translate": "^2.0",
         "laravel/framework": "5.8.*",
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",

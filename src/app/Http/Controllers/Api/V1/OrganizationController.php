@@ -20,7 +20,7 @@ use Spatie\QueryBuilder\QueryBuilder;
  * An Organization is a group of Users with a common identity. Simply put, an
  * Organization can equal an improv group.
  *
- * An Organization is identified by its `slug` attribute.
+ * An Organization is identified by its `uid` attribute.
  */
 class OrganizationController extends Controller
 {

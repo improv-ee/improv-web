@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Observers\EventObserver;
+use App\Observers\OrganizationObserver;
+use App\Observers\ProductionObserver;
+use App\Orm\Event;
+use App\Orm\Organization;
+use App\Orm\Production;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app['request']->server->set('HTTPS', 'on');
 
         Schema::defaultStringLength(191);
+
+        // Bind observers
+        // If this section grows too big, refactor into a dedicated service provider
+        Production::observe(ProductionObserver::class);
+        Event::observe(EventObserver::class);
+        Organization::observe(OrganizationObserver::class);
     }
 
     /**

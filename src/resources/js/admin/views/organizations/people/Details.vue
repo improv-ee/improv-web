@@ -51,18 +51,18 @@ export default {
     methods: {
         removeMember() {
             let self = this;
-            axios.delete(`${config.apiUrl}/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`)
+            axios.delete(`${config.apiUrl}/organizations/${this.$route.params.uid}/membership/${this.$route.params.username}`)
                 .then(function () {
                     self.$router.push({
                         name: 'organization.details',
-                        params: {slug: self.$route.params.slug}
+                        params: {uid: self.$route.params.uid}
                     });
                 });
 
         },
         loadMember() {
             let self = this;
-            axios.get(`${config.apiUrl}/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`)
+            axios.get(`${config.apiUrl}/organizations/${this.$route.params.uid}/membership/${this.$route.params.username}`)
                 .then(response => {
                     self.membership = response.data.data;
                     self.userRole = self.getCurrentRole(response.data.data.organization, self.$route.params.username);
@@ -70,12 +70,12 @@ export default {
         },
         changeMembership() {
             let self = this;
-            axios.put(`${config.apiUrl}/organizations/${this.$route.params.slug}/membership/${this.$route.params.username}`, {
+            axios.put(`${config.apiUrl}/organizations/${this.$route.params.uid}/membership/${this.$route.params.username}`, {
                 role: this.userRole
             }).then(
                 self.$router.push({
                     name: 'organization.details',
-                    params: {slug: self.$route.params.slug}
+                    params: {uid: self.$route.params.uid}
                 })
             );
         },

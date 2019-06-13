@@ -38,7 +38,7 @@ class ContainsMyOrganizationTest extends TestCase
         $user = $this->actingAsOrganizationMember();
 
         $this->assertTrue($this->validator->passes('organizations', [
-            $user->organizations()->first()->slug
+            $user->organizations()->first()->uid
         ]));
     }
 
@@ -49,9 +49,9 @@ class ContainsMyOrganizationTest extends TestCase
         $org2 = factory(Organization::class)->create();
 
         $this->assertTrue($this->validator->passes('organizations', [
-            $org1->slug,
-            $user->organizations()->first()->slug,
-            $org2->slug
+            $org1->uid,
+            $user->organizations()->first()->uid,
+            $org2->uid
         ]));
     }
 
@@ -62,8 +62,8 @@ class ContainsMyOrganizationTest extends TestCase
         $org2 = factory(Organization::class)->create();
 
         $this->assertFalse($this->validator->passes('organizations', [
-            $org1->slug,
-            $org2->slug
+            $org1->uid,
+            $org2->uid
         ]));
     }
 

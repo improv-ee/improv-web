@@ -18,30 +18,30 @@ mix.sass('resources/sass/public/app.scss', 'public/css').version();
 
 mix.js('resources/js/admin/app.js', 'public/js/admin')
     .autoload({
-      'jquery': ['$', 'window.jQuery', 'jQuery'],
-      'vue': ['Vue', 'window.Vue'],
-      'moment': ['moment', 'window.moment'],
+        'jquery': ['$', 'window.jQuery', 'jQuery'],
+        'vue': ['Vue', 'window.Vue'],
+        'moment': ['moment', 'window.moment'],
     }).version();
 mix.sass('resources/sass/admin/admin.scss', 'public/css').version();
 
 mix.webpackConfig({
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        test: /\.(js|vue)?$/
-      },
-    ]
-  },
-  plugins: [
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      analyzerMode: 'disabled',
-      generateStatsFile: false,
-      statsOptions: {source: false}
-    }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-  ],
+    module: {
+        rules: [
+            {
+                enforce: 'pre',
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                test: /\.(js|vue)?$/
+            },
+        ]
+    },
+    plugins: [
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'disabled',
+            generateStatsFile: false,
+            statsOptions: {source: false}
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
 });

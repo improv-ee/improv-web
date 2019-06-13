@@ -14,7 +14,7 @@ export default {
     },
     mounted() {
         let self = this;
-        axios.get(config.apiUrl + '/productions/' + this.$route.params.slug)
+        axios.get(config.apiUrl + '/productions/' + this.$route.params.uid)
             .then(response => {
                 self.production = response.data.data;
             });

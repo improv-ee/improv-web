@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "schedule": "Schedule",
+    "podcast": "Podcast",
+    "home": "Home"
+  },
+  "production": {
+    "attr": {
+      "title": "Title",
+      "excerpt": "Excerpt",
+      "description": "Description"
+    }
+  }
+}

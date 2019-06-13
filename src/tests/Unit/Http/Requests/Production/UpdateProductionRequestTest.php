@@ -33,7 +33,7 @@ class UpdateProductionRequestTest extends TestCase
         parent::setUp();
         $this->request = new UpdateProductionRequest;
         $organization = factory(Organization::class)->create();
-        $this->validInput['organizations'] = [$organization->slug];
+        $this->validInput['organizations'] = [$organization->uid];
     }
 
 
@@ -41,7 +41,7 @@ class UpdateProductionRequestTest extends TestCase
     {
         $user = $this->actingAsOrganizationMember();
 
-        $organizations = array_replace($this->validInput, ['organizations' => [$user->organizations()->first()->slug]]);
+        $organizations = array_replace($this->validInput, ['organizations' => [$user->organizations()->first()->uid]]);
         $validator = Validator::make($organizations, $this->request->rules());
         $fails = $validator->fails();
 
@@ -51,7 +51,7 @@ class UpdateProductionRequestTest extends TestCase
     public function testOrganizationsMustBeArray()
     {
         $input = $this->validInput;
-        $input['organizations'] = 'slug';
+        $input['organizations'] = 'uid';
 
         $validator = Validator::make($input, $this->request->rules());
         $fails = $validator->fails();

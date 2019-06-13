@@ -5,7 +5,7 @@
         <img
           class="card-img-top flex-auto"
           :src="header_img(event.production.images)"
-          :alt="event.production.slug">
+          :alt="event.production.uid">
         <div class="mask rgba-white-slight" />
       </router-link>
     </div>

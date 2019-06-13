@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('uid', 190);
+            $table->string('uid', 64);
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->boolean('is_public')->default(false);
@@ -44,6 +44,7 @@ class CreateEventsTable extends Migration
             $table->string('title')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->char('locale', 2)->index();
+            $table->boolean('auto_translated')->default(false)->comment('If true, indicates this translation was made by a machine');
 
             $table->unique(['event_id', 'locale']);
             $table->foreign('event_id')

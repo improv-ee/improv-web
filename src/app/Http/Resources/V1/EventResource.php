@@ -19,7 +19,7 @@ class EventResource extends JsonResource
             'title' => $this->title,
             'description'=>$this->description,
             'production'=> [
-                'slug' => $this->production->slug
+                'uid' => $this->production->uid
             ],
             'times' => [
                 'start'=>$this->start_time->toIso8601String(),
@@ -27,7 +27,7 @@ class EventResource extends JsonResource
             ],
             'links' => [
                 'self' => route('api.events.show',['uid'=>$this->uid]),
-                'production' => route('api.productions.show',['id'=>$this->production->slug])
+                'production' => route('api.productions.show',['id'=>$this->production->uid])
             ]
         ];
     }
