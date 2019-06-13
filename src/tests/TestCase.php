@@ -5,10 +5,13 @@ namespace Tests;
 use App\Orm\Organization;
 use App\Orm\OrganizationUser;
 use App\User;
+use Illuminate\Container\Container;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
+use JoggApp\GoogleTranslate\GoogleTranslate;
 use Laravel\Passport\Passport;
+use Tests\Mocks\Vendor\JoggApp\GoogleTranslate\GoogleTranslate as GoogleTranslateMock;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -19,14 +22,15 @@ abstract class TestCase extends BaseTestCase
         return '';
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
 
         if (!file_exists(Passport::keyPath('oauth-private.key'))) {
             Artisan::call('passport:install');
         }
-        Storage::fake('media');
+
+        $this->setupMocks();
         app()->setLocale('et');
     }
 
@@ -57,5 +61,12 @@ abstract class TestCase extends BaseTestCase
         $user = factory(User::class)->create();
 
         return Passport::actingAs($user);
+    }
+
+
+    private function setupMocks()
+    {
+        Storage::fake('media');
+        Container::getInstance()->bind(GoogleTranslate::class, GoogleTranslateMock::class);
     }
 }
