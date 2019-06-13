@@ -27,7 +27,7 @@ class GoogleTranslate extends \JoggApp\GoogleTranslate\GoogleTranslate
 
     public function detectLanguageBatch(array $input): array
     {
-       $translations=[];
+        $translations = [];
         foreach ($input as $row) {
             $translations[] = $this->detectLanguage($row);
         }
@@ -37,30 +37,28 @@ class GoogleTranslate extends \JoggApp\GoogleTranslate\GoogleTranslate
 
     public function translate($input, $to = null): array
     {
-        $translateTo = $to ?? config('googletranslate.default_target_translation');
-
-        $translateTo = $this->sanitizeLanguageCode($translateTo);
 
         if (is_array($input)) {
-            return $this->translateBatch($input, $translateTo);
+            return $this->translateBatch($input);
         }
 
 
         return [
             'source_text' => $input,
             'source_language_code' => 'en',
-            'translated_text' => 'mock-translated-'.$input,
-            'translated_language_code' => $translateTo
+            'translated_text' => 'mock-translated-' . $input,
+            'translated_language_code' => 'et'
         ];
     }
 
     public function justTranslate(string $input, $to = null): string
     {
-        return 'mock-translated-'.$input;
+        return 'mock-translated-' . $input;
     }
 
     public function translateBatch(array $input, string $translateTo): array
     {
+        $translations = [];
 
         foreach ($input as $response) {
             $translations[] = [
@@ -81,18 +79,6 @@ class GoogleTranslate extends \JoggApp\GoogleTranslate\GoogleTranslate
 
     public function unlessLanguageIs(string $languageCode, string $input, $to = null)
     {
-        $translateTo = $to ?? config('googletranslate.default_target_translation');
-
-        $translateTo = $this->sanitizeLanguageCode($translateTo);
-
-        $languageCode = $this->sanitizeLanguageCode($languageCode);
-
-        $languageMisMatch = $languageCode != $this->detectLanguage($input)['language_code'];
-
-        if ($languageMisMatch) {
-            return $this->translate($input, $translateTo);
-        }
-
         return $input;
     }
 
