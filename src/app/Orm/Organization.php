@@ -23,7 +23,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  */
 class Organization extends Model implements Auditable, HasMedia
 {
-    use \Dimsav\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, HasMediaTrait, DirapeToken;
+    use \Astrotomic\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, HasMediaTrait, DirapeToken;
 
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];

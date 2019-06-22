@@ -3,6 +3,7 @@
 use App\Orm\Event;
 use App\Orm\Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\Orm\Production;
 use App\Orm\Organization;
@@ -19,20 +20,20 @@ class ProductionsSeeder extends Seeder
      */
     public function run()
     {
-        $importDb =DB::connection('migration');
+        $importDb = DB::connection('migration');
         $events = $importDb->table('wp_6_em_events')->select()->get();
 
         $organizations = [
-            21 => ['name'=>'Eesti Improteater'],
-            19 => ['name'=>'Jaa !mproteater'],
-            22 => ['name'=>'Improteater IMPEERIUM'],
-            26 => ['name'=>'Kogu Moos!'],
-            20 => ['name'=>'Ruutu10'],
-            1 =>  ['name'=>'Tilt'],
-            28 => ['name'=>'English Improv in Tallinn'],
-            23 => ['name'=>'Koosen'],
-            27 => ['name'=>'Komejant'],
-            25 => ['name'=>'Improssiivne'],
+            21 => ['name' => 'Eesti Improteater'],
+            19 => ['name' => 'Jaa !mproteater'],
+            22 => ['name' => 'Improteater IMPEERIUM'],
+            26 => ['name' => 'Kogu Moos!'],
+            20 => ['name' => 'Ruutu10'],
+            1 => ['name' => 'Tilt'],
+            28 => ['name' => 'English Improv in Tallinn'],
+            23 => ['name' => 'Koosen'],
+            27 => ['name' => 'Komejant'],
+            25 => ['name' => 'Improssiivne'],
             2 => ['default']
         ];
 
@@ -49,14 +50,19 @@ class ProductionsSeeder extends Seeder
             $event->production_id = $production->id;
 
             $tz = new DateTimeZone('Europe/Tallinn');
-            $start_time = new Carbon($em_event->event_start_date.' '.$em_event->event_start_time,$tz);
-            $end_time = new Carbon($em_event->event_end_date.' '.$em_event->event_end_time,$tz);
+            $start_time = new Carbon($em_event->event_start_date . ' ' . $em_event->event_start_time, $tz);
+            $end_time = new Carbon($em_event->event_end_date . ' ' . $em_event->event_end_time, $tz);
 
             $event->start_time = $start_time->setTimezone('UTC');
             $event->end_time = $end_time->setTimezone('UTC');
 
             $event->creator_id = 1;
             $event->save();
+
+            Log::info('Seeded Event', [
+                'oldId' => $em_event->event_slug,
+                'newId' => $event->uid
+            ]);
         }
 
 
@@ -94,20 +100,20 @@ class ProductionsSeeder extends Seeder
             $orgId = 2;
         }
 
-        DB::transaction(function () use ($production, $thumbnail,$orgId,$importDb) {
-        $production->save();
-        $production->organizations()->attach($orgId);
-        if ($thumbnail) {
-            $image_url = $importDb->table('wp_6_posts')
-                ->where('ID', $thumbnail->meta_value)
-                ->where('post_type', 'attachment')
-                ->first();
+        DB::transaction(function () use ($production, $thumbnail, $orgId, $importDb) {
+            $production->save();
+            $production->organizations()->attach($orgId);
+            if ($thumbnail) {
+                $image_url = $importDb->table('wp_6_posts')
+                    ->where('ID', $thumbnail->meta_value)
+                    ->where('post_type', 'attachment')
+                    ->first();
 
-            if ($image_url) {
-                $this->importImage($image_url->guid, $production);
+                if ($image_url) {
+                    $this->importImage($image_url->guid, $production);
+                }
+
             }
-
-        }
         });
 
         return $production;
@@ -120,14 +126,14 @@ class ProductionsSeeder extends Seeder
      * @return mixed
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
      */
-    private function importImage($imageUrl,Production $production)
+    private function importImage($imageUrl, Production $production)
     {
 
-        $uid = sha1(random_int(PHP_INT_MIN,PHP_INT_MAX).uniqid());
+        $uid = sha1(random_int(PHP_INT_MIN, PHP_INT_MAX) . uniqid());
 
-            $production->addMediaFromUrl($imageUrl)
-                ->withCustomProperties(['type' => 'header'])
-                ->setFileName($uid)
-                ->toMediaCollection('images');
+        $production->addMediaFromUrl($imageUrl)
+            ->withCustomProperties(['type' => 'header'])
+            ->setFileName($uid)
+            ->toMediaCollection('images');
     }
 }

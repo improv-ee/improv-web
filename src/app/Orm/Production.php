@@ -2,10 +2,9 @@
 
 namespace App\Orm;
 
-use App\Events\Production\ProductionCreating;
 use App\User;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
-use Dimsav\Translatable\Translatable;
+use Astrotomic\Translatable\Translatable;
 use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;

@@ -152,7 +152,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Dimsav\Translatable\TranslatableServiceProvider::class,
+        Astrotomic\Translatable\TranslatableServiceProvider::class,
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
