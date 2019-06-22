@@ -2,13 +2,16 @@
   <div class="row">
     <div
       class="col-sm">
-        <vue-markdown :source="content" />
+      <vue-markdown :source="content" />
     </div>
   </div>
 </template>
 <script>
-  import VueMarkdown from 'vue-markdown';
+import VueMarkdown from 'vue-markdown';
 export default {
+    components: {
+        VueMarkdown
+    },
     props: {
         view: {
             type: String,
@@ -26,9 +29,6 @@ export default {
     },
     mounted() {
         this.loadContent(this.view);
-    },
-    components: {
-        VueMarkdown
     },
     methods: {
 
