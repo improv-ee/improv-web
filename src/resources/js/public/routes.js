@@ -4,45 +4,72 @@ import PageNotFound from '../views/PageNotFound';
 import OrganizationsList from './views/organizations/List';
 import OrganizationDetails from './views/organizations/Details';
 import Contact from './views/Contact';
-import Privacy from './views/Privacy';
-import Terms from './views/Terms';
+import MarkdownView from '../components/MarkdownView';
 
 
-export default [
-    {
-        path: '/',
-        name: 'home',
-        component: EventSchedule
-    },
-    {
-        path: '/events/:uid',
-        name: 'events',
-        component: EventDetails,
-    },
-    {
-        path: '/organizations',
-        name: 'organizations',
-        component: OrganizationsList,
-    },
-    {
-        path: '/organizations/:uid',
-        name: 'organization.details',
-        component: OrganizationDetails,
-    },
-    {
-        path: '/contact',
-        name: 'contact',
-        component: Contact
-    },
-    {
-        path: '/privacy',
-        name: 'privacy',
-        component: Privacy
-    },
-    {
-        path: '/terms',
-        name: 'terms',
-        component: Terms
-    },
-    { path: '*', component: PageNotFound }
-];
+export function getRoutes(i18n){
+    return [
+        {
+            path: '/',
+            name: 'home',
+            component: EventSchedule
+        },
+        {
+            path: '/events/:uid',
+            name: 'events',
+            component: EventDetails,
+        },
+        {
+            path: '/organizations',
+            name: 'organizations',
+            component: OrganizationsList,
+        },
+        {
+            path: '/organizations/:uid',
+            name: 'organization.details',
+            component: OrganizationDetails,
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: Contact
+        },
+        {
+            path: '/privacy',
+            name: 'privacy',
+            component: MarkdownView,
+            props: {
+                title: i18n.t('nav.privacy'),
+                view: 'privacy.md'
+            }
+        },
+        {
+            path: '/terms',
+            name: 'terms',
+            component: MarkdownView,
+            props: {
+                title: i18n.t('nav.terms'),
+                view: 'terms.md'
+            }
+        },
+        {
+            path: '/improv/about',
+            name: 'aboutImprov',
+            component: MarkdownView,
+            props: {
+                title: i18n.t('nav.what_is_improv'),
+                view: 'improv/about.md'
+            }
+        },
+        {
+            path: '/improv/history',
+            name: 'improvHistory',
+            component: MarkdownView,
+            props: {
+                title: i18n.t('nav.improv_history'),
+                view: 'improv/history.md'
+            }
+        },
+        { path: '*', component: PageNotFound }
+    ];
+}

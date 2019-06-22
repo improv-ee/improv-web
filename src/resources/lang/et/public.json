@@ -2,7 +2,10 @@
   "nav": {
     "schedule": "Kava",
     "podcast": "Raadiosaade",
-    "home": "Avaleht"
+    "home": "Avaleht",
+    "about_improv": "Improvisatsioon",
+    "what_is_improv":"Mis on improviseeritud teater?",
+    "improv_history": "Impro ajalugu"
   },
   "production": {
     "attr": {

@@ -14,76 +14,78 @@ import OrganizationDetails from './views/organizations/Details';
 import OrganizationEdit from './views/organizations/Edit';
 import OrganizationPeopleDetails from './views/organizations/people/Details';
 
-export default [
-    {
-        path: '/',
-        name: 'home',
-        component: Home
-    },
-    {
-        path: '/productions',
-        name: 'productions',
-        component: ProductionsList,
-    },
-    {
-        path: '/events/:uid',
-        name: 'event.details',
-        component: EventDetails,
-    },
-    {
-        path: '/events/:uid/edit',
-        name: 'event.edit',
-        component: EventEdit,
-    },
-    {
-        path: '/productions/create',
-        name: 'production.create',
-        component: ProductionCreate,
-    },
-    {
-        path: '/productions/:uid',
-        name: 'production.details',
-        component: ProductionDetails,
-    }, {
-        path: '/productions/:uid/edit',
-        name: 'production.edit',
-        component: ProductionEdit,
-    },
+export function getRoutes() {
+    return [
+        {
+            path: '/',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/productions',
+            name: 'productions',
+            component: ProductionsList,
+        },
+        {
+            path: '/events/:uid',
+            name: 'event.details',
+            component: EventDetails,
+        },
+        {
+            path: '/events/:uid/edit',
+            name: 'event.edit',
+            component: EventEdit,
+        },
+        {
+            path: '/productions/create',
+            name: 'production.create',
+            component: ProductionCreate,
+        },
+        {
+            path: '/productions/:uid',
+            name: 'production.details',
+            component: ProductionDetails,
+        }, {
+            path: '/productions/:uid/edit',
+            name: 'production.edit',
+            component: ProductionEdit,
+        },
 
-    {
-        path: '/profile/settings',
-        name: 'profile.settings',
-        component: ProfileSettings,
-    },
-    {
-        path: '/profile/tokens',
-        name: 'profile.api.tokens',
-        component: ApiTokens,
-    },
-    {
-        path: '/profile/invite',
-        name: 'profile.invite',
-        component: InviteUser,
-    },
-    {
-        path: '/organizations',
-        name: 'organizations',
-        component: OrganizationsList,
-    },
-    {
-        path: '/organizations/:uid',
-        name: 'organization.details',
-        component: OrganizationDetails,
-    },
-    {
-        path: '/organizations/:uid/edit',
-        name: 'organization.edit',
-        component: OrganizationEdit,
-    },
-    {
-        path: '/organizations/:uid/people/:username',
-        name: 'organizations.people.details',
-        component: OrganizationPeopleDetails
-    },
-    { path: '*', component: PageNotFound }
-];
+        {
+            path: '/profile/settings',
+            name: 'profile.settings',
+            component: ProfileSettings,
+        },
+        {
+            path: '/profile/tokens',
+            name: 'profile.api.tokens',
+            component: ApiTokens,
+        },
+        {
+            path: '/profile/invite',
+            name: 'profile.invite',
+            component: InviteUser,
+        },
+        {
+            path: '/organizations',
+            name: 'organizations',
+            component: OrganizationsList,
+        },
+        {
+            path: '/organizations/:uid',
+            name: 'organization.details',
+            component: OrganizationDetails,
+        },
+        {
+            path: '/organizations/:uid/edit',
+            name: 'organization.edit',
+            component: OrganizationEdit,
+        },
+        {
+            path: '/organizations/:uid/people/:username',
+            name: 'organizations.people.details',
+            component: OrganizationPeopleDetails
+        },
+        {path: '*', component: PageNotFound}
+    ];
+}

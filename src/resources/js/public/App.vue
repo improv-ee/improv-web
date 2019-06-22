@@ -30,6 +30,17 @@
           <b-nav-item href="https://pooltund.improv.ee">
             {{ $t("nav.podcast") }}
           </b-nav-item>
+          <b-nav-item-dropdown
+            :text="$t('nav.about_improv')">
+            <b-dropdown-item
+              :to="{ name: 'aboutImprov'}">
+              {{ $t('nav.what_is_improv') }}
+            </b-dropdown-item>
+            <b-dropdown-item
+              :to="{ name: 'improvHistory'}">
+              {{ $t('nav.improv_history') }}
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
 
         <nav-language-switcher />

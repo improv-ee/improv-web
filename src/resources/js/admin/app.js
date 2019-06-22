@@ -6,7 +6,7 @@ import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import datePicker from 'vue-bootstrap-datetimepicker';
 import Notifications from 'vue-notification';
 import VueRouter from 'vue-router';
-import routes from './routes';
+import {getRoutes} from './routes';
 import BootstrapVue from 'bootstrap-vue';
 import App from './App';
 import ProductionTableRow from './components/productions/ProductionTableRow';
@@ -73,10 +73,6 @@ jQuery.extend(true, jQuery.fn.datetimepicker.defaults, {
     }
 });
 
-const router = new VueRouter({
-    mode: 'hash',
-    routes: routes
-});
 
 const messages = {
     'en': translationsEn,
@@ -86,6 +82,12 @@ const i18n = new VueI18n({
     locale: 'et',
     fallbackLocale: 'et',
     messages
+});
+
+
+const router = new VueRouter({
+    mode: 'hash',
+    routes: getRoutes(i18n)
 });
 
 function setI18nLanguage (lang) {

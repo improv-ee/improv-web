@@ -2,7 +2,10 @@
   "nav": {
     "schedule": "Schedule",
     "podcast": "Podcast",
-    "home": "Home"
+    "home": "Home",
+    "about_improv":"About improv",
+    "what_is_improv":"What is improvised theater?",
+    "history_in_estonia": "History in Estonia"
   },
   "production": {
     "attr": {

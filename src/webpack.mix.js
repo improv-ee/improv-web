@@ -24,6 +24,8 @@ mix.js('resources/js/admin/app.js', 'public/js/admin')
     }).version();
 mix.sass('resources/sass/admin/admin.scss', 'public/css').version();
 
+mix.copyDirectory('resources/markdown', 'public/markdown');
+
 mix.webpackConfig({
     module: {
         rules: [
