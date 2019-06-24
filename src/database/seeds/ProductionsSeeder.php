@@ -21,7 +21,10 @@ class ProductionsSeeder extends Seeder
     public function run()
     {
         $importDb = DB::connection('migration');
-        $events = $importDb->table('wp_6_em_events')->select()->get();
+        $events = $importDb->table('wp_6_em_events')
+            ->where('event_status','=',1)
+            ->select()
+            ->get();
 
         $organizations = [
             21 => ['name' => 'Eesti Improteater'],

@@ -70,5 +70,9 @@ abstract class TestCase extends BaseTestCase
         app()->bind(GoogleTranslate::class, function () {
             return new MockGoogleTranslate;
         });
+
+        app()->bind('GooglePlaces', function () {
+            return new Mocks\Vendor\Skagarwal\GooglePlacesApi\GooglePlaces();
+        });
     }
 }

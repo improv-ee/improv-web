@@ -54,6 +54,7 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('events', 'EventController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
     Route::apiResource('images', 'ImageController', ['as' => 'api'])->only(['store']);
 
+    Route::get('/places/search','PlaceController@search',['as'=>'api'])->name('api.places.search');
 
     Route::apiResource('organizations.membership', 'Organization\MembershipController', ['as' => 'api', 'parameters' => ['membership' => 'user']])->only(['show', 'store', 'destroy', 'update']);
 });
