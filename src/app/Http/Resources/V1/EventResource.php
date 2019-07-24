@@ -9,7 +9,7 @@ class EventResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -17,17 +17,18 @@ class EventResource extends JsonResource
         return [
             'uid' => $this->uid,
             'title' => $this->title,
-            'description'=>$this->description,
-            'production'=> [
+            'description' => $this->description,
+            'production' => [
                 'uid' => $this->production->uid
             ],
             'times' => [
-                'start'=>$this->start_time->toIso8601String(),
-                'end'=>$this->end_time->toIso8601String()
+                'start' => $this->start_time->toIso8601String(),
+                'end' => $this->end_time->toIso8601String()
             ],
+            'place' => new PlaceResource($this->place),
             'links' => [
-                'self' => route('api.events.show',['uid'=>$this->uid]),
-                'production' => route('api.productions.show',['id'=>$this->production->uid])
+                'self' => route('api.events.show', ['uid' => $this->uid]),
+                'production' => route('api.productions.show', ['id' => $this->production->uid])
             ]
         ];
     }

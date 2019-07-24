@@ -18,12 +18,12 @@ class PlaceTest extends ApiTestCase
     {
         $this->actingAsLoggedInUser();
 
-        $response = $this->get($this->getApiUrl() . '/places/search?query=test');
+        $response = $this->get($this->getApiUrl() . '/places/search?filter[name]=test&session=ab3bb390-abe8-11e9-a2a3-2a2ae2dbcce4');
         $response->assertStatus(200)
             ->assertJson(['data' => [
                 [
-                    'place_id' => 'xxx',
-                    'description' => 'test1',
+                    'uid' => 'xxx',
+                    'name' => 'test1',
                 ]
             ]]);
     }

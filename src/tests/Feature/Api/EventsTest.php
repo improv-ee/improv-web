@@ -4,10 +4,12 @@ namespace Tests\Feature\Api;
 
 use App\Orm\Event;
 use App\Orm\OrganizationProduction;
+use App\Orm\Place;
 use App\Orm\Production;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\Mocks\Vendor\Skagarwal\GooglePlacesApi\GooglePlaces;
 
 /**
  * @package Tests\Feature\Api
@@ -32,6 +34,10 @@ class EventsTest extends ApiTestCase
             ->assertJson(['data' => [
                 'title' => $event->title,
                 'description' => $event->description,
+                'place' => [
+                    'uid' => $event->place->uid,
+                    'name' => GooglePlaces::TEST_PLACE_NAME
+                ],
                 'times' => [
                     'start' => $event->start_time->toIso8601String(),
                     'end' => $event->end_time->toIso8601String()],
@@ -40,6 +46,28 @@ class EventsTest extends ApiTestCase
             ]]);
     }
 
+    /**
+     * @covers \App\Http\Resources\V1\PlaceResource
+     */
+    public function testEventPlaceExtraFieldsAreEmptyIfPlaceUidNotFound()
+    {
+        $event = factory(Event::class)->create();
+        $place = factory(Place::class)->create(['uid' => GooglePlaces::TEST_404_PLACE_UID]);
+        $event->place_id = $place->id;
+        $event->save();
+
+        $response = $this->get($this->getApiUrl() . '/events/' . $event->uid);
+
+        $response->assertStatus(200)
+            ->assertJson(['data' => [
+                'title' => $event->title,
+                'place' => [
+                    'uid' => $event->place->uid
+                ]
+            ]]);
+
+        $this->assertFalse(stristr($response->getContent(),GooglePlaces::TEST_PLACE_NAME));
+    }
 
     public function testEventScheduleIsReturned()
     {
@@ -48,7 +76,7 @@ class EventsTest extends ApiTestCase
         $response = $this->get($this->getApiUrl() . '/events/schedule');
 
         $response->assertStatus(200)
-            ->assertJsonCount(2,'data');
+            ->assertJsonCount(2, 'data');
     }
 
     public function testEventCanBeCreated()
@@ -63,6 +91,9 @@ class EventsTest extends ApiTestCase
             'times' => [
                 'start' => $start->toIso8601String(),
                 'end' => $end,
+            ],
+            'place' => [
+                'uid' => 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ'
             ],
             'production' => ['uid' => $production->uid]
         ]);
@@ -80,7 +111,14 @@ class EventsTest extends ApiTestCase
         $event = factory(Event::class)->create();
         $this->assignEventToUser($event, $user);
 
-        $eventInput = ['times' => ['start' => '2018-09-13T16:00:00+00:00', 'end' => '2018-09-13T17:00:00+00:00'],
+        $eventInput = [
+            'times' => [
+                'start' => '2018-09-13T16:00:00+00:00',
+                'end' => '2018-09-13T17:00:00+00:00'
+            ],
+            'place' => [
+                'uid' => 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ'
+            ],
             'title' => 'Batman',
             'description' => 'Begins'];
 
@@ -107,8 +145,16 @@ class EventsTest extends ApiTestCase
         $event = factory(Event::class)->create();
         $this->assignEventToUser($event, $user);
 
-        $eventInput = ['times' => ['start' => '2018-09-13T16:00:00+00:00', 'end' => '2018-09-13T17:00:00+00:00'],
-            'title' => '', 'description' => 'Bannon'];
+        $eventInput = [
+            'times' => [
+                'start' => '2018-09-13T16:00:00+00:00',
+                'end' => '2018-09-13T17:00:00+00:00'
+            ],
+            'place' => [
+                'uid' => 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ'
+            ],
+            'title' => '', 'description' => 'Bannon'
+        ];
 
         $response = $this->put($this->getApiUrl() . '/events/' . $event->uid, $eventInput);
         $response->assertStatus(200);
@@ -137,4 +183,6 @@ class EventsTest extends ApiTestCase
         $response->assertStatus(200);
 
     }
+
+
 }

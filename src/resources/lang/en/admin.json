@@ -33,7 +33,8 @@
       "title_description": "Event sub-title, if it differs from production title. A visitor sees both titles. Leave this blank, if the event does not use a sub-title.",
       "description_description": "Event description, if this concrete occurance needs extra details that differ from that of the Production. Can be left blank.",
       "start_time_description": "Event start date and time",
-      "end_time_description": "Event end date and time"
+      "end_time_description": "Event end date and time",
+      "place_description":"Venue where the event takes place"
     }
   },
   "organization": {

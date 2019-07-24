@@ -37,7 +37,8 @@
       "start_time": "Algus",
       "end_time": "Lõpp",
       "organizers": "Korraldajad",
-      "tags": "Märksõnad"
+      "tags": "Märksõnad",
+      "place":"Toimumiskoht"
     }
   },
   "ui": {

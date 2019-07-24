@@ -20,7 +20,8 @@ $factory->define(App\Orm\Event::class, function (Faker $faker) {
         'start_time' => $start,
         'production_id' =>$production->id,
         'end_time' => Carbon::instance($start)->addHour(),
-        'creator_id' => $user->id
+        'creator_id' => $user->id,
+        'place_id' => factory(\App\Orm\Place::class)->create()->id
 
     ];
 });

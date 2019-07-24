@@ -52,6 +52,16 @@
             rows="10" />
         </b-form-group>
 
+        <b-form-group
+          :label="$t('event.attr.place')"
+          :description="$t('event.attr.place_description')"
+          :invalid-feedback="invalidFeedback('place.uid')"
+          :state="getFieldState('place.uid')"
+          label-for="place">
+          <place-select
+            v-model="form.place" />
+        </b-form-group>
+
         <b-button
           type="submit"
           variant="primary"
@@ -64,7 +74,9 @@
 </template>
 
 <script>
+import PlaceSelect from '../PlaceSelect';
 export default {
+    components: {PlaceSelect},
     props: {
         event: {
             type: Object,
@@ -75,7 +87,9 @@ export default {
     },
     data() {
         return {
-            form: {},
+            form: {
+                place: {}
+            },
             errors: {}
         };
     },
@@ -90,6 +104,7 @@ export default {
                 title: event.title,
                 description: event.description,
                 excerpt: event.excerpt,
+                place: event.place === null ? {} : event.place,
                 times: {end: moment(event.times.end), start: moment(event.times.start)}
             };
         }
