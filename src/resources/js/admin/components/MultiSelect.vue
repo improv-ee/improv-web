@@ -29,7 +29,12 @@
         v-if="selectedItems.length"
         class="multiselect__clear"
         @mousedown.prevent.stop="clearAll(props.search)" />
-      <div v-if="clearAllButton" class="multiselect__clear" @mousedown.prevent="clearAll(props.search)">✗</div>
+      <div
+        v-if="clearAllButton"
+        class="multiselect__clear"
+        @mousedown.prevent="clearAll(props.search)">
+        ✗
+      </div>
     </template>
     <template
       v-if="afterListTemplate !== null"

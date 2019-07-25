@@ -8,7 +8,7 @@ export default {
             type: String,
             default: '/places/search'
         },
-``        clearAllButton: {
+        clearAllButton: {
             type: Boolean,
             default: true
         },
