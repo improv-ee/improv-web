@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\PlaceSearchResultResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException;
@@ -44,9 +45,8 @@ class PlaceController extends Controller
      *      {"name":"Teater Club, Vabaduse v\u00e4ljak, Tallinn, Estonia","uid":"ChIJeWB2iZ6UkkYRe2QssVpp8z4"}
      *   ]
      * }
-     * @throws \SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException
      */
-    public function search(Request $request): array
+    public function search(Request $request)
     {
 
         $request->validate([
@@ -70,17 +70,7 @@ class PlaceController extends Controller
             return ['data' => []];
         }
 
-        $results = [];
 
-        foreach ($searchResults->get('predictions') as $result) {
-            $results[] = [
-                'name' => $result['description'],
-                'uid' => $result['place_id']
-            ];
-        }
-
-        return [
-            'data' => $results,
-        ];
+        return PlaceSearchResultResource::collection($searchResults->get('predictions'));
     }
 }
