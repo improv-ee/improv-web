@@ -28,6 +28,8 @@ class PlaceResource extends JsonResource
     {
         $placesApi = resolve('GooglePlaces');
 
+        // Google's Maps/Places API terms do not allow to save Place details to local database
+        // Hence we must do a remove call each time to display them
         try {
             $this->placeDetails = $placesApi->placeDetails($this->uid, [
                 'language' => App::getLocale(),
