@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\PlaceSearchResultResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\App;
 use SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException;
 use SKAgarwal\GoogleApi\PlacesApi;
@@ -36,7 +37,7 @@ class PlaceController extends Controller
      *
      * If the search input is empty or a Place is not found, an empty `data` array is returned.
      * @param Request $request
-     * @return array
+     * @return ResourceCollection|array
      * @queryParam filter[name] required Free-form search string of a place name or address, ie "white house". Max 64 characters. Example: Estonia
      * @queryParam session required A self-generated UUID token for this autocomplete session. Needs to be [RFC 4122](https://tools.ietf.org/html/rfc4122) compliant and unique per session, but reused between "search changed" requests. See [sessiontoken](https://developers.google.com/places/web-service/autocomplete) parameter documentation in Google API docs. Example: cce45caf-3a0d-427f-86ea-6a3f6a5a94ac
      * @response {

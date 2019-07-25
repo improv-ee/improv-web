@@ -4,6 +4,7 @@ namespace Tests\Feature\Api;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Str;
+use Tests\Mocks\Vendor\Skagarwal\GooglePlacesApi\GooglePlaces;
 
 /**
  * @covers \App\Http\Controllers\Api\V1\PlaceController
@@ -22,7 +23,7 @@ class PlaceTest extends ApiTestCase
         $response->assertStatus(200)
             ->assertJson(['data' => [
                 [
-                    'uid' => 'xxx',
+                    'uid' => GooglePlaces::TEST_PLACE_UID,
                     'name' => 'test1',
                 ]
             ]]);
