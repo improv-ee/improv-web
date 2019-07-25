@@ -29,6 +29,7 @@
         v-if="selectedItems.length"
         class="multiselect__clear"
         @mousedown.prevent.stop="clearAll(props.search)" />
+      <div v-if="clearAllButton" class="multiselect__clear" @mousedown.prevent="clearAll(props.search)">✗</div>
     </template>
     <template
       v-if="afterListTemplate !== null"
@@ -49,6 +50,10 @@ import uuid from 'uuid';
 export default {
     components: {Multiselect},
     props: {
+        clearAllButton: {
+            type: Boolean,
+            default: false
+        },
         optionsApiPath:{
             type: String,
             required: true
@@ -137,7 +142,8 @@ export default {
 
         asyncFind: lodash.debounce(function (query) {
 
-            if (query === '') {
+            // Avoid spamming the backend with queries that make no sense
+            if (query === '' || query.length < 3 || query.length > 64) {
                 return;
             }
 
@@ -148,7 +154,12 @@ export default {
             });
         }, 600),
         clearAll() {
-            this.selectedItems = [];
+
+            for(let option in this.selectedItems) {
+                this.$emit('remove', option, option.id);
+            }
+            this.selectedItems = this.multiple ? [] : {};
+
         },
         optionSelected(){
             this.sessionToken = uuid();
@@ -173,3 +184,15 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+  .multiselect__clear {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+    display: block;
+    cursor: pointer;
+    z-index: 2;
+  }
+</style>

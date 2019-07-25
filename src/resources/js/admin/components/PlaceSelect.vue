@@ -8,6 +8,10 @@ export default {
             type: String,
             default: '/places/search'
         },
+``        clearAllButton: {
+            type: Boolean,
+            default: true
+        },
         poweredByGoogle: {
             type: Boolean,
             default: true

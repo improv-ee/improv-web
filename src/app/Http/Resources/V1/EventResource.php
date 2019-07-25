@@ -31,9 +31,12 @@ class EventResource extends JsonResource
         // Cache Place resource for 24h
         // It is unlikely to change during this time; and computing it is expensive
         $place = $this->place;
-        $placeResource = Cache::remember('PlaceResource:' . $this->place->uid, 86400, function () use ($place) {
-            return new PlaceResource($place);
-        });
+        $placeResource = null;
+        if ($place !== null) {
+            $placeResource = Cache::remember('PlaceResource:' . $this->place->uid, 86400, function () use ($place) {
+                return new PlaceResource($place);
+            });
+        }
 
         return [
             'uid' => $this->uid,

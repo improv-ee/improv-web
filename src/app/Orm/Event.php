@@ -16,6 +16,8 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
  * @property Carbon $start_time
  * @property Carbon $end_time
  * @property int $place_id
+ * @property Place $place
+ * @property Production $production
  */
 class Event extends Model implements AuditableInterface
 {

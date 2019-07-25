@@ -136,6 +136,8 @@ class EventController extends Controller
         if ($request->input('place.uid') !== null) {
             $place = Place::firstOrCreate(['uid' => $request->input('place.uid')]);
             $event->place_id = $place->id;
+        } else {
+            $event->place_id = null;
         }
         $event->save();
         return new EventResource($event);
