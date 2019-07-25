@@ -45,7 +45,10 @@
           <span class="meta-label">
             <i class="fas fa-map-marker-alt" /> {{ $t('event.attr.place') }}</span><br>
           <span class="meta-value">
-            <a :href="event.place.url" :title="event.place.address" target="_blank">{{ event.place.name }}</a>
+            <a
+              :href="event.place.url"
+              :title="event.place.address"
+              target="_blank">{{ event.place.name }}</a>
           </span>
         </p>
       </div>
