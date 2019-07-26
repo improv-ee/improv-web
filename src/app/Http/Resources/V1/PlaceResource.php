@@ -2,20 +2,15 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Contracts\Services\PlaceService;
+use App\Exceptions\PlaceException;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\App;
-use SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException;
 
 /**
  * @property string uid
  */
 class PlaceResource extends JsonResource
 {
-
-    /**
-     * @var
-     */
-    protected $placeDetails;
 
 
     /**
@@ -26,16 +21,14 @@ class PlaceResource extends JsonResource
      */
     public function toArray($request)
     {
-        $placesApi = resolve('GooglePlaces');
+
+        $placeService = resolve(PlaceService::class);
 
         // Google's Maps/Places API terms do not allow to save Place details to local database
         // Hence we must do a remove call each time to display them
         try {
-            $this->placeDetails = $placesApi->placeDetails($this->uid, [
-                'language' => App::getLocale(),
-                'fields' => 'formatted_address,name,url'
-            ]);
-        } catch (GooglePlacesApiException $e) {
+            $placeDetails = $placeService->getPlaceDetails($this->uid);
+        } catch (PlaceException $e) {
             return [
                 'uid' => $this->uid
             ];
@@ -43,9 +36,9 @@ class PlaceResource extends JsonResource
 
         return [
             'uid' => $this->uid,
-            'name' => $this->placeDetails['result']['name'],
-            'address' => $this->placeDetails['result']['formatted_address'],
-            'url' => $this->placeDetails['result']['url']
+            'name' => $placeDetails['name'],
+            'address' => $placeDetails['formatted_address'],
+            'url' => $placeDetails['url']
         ];
     }
 

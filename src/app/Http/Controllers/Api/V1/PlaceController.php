@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Exceptions\PlaceException;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\PlaceSearchResultResource;
+use App\Contracts\Services\PlaceService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\App;
-use SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException;
-use SKAgarwal\GoogleApi\PlacesApi;
 
 /**
  * @group Places
@@ -18,14 +17,15 @@ use SKAgarwal\GoogleApi\PlacesApi;
  */
 class PlaceController extends Controller
 {
-    /**
-     * @var PlacesApi
-     */
-    private $places;
 
-    public function __construct()
+    /**
+     * @var PlaceService
+     */
+    private $placeService;
+
+    public function __construct(PlaceService $placeService)
     {
-        $this->places = resolve('GooglePlaces');
+        $this->placeService = $placeService;
     }
 
 
@@ -62,16 +62,14 @@ class PlaceController extends Controller
         }
 
         try {
-            $searchResults = $this->places->placeAutocomplete($query, [
-                'language' => App::getLocale(),
-                'sessiontoken' => $request->input('session'),
-                'components' => config('improv.allowed_places')
+            $searchResults = $this->placeService->searchByName($query, [
+                'sessiontoken' => $request->input('session')
             ]);
-        } catch (GooglePlacesApiException $e) {
+        } catch (PlaceException $e) {
             return ['data' => []];
         }
 
 
-        return PlaceSearchResultResource::collection($searchResults->get('predictions'));
+        return PlaceSearchResultResource::collection($searchResults);
     }
 }
