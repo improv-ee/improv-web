@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Contracts\Services\PlaceService as PlaceServiceContract;
 use App\Observers\EventObserver;
 use App\Observers\OrganizationObserver;
 use App\Observers\ProductionObserver;
 use App\Orm\Event;
 use App\Orm\Organization;
 use App\Orm\Production;
+use App\Services\PlaceService;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -42,6 +44,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PlaceServiceContract::class, PlaceService::class);
     }
 }

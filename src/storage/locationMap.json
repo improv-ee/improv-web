@@ -1,0 +1,1137 @@
+{
+    "3": {
+        "uid": "ChIJZRx1m2GTkkYRr4eEPRc7cxI",
+        "description": "Müürivahe 50, Tallinn, Eesti",
+        "address": "Müürivahe 50",
+        "name": "Kohvik Sinilind"
+    },
+    "4": {
+        "uid": "ChIJc6h1YeY260YREfwM3ESVg4k",
+        "description": "Genialistide Klubi, Magasini, Tartu, Eesti",
+        "address": null,
+        "name": "Genialistide klubi"
+    },
+    "5": {
+        "uid": "ChIJc6h1YeY260YREfwM3ESVg4k",
+        "description": "Genialistide Klubi, Magasini, Tartu, Eesti",
+        "address": null,
+        "name": "Genialistide klubi"
+    },
+    "6": {
+        "uid": "ChIJkzsK8JuUkkYRnpMEIxsSjF0",
+        "description": null,
+        "address": null,
+        "name": "Rahvusraamatukogu"
+    },
+    "7": {
+        "uid": "ChIJkzsK8JuUkkYRnpMEIxsSjF0",
+        "description": "Tõnismägi 2, Tallinn, Eesti",
+        "address": "Tõnismägi 2",
+        "name": "Rahvusraamatukogu"
+    },
+    "8": {
+        "uid": "ChIJHXwSIWKTkkYRMnI2AMfCc6M",
+        "description": null,
+        "address": null,
+        "name": "Tallinna Rahvaülikooli Teatrikeskus"
+    },
+    "9": {
+        "uid": "ChIJHXwSIWKTkkYRMnI2AMfCc6M",
+        "description": null,
+        "address": "Vene tänav 6",
+        "name": "Tallinna Rahvaülikooli Teatrikeskus"
+    },
+    "10": {
+        "uid": "ChIJzYlW2uY260YRhvfTDiXJYkM",
+        "description": null,
+        "address": null,
+        "name": "Feel Good music café"
+    },
+    "11": {
+        "uid": "ChIJzYlW2uY260YRhvfTDiXJYkM",
+        "description": "Rüütli 12, Tartu, Eesti",
+        "address": "Rüütli 12",
+        "name": "Feel Good music café"
+    },
+    "12": {
+        "uid": "ChIJzYlW2uY260YRhvfTDiXJYkM",
+        "description": "Rüütli 12, Tartu, Eesti",
+        "address": "Rüütli 12",
+        "name": "Feel Good music café"
+    },
+    "13": {
+        "uid": "ChIJzYlW2uY260YRhvfTDiXJYkM",
+        "description": "Rüütli 12, Tartu, Eesti",
+        "address": "Rüütli 12",
+        "name": "Feel Good music café"
+    },
+    "14": {
+        "uid": "ChIJZfsz9eY260YRl3S1WwFi6J4",
+        "description": "Tartu Uus Teater, Lai, Tartu, Eesti",
+        "address": null,
+        "name": "Tartu Uus Teater"
+    },
+    "15": {
+        "uid": "ChIJZfsz9eY260YRl3S1WwFi6J4",
+        "description": "Tartu Uus Teater, Lai, Tartu, Eesti",
+        "address": null,
+        "name": "Tartu Uus Teater"
+    },
+    "16": {
+        "uid": "ChIJOUXSzOA260YR0waC2tdJAmk",
+        "description": "Lokaal Suudlevad Tudengid, Raekoja plats, Tartu, Eesti",
+        "address": null,
+        "name": "Lokaal Suudlevad Tudengid"
+    },
+    "17": {
+        "uid": "ChIJOUXSzOA260YR0waC2tdJAmk",
+        "description": "Lokaal Suudlevad Tudengid, Raekoja plats, Tartu, Eesti",
+        "address": null,
+        "name": "Lokaal Suudlevad Tudengid"
+    },
+    "18": {
+        "uid": "ChIJkzsK8JuUkkYRnpMEIxsSjF0",
+        "description": "Eesti Rahvusraamatukogu, Tõnismägi, Tallinn, Eesti",
+        "address": null,
+        "name": "Eesti Rahvusraamatukogu"
+    },
+    "19": {
+        "uid": "ChIJkzsK8JuUkkYRnpMEIxsSjF0",
+        "description": "Eesti Rahvusraamatukogu, Tõnismägi, Tallinn, Eesti",
+        "address": null,
+        "name": "Eesti Rahvusraamatukogu"
+    },
+    "20": {
+        "uid": "ChIJkzsK8JuUkkYRnpMEIxsSjF0",
+        "description": "Eesti Rahvusraamatukogu, Tõnismägi, Tallinn, Eesti",
+        "address": null,
+        "name": "Eesti Rahvusraamatukogu"
+    },
+    "21": {
+        "uid": "ChIJkzsK8JuUkkYRnpMEIxsSjF0",
+        "description": "Eesti Rahvusraamatukogu, Tõnismägi, Tallinn, Eesti",
+        "address": null,
+        "name": "Eesti Rahvusraamatukogu"
+    },
+    "22": {
+        "uid": "ChIJc6h1YeY260YREfwM3ESVg4k",
+        "description": "Genialistide Klubi, Magasini, Tartu, Eesti",
+        "address": null,
+        "name": "Genialistide klubi"
+    },
+    "23": {
+        "uid": "ChIJc6h1YeY260YREfwM3ESVg4k",
+        "description": "Genialistide Klubi, Magasini, Tartu, Eesti",
+        "address": null,
+        "name": "Genialistide klubi"
+    },
+    "24": {
+        "uid": "ChIJc6h1YeY260YREfwM3ESVg4k",
+        "description": "Genialistide Klubi, Magasini, Tartu, Eesti",
+        "address": null,
+        "name": "Genialistide klubi"
+    },
+    "25": {
+        "uid": "ChIJc6h1YeY260YREfwM3ESVg4k",
+        "description": "Genialistide Klubi, Magasini, Tartu, Eesti",
+        "address": null,
+        "name": "Genialistide klubi"
+    },
+    "26": {
+        "uid": "ChIJQZ7mwn2TkkYRt6ZGdLFe0Wg",
+        "description": null,
+        "address": null,
+        "name": "Telliskivi Loomelinnaku must saal"
+    },
+    "27": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60A",
+        "name": "Telliskivi Loomelinnaku must saal"
+    },
+    "28": {
+        "uid": "ChIJ2xwwl-A260YR_0QuceVFKwM",
+        "description": null,
+        "address": null,
+        "name": "Vilde Lokaal ja Kohvik"
+    },
+    "29": {
+        "uid": "ChIJJ6SLkOA260YRg3OzUuIpqCA",
+        "description": "Vallikraavi 4, Tartu, Eesti",
+        "address": "Vallikraavi 4",
+        "name": "Vilde Lokaal ja Kohvik"
+    },
+    "30": {
+        "uid": "ChIJJ6SLkOA260YRg3OzUuIpqCA",
+        "description": "Vallikraavi 4, Tartu, Eesti",
+        "address": "Vallikraavi 4",
+        "name": "Vilde Lokaal ja Kohvik"
+    },
+    "31": {
+        "uid": "ChIJJ6SLkOA260YRg3OzUuIpqCA",
+        "description": "Vallikraavi 4, Tartu, Eesti",
+        "address": "Vallikraavi 4",
+        "name": "Vilde Lokaal ja Kohvik"
+    },
+    "32": {
+        "uid": "ChIJ95L_MKqVkkYR2bCohuuuiNQ",
+        "description": null,
+        "address": null,
+        "name": "Tudengibaar Pööning"
+    },
+    "33": {
+        "uid": "ChIJ95L_MKqVkkYR2bCohuuuiNQ",
+        "description": "Akadeemia tee 24, Tallinn, Eesti",
+        "address": "Akadeemia tee 24",
+        "name": "Tudengibaar Pööning"
+    },
+    "34": {
+        "uid": "ChIJ2faEvoWUkkYR8WxK_ah4UEg",
+        "description": "Kultuuritehas Polymer, Ülase, Tallinn, Eesti",
+        "address": "Aadressil Madara 22a",
+        "name": "Kultuuritehas Polümer"
+    },
+    "35": {
+        "uid": "ChIJJ6SLkOA260YRg3OzUuIpqCA",
+        "description": "Vallikraavi 4, Tartu, Eesti",
+        "address": "Vallikraavi 4",
+        "name": "Vilde Lokaal ja Kohvik"
+    },
+    "36": {
+        "uid": "ChIJmaBuY-A260YRICx_MD8vrpk",
+        "description": "Wilhelm Struve 4, Tartu, Eesti",
+        "address": "Struwe 4",
+        "name": "Korp! Filiae Patriae"
+    },
+    "37": {
+        "uid": "ChIJmaBuY-A260YRICx_MD8vrpk",
+        "description": "Wilhelm Struve 4, Tartu, Eesti",
+        "address": "Struwe 4",
+        "name": "Korp! Filiae Patriae"
+    },
+    "38": {
+        "uid": "ChIJJ-OWop2UkkYR_X9LP38TGW4",
+        "description": "Neitsitorni muuseumkohvik, Lühike jalg, Tallinn, Eesti",
+        "address": "Lühike jalg 9a",
+        "name": "Neitsitorn"
+    },
+    "39": {
+        "uid": "ChIJ0eGWpIaTkkYRwfsJkhU1Zq0",
+        "description": "Kopli 25, Tallinn, Eesti",
+        "address": "Kopli 25",
+        "name": "Kamahouse : Multi Business Environment "
+    },
+    "40": {
+        "uid": "ChIJjywgoN8260YRXUXGhXYuIEA",
+        "description": "Lille Maja, Lille, Tartu, Eesti",
+        "address": "Lille 9",
+        "name": "Lille maja"
+    },
+    "41": {
+        "uid": "ChIJg1oobeA260YRi3ktejpX1uQ",
+        "description": null,
+        "address": "W. Struve 1",
+        "name": "TÜ Raamatukogu konverentsisaal"
+    },
+    "42": {
+        "uid": "ChIJCzu5EGGTkkYRIfcu2-1xN48",
+        "description": "Vene Kultuurikeskus MTÜ, Mere puiestee, Tallinn, Eesti",
+        "address": "Mere pst 5",
+        "name": "Vene kultuurikeskus"
+    },
+    "43": {
+        "uid": "ChIJCzu5EGGTkkYRIfcu2-1xN48",
+        "description": "Vene Kultuurikeskus MTÜ, Mere puiestee, Tallinn, Eesti",
+        "address": "Mere pst 5",
+        "name": "Vene kultuurikeskus"
+    },
+    "44": {
+        "uid": "ChIJCzu5EGGTkkYRIfcu2-1xN48",
+        "description": "Vene Kultuurikeskus MTÜ, Mere puiestee, Tallinn, Eesti",
+        "address": "Mere pst 5",
+        "name": "Vene kultuurikeskus"
+    },
+    "45": {
+        "uid": "ChIJ7bK6h7fskkYRvg67I2jzmn8",
+        "description": "Lindakivi kultuurikeskus, Jaan Koorti, Tallinn, Eesti",
+        "address": "Jaan Koorti 22",
+        "name": "Kultuurikeskus Lindakivi"
+    },
+
+    "47": {
+        "uid": "ChIJ5zaUnn6TkkYRwSrbkG4yocM",
+        "description": "Kammerteater OÜ, Vabriku, Tallinna, Eesti",
+        "address": "Vabriku 12",
+        "name": "Tallinna Kammerteater"
+    },
+    "48": {
+        "uid": "ChIJGaxaJIWY7EYR2NIwpS3-eAs",
+        "description": "Turu 4, Viljandi, Viljandi maakond, Eesti",
+        "address": "Turu 4",
+        "name": "Pubi Suur Vend"
+    },
+    "49": {
+        "uid": "EiBNZXJlIHB1aWVzdGVlIDZhLCBUYWxsaW5uLCBFZXN0aSIwEi4KFAoSCV0wXzphk5JGEcGoJpxWYrjhEAYqFAoSCRF3xx9kk5JGEVt6e-jOPA9c",
+        "description": "Mere puiestee 6a, Tallinn, Eesti",
+        "address": "Mere puiestee 6a",
+        "name": "Protest"
+    },
+    "50": {
+        "uid": "ChIJkzsK8JuUkkYRgwGbk-mq7dk",
+        "description": "VAT Teater MTÜ, Tõnismägi, Tallinn, Eesti",
+        "address": "Tõnismägi 2",
+        "name": "VAT Teater"
+    },
+    "51": {
+        "uid": "ChIJkzsK8JuUkkYRgwGbk-mq7dk",
+        "description": "VAT Teater MTÜ, Tõnismägi, Tallinn, Eesti",
+        "address": "Tõnismägi 2",
+        "name": "VAT Teater"
+    },
+    "52": {
+        "uid": "ChIJlxoV1ISY7EYRhNf7phNH5wA",
+        "description": "Posti 1, Viljandi, Viljandi maakond, Eesti",
+        "address": "Posti 1",
+        "name": "TÜ Viljandi Kultuuriakadeemia Black Box"
+    },
+
+    "53": {
+        "uid": "ChIJxdiBMJ-n8kYRuZ3TGXUeLfM",
+        "description": "Haapsalu Kultuurikeskus , Kino & Linnagalerii, Posti, Haapsalu, Lääne maakond, Eesti",
+        "address": "Posti 3",
+        "name": "Haapsalu Kultuurikeskus"
+    },
+    "54": {
+        "uid": "ChIJM1Bh1Rf97EYR4vU63mFRjNY",
+        "description": "Endla Teater, Keskväljak, Pärnu, Pärnu maakond, Eesti",
+        "address": "KEskväljak 1",
+        "name": "Pärnu Teater Endla"
+    },
+    "55": {
+        "uid": "ChIJM1Bh1Rf97EYR4vU63mFRjNY",
+        "description": "Endla Teater, Keskväljak, Pärnu, Pärnu maakond, Eesti",
+        "address": "KEskväljak 1",
+        "name": "Pärnu Teater Endla"
+    },
+    "56": {
+        "uid": "ChIJrZ3u-N366kYRclDPDYhECvM",
+        "description": "Liiva 13, Võru, Võru maakond, Eesti",
+        "address": "Liiva 13",
+        "name": "Võru kultuurimaja KANNEL"
+    },
+    "57": {
+        "uid": "ChIJDzFUY2KTkkYR5i5UorVpKZ0",
+        "description": "Von Krahli Teater, Rataskaevu, Tallinn, Eesti",
+        "address": "Rataskaevu 10",
+        "name": "Von Krahli teater"
+    },
+    "58": {
+        "uid": "ChIJ4UDfZEnSkkYRpzoHuqjolvU",
+        "description": "Rapla Kultuurikeskus, Tallinna maantee, Rapla, Rapla maakond, Eesti",
+        "address": "Tallinna maantee 17",
+        "name": "Rapla Kultuurikeskus"
+    },
+    "59": {
+        "uid": "ChIJMRuVGWKTkkYRtyOjkWWCYdM",
+        "description": "Hopneri maja, Raekoja plats, Tallinn, Eesti",
+        "address": "Raekoja plats 18",
+        "name": "Hopneri Maja"
+    },
+    "60": {
+        "uid": "ChIJMRuVGWKTkkYRtyOjkWWCYdM",
+        "description": "Hopneri maja, Raekoja plats, Tallinn, Eesti",
+        "address": "Raekoja plats 18",
+        "name": "Hopneri Maja"
+    },
+    "61": {
+        "uid": "ChIJCzYxtdg260YRkEljjSP2qsM",
+        "description": "Tartu Üliõpilasmaja MTÜ, Kalevi, Tartu, Eesti",
+        "address": "Kalevi 24",
+        "name": "Tartu Üliõpilasmaja"
+    },
+    "62": {
+        "uid": "ChIJ5R4mC4KUkkYRDXGj_9biAyI",
+        "description": "LIFT99, Tallinn, Eesti",
+        "address": "Kaunase pst 9a",
+        "name": "LIFT"
+    },
+    "63": {
+        "uid": "Eh1SYWVrb2phIHBsYXRzLCBUYWxsaW5uLCBFZXN0aSIuKiwKFAoSCUtrvRVik5JGEZBH2GUa0KQTEhQKEgm_FlbfmZSSRhFwYvwYbbMABA",
+        "description": "Raekoja plats, Tallinn, Eesti",
+        "address": "Vanalinn",
+        "name": "Raekoja Plats"
+    },
+    "64": {
+        "uid": "ChIJk_BR5uP87EYRih-wGfxb6Cw",
+        "description": "Strand SPA & Conference Hotel, A. H. Tammsaare puiestee, Pärnu, Pärnu maakond, Eesti",
+        "address": "A. H. Tammsaare pst. 35",
+        "name": "Strand SPA & Conference Hotel"
+    },
+    "65": {
+        "uid": "ChIJcVbV5Z-UkkYRHZNGaA0cOiA",
+        "description": "Teatri väljak 3, Tallinn, Eesti",
+        "address": "Teatri Väljak 3",
+        "name": "TeatriPuhvet"
+    },
+    "66": {
+        "uid": "ChIJcVbV5Z-UkkYRHZNGaA0cOiA",
+        "description": "Teatri väljak 3, Tallinn, Eesti",
+        "address": "Teatri Väljak 3",
+        "name": "TeatriPuhvet"
+    },
+    "67": {
+        "uid": "ChIJcVbV5Z-UkkYRHZNGaA0cOiA",
+        "description": "Teatri väljak 3, Tallinn, Eesti",
+        "address": "Teatri Väljak 3",
+        "name": "TeatriPuhvet"
+    },
+    "68": {
+        "uid": "ChIJLSste2KTkkYRk-hliBgKLhE",
+        "description": "Von Krahli baar, Rataskaevu, Tallinn, Eesti",
+        "address": "Rataskaevu 10\/12",
+        "name": "Von Krahli Baar"
+    },
+    "69": {
+        "uid": "ChIJSyLEh9o260YROUxrdy6WMBY",
+        "description": "Anne Noortekeskus, Tartu, Eesti",
+        "address": "Uus 56",
+        "name": "Anne Noortekeskus"
+    },
+    "70": {
+        "uid": "ChIJSyLEh9o260YROUxrdy6WMBY",
+        "description": "Anne Noortekeskus, Tartu, Eesti",
+        "address": "Uus 56",
+        "name": "Anne Noortekeskus"
+    },
+    "71": {
+        "uid": "ChIJzbqL8mGTkkYRiM3OuKeie-g",
+        "description": null,
+        "address": "Bastioni Aed",
+        "name": "Bastioni Aed"
+    },
+    "72": {
+        "uid": "ChIJHXwSIWKTkkYRMnI2AMfCc6M",
+        "description": null,
+        "address": "Vene tn 6",
+        "name": "Rahvaülikooli Teatrikeskuse III korrus"
+    },
+    "73": {
+        "uid": "ChIJHXwSIWKTkkYRMnI2AMfCc6M",
+        "description": null,
+        "address": "Vene tn 6",
+        "name": "Rahvaülikooli Teatrikeskuse III korrus"
+    },
+    "74": {
+        "uid": "ChIJHXwSIWKTkkYRMnI2AMfCc6M",
+        "description": null,
+        "address": "Vene tn 6",
+        "name": "Rahvaülikooli Teatrikeskuse III korrus"
+    },
+    "75": {
+        "uid": "ChIJp-Or-pyUkkYReEgcoHeTtgE",
+        "description": "Hirvepark, Wismari, Tallinn, Eesti",
+        "address": null,
+        "name": "Hirvepark"
+    },
+    "76": {
+        "uid": "ChIJp-Or-pyUkkYReEgcoHeTtgE",
+        "description": "Hirvepark, Wismari, Tallinn, Eesti",
+        "address": null,
+        "name": "Hirvepark"
+    },
+    "77": {
+        "uid": "ChIJp-Or-pyUkkYReEgcoHeTtgE",
+        "description": "Hirvepark, Wismari, Tallinn, Eesti",
+        "address": null,
+        "name": "Hirvepark"
+    },
+    "78": {
+        "uid": "EiBWYWJhZHVzZSB2w6RsamFrLCBUYWxsaW5uLCBFZXN0aSIuKiwKFAoSCZNRDXaelJJGEQMFc5vaaRBfEhQKEgm_FlbfmZSSRhFwYvwYbbMABA",
+        "description": "Vabaduse väljak, Tallinn, Eesti",
+        "address": "Vabaduse väljak",
+        "name": "Vabaduse väljak"
+    },
+    "79": {
+        "uid": "ChIJN_9zKCAR60YRnkKTqI72xF8",
+        "description": "Munamäe 8, Otepää, Valga maakond, Eesti",
+        "address": "Munamäe 8",
+        "name": "Kohvik L.U.M.I."
+    },
+    "80": {
+        "uid": "ChIJs_fX5hf97EYRc1VA3tMdmbY",
+        "description": "Rüütli 23, Pärnu, Pärnu maakond, Eesti",
+        "address": "Rüütli 23",
+        "name": "Rüütli 23 sisehoov"
+    },
+    "81": {
+        "uid": "ChIJXy0JAuQ260YRO2vGuEp4wjA",
+        "description": "Lutsu 2, Tartu, Eesti",
+        "address": "Lutsu 2",
+        "name": "Teatri Kodu hoov"
+    },
+    "82": {
+        "uid": "ChIJMS6fSuE260YRIbqzHXXQ--c",
+        "description": "Jakobi 1, Tartu, Eesti",
+        "address": "Jakobi 1",
+        "name": "TÜ vana kirik"
+    },
+    "83": {
+        "uid": "ChIJ1TqMn7g-60YRj3js0KVE-3c",
+        "description": "Luke mõis, Luke, Tartu maakond, Eesti",
+        "address": "Luke",
+        "name": "Luke mõis"
+    },
+    "84": {
+        "uid": "ChIJ1TqMn7g-60YRj3js0KVE-3c",
+        "description": "Luke mõis, Luke, Tartu maakond, Eesti",
+        "address": "Luke",
+        "name": "Luke mõis"
+    },
+    "85": {
+        "uid": "ChIJ1TqMn7g-60YRj3js0KVE-3c",
+        "description": "Luke mõis, Luke, Tartu maakond, Eesti",
+        "address": "Luke",
+        "name": "Luke mõis"
+    },
+    "86": {
+        "uid": "ChIJ-6iKQ-A260YRGCEKcgpdCP8",
+        "description": "Tiigi Seltsimaja, Tiigi, Tartu, Eesti",
+        "address": "Tiigi 11",
+        "name": "Tiigi Seltsimaja"
+    },
+    "87": {
+        "uid": "ChIJxQx5hZqY7EYR6KAvJvBsPoI",
+        "description": "Cheers, Lossi, Viljandi, Viljandi maakond, Eesti",
+        "address": "Lossi 15",
+        "name": "Cheers"
+    },
+    "88": {
+        "uid": "EiFLw7zDvG5pIHRlZSwgU2FhcmUgbWFha29uZCwgRWVzdGkiLiosChQKEgnzJPYO6HjyRhE4Vnn3T8SMhBIUChIJ8ydWE-5y8kYRwGD8GG2zAAM",
+        "description": "Küüni tee, Saare maakond, Eesti",
+        "address": "Küüni",
+        "name": "Küüni tänav"
+    },
+    "89": {
+        "uid": "ChIJP_1n02CTkkYRvRVAw940ZsA",
+        "description": "Rotermanni 5, Tallinn, Eesti",
+        "address": "Rotermanni 5",
+        "name": "TantsuGeen Tantsustuudio"
+    },
+    "90": {
+        "uid": "EjRWYWxnYS1Qw6RybnUgbWFhbnRlZSA2LCBUw7VydmEsIFZhbGdhIG1hYWtvbmQsIEVlc3Rp",
+        "description": "Valga-Pärnu maantee 6, Tõrva, Valga maakond, Eesti",
+        "address": "Valga mnt 6",
+        "name": "Tõrva Kinomaja"
+    },
+    "91": {
+        "uid": "ChIJczRNkBaVkkYRlcrMWA9oowg",
+        "description": "Nurme 40, Tallinn, Eesti",
+        "address": "Nurme 40",
+        "name": "Nõmme Noortemaja"
+    },
+    "92": {
+        "uid": "ChIJsSmlgXuTkkYRbuJaKHT4DSs",
+        "description": "Vana-Kalamaja 9a, Tallinn, Eesti",
+        "address": "Vana-Kalamaja 9A",
+        "name": "Teatribuduaar"
+    },
+    "93": {
+        "uid": "ChIJlRzyu2OTkkYRSDthEacIXTQ",
+        "description": "Vaimu 1, Tallinn, Eesti",
+        "address": "Vaimu 1",
+        "name": "Kultuuriklubi Kelm"
+    },
+    "94": {
+        "uid": "ChIJw5G_B56UkkYRBAKgQPGW_H8",
+        "description": "Vana-Posti 8, Tallinn, Eesti",
+        "address": "Vana-Posti 8",
+        "name": "NYC Piano Bar"
+    },
+    "95": {
+        "uid": "ChIJP3iEUgWVkkYR9hoTXaNvdwk",
+        "description": "Nõmme pubi, Tallinn, Eesti",
+        "address": "Jaama 2",
+        "name": "Nõmme Pubi"
+    },
+    "96": {
+        "uid": "ChIJ2XAXNJ6UkkYRXGzi568Gtm8",
+        "description": "Estonia puiestee 6, Tallinn, Eesti",
+        "address": "Estonia pst. 6",
+        "name": "Tallinna Reaalkooli black-box"
+    },
+    "97": {
+        "uid": "ChIJ2XAXNJ6UkkYRXGzi568Gtm8",
+        "description": "Estonia puiestee 6, Tallinn, Eesti",
+        "address": "Estonia pst. 6",
+        "name": "Tallinn Secondary Science School, black-box"
+    },
+    "98": {
+        "uid": "ChIJ9z1d1dg260YREG38GG2zAAQ",
+        "description": "Tartu, Eesti",
+        "address": "&nbsp;",
+        "name": "Tartu"
+    },
+    "99": {
+        "uid": "ChIJvxZW35mUkkYRcGL8GG2zAAQ",
+        "description": "Tallinn, Eesti",
+        "address": " ",
+        "name": " Tallinn"
+    },
+    "100": {
+        "uid": "ChIJc63I8uU260YRK6gRzLaJU2w",
+        "description": "Emajõe 1a, Tartu, Eesti",
+        "address": "Emajõe 1A",
+        "name": "Kikerkohvik"
+    },
+    "101": {
+        "uid": "ChIJ7z0a3ZE2k0YR7jmAI0CYLPQ",
+        "description": "Wabalinna maja, Tallinna, Paide, Järva maakond, Eesti",
+        "address": "Tallinna 11",
+        "name": "Wabalinna maja"
+    },
+    "102": {
+        "uid": "ChIJd-DH1hftkkYRiz3c8V_u0E8",
+        "description": "Tallinna teletorn, Tallinn, Eesti",
+        "address": "Kloostrimetsa tee 58 A",
+        "name": "Tallinna Teletorn"
+    },
+
+    "103": {
+        "uid": "ChIJ_SDB1hftkkYR_JStJRZBWGc",
+        "description": "Kloostrimetsa tee 58a, Tallinn, Eesti",
+        "address": "Kloostrimetsa tee 58a",
+        "name": "Brasserie restoran Teletorn"
+    },
+    "104": {
+        "uid": "ChIJJ71ZxYWUkkYRy-ez1-xZAdA",
+        "description": "Tulika põik 4, Tallinn, Eesti",
+        "address": "Tulika põik 4",
+        "name": "Improkliinik"
+    },
+    "105": {
+        "uid": "ChIJc9ebSgWVkkYRPbHUcFFQiyA",
+        "description": "Nõmme Kultuurikeskus, Tallinn, Eesti",
+        "address": "Turuplats 2",
+        "name": "Nõmme Kultuurikeskus"
+    },
+    "106": {
+        "uid": "ChIJ3eKTGWKTkkYRjcy8Os9R8_4",
+        "description": "Vanaturu kael 3, Tallinn, Eesti",
+        "address": "Vanaturu kael 3",
+        "name": " Hopneri maja Diele"
+    },
+    "107": {
+        "uid": "ChIJ3eKTGWKTkkYRjcy8Os9R8_4",
+        "description": "Vanaturu kael 3, Tallinn, Eesti",
+        "address": "Vanaturu kael 3",
+        "name": " Hopneri maja Diele"
+    },
+    "108": {
+        "uid": "ChIJUxlVFoWY7EYR-9yGB0gN6v0",
+        "description": "Wimka, Turu, Viljandi, Viljandi maakond, Eesti",
+        "address": "Turu 7",
+        "name": "Wimka"
+    },
+    "109": {
+        "uid": "ChIJ23gF9N0260YRH7Urxt8Ki1U",
+        "description": "Narva maantee 2, Tartu, Eesti",
+        "address": "Narva mnt 2",
+        "name": "Diamonds & Rust Cafe"
+    },
+    "110": {
+        "uid": "ChIJr9BFSWKTkkYRX4CMS-DkhVE",
+        "description": "Venemaa Föderatsiooni Suursaatkond, Pikk, Tallinn, Eesti",
+        "address": "Bolshaya Konyushennaya ul., 25",
+        "name": "Venemaa"
+    },
+    "111": {
+        "uid": "ChIJV6A1soKTkkYRJYIMwwqRzk0",
+        "description": "Tööstuse 48, Tallinn, Eesti",
+        "address": "Tööstuse 48",
+        "name": "Noblessneri sadama jahtklubi II korrusel"
+    },
+    "112": {
+        "uid": "ChIJe1Cp9p6UkkYRv9FvYhnOWRQ",
+        "description": "Gourmet Coffee City, Pärnu maantee, Tallinn, Eesti",
+        "address": "Pärnu mnt 15",
+        "name": "Gourmet Coffee City"
+    },
+    "113": {
+        "uid": "EhpLb21wYW5paSAzLzUsIFRhcnR1LCBFZXN0aSIwEi4KFAoSCa03tiHnNutGEf7Mpq-pDgm0EAMqFAoSCafKCCPnNutGEavjh06dAE3i",
+        "description": "Kompanii 3\/5, Tartu, Eesti",
+        "address": "Kompanii 3\/5",
+        "name": "Oskar Lutsu nimeline Linnaraamatukogu"
+    },
+    "114": {
+        "uid": "EhpLb21wYW5paSAzLzUsIFRhcnR1LCBFZXN0aSIwEi4KFAoSCa03tiHnNutGEf7Mpq-pDgm0EAMqFAoSCafKCCPnNutGEavjh06dAE3i",
+        "description": "Kompanii 3\/5, Tartu, Eesti",
+        "address": "Kompanii 3\/5",
+        "name": "Oskar Lutsu nimeline Linnaraamatukogu"
+    },
+    "115": {
+        "uid": "EhpLb21wYW5paSAzLzUsIFRhcnR1LCBFZXN0aSIwEi4KFAoSCa03tiHnNutGEf7Mpq-pDgm0EAMqFAoSCafKCCPnNutGEavjh06dAE3i",
+        "description": "Kompanii 3\/5, Tartu, Eesti",
+        "address": "Kompanii 3\/5",
+        "name": "Oskar Lutsu nimeline Linnaraamatukogu"
+    },
+    "116": {
+        "uid": "EhpLb21wYW5paSAzLzUsIFRhcnR1LCBFZXN0aSIwEi4KFAoSCa03tiHnNutGEf7Mpq-pDgm0EAMqFAoSCafKCCPnNutGEavjh06dAE3i",
+        "description": "Kompanii 3\/5, Tartu, Eesti",
+        "address": "Kompanii 3\/5",
+        "name": "Oskar Lutsu nimeline Linnaraamatukogu"
+    },
+    "117": {
+        "uid": "EhpLb21wYW5paSAzLzUsIFRhcnR1LCBFZXN0aSIwEi4KFAoSCa03tiHnNutGEf7Mpq-pDgm0EAMqFAoSCafKCCPnNutGEavjh06dAE3i",
+        "description": "Kompanii 3\/5, Tartu, Eesti",
+        "address": "Kompanii 3\/5",
+        "name": "Oskar Lutsu nimeline Linnaraamatukogu"
+    },
+    "118": {
+        "uid": "ChIJMRhtjFUzk0YREGb8GG2zAAQ",
+        "description": "Türi, Järva maakond, Eesti",
+        "address": null,
+        "name": "TÜ"
+    },
+    "119": {
+        "uid": "ChIJxV2rvhn97EYRcKznebuUDls",
+        "description": "Nikolai 27, Pärnu, Pärnu maakond, Eesti",
+        "address": "Nikolai 27",
+        "name": "Pärnu Kunstnike Maja hoov"
+    },
+    "120": {
+        "uid": "ChIJS4pp8H2TkkYRVom67hYG-Po",
+        "description": "Vaba Lava SA, Telliskivi, Tallinn, Eesti",
+        "address": "Telliskivi 60a, C1",
+        "name": "Vaba Lava"
+    },
+    "121": {
+        "uid": "ChIJQd96Qdw260YRl4lnbfbhvhs",
+        "description": "Sadamateater, Soola, Tartu, Eesti",
+        "address": "Soola 5b",
+        "name": "Sadamateater"
+    },
+    "122": {
+        "uid": "ChIJQd96Qdw260YRl4lnbfbhvhs",
+        "description": "Sadamateater, Soola, Tartu, Eesti",
+        "address": "Soola 5b",
+        "name": "Sadamateater"
+    },
+    "123": {
+        "uid": "ChIJcQh3wiU360YRkLT6vjxK1ms",
+        "description": "Karlova Teater, Tähe, Tartu, Eesti",
+        "address": "Tähe 66",
+        "name": "Karlova Teater"
+    },
+    "124": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60 A",
+        "name": "Vaba Lava  külgsaal Telliskivi Loomelinnakus"
+    },
+    "125": {
+        "uid": "ChIJBZo1pJ-UkkYRIzLAKwhLmrg",
+        "description": "Sakala 3, Tallinn, Eesti",
+        "address": "Sakala 3",
+        "name": "NO99 kammersaal"
+    },
+    "126": {
+        "uid": "ChIJ0VVW8J6UkkYRWFuU8qxx_sU",
+        "description": "Philly Joe's Jazz Club, Vabaduse väljak, Tallinn, Eesti",
+        "address": "Tatari 4",
+        "name": "Philly Joe's"
+    },
+    "127": {
+        "uid": "ChIJv2Y4XGCTkkYRsUAddqDnGRo",
+        "description": "Viru väljak 4, Tallinn, Eesti",
+        "address": "Viru väljak 4",
+        "name": "Viru Keskuse Cafe Lyon"
+    },
+    "128": {
+        "uid": "ChIJvztCf3uTkkYRGC_BAWg3Wu8",
+        "description": "Teoteater MTÜ, Tallinn, Eesti",
+        "address": "Vana-Kalamaja 9a",
+        "name": "Teoteater"
+    },
+    "129": {
+        "uid": "ChIJvztCf3uTkkYRGC_BAWg3Wu8",
+        "description": "Teoteater MTÜ, Tallinn, Eesti",
+        "address": "Vana-Kalamaja 9a",
+        "name": "Teoteater"
+    },
+    "130": {
+        "uid": "ChIJ64Yp0c8260YRcNMTn_yvSz0",
+        "description": "Sõpruse puiestee 2, Tartu, Eesti",
+        "address": "Sõpruse pst 2",
+        "name": "Sõpruse pst 2, ruum 224"
+    },
+    "131": {
+        "uid": "ChIJpV4cxpCUkkYRFIrdCSeUB50",
+        "description": "Uue Maailma Seltsimaja, Koidu, Tallinn, Eesti",
+        "address": "Jakobsoni 18",
+        "name": "Koidu Seltsimaja"
+    },
+    "132": {
+        "uid": "ChIJNedHAEiTkkYRT1q5MjAOFsI",
+        "description": "Restoran Ülo, Kopli, Tallinn, Eesti",
+        "address": "Kopli 25",
+        "name": "Kopli restoran"
+    },
+    "133": {
+        "uid": "ChIJlRzyu2OTkkYRSDthEacIXTQ",
+        "description": null,
+        "address": "Pikk 48\/Vaimu 1",
+        "name": "Õlleteek"
+    },
+    "134": {
+        "uid": "ChIJlRzyu2OTkkYRSDthEacIXTQ",
+        "description": null,
+        "address": "Pikk 48\/Vaimu 1",
+        "name": "Õlleteek"
+    },
+    "135": {
+        "uid": "ChIJlRzyu2OTkkYRSDthEacIXTQ",
+        "description": null,
+        "address": "Pikk 48\/Vaimu 1",
+        "name": "Õlleteek"
+    },
+    "136": {
+        "uid": "ChIJlRzyu2OTkkYRSDthEacIXTQ",
+        "description": null,
+        "address": "Pikk 48\/Vaimu 1",
+        "name": "Õlleteek"
+    },
+
+    "139": {
+        "uid": "ChIJS4pp8H2TkkYR98Gt5qZYA74",
+        "description": "Sõltumatu Tantsu Lava (STL), Telliskivi, Tallinn, Eesti",
+        "address": "Telliskivi 60a",
+        "name": "Sõltumatu Tantsu Lava"
+    },
+    "140": {
+        "uid": "ChIJO1OTc2OTkkYRYlQzk_pF5U8",
+        "description": "Köismäe torn, Laboratooriumi, Tallinn, Eesti",
+        "address": "Laboratooriumi 27",
+        "name": "Köismäe torn"
+    },
+    "141": {
+        "uid": "Ei5BbnRzbGEgbWFhbnRlZSA1LCBWYW5hLUFudHNsYSwgVsO1cnVtYWEsIEVlc3RpIjASLgoUChIJewDR8rwG60YRc5Eo3EGySfQQBSoUChIJ60b937sG60YRAu_AvaHV1GE",
+        "description": "Antsla maantee 5, Vana-Antsla, Võrumaa, Eesti",
+        "address": "Antsla 5",
+        "name": "Vana-Antsla Teatriait"
+    },
+    "142": {
+        "uid": "ChIJbeuONpWUkkYRVCHsSiMWS6I",
+        "description": "Ruutu10 Improstuudio, Kotka, Tallinn, Eesti",
+        "address": "Kotka 26a",
+        "name": "Ruutu10 Improstuudio"
+    },
+    "143": {
+        "uid": "ChIJfR0qSQWVkkYRHeX7LJJNeZ0",
+        "description": "Von Glehni Teater, Pärnu maantee, Tallinn, Eesti",
+        "address": "Pärnu mnt 326",
+        "name": "Von Glehni Teater"
+    },
+
+    "145": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": null,
+        "address": null,
+        "name": "Vaba Lava  väike saal"
+    },
+    "146": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60a",
+        "name": "Vaba Lava  väike saal"
+    },
+    "147": {
+        "uid": "EhtBa2FkZWVtaWEgNS0yLCBUYXJ0dSwgRWVzdGkiMBIuChQKEgkljhoJ4DbrRhG6dfqPP_ByGhAFKhQKEgl9AgYJ4DbrRhEH-n0j7ndGGg",
+        "description": "Akadeemia 5-2, Tartu, Eesti",
+        "address": "Akadeemia 5-2",
+        "name": "Ruutu10 Komöödiaklubi"
+    },
+    "148": {
+        "uid": "EhtBa2FkZWVtaWEgNS0yLCBUYXJ0dSwgRWVzdGkiMBIuChQKEgkljhoJ4DbrRhG6dfqPP_ByGhAFKhQKEgl9AgYJ4DbrRhEH-n0j7ndGGg",
+        "description": "Akadeemia 5-2, Tartu, Eesti",
+        "address": "Akadeemia 5-2",
+        "name": "Ruutu10 Komöödiaklubi"
+    },
+    "149": {
+        "uid": "EhtBa2FkZWVtaWEgNS0yLCBUYXJ0dSwgRWVzdGkiMBIuChQKEgkljhoJ4DbrRhG6dfqPP_ByGhAFKhQKEgl9AgYJ4DbrRhEH-n0j7ndGGg",
+        "description": "Akadeemia 5-2, Tartu, Eesti",
+        "address": "Akadeemia 5-2",
+        "name": "Ruutu10 Komöödiaklubi"
+    },
+    "150": {
+        "uid": "EhtBa2FkZWVtaWEgNS0yLCBUYXJ0dSwgRWVzdGkiMBIuChQKEgkljhoJ4DbrRhG6dfqPP_ByGhAFKhQKEgl9AgYJ4DbrRhEH-n0j7ndGGg",
+        "description": "Akadeemia 5-2, Tartu, Eesti",
+        "address": "Akadeemia 5-2",
+        "name": "Ruutu10 Komöödiaklubi"
+    },
+    "151": {
+        "uid": "ChIJ7TgYJTbSkkYRLyosorUoTw0",
+        "description": "Kultuuriklubi BAAS, Tallinna maantee, Rapla, Rapla maakond, Eesti",
+        "address": "Tallinna mnt 5",
+        "name": "Kultuuriklubi BAAS"
+    },
+    "152": {
+        "uid": "ChIJ6WDJwV6TkkYR7b1MU-sl_Ac",
+        "description": "Tallinna 21. Kool, Raua, Tallinn, Eesti",
+        "address": null,
+        "name": "Tallinna 21. kool"
+    },
+    "153": {
+        "uid": "ChIJ6WDJwV6TkkYR7b1MU-sl_Ac",
+        "description": "Tallinna 21. Kool, Raua, Tallinn, Eesti",
+        "address": null,
+        "name": "Tallinna 21. kool"
+    },
+    "154": {
+        "uid": "ChIJ6y8p6XmVkkYRPfZtbZ724Og",
+        "description": "Pääsküla Gümnaasium, Tallinn, Eesti",
+        "address": "Vikerkaare 10\/Põllu 109",
+        "name": "Pääsküla Gümnaasium"
+    },
+    "155": {
+        "uid": "ChIJZTg0ikmUkkYRmGge8X0ZUH0",
+        "description": "Õismäe tee 50, Tallinn, Eesti",
+        "address": "Õismäe tee 50",
+        "name": "Õismäe Keskkool"
+    },
+    "156": {
+        "uid": "ChIJ64weT_eUkkYRCvBSpINvn9Q",
+        "description": "Tallinna 32. Keskkool, Kiili, Tallinn, Eesti",
+        "address": "Mooni 100",
+        "name": "Tallinna 32. Keskkool"
+    },
+    "157": {
+        "uid": "ChIJbaUuXj397EYRie18fkJmO-U",
+        "description": "HOP õllekelder, Munga, Pärnu, Pärnu maakond, Eesti",
+        "address": "Munga 2",
+        "name": "HOP õllekelder"
+    },
+    "158": {
+        "uid": "ChIJI85H_Z2UkkYRZx02RG2bMqk",
+        "description": "Kino Sõprus, Vana-Posti, Tallinn, Eesti",
+        "address": "Vana-Posti 8",
+        "name": "Kino Sõprus"
+    },
+    "159": {
+        "uid": "ChIJYXW5jqCUkkYRUhQ25l3z9gk",
+        "description": "Maakri 25, Tallinn, Eesti",
+        "address": "Maakri 25",
+        "name": "Trattoria Massimo"
+    },
+    "160": {
+        "uid": "ChIJYXW5jqCUkkYRUhQ25l3z9gk",
+        "description": "Maakri 25, Tallinn, Eesti",
+        "address": "Maakri 25",
+        "name": "Trattoria Massimo"
+    },
+    "161": {
+        "uid": "EhtBa2FkZWVtaWEgNS0yLCBUYXJ0dSwgRWVzdGkiMBIuChQKEgkljhoJ4DbrRhG6dfqPP_ByGhAFKhQKEgl9AgYJ4DbrRhEH-n0j7ndGGg",
+        "description": "Akadeemia 5-2, Tartu, Eesti",
+        "address": "Akadeemia 5-2",
+        "name": "Tartu Komöödiaklubi"
+    },
+    "162": {
+        "uid": "ChIJCTO-756UkkYR2z1HiA0OL8g",
+        "description": "Pärnu maantee 19, Tallinn, Eesti",
+        "address": "Pärnu mnt 19",
+        "name": "FUBAR Rock Club"
+    },
+    "163": {
+        "uid": "ChIJCTO-756UkkYR2z1HiA0OL8g",
+        "description": "Pärnu maantee 19, Tallinn, Eesti",
+        "address": "Pärnu mnt 19",
+        "name": "FUBAR Rock Club"
+    },
+    "164": {
+        "uid": "ChIJbeuONpWUkkYRVCHsSiMWS6I",
+        "description": "Ruutu10 Improstuudio, Kotka, Tallinn, Eesti",
+        "address": "Kotka 26a",
+        "name": "Ruutu10 Improstuudio"
+    },
+    "165": {
+        "uid": "ChIJ91AOLAeVkkYRrGmWsX1hkaU",
+        "description": "SA TTÜ Tudengimaja, Ehitajate tee, Tallinn, Eesti",
+        "address": "Ehitajate tee 5",
+        "name": "TTÜ Tudengimaja"
+    },
+    "166": {
+        "uid": "ChIJbeuONpWUkkYRVCHsSiMWS6I",
+        "description": "Ruutu10 Improstuudio, Kotka, Tallinn, Eesti",
+        "address": "Kotka 26a",
+        "name": "Ruutu10 Improstuudio"
+    },
+    "167": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60A",
+        "name": "Vaba Lava väike saal"
+    },
+    "168": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60A",
+        "name": "Vaba Lava väike saal"
+    },
+    "169": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60A",
+        "name": "Vaba Lava väike saal"
+    },
+    "170": {
+        "uid": "ChIJS4pp8H2TkkYRDWuHdvdiSdc",
+        "description": "Telliskivi 60a, Tallinn, Eesti",
+        "address": "Telliskivi 60A",
+        "name": "Vaba Lava väike saal"
+    },
+    "171": {
+        "uid": "ChIJ2zFG9WGTkkYROQgYpfAD85c",
+        "description": "Restoran Oliver, Rataskaevu, Tallinn, Eesti",
+        "address": "Rataskaevu 22",
+        "name": "Restoran Oliver"
+    },
+    "172": {
+        "uid": "ChIJNSvgPGKTkkYRECDPjT4VPns",
+        "description": "Tudengimaja, Raekoja plats, Tallinn, Eesti",
+        "address": "Raekoja plats 16",
+        "name": "Tudengimaja"
+    },
+    "173": {
+        "uid": "ChIJMXuLrwCVkkYR4VElFLhl5po",
+        "description": "Ehitajate tee 5, Tallinn, Eesti",
+        "address": "Ehitajate tee 5",
+        "name": "TTÜ U01"
+    },
+    "174": {
+        "uid": "ChIJMXuLrwCVkkYR4VElFLhl5po",
+        "description": "Ehitajate tee 5, Tallinn, Eesti",
+        "address": "Ehitajate tee 5",
+        "name": "TTÜ U01"
+    },
+    "175": {
+        "uid": "ChIJg3AxcN_66kYRZHV5Gvbe_6c",
+        "description": "Katariina kirik, Jüri, Võru, Võru maakond, Eesti",
+        "address": "Vene 14a",
+        "name": "Katariina kirik"
+    },
+    "176": {
+        "uid": "ChIJcQh3wiU360YRkLT6vjxK1ms",
+        "description": "Karlova Teater, Tähe, Tartu, Eesti",
+        "address": "Tähe 66",
+        "name": "Karlova Teater"
+    },
+    "177": {
+        "uid": "ChIJWW2d4SE360YRWdLWMuWEfvk",
+        "description": "Erinevate Tubade Klubi, Kastani, Tartu, Eesti",
+        "address": "Kastani 42",
+        "name": "Tartu Erinevate Tubade Klubi"
+    },
+    "178": {
+        "uid": "ChIJkX3zxGCTkkYRdTSvJXc6unI",
+        "description": "TAO Keskus OÜ, Rotermanni, Tallinn, Eesti",
+        "address": "Rotermanni 2",
+        "name": "TAO Keskus"
+    },
+    "179": {
+        "uid": "ChIJkX3zxGCTkkYRdTSvJXc6unI",
+        "description": "TAO Keskus OÜ, Rotermanni, Tallinn, Eesti",
+        "address": "Rotermanni 2",
+        "name": "TAO Keskus"
+    },
+    "180": {
+        "uid": "ChIJkX3zxGCTkkYRdTSvJXc6unI",
+        "description": "TAO Keskus OÜ, Rotermanni, Tallinn, Eesti",
+        "address": "Rotermanni 2",
+        "name": "TAO Keskus"
+    },
+    "181": {
+        "uid": "ChIJkzsK8JuUkkYRgwGbk-mq7dk",
+        "description": "VAT Teater MTÜ, Tõnismägi, Tallinn, Eesti",
+        "address": "Tõnismägi 2",
+        "name": "VAT Teater"
+    },
+    "182": {
+        "uid": "ChIJn4Bcyhf97EYRmknynwCmR-c",
+        "description": "Kultuuriklubi Tempel, Akadeemia, Pärnu, Pärnu maakond, Eesti",
+        "address": "Akadeemia 7",
+        "name": "Kultuuriklubi Tempel"
+    },
+
+    "184": {
+        "uid": "ChIJLzzudeY260YR3qn6RGnslHU",
+        "description": "Tartu Ülikooli Botaanikaaed, Lai, Tartu, Eesti",
+        "address": "Lai 38",
+        "name": "Tartu botaanikaaed"
+    },
+    "185": {
+        "uid": "ChIJLzzudeY260YR3qn6RGnslHU",
+        "description": "Tartu Ülikooli Botaanikaaed, Lai, Tartu, Eesti",
+        "address": "Lai 38",
+        "name": "Tartu botaanikaaed"
+    },
+
+    "187": {
+        "uid": "ChIJvczym2GTkkYReRSuV8Q8ds0",
+        "description": "Kinomaja, Uus, Tallinn, Eesti",
+        "address": "Uus 3",
+        "name": "Kinomaja "
+    },
+    "188": {
+        "uid": "ChIJAahiwJeSkkYR76UcgU3bGx8",
+        "description": "Viimsi Lyon Cafe & Boulangerie, Paadi tee, Haabneeme, Harju maakond, Eesti",
+        "address": "Paadi tee 3",
+        "name": "Cafe Lyon Viimsi"
+    },
+    "189": {
+        "uid": "ChIJHXwSIWKTkkYRMnI2AMfCc6M",
+        "description": "Tallinna Rahvaülikool, Vene, Tallinn, Eesti",
+        "address": "Estonia pst 5a",
+        "name": "Tallinna Rahvaülikool"
+    },
+    "190": {
+        "uid": "ChIJhWO4leA260YRTlbgcwZ2MA4",
+        "description": "Barclay Hotell AS, Ülikooli, Tartu, Eesti",
+        "address": "Pikk 43\/Vaimu 1",
+        "name": "Tartu Bar"
+    },
+    "191": {
+        "uid": "ChIJY59eDoKUkkYRUKer3KY9438",
+        "description": "Kivi Paber Käärid, Telliskivi, Tallinn, Eesti",
+        "address": "Telliskivi 60a",
+        "name": "Kivi Paber Käärid"
+    },
+    "192": {
+        "uid": "ChIJY59eDoKUkkYRUKer3KY9438",
+        "description": "Kivi Paber Käärid, Telliskivi, Tallinn, Eesti",
+        "address": "Telliskivi 60a",
+        "name": "Kivi Paber Käärid"
+    },
+    "193": {
+        "uid": "ChIJY59eDoKUkkYRUKer3KY9438",
+        "description": "Kivi Paber Käärid, Telliskivi, Tallinn, Eesti",
+        "address": "Telliskivi 60a",
+        "name": "Kivi Paber Käärid"
+    },
+    "194": {
+        "uid": "ChIJY59eDoKUkkYRUKer3KY9438",
+        "description": "Kivi Paber Käärid, Telliskivi, Tallinn, Eesti",
+        "address": "Telliskivi 60a",
+        "name": "Kivi Paber Käärid"
+    },
+    "195": {
+        "uid": "ChIJmXFvQBKTkkYRc09QlQdy-xg",
+        "description": "Heldeke!, Tööstuse, Tallinn, Eesti",
+        "address": "Tööstuse 13",
+        "name": "Heldeke"
+    },
+    "196": {
+        "uid": "ChIJmXFvQBKTkkYRc09QlQdy-xg",
+        "description": "Heldeke!, Tööstuse, Tallinn, Eesti",
+        "address": "Tööstuse 13",
+        "name": "Heldeke"
+    }
+}

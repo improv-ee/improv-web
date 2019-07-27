@@ -1,6 +1,6 @@
 ## Privacy
 
-Effective date: Feb 08 2019
+Effective date: Jun 08 2019
 
 Improv.ee ("us", "we") operates this website (`improv.ee`).
 
@@ -35,6 +35,14 @@ Except in the case of malicious traffic, we will not share log data with any thi
 ### Analytics
 
 Our analytics software to help keep track of how many unique visitors we’re getting, where they come from, and how they navigate our site, unless you’re browsing with Do Not Track enabled. We use this information to inform site improvements. Google Universal Analytics is a service hosted on Google’s servers, and is our primary analytics tool. It is activated by a JavaScript snippet that loads on every page to send visitor behavioral information to Google. Improv.ee uses this information to understand how visitors use our site. Sometimes Improv.ee will run A/B tests, where Google Analytics will track cookies set on users to divide them into groups that get slightly different pages to see which perform better. Visitors who have Do Not Track enabled will not have any information sent to Google’s servers for use in analytics. We do our best to serve all content securely over HTTPS.
+
+### Third parties
+
+We use the following third parties:
+
+- [Google](https://policies.google.com/privacy) (Analytics, Maps, Places, Translate)
+- [Amazon](https://aws.amazon.com/privacy/) (Storage)
+- [DigitalOcean](https://www.digitalocean.com/legal/privacy-policy/) (Servers, Storage)
 
 ### Your rights
 

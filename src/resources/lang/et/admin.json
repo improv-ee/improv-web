@@ -33,7 +33,8 @@
       "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
       "description_description": "Ürituse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
       "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
-      "end_time_description": "Ürituse alguskuupäev- ja kella-aeg"
+      "end_time_description": "Ürituse alguskuupäev- ja kella-aeg",
+      "place_description":"Asukoht, kus üritus toimub"
     }
   },
   "organization": {

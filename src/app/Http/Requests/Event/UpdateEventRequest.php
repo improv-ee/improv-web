@@ -13,11 +13,12 @@ class UpdateEventRequest extends DeleteEventRequest
      */
     public function rules()
     {
-        return[
+        return [
             'times.start' => 'required|date',
             'times.end' => 'required|date|after:times.start',
-            'title'=>'max:255|nullable',
-            'description'=>'max:3000|nullable'
+            'title' => 'max:255|nullable',
+            'description' => 'max:3000|nullable',
+            'place.uid' => 'nullable|alpha_dash|max:64'
         ];
     }
 }

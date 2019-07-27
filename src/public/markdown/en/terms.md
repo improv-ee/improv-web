@@ -1,6 +1,6 @@
 ## Terms
 
-Effective date: Feb 24 2019
+Effective date: Jun 24 2019
 
 This site is brand new and we're not lawyers - so we don't yet have fancy legalese as our terms of service. Hence, we outline the below in laymans terms.
 
@@ -27,6 +27,11 @@ You agree to provide quality content that is relevant to the purpose of this sit
 ### Third party stuff
 
 We post links to external sites, but we are not responsible for what you find there. Click on your own risk.
+
+#### Google
+
+We use Google services such as Google Places Search or Google Translate. Using these services means that
+Google's [Terms of Service](https://policies.google.com/terms?hl=en) apply, in part, to you.
 
 ### Security research
 

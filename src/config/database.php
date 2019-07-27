@@ -54,11 +54,13 @@ return [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
+            'foreign_key_constraints' => true,
         ],
         'sqlite-file' => [
             'driver' => 'sqlite',
             'database' => storage_path('sqlite.db'),
             'prefix' => '',
+            'foreign_key_constraints' => true,
         ],
         'migration' => [
             'driver' => 'mysql',

@@ -37,7 +37,8 @@
       "start_time": "Start",
       "end_time": "End",
       "organizers": "Organizers",
-      "tags": "Tags"
+      "tags": "Tags",
+      "place":"Venue"
     }
   },
   "ui": {

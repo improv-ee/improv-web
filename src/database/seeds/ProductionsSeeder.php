@@ -2,6 +2,7 @@
 
 use App\Orm\Event;
 use App\Orm\Image;
+use App\Orm\Place;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,10 @@ class ProductionsSeeder extends Seeder
     public function run()
     {
         $importDb = DB::connection('migration');
-        $events = $importDb->table('wp_6_em_events')->select()->get();
+        $events = $importDb->table('wp_6_em_events')
+            ->where('event_status', '=', 1)
+            ->select()
+            ->get();
 
         $organizations = [
             21 => ['name' => 'Eesti Improteater'],
@@ -36,6 +40,8 @@ class ProductionsSeeder extends Seeder
             25 => ['name' => 'Improssiivne'],
             2 => ['default']
         ];
+
+        $locations = json_decode(file_get_contents(storage_path('locationMap.json')),true);
 
         foreach ($events as $em_event) {
 
@@ -56,6 +62,13 @@ class ProductionsSeeder extends Seeder
             $event->start_time = $start_time->setTimezone('UTC');
             $event->end_time = $end_time->setTimezone('UTC');
 
+
+            if ($em_event->location_id > 0) {
+              if (array_key_exists($em_event->location_id, $locations)) {
+                  $place =Place::firstOrCreate(['uid' => $locations[$em_event->location_id]['uid']]);
+                  $event->place_id = $place->id;
+              }
+            }
             $event->creator_id = 1;
             $event->save();
 
