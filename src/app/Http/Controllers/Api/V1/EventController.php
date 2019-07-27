@@ -101,6 +101,8 @@ class EventController extends Controller
 
         $event = new Event;
 
+        $this->setPlaceToEvent($request, $event);
+
         $event->start_time = new Carbon($request->input('times.start'));
         $event->end_time = new Carbon($request->input('times.end'));
         $event->production_id = $production->id;
@@ -108,6 +110,22 @@ class EventController extends Controller
         $event->save();
 
         return new EventResource($event);
+    }
+
+    /**
+     * @param UpdateEventRequest $request
+     * @param Event $event
+     * @return Event
+     */
+    private function setPlaceToEvent(UpdateEventRequest $request, Event $event): Event
+    {
+        if ($request->input('place.uid') !== null) {
+            $place = Place::firstOrCreate(['uid' => $request->input('place.uid')]);
+            $event->place_id = $place->id;
+        } else {
+            $event->place_id = null;
+        }
+        return $event;
     }
 
     /**
@@ -124,6 +142,7 @@ class EventController extends Controller
      * @param UpdateEventRequest $request
      * @return JsonResource
      * @authenticated
+     * @throws \Exception
      */
     public function update(Event $event, UpdateEventRequest $request): JsonResource
     {
@@ -133,12 +152,8 @@ class EventController extends Controller
         $event->title = $request->post('title');
         $event->description = $request->post('description');
 
-        if ($request->input('place.uid') !== null) {
-            $place = Place::firstOrCreate(['uid' => $request->input('place.uid')]);
-            $event->place_id = $place->id;
-        } else {
-            $event->place_id = null;
-        }
+        $this->setPlaceToEvent($request, $event);
+
         $event->save();
         return new EventResource($event);
     }

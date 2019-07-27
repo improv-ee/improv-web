@@ -66,7 +66,7 @@ class EventsTest extends ApiTestCase
                 ]
             ]]);
 
-        $this->assertFalse(stristr($response->getContent(),GooglePlaces::TEST_PLACE_NAME));
+        $this->assertFalse(stristr($response->getContent(), GooglePlaces::TEST_PLACE_NAME));
     }
 
     public function testEventScheduleIsReturned()
@@ -87,22 +87,32 @@ class EventsTest extends ApiTestCase
 
         $start = Carbon::now()->addHour();
         $end = Carbon::now()->addHours(2);
+        $placeUid='ChIJD7fiBh9u5kcRYJSMaMOCCwQ';
+
         $response = $this->post($this->getApiUrl() . '/events', [
             'times' => [
                 'start' => $start->toIso8601String(),
                 'end' => $end,
             ],
             'place' => [
-                'uid' => 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ'
+                'uid' => $placeUid
             ],
             'production' => ['uid' => $production->uid]
         ]);
 
+
         $response->assertStatus(201)
-            ->assertJson(['data' => ['times' => ['start' => $start->toIso8601String()],
+            ->assertJson(['data' => [
+                'times' => [
+                    'start' => $start->toIso8601String()
+                ],
+                'place' => [
+                    'uid' => $placeUid
+                ],
                 'production' => ['uid' => $production->uid]]]);
 
         $this->assertDatabaseHas('events', ['start_time' => $start]);
+        $this->assertDatabaseHas('places', ['uid' => $placeUid]);
     }
 
     public function testEventCanBeEdited()
@@ -127,6 +137,28 @@ class EventsTest extends ApiTestCase
             ->assertJson(['data' => ['times' => $eventInput['times']]]);
 
         $this->assertDatabaseHas('events', ['start_time' => '2018-09-13 16:00:00']);
+        $this->assertDatabaseHas('event_translations', ['title' => 'Batman', 'description' => 'Begins']);
+    }
+
+    public function testPlaceCanBeRemovedFromEvent()
+    {
+        $user = $this->actingAsOrganizationMember();
+        $event = factory(Event::class)->create();
+        $this->assignEventToUser($event, $user);
+
+        $eventInput = [
+            'times' => [
+                'start' => '2018-09-13T16:00:00+00:00',
+                'end' => '2018-09-13T17:00:00+00:00'
+            ],
+            'place' => null,
+            'title' => 'Batman',
+            'description' => 'Begins'];
+
+        $response = $this->put($this->getApiUrl() . '/events/' . $event->uid, $eventInput);
+        $response->assertStatus(200)
+            ->assertJson(['data' => ['place' => null]]);
+
         $this->assertDatabaseHas('event_translations', ['title' => 'Batman', 'description' => 'Begins']);
     }
 

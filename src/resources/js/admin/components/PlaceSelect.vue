@@ -51,8 +51,9 @@ export default {
         afterListTemplate: {
             type: String,
             default: '<img\n' +
-                '                src="/img/powered_by_google.png"\n' +
-                '                alt="Powered by Google">'
+                ' src="/img/powered_by_google.png"\n' +
+                ' class="p-2"' +
+                ' alt="Powered by Google">'
         },
     }
 
