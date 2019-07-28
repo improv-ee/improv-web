@@ -1,9 +1,9 @@
 # improv-web
 
-[![](https://img.shields.io/travis/improv-ee/improv-web.svg)](https://travis-ci.org/improvision-eu/improvision-web)
+[![](https://img.shields.io/travis/improv-ee/improv-web.svg)](https://travis-ci.org/improv-ee/improv-web)
 [![Maintainability](https://api.codeclimate.com/v1/badges/54f0ebd5a83319def11a/maintainability)](https://codeclimate.com/github/improv-ee/improv-web/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/54f0ebd5a83319def11a/test_coverage)](https://codeclimate.com/github/improv-ee/improv-web/test_coverage)
-[![](https://img.shields.io/docker/pulls/improv/improv-web.svg)](https://cloud.docker.com/u/improv/repository/registry-1.docker.io/improvision/improv-web)
+[![](https://img.shields.io/docker/pulls/improv/improv-web.svg)](https://cloud.docker.com/u/improv/repository/registry-1.docker.io/improv/improv-web)
 
 This is the source code for https://improv.ee, a website dedicated to listing information and events about improvised theatre.
 
