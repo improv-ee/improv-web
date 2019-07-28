@@ -17,7 +17,9 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('uid', 64);
+
+            // https://stackoverflow.com/questions/24430241/google-places-api-place-id-field-length
+            $table->string('uid', 255)->comment('Google Maps Places uid');
             $table->timestamps();
             $table->softDeletes();
 
