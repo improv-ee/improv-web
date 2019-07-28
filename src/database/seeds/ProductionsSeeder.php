@@ -43,6 +43,7 @@ class ProductionsSeeder extends Seeder
 
         $locations = json_decode(file_get_contents(storage_path('locationMap.json')),true);
 
+        $counter = 0;
         foreach ($events as $em_event) {
 
             $production = Production::whereTranslation('title', $em_event->event_name)->first();
@@ -76,6 +77,12 @@ class ProductionsSeeder extends Seeder
                 'oldId' => $em_event->event_slug,
                 'newId' => $event->uid
             ]);
+
+            if ($counter % 50 == 0) {
+                // Sleep for a bit to allow Google's rate limits to reset
+                sleep(101);
+            }
+            $counter++;
         }
 
 
