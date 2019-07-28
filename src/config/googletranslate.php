@@ -17,5 +17,5 @@ return [
     | https://github.com/JoggApp/laravel-google-translate/blob/master/google.md
     |-------------------------------------------------------------------------------
     */
-    'key_file_path' => storage_path('google-translate.key.json'),
+    'key_file_path' => env('GOOGLE_SERVICE_ACCOUNT_FILE', storage_path('google-serviceaccount.key.json')),
 ];
