@@ -7,8 +7,6 @@
 
 This is the source code for https://improv.ee, a website dedicated to listing information and events about improvised theatre.
 
-**It is very much in development stages.**
-
 
 ## Development
 
@@ -93,8 +91,7 @@ S3 buckets are used for data storage (ex: uploaded images). See `config/filesyst
 
 ### Google Cloud
 
-Google Translate is used for translating text - see `config/googletranslate.php` for more
-
+Google Translate is used for translating text and fetching Places information - see `config/googletranslate.php` for more
 
 
 ## Contributing
