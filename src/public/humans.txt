@@ -1,16 +1,9 @@
 /* TEAM */
 
 Ando Roots
-Site: https://sqroot.eu
-Twitter: @SQRooted
-Location: Tallinn, Estonia
-
 Eva Valdna
-Location: Tallinn, Estonia
-
 Rahel Otsa
-Site: https://rahelotsa.ee
-Location: Tallinn, Estonia
+Eveli Glinjanski
 
 /* THANKS */
 
@@ -19,4 +12,4 @@ Giulia De Benedetto - Logo (Noun project)
 /* SITE */
 Standards: HTML5, CSS3
 Components: Laravel, Bootstrap, Vue, Ansible, Terraform, Docker, PHP, Nginx, Apache
-Software: PhpStorm, Sublime Text, GitHub, DigitalOcean, Openshift 3
+Software: PhpStorm, Sublime Text, GitHub, DigitalOcean, AWS, Kubernetes, Docker
