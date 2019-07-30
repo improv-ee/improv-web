@@ -49,4 +49,4 @@ You can get banned from this site and/or your account terminated. This will usua
 
 ### Questions?
 
-You can get in touch with us by `ee.vorpmi@troppus`. If you don't agree with any of the terms here; or if you want to make us better, join us - Improv.ee is open source at GitHub. You can submit a pull request or otherwise help us out.
+You can get in touch with us by `support@improv.ee`. If you don't agree with any of the terms here; or if you want to make us better, join us - Improv.ee is open source at GitHub. You can submit a pull request or otherwise help us out.

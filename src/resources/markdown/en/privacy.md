@@ -61,4 +61,4 @@ We may update this policy from time to time without notifying you in advance. Th
 
 ### Questions?
 
-If you have any questions or feedback regarding this privacy policy, including if you feel Improv.ee or someone within the Improv.ee community has violated it, or if you are concerned about Improv.ee’s general philosophy toward user privacy, please contact us at `ee.vorpmi@troppus`.
+If you have any questions or feedback regarding this privacy policy, including if you feel Improv.ee or someone within the Improv.ee community has violated it, or if you are concerned about Improv.ee’s general philosophy toward user privacy, please contact us at `support@improv.ee`.
