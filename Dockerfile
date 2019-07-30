@@ -4,7 +4,8 @@ WORKDIR /var/www/
 
 RUN rm -rf /var/www/html /etc/apache2/conf-enabled/security.conf && \
     apt-get update && \
-    apt-get install -y libzip-dev libpng-dev jpegoptim optipng pngquant gifsicle mariadb-client libmagickwand-dev && \
+    apt-get install -y libzip-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev jpegoptim optipng pngquant gifsicle mariadb-client libmagickwand-dev && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd pdo_mysql zip exif && \
     pecl install imagick && \
     a2enmod rewrite remoteip headers && \

@@ -62,20 +62,6 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => true,
         ],
-        'migration' => [
-            'driver' => 'mysql',
-            'host' => env('MIGRATION_DB_HOST', 'import-db'),
-            'port' => env('MIGRATION_DB_PORT', '3306'),
-            'database' => env('MIGRATION_DB_DATABASE', 'improv_ee'),
-            'username' => env('MIGRATION_DB_USERNAME', 'improv_ee'),
-            'password' => env('MIGRATION_DB_PASSWORD', ''),
-            'unix_socket' => env('MIGRATION_DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'strict' => true,
-            'engine' => null,
-        ],
     ],
 
     /*

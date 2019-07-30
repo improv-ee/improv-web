@@ -14,7 +14,7 @@
       "email": "E-mail",
       "name": "Name",
       "avatar": "Avatar",
-      "settings": "profile settings",
+      "settings": "Profile settings",
       "api_tokens": "API keys",
       "invite": {
         "invite_new_user": "Invite new user",

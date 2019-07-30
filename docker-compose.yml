@@ -19,7 +19,6 @@ services:
     depends_on:
       - app-db
       - redis
-      - import-db
 
   worker:
     build:
@@ -80,21 +79,6 @@ services:
       - "6379:6379"
     command: --appendonly yes --requirepass C3azPJ6wk8wueiuDjM
 
-  import-db:
-    image: mariadb:10
-    environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_USER=improv_ee
-      - MYSQL_PASSWORD=FHoXB8ONj4bvTTn7FXaix
-      - MYSQL_DATABASE=improv_ee
-    networks:
-      - db
-    ports:
-      - 3307:3306
-    volumes:
-      - ./docker/import-db/export:/docker-entrypoint-initdb.d
-      - import-db:/var/lib/mysql
-
   mailserver:
     image: mailhog/mailhog
     ports:
@@ -103,7 +87,6 @@ services:
       - mail
 
 volumes:
-  import-db:
   app-db:
   redis:
 
