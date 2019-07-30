@@ -18,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $email
  * @property string $password
  */
-class User extends Authenticatable implements MustVerifyEmail, Auditable
+class User extends Authenticatable implements Auditable
 {
     use Notifiable, HasApiTokens, SoftDeletes, HasRoles,\OwenIt\Auditing\Auditable;
 
@@ -36,7 +36,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
+        'email_verified_at'
     ];
     /**
      * The attributes that should be hidden for arrays.
