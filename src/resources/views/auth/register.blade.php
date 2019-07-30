@@ -63,7 +63,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                           name="email" value="{{ old('email') }}" required>
+                                           name="email" value="{{ $invite->for }}" required>
                                     <small id="emailHelpBlock" class="form-text text-muted">
                                         {{  __('user.email_help') }}
                                     </small>

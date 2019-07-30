@@ -54,7 +54,10 @@ class RegisterController extends Controller
     public function showRegistrationForm(Request $request)
     {
 
-        return view('auth.register', ['invitationCode' => $request->get('code')]);
+        return view('auth.register', [
+            'invitationCode' => $request->get('code'),
+            'invite' => Invite::where('code', $request->get('code'))->first()
+        ]);
     }
 
     /**
