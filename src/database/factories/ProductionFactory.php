@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\App;
 
 $factory->define(Production::class, function (Faker $faker) {
     $user = User::inRandomOrder()->first();
+    if ($user === null) {
+        $user = factory(User::class)->create();
+    }
+
     return [
         'title' => $faker->sentence(3),
         'description' => $faker->sentence(100),
@@ -17,6 +21,9 @@ $factory->define(Production::class, function (Faker $faker) {
     ];
 })->afterCreating(Production::class, function (Production $production, Faker $faker) {
     $organization = Organization::inRandomOrder()->first();
+    if ($organization === null) {
+        $organization = factory(Organization::class)->create();
+    }
     $production->organizations()->attach($organization);
 
     // Use a dummy base64 picture for unit tests, but download a larger fancier picture for local dev env
