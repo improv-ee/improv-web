@@ -33,6 +33,10 @@ export class Organization {
         }
         let urlObject = new URL(url);
 
+        if (!urlObject.hostname) {
+            return url;
+        }
+
         return urlObject.hostname.replace(/^www\./, '') + urlObject.pathname;
     }
 
