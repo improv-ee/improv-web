@@ -122,6 +122,14 @@ export default {
         },
         onSubmit() {
             let self = this;
+
+            // Operating the date picker looses time zone information
+            // (moment instance is converted to string)
+            // Unless we handle it as a moment instance prior to submission,
+            // the times will be offset by current UTC offset amount of hours
+            self.form.times.start = moment(self.form.times.start);
+            self.form.times.end = moment(self.form.times.end);
+
             axios.put(config.apiUrl + '/events/' + this.$route.params.uid, this.form)
                 .then(function () {
 
