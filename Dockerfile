@@ -22,4 +22,9 @@ FROM base as dev
 
 COPY docker/lb/certs/ca.crt /usr/local/share/ca-certificates/
 
-RUN update-ca-certificates
+RUN update-ca-certificates && \
+    pecl install xdebug-2.7.0 && \
+    docker-php-ext-enable xdebug && \
+    echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.remote_host=xdebug_host" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/php.ini

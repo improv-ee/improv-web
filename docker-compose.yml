@@ -19,6 +19,10 @@ services:
     depends_on:
       - app-db
       - redis
+    extra_hosts:
+      # Map xdebug_host to your local dev machine IP
+      # This is only needed when using Xdebug
+      - "xdebug_host:192.168.10.13"
 
   worker:
     build:
