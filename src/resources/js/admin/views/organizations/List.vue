@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="loaded">
     <p>{{ $t('organization.list_intro') }}</p>
     <p class="text-right">
       <b-btn
@@ -63,6 +63,7 @@ export default {
         return {
             organizations: [],
             newOrganizationName: '',
+            loaded: false
         };
     },
     mounted() {
@@ -98,6 +99,7 @@ export default {
             axios.get(config.apiUrl + '/organizations', {params: {page: page, onlyMine: 1}})
                 .then(response => {
                     this.organizations = response.data.data;
+                    this.loaded = true;
                 });
         }
     }
