@@ -22,6 +22,8 @@ class OrganizationUser extends Pivot implements Auditable
         'updated_at'
     ];
 
+    public $incrementing = true;
+
     protected $table = 'organization_user';
 
     public function organization()

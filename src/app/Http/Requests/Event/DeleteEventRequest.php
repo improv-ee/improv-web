@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Event;
 
+use App\Orm\Event;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @property Event $event
+ */
 class DeleteEventRequest extends FormRequest
 {
     /**
