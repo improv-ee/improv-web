@@ -19,6 +19,7 @@ Route::middleware('auth:api')->group(function () {
         return $request->user();
     });
 
+    Route::get('/user/search', 'UserController@search');
     Route::post('/user/invite', 'UserController@invite');
 });
 

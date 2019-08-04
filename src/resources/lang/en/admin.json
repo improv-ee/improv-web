@@ -42,6 +42,7 @@
     "create_new": "New Organization",
     "members": "members",
     "add_member": "Add new member",
+    "add_member_help": "Want to add someone to the organization? Search for them by name and click Add.",
     "remove_member": "Remove from organization",
     "name_taken": "An Organization with this name already exists (you'll need to use a different name). If this organization belongs to you, talk to your group and ask whoever created the organization to add you as a member instead.",
     "you_dont_have_any": "You don't currently belong to any Organizations. You can either be invited to become a member of an existing Organization (talk to the Organization administrator); or create your own brand new Organization.",

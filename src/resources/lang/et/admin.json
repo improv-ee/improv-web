@@ -42,6 +42,7 @@
     "create_new": "Uus organisatsioon",
     "members": "Liikmed",
     "add_member": "Lisa uus liige",
+    "add_member_help": "Tahad kedagi organisatsiooni liikmeks lisada? Otsi nende kasutajat nime järgi ning vajuta Lisa.",
     "remove_member": "Eemalda organisatsioonist",
     "name_taken": "Selle nimega organisatsioon on juba loodud, palun vali teine nimi. Kui see organisatsioon kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
     "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",

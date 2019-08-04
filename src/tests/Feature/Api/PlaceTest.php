@@ -14,12 +14,13 @@ class PlaceTest extends ApiTestCase
 {
     use DatabaseMigrations;
 
+    const TEST_SESSION_ID = 'ab3bb390-abe8-11e9-a2a3-2a2ae2dbcce4';
 
     public function testPlaceSearchReturnsExpectedResults()
     {
         $this->actingAsLoggedInUser();
 
-        $response = $this->get($this->getApiUrl() . '/places/search?filter[name]=test&session=ab3bb390-abe8-11e9-a2a3-2a2ae2dbcce4');
+        $response = $this->get($this->getApiUrl() . '/places/search?filter[name]=test&session=' . self::TEST_SESSION_ID);
         $response->assertStatus(200)
             ->assertJson(['data' => [
                 [
@@ -34,8 +35,17 @@ class PlaceTest extends ApiTestCase
         $this->actingAsLoggedInUser();
 
         $query = Str::random(1000);
-        $response = $this->get($this->getApiUrl() . '/places/search?query=' . $query);
+        $response = $this->get($this->getApiUrl() . '/places/search?filter[name]=' . $query . '&session=' . self::TEST_SESSION_ID);
 
         $response->assertStatus(422);
+    }
+
+
+    public function testNotLoggedInUserIsNotAuthorized()
+    {
+
+        $response = $this->get($this->getApiUrl() . '/places/search?filter[name]=test&session=' . self::TEST_SESSION_ID);
+
+        $response->assertStatus(401);
     }
 }

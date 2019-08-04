@@ -25,24 +25,23 @@
       :organization-uid="this.$route.params.uid" />
 
 
+    <h2>{{ $t('organization.add_member') }}</h2>
+    <p>{{ $t('organization.add_member_help') }}</p>
     <b-form
       v-if="isAdmin"
-      inline
       @submit.prevent="addMember">
       <b-form-group
         id="newMember"
+        class="col-x2-5"
         label-for="newMemberUsername">
-        <b-form-input
-          id="newMemberUsername"
-          v-model="newMemberUsername"
-          type="text"
-          required
-          :placeholder="$t('user.username')" />
+        <user-select
+          v-model="newMember" />
       </b-form-group>
 
 
       <b-button
         type="submit"
+        :disabled="!newMember.username"
         variant="primary">
         {{ $t('organization.add_member') }}
       </b-button>
@@ -54,16 +53,18 @@
 
 import MemberTable from '../../components/organizations/MemberTable';
 import VueMarkdown from 'vue-markdown';
+import UserSelect from '../../components/UserSelect';
 
 export default {
     components: {
         MemberTable,
-        VueMarkdown
+        VueMarkdown,
+        UserSelect
     },
     data() {
         return {
             organization: {},
-            newMemberUsername: null
+            newMember: {}
         };
     },
     computed: {
@@ -83,7 +84,7 @@ export default {
     methods: {
         addMember() {
             let self = this;
-            axios.post(`${config.apiUrl}/organizations/${ this.$route.params.uid }/membership`, {username: this.newMemberUsername})
+            axios.post(`${config.apiUrl}/organizations/${ this.$route.params.uid }/membership`, {username: this.newMember.username})
                 .then(function () {
                     self.loadOrganization();
                 }).catch(function (error) {
