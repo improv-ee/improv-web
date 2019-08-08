@@ -10,7 +10,7 @@
     "meta_description": "improv.ee koondab impro-ürituste mängukava ning infot improteatri kohta"
   },
   "nav": {
-    "organizations": "Tegijad",
+    "organizations": "Trupid",
     "productions": "Produktsioonid",
     "contact": "Kontakt",
     "terms": "Tingimused",
@@ -27,7 +27,8 @@
     "attr": {
       "email": "E-mail",
       "homepage_url": "Koduleht",
-      "facebook_url": "Facebook leht"
+      "facebook_url": "Facebook leht",
+      "name": "Nimi"
     }
   },
   "event": {

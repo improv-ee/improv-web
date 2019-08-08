@@ -37,7 +37,7 @@ export class Organization {
             return url;
         }
 
-        return urlObject.hostname.replace(/^www\./, '') + urlObject.pathname;
+        return urlObject.hostname.replace(/^www\./, '');
     }
 
     getFacebookUrl(pretty = false) {

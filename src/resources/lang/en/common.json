@@ -27,7 +27,8 @@
     "attr": {
       "email": "E-mail",
       "homepage_url": "Webpage",
-      "facebook_url": "Facebook page"
+      "facebook_url": "Facebook page",
+      "name": "Name"
     }
   },
   "event": {

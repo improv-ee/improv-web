@@ -1,13 +1,36 @@
 <template>
-  <b-card
-    text-variant="white"
-    overlay
-    :img-src="getCardImage(organization)"
-    :img-alt="organization.name"
-    @click="goToOrg(organization)" />
+  <div>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <img
+          :src="getCardImage(organization)"
+          class="rounded mx-auto d-block img-fluid"
+          :alt="organization.name"
+          @click="goToOrg(organization)">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-3 offset-lg-3">
+        <p>
+          <strong>{{ $t('organization.attr.name') }}:</strong>
+          <router-link :to="{name: 'organization.details', params: {uid: organization.uid}}">
+            {{ organization.name }}
+          </router-link>
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <p>
+          <strong> {{ $t('organization.attr.homepage_url') }}</strong>: <a
+            :href="organizationModel.getHomepageUrl()"
+            target="_blank">{{ organizationModel.getHomepageUrl(true) }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { Organization } from '../../models/organization';
 export default {
     props: {
         organization: {
@@ -16,6 +39,14 @@ export default {
                 return {};
             }
         }
+    },
+    data() {
+        return {
+            organizationModel: null
+        };
+    },
+    mounted() {
+        this.organizationModel = new Organization(this.organization);
     },
     methods: {
 
@@ -33,13 +64,12 @@ export default {
 </script>
 
 <style scoped>
-  .card-img {
-    max-height: 20rem;
+  img {
+    max-height: 15em;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: .5em;
   }
 
-  .card {
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    cursor: pointer;
-  }
+
 </style>

@@ -91,7 +91,9 @@ S3 buckets are used for data storage (ex: uploaded images). See `config/filesyst
 
 ### Google Cloud
 
-Google Translate is used for translating text and fetching Places information - see `config/googletranslate.php` for more
+Google Translate is used for translating text - see `config/googletranslate.php` for more.
+
+Google Places is used for fetching Place information.
 
 
 ## Contributing
