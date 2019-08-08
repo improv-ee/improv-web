@@ -19,7 +19,7 @@
 
       <div v-if="productions.data && productions.data.length">
         <div class="table-responsive">
-          <table class="table table-hover table-clickable">
+          <table class="table table-sm table-hover table-clickable">
             <thead class="thead-light">
               <tr>
                 <th>{{ $t("production.attr.title") }}</th>
@@ -61,9 +61,12 @@ export default {
     methods: {
 
         getResults(page = 1) {
+            this.$Progress.start();
             axios.get(config.apiUrl + '/productions?onlyMine=true', {params: {page: page}})
                 .then(response => {
                     this.productions = response.data;
+                    this.loaded = true;
+                    this.$Progress.finish();
                 });
         },
 
@@ -71,7 +74,6 @@ export default {
             axios.get(config.apiUrl + '/organizations?onlyMine=true')
                 .then(response => {
                     this.organizations = response.data.data;
-                    this.loaded = true;
                 });
         }
     }
