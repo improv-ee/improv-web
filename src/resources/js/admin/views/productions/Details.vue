@@ -21,11 +21,13 @@
     <h2>{{ $t('production.events') }}</h2>
 
     <div class="table-responsive">
-      <table class="table table-clickable">
+      <table class="table table-sm table-bordered table-clickable">
         <thead class="thead-light">
           <tr>
             <th>{{ $t('production.attr.title') }}</th>
             <th>{{ $t('event.attr.start_time') }}</th>
+            <th>{{ $t('event.attr.end_time') }}</th>
+            <th>{{ $t('event.attr.place') }}</th>
           </tr>
         </thead>
         <tbody
@@ -36,6 +38,8 @@
             @click="openEvent(event.uid)">
             <td>{{ event.title || production.title }}</td>
             <td>{{ formatTime(event.times.start) }}</td>
+            <td>{{ formatTime(event.times.end) }}</td>
+            <td><span v-if="event.place">{{ event.place.name }}</span></td>
           </tr>
         </tbody>
         <tbody v-else>
@@ -47,7 +51,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2">
+            <td colspan="4">
               <b-button
                 variant="primary"
                 @click="addEvent">

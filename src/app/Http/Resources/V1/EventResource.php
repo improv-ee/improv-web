@@ -33,7 +33,7 @@ class EventResource extends JsonResource
         $place = $this->place;
         $placeResource = null;
         if ($place !== null) {
-            $placeResource = Cache::remember('PlaceResource:' . $this->place->uid, 86400, function () use ($place) {
+            $placeResource = Cache::remember('PlaceResource:' . $this->place->uid, 604800, function () use ($place) {
                 return new PlaceResource($place);
             });
         }
