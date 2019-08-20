@@ -43,7 +43,8 @@ class EventResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'production' => [
-                'uid' => $this->production->uid
+                'uid' => $this->production->uid,
+                'title' => $this->production->title
             ],
             'times' => [
                 'start' => $this->start_time->toIso8601String(),

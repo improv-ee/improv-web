@@ -1,5 +1,8 @@
 <template>
   <div v-if="event.uid">
+    <b-breadcrumb
+      v-if="breadcrumbs"
+      :items="breadcrumbs" />
     <crud-toolbar
       resource-name="events"
       :resource-id="$route.params.uid"
@@ -38,10 +41,10 @@
       </div>
       <div class="col-lg-3 col-object-meta" />
     </div>
-
-
-
-    <p>{{ event.description }}</p>
+    <p
+      v-if="event.description">
+      {{ event.description }}
+    </p>
   </div>
 </template>
 
@@ -50,6 +53,7 @@ export default {
     data() {
         return {
             event: {},
+            breadcrumbs: []
         };
     },
     computed: {
@@ -64,7 +68,23 @@ export default {
         axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
             .then(response => {
                 this.event = response.data.data;
+
+                this.breadcrumbs = [
+                    {
+                        text: this.$t('nav.productions'),
+                        to: { name: 'productions' }
+                    },
+                    {
+                        text: this.event.production.title,
+                        to: { name: 'production.details', params: {uid: this.event.production.uid } }
+                    },
+                    {
+                        text: this.startTime,
+                        to: { name: 'event.details', params: {uid: this.event.uid} }
+                    },
+                ];
             });
+
     }
 };
 </script>

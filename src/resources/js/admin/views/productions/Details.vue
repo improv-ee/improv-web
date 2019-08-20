@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-breadcrumb
+            v-if="breadcrumbs"
+            :items="breadcrumbs" />
     <crud-toolbar
       resource-name="productions"
       :resource-id="this.$route.params.uid" />
@@ -76,6 +79,7 @@ export default {
     data() {
         return {
             production: new Production(),
+            breadcrumbs: []
         };
     },
     mounted() {
@@ -83,6 +87,17 @@ export default {
         axios.get(config.apiUrl + '/productions/' + this.$route.params.uid)
             .then(response => {
                 self.production = new Production(response.data.data);
+
+                this.breadcrumbs = [
+                    {
+                        text: this.$t('nav.productions'),
+                        to: { name: 'productions' }
+                    },
+                    {
+                        text: this.production.getTitle(),
+                        to: { name: 'production.details', params: {uid: this.production.getUid() } }
+                    }
+                ];
             });
     },
     methods: {

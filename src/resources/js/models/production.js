@@ -4,6 +4,9 @@ export class Production {
         this.production = production;
     }
 
+    getUid() {
+        return _.get(this.production, 'uid', null);
+    }
     getTitle() {
         return _.get(this.production, 'title', null);
     }
