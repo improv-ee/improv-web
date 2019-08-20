@@ -144,11 +144,22 @@ export default {
         limitText(count) {
             return this.$t('ui.search.and_number_others', {number: count});
         },
+        shouldLoadResults(query) {
 
+            // Load queries from the remote if it's initial page load
+            // and prefetching is enabled
+            if (this.prefetchResults && this.selectableOptions.length === 0) {
+                return true;
+            }
+
+            // Results should only be loaded from the remote source
+            // if the query has been entered and is of sensible length
+            return query !== '' && query.length >= 3 && query.length < 64;
+        },
         asyncFind: lodash.debounce(function (query) {
 
             // Avoid spamming the backend with queries that make no sense
-            if (query === '' || query.length < 3 || query.length > 64) {
+            if (!this.shouldLoadResults(query)) {
                 return;
             }
 
