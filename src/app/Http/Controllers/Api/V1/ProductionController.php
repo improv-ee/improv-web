@@ -58,7 +58,7 @@ class ProductionController extends Controller
             $query->belongingToUser(Auth::user());
         }
 
-        $productions = $query->paginate(30);
+        $productions = $query->paginate(15);
 
         return ProductionResource::collection($productions);
     }
