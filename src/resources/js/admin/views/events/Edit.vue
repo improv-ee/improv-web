@@ -1,8 +1,8 @@
 <template>
   <div>
     <b-breadcrumb
-            v-if="breadcrumbs"
-            :items="breadcrumbs" />
+      v-if="breadcrumbs"
+      :items="breadcrumbs" />
     <event-form :event="event" />
   </div>
 </template>

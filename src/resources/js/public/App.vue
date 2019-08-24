@@ -27,9 +27,20 @@
             :to="{ name: 'organizations' }">
             {{ $t("nav.organizations") }}
           </b-nav-item>
-          <b-nav-item href="https://pooltund.improv.ee">
-            {{ $t("nav.podcast") }}
-          </b-nav-item>
+          <b-nav-item-dropdown
+            v-if="countryLinks.hasOwnProperty(currentLanguage)"
+            :text="$t('nav.local_improv')">
+            <b-dropdown-item
+              v-for="item in countryLinks[currentLanguage]"
+              :key="item.link"
+              :target="item.target || '_self'"
+              :href="item.link">
+              <i
+                v-if="item.icon"
+                :class="item.icon" />
+              {{ item.text }}
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
           <b-nav-item-dropdown
             :text="$t('nav.about_improv')">
             <b-dropdown-item
@@ -56,6 +67,7 @@
 import BottomNav from '../components/BottomNav';
 import { progress } from '../mixins/progress';
 import NavLanguageSwitcher from '../components/NavLanguageSwitcher';
+import countryLinks from './country-links';
 
 export default {
     components: {
@@ -63,6 +75,16 @@ export default {
         NavLanguageSwitcher
     },
     mixins: [progress],
+    data() {
+        return {
+            countryLinks: countryLinks
+        };
+    },
+    computed: {
+        currentLanguage: function () {
+            return window.config.languages.current;
+        }
+    },
     metaInfo: {
         titleTemplate: '%s - Improv.ee'
     }

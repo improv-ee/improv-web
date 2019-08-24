@@ -1,8 +1,8 @@
 <template>
   <div>
     <b-breadcrumb
-            v-if="breadcrumbs"
-            :items="breadcrumbs" />
+      v-if="breadcrumbs"
+      :items="breadcrumbs" />
     <crud-toolbar
       resource-name="productions"
       :resource-id="this.$route.params.uid" />

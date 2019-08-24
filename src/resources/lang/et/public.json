@@ -1,11 +1,11 @@
 {
   "nav": {
     "schedule": "Mängukava",
-    "podcast": "Raadiosaade",
     "home": "Avaleht",
     "about_improv": "Improvisatsioon",
     "what_is_improv":"Mis on improviseeritud teater?",
-    "improv_history": "Impro ajalugu"
+    "improv_history": "Impro ajalugu",
+    "local_improv": "Impro Eestis"
   },
   "production": {
     "attr": {

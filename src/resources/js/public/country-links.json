@@ -1,0 +1,16 @@
+{
+  "et": [
+    {
+      "text": "Eesti Improtajad",
+      "icon": "fab fa-facebook",
+      "link": "https://www.facebook.com/groups/eesti.improtajad",
+      "target": "_blank"
+    },
+    {
+      "text": "Impropooltund",
+      "icon": "fas fa-microphone",
+      "link": "https://pooltund.improv.ee",
+      "target": "_blank"
+    }
+  ]
+}

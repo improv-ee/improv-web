@@ -16,9 +16,9 @@ import VueProgressBar from 'vue-progressbar';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {faCalendar, faAddressCard, faTimesCircle, faEnvelopeOpen} from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight, faMapMarkerAlt, faExternalLinkAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faMapMarkerAlt, faExternalLinkAlt, faMicrophone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook  } from '@fortawesome/free-brands-svg-icons';
-library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle, faFacebook, faMapMarkerAlt, faEnvelopeOpen,faExternalLinkAlt);
+library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle, faFacebook, faMicrophone, faMapMarkerAlt, faEnvelopeOpen,faExternalLinkAlt);
 dom.watch();
 
 Vue.use(VueRouter);

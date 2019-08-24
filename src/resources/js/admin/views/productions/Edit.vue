@@ -1,12 +1,12 @@
 <template>
   <div>
     <b-breadcrumb
-            v-if="breadcrumbs"
-            :items="breadcrumbs" />
+      v-if="breadcrumbs"
+      :items="breadcrumbs" />
     <production-form
-            v-if="production"
-            :production="production"
-            mode="edit" />
+      v-if="production"
+      :production="production"
+      mode="edit" />
   </div>
 </template>
 
