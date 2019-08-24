@@ -28,3 +28,19 @@ body {
     text-align: center;
   }
 }
+
+.impro-10 {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .impro-10 {
+    display: block;
+    transform: rotate(319deg);
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    left: -60px;
+    top: -40px;
+  }
+}
