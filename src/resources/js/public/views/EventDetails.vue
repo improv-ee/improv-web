@@ -15,14 +15,14 @@
         <p>
           <span class="meta-label">
             <i class="far fa-calendar" /> {{ $t('event.attr.start_time') }}</span><br>
-          <span class="meta-value">{{ startTime }}</span>
+          <span class="meta-value">{{ event.getStartTimeHuman() }}</span>
         </p>
       </div>
       <div class="col-lg-3 col-object-meta">
         <p>
           <span class="meta-label">
             <i class="far fa-calendar" /> {{ $t('event.attr.end_time') }}</span><br>
-          <span class="meta-value">{{ endTime }}</span>
+          <span class="meta-value">{{ event.getEndTimeHuman() }}</span>
         </p>
       </div>
       <div class="col-lg-3 col-object-meta">
@@ -32,7 +32,7 @@
           <span class="meta-value">
             <ul class="list-inline">
               <li
-                v-for="organization in production.organizations"
+                v-for="organization in production.getOrganizations()"
                 :key="organization.uid">
                 <router-link :to="{name: 'organization.details', params: {uid: organization.uid}}">{{ organization.name }}</router-link>
               </li>
@@ -42,14 +42,14 @@
       </div>
       <div class="col-lg-3 col-object-meta">
         <p
-          v-if="event.place">
+          v-if="event.hasPlace()">
           <span class="meta-label">
             <i class="fas fa-map-marker-alt" /> {{ $t('event.attr.place') }}</span><br>
           <span class="meta-value">
             <a
-              :href="event.place.url"
-              :title="event.place.address"
-              target="_blank">{{ event.place.name }}</a>
+              :href="event.getPlace().url"
+              :title="event.getPlace().address"
+              target="_blank">{{ event.getPlace().name }}</a>
           </span>
         </p>
       </div>
@@ -78,19 +78,11 @@ export default {
             production: new Production()
         };
     },
-    computed: {
-        startTime: function () {
-            return moment(this.event.times.start).format('Do MMMM HH:mm');
-        },
-        endTime: function () {
-            return moment(this.event.times.end).format('HH:mm');
-        }
-    },
     created() {
         axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
             .then(response => {
                 this.event = new Event(response.data.data);
-                this.loadProduction(this.event.production.uid);
+                this.loadProduction(this.event.getProductionUid());
             });
     },
     methods: {
@@ -101,16 +93,6 @@ export default {
                     this.event.setProduction(this.production);
                 });
         }
-    },
-    metaInfo () {
-        return {
-            title: this.title,
-            meta: [
-                {property: 'og:image', content: this.event.getHeaderImgUrl()},
-                {property: 'og:description', content: this.event.getDescription()},
-                {property: 'og:title', content: this.title + ' - ' + this.$t('app.name')},
-            ]
-        };
     }
 };
 </script>

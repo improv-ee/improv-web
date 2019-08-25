@@ -30,6 +30,10 @@ export class Production {
         return _.get(this.production, 'excerpt', null);
     }
 
+    getOrganizations() {
+        return this.production.organizations;
+    }
+
     hasEvents() {
         return this.production.hasOwnProperty('events') && this.production.events.length > 0;
     }
