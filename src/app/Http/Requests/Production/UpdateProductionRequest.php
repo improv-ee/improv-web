@@ -25,7 +25,7 @@ class UpdateProductionRequest extends DeleteProductionRequest
         return [
             'excerpt' => 'max:300|nullable',
             'title' => 'max:255|required|min:3',
-            'description' => 'max:3000|nullable',
+            'description' => 'max:5000|nullable',
             'organizations' => ['required', 'array', 'exists:organizations,uid', new ContainsMyOrganization],
             'tags' => ['nullable', 'array', new TagExists(Tag::TYPE_PRODUCTION)],
             'images.header.content' => ['nullable', new Base64HeaderImage]
