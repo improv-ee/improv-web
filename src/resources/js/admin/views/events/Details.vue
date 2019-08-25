@@ -41,15 +41,22 @@
       </div>
       <div class="col-lg-3 col-object-meta" />
     </div>
-    <p
-      v-if="event.description">
-      {{ event.description }}
-    </p>
+    <div class="row">
+      <div class="col-lg-12">
+        <vue-markdown
+          v-if="event.description"
+          :source="event.description" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown';
 export default {
+    components: {
+        VueMarkdown
+    },
     data() {
         return {
             event: {},
