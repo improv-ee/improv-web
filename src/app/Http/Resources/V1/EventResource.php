@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Image\HeaderImageResource;
 use App\Orm\Place;
 use App\Orm\Production;
 use Carbon\Carbon;
@@ -54,7 +55,8 @@ class EventResource extends JsonResource
             'links' => [
                 'self' => route('api.events.show', ['uid' => $this->uid]),
                 'production' => route('api.productions.show', ['id' => $this->production->uid])
-            ]
+            ],
+            'images'=> new HeaderImageResource($this)
         ];
     }
 }

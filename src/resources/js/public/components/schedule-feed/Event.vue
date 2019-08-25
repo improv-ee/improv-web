@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'events', params: { uid: event.uid }}">
         <img
           class="card-img-top flex-auto"
-          :src="header_img(event.production.images)"
+          :src="header_img(event.production.images, event.images)"
           :alt="event.production.uid">
         <div class="mask rgba-white-slight" />
       </router-link>
@@ -91,8 +91,11 @@ export default {
         }
     },
     methods: {
-        header_img(images) {
-            return images.header ? images.header.urls.original : '/img/production/default-header.jpg';
+        header_img(productionImages, eventImages) {
+            if (eventImages.header && eventImages.header.urls && eventImages.header.urls.original) {
+                return eventImages.header.urls.original;
+            }
+            return productionImages.header ? productionImages.header.urls.original : '/img/production/default-header.jpg';
         }
     }
 };

@@ -29,6 +29,9 @@
     }
   },
   "event": {
+    "img": {
+      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge. Kui see pildi väli on tühi, kasutatakse Produktsioonile seatud pilti."
+    },
     "attr": {
       "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
       "description_description": "Ürituse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",

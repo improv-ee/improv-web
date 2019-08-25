@@ -1,13 +1,13 @@
 <template>
   <div
-    v-if="production.uid && event.uid"
+    v-if="production.getUid() && event.getUid()"
     class="event-details">
     <div class="row">
       <div class="col-md-12 col-lg-12">
         <img
           class="img-fluid header-img"
-          :src="header_img"
-          :alt="event.production.uid">
+          :src="event.getHeaderImgUrl()"
+          :alt="event.production.getUid()">
       </div>
     </div>
     <div class="row">
@@ -57,8 +57,8 @@
 
     <div class="row">
       <div class="col-md-12 col-lg-12">
-        <h1>{{ title }}</h1>
-        <vue-markdown :source="description" />
+        <h1>{{ event.getTitle() }}</h1>
+        <vue-markdown :source="event.getDescription()" />
       </div>
     </div>
   </div>
@@ -66,33 +66,19 @@
 
 <script>
 import VueMarkdown from 'vue-markdown';
-
+import {Event} from '../../models/event';
+import {Production} from '../../models/production';
 export default {
     components: {
         VueMarkdown
     },
     data() {
         return {
-            event: {},
-            production: {}
+            event: new Event(),
+            production: new Production()
         };
     },
     computed: {
-        title: function(){
-            if (this.event.title !== null){
-                return this.event.title;
-            }
-            return this.production.title;
-        },
-        description: function(){
-            if (this.event.description !== null){
-                return this.event.description;
-            }
-            return this.production.description;
-        },
-        header_img() {
-            return this.production.images && this.production.images.header && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
-        },
         startTime: function () {
             return moment(this.event.times.start).format('Do MMMM HH:mm');
         },
@@ -103,7 +89,7 @@ export default {
     created() {
         axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
             .then(response => {
-                this.event = response.data.data;
+                this.event = new Event(response.data.data);
                 this.loadProduction(this.event.production.uid);
             });
     },
@@ -111,7 +97,8 @@ export default {
         loadProduction: function (uid) {
             axios.get(config.apiUrl + '/productions/' + uid)
                 .then(response => {
-                    this.production = response.data.data;
+                    this.production = new Production(response.data.data);
+                    this.event.setProduction(this.production);
                 });
         }
     },
@@ -119,8 +106,8 @@ export default {
         return {
             title: this.title,
             meta: [
-                {property: 'og:image', content: this.header_img},
-                {property: 'og:description', content: this.description},
+                {property: 'og:image', content: this.event.getHeaderImgUrl()},
+                {property: 'og:description', content: this.event.getDescription()},
                 {property: 'og:title', content: this.title + ' - ' + this.$t('app.name')},
             ]
         };

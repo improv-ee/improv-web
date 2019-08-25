@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * @property string $title
@@ -16,12 +18,13 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
  * @property Carbon $start_time
  * @property Carbon $end_time
  * @property int $place_id
+ * @property int $production_id
  * @property Place $place
  * @property Production $production
  */
-class Event extends Model implements AuditableInterface
+class Event extends Model implements AuditableInterface, HasMedia
 {
-    use Translatable, DirapeToken, SoftDeletes, Auditable;
+    use Translatable, DirapeToken, SoftDeletes, Auditable, HasMediaTrait;
 
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];

@@ -9,6 +9,7 @@ use App\Orm\Production;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\UploadedFile;
 use Tests\Mocks\Vendor\Skagarwal\GooglePlacesApi\GooglePlaces;
 
 /**
@@ -87,7 +88,7 @@ class EventsTest extends ApiTestCase
 
         $start = Carbon::now()->addHour();
         $end = Carbon::now()->addHours(2);
-        $placeUid='ChIJD7fiBh9u5kcRYJSMaMOCCwQ';
+        $placeUid = 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ';
 
         $response = $this->post($this->getApiUrl() . '/events', [
             'times' => [
@@ -216,5 +217,66 @@ class EventsTest extends ApiTestCase
 
     }
 
+    public function testEventImageCanBeRemoved()
+    {
+        $user = $this->actingAsOrganizationMember();
 
+        $event = factory(Event::class)->create();
+        $this->assignEventToUser($event, $user);
+
+        $eventInput = [
+            'times' => [
+                'start' => '2018-09-13T16:00:00+00:00',
+                'end' => '2018-09-13T17:00:00+00:00'
+            ],
+            'place' => [
+                'uid' => 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ'
+            ],
+            'images'=>[
+                'header'=> [
+                    'content' => null
+                ]
+            ],
+            'title' => '',
+            'description' => 'Bannon'
+        ];
+
+        $response = $this->put($this->getApiUrl() . '/events/' . $event->uid, $eventInput);
+
+        $response->assertStatus(200);
+        $this->assertCount(0, $event->getMedia('images'));
+    }
+
+
+    public function testEventImageCanBeAdded()
+    {
+        $user = $this->actingAsOrganizationMember();
+
+        $event = factory(Event::class)->create();
+        $this->assignEventToUser($event, $user);
+
+        $eventInput = [
+            'times' => [
+                'start' => '2018-09-13T16:00:00+00:00',
+                'end' => '2018-09-13T17:00:00+00:00'
+            ],
+            'place' => [
+                'uid' => 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ'
+            ],
+            'title' => '', 'description' => 'Bannon',
+            'images' => [
+                'header' => [
+                    'content' => base64_encode(UploadedFile::fake()->image('header.jpg', 900, 506)->get())
+                ]
+            ]
+        ];
+
+        $event->getFirstMedia('images')->delete();
+
+        $response = $this->put($this->getApiUrl() . '/events/' . $event->uid, $eventInput);
+
+        $response->assertStatus(200);
+        $this->assertCount(1, $event->getMedia('images'));
+        $this->assertEquals('image/png', $event->getFirstMedia('images')->mime_type);
+    }
 }

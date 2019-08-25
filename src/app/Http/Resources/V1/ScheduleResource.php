@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Image\HeaderImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ScheduleResource extends JsonResource
@@ -19,17 +20,11 @@ class ScheduleResource extends JsonResource
             'uid' => $this->uid,
             'title' => $this->title,
             'description'=>$this->description,
+            'images' => new HeaderImageResource($this),
             'production'=> [
                 'title' => $this->production->title,
                 'uid' => $this->production->uid,
-                'images' => [
-                    'header' => $this->when($this->production->hasMedia('images'), [
-                        'urls' => [
-                            'original' => $this->production->getFirstMediaUrl('images')
-                        ]
-                    ],null)
-
-                ],
+                'images' => new HeaderImageResource($this->production),
                 'description'=>$this->production->description,
                 'excerpt'=>$this->production->excerpt,
                 'tags' => TagResource::collection($this->production->tags)
