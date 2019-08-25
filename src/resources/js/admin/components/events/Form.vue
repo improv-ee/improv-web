@@ -28,17 +28,17 @@
         </b-form-group>
 
         <b-form-group
-                :label="$t('production.img.header')"
-                label-for="header-img"
-                :description="$t('event.img.header_description')">
+          :label="$t('production.img.header')"
+          label-for="header-img"
+          :description="$t('event.img.header_description')">
           <div
-                  v-if="hasHeaderImage"
-                  class="overlay-container"
-                  @click="removeHeaderImg()">
+            v-if="hasHeaderImage"
+            class="overlay-container"
+            @click="removeHeaderImg()">
             <img
-                    class="img-fluid"
-                    :src="form.images.header.urls.original"
-                    :alt="$t('production.img.header')">
+              class="img-fluid"
+              :src="form.images.header.urls.original"
+              :alt="$t('production.img.header')">
             <div class="img-overlay">
               <span><i class="far fa-trash-alt fa-10x" /></span>
             </div>
@@ -46,10 +46,10 @@
 
 
           <b-form-file
-                  v-else
-                  accept="image/jpeg, image/png, image/webp"
-                  :placeholder="$t('production.img.select_file')"
-                  @change="uploadHeaderImg" />
+            v-else
+            accept="image/jpeg, image/png, image/webp"
+            :placeholder="$t('production.img.select_file')"
+            @change="uploadHeaderImg" />
         </b-form-group>
 
         <b-form-group
@@ -118,6 +118,11 @@ export default {
             errors: {}
         };
     },
+    computed: {
+        hasHeaderImage: function () {
+            return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
+        }
+    },
     watch: {
 
         // When the component initializes, the event prop is not yet populated,
@@ -139,11 +144,6 @@ export default {
                     }
                 }
             };
-        }
-    },
-    computed: {
-        hasHeaderImage: function () {
-            return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
         }
     },
     methods: {
