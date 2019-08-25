@@ -13,6 +13,7 @@ import App from './App';
 import VueAnalytics from 'vue-analytics';
 import Meta from 'vue-meta';
 import VueProgressBar from 'vue-progressbar';
+import LaravelVuePagination from 'laravel-vue-pagination';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {faCalendar, faAddressCard, faTimesCircle, faEnvelopeOpen} from '@fortawesome/free-regular-svg-icons';
@@ -27,6 +28,7 @@ Vue.use(BootstrapVue);
 Vue.use(Meta);
 
 Vue.component('schedule-feed-event', Event);
+Vue.component('pagination', LaravelVuePagination);
 
 const progressBarOptions = {
     color: '#007bff',

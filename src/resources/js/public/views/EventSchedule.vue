@@ -10,10 +10,20 @@
     </div>
     <div class="row mb-2">
       <div
-        v-for="event in events"
+        v-for="event in events.data"
         :key="event.uid"
         class="col-12 col-md-6 col-lg-4 mb-3">
         <schedule-feed-event :event="event" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 offset-4">
+        <pagination
+          v-if="events.meta"
+          :data="events.meta"
+          :show-disabled="true"
+          class="justify-content-center"
+          @pagination-change-page="getResults" />
       </div>
     </div>
   </div>
@@ -28,12 +38,22 @@ export default {
         };
     },
     mounted() {
-        axios.get(config.apiUrl + '/events/schedule')
-            .then(response => {
-                this.events = response.data.data;
-                this.featuredEvents = this.events.splice(0, 2);
+        this.getResults();
+    },
+    methods: {
 
-            });
+        getResults(page = 1) {
+            this.$Progress.start();
+
+            axios.get(config.apiUrl + '/events/schedule', {params: {page: page}})
+                .then(response => {
+                    this.events = response.data;
+                    this.featuredEvents = this.events.data.splice(0, 2);
+                    this.loaded = true;
+                    this.$Progress.finish();
+
+                });
+        }
     },
     metaInfo() {
         return {
