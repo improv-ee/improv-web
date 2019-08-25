@@ -55,13 +55,14 @@ class EventController extends Controller
     }
 
     /**
+     * @param int $count
      * @return mixed
      */
-    private function getNextEvents()
+    private function getNextEvents(int $count = 15)
     {
         return Event::orderBy('start_time', 'asc')
             ->whereDate('start_time', '>=', Carbon::now(config('app.timezone')))
-            ->paginate();
+            ->paginate($count);
     }
 
     /**
@@ -86,7 +87,7 @@ class EventController extends Controller
      */
     public function schedule()
     {
-        return ScheduleResource::collection($this->getNextEvents());
+        return ScheduleResource::collection($this->getNextEvents(17));
     }
 
     /**
