@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Image\HeaderImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrganizationResource extends JsonResource
@@ -38,14 +39,7 @@ class OrganizationResource extends JsonResource
             ],
             'is_member' => $this->when($request->user(), $this->isMember($request->user())),
             'members' => iterator_to_array($this->getMembers()),
-            'images' => [
-                'header' => $this->when($this->hasMedia('images'), [
-                    'urls' => [
-                        'original' => $this->getFirstMediaUrl('images')
-                    ]
-                ], null)
-
-            ],
+            'images' => new HeaderImageResource($this)
         ];
     }
 }

@@ -29,6 +29,9 @@
     }
   },
   "event": {
+    "img": {
+      "header_description": "This image will be shown in the header of the event page. The picture should be in 16:9 format and at least 600px in height. If you don't add a picture here, the one set for the parent Production will be used."
+    },
     "attr": {
       "title_description": "Event sub-title, if it differs from production title. A visitor sees both titles. Leave this blank, if the event does not use a sub-title.",
       "description_description": "Event description, if this concrete occurance needs extra details that differ from that of the Production. Can be left blank.",

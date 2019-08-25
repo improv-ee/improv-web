@@ -91,6 +91,9 @@ export default {
             return this.production.description;
         },
         header_img() {
+            if (this.event.images && this.event.images.header && this.event.images.header.urls) {
+                return this.event.images.header.urls.original;
+            }
             return this.production.images && this.production.images.header && this.production.images.header.urls.original != null ? this.production.images.header.urls.original : '/img/production/default-header.jpg';
         },
         startTime: function () {

@@ -8,6 +8,7 @@ use App\Http\Requests\Event\StoreEventRequest;
 use App\Http\Requests\Event\UpdateEventRequest;
 use App\Http\Resources\V1\EventResource;
 use App\Http\Resources\V1\ScheduleResource;
+use App\Http\Services\EventStorageService;
 use App\Orm\Event;
 use App\Orm\Place;
 use App\Orm\Production;
@@ -24,7 +25,19 @@ use Illuminate\Support\Facades\Log;
  */
 class EventController extends Controller
 {
+    /**
+     * @var EventStorageService
+     */
+    private $eventStorageService;
 
+    /**
+     * EventController constructor.
+     * @param EventStorageService $eventStorageService
+     */
+    public function __construct(EventStorageService $eventStorageService)
+    {
+        $this->eventStorageService = $eventStorageService;
+    }
 
     /**
      * Show Event details
@@ -88,45 +101,26 @@ class EventController extends Controller
      * @bodyParam production.uid string required Production to which the event belongs under
      * @bodyParam place.uid string required UID of the Place where this event happens
      * @param StoreEventRequest $request
-     * @return JsonResource
      * @authenticated
+     * @return JsonResource
+     * @throws \Exception
      */
-    public function store(StoreEventRequest $request): JsonResource
+    public function store(StoreEventRequest $request) : JsonResource
     {
 
         $request->validate(['production.uid' => 'required|max:64']);
 
+        $event = new Event;
+
         $production = Production::where('uid', $request->input('production.uid'))
             ->firstOrFail();
 
-        $event = new Event;
-
-        $this->setPlaceToEvent($request, $event);
-
-        $event->start_time = new Carbon($request->input('times.start'));
-        $event->end_time = new Carbon($request->input('times.end'));
         $event->production_id = $production->id;
-        $event->creator_id = $request->user()->id;
-        $event->save();
 
+        $this->eventStorageService->save($event, $request);
         return new EventResource($event);
     }
 
-    /**
-     * @param UpdateEventRequest $request
-     * @param Event $event
-     * @return Event
-     */
-    private function setPlaceToEvent(UpdateEventRequest $request, Event $event): Event
-    {
-        if ($request->input('place.uid') !== null) {
-            $place = Place::firstOrCreate(['uid' => $request->input('place.uid')]);
-            $event->place_id = $place->id;
-        } else {
-            $event->place_id = null;
-        }
-        return $event;
-    }
 
     /**
      * Update an Event
@@ -140,21 +134,13 @@ class EventController extends Controller
      * @bodyParam place.uid string required UID of the Place where this event happens
      * @param Event $event
      * @param UpdateEventRequest $request
-     * @return JsonResource
      * @authenticated
+     * @return JsonResource
      * @throws \Exception
      */
-    public function update(Event $event, UpdateEventRequest $request): JsonResource
+    public function update(Event $event, UpdateEventRequest $request) : JsonResource
     {
-
-        $event->start_time = new Carbon($request->input('times.start'));
-        $event->end_time = new Carbon($request->input('times.end'));
-        $event->title = $request->post('title');
-        $event->description = $request->post('description');
-
-        $this->setPlaceToEvent($request, $event);
-
-        $event->save();
+        $this->eventStorageService->save($event, $request);
         return new EventResource($event);
     }
 

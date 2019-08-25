@@ -28,6 +28,31 @@
         </b-form-group>
 
         <b-form-group
+                :label="$t('production.img.header')"
+                label-for="header-img"
+                :description="$t('event.img.header_description')">
+          <div
+                  v-if="hasHeaderImage"
+                  class="overlay-container"
+                  @click="removeHeaderImg()">
+            <img
+                    class="img-fluid"
+                    :src="form.images.header.urls.original"
+                    :alt="$t('production.img.header')">
+            <div class="img-overlay">
+              <span><i class="far fa-trash-alt fa-10x" /></span>
+            </div>
+          </div>
+
+
+          <b-form-file
+                  v-else
+                  accept="image/jpeg, image/png, image/webp"
+                  :placeholder="$t('production.img.select_file')"
+                  @change="uploadHeaderImg" />
+        </b-form-group>
+
+        <b-form-group
           :label="$t('event.attr.title')"
           label-for="title"
           :invalid-feedback="invalidFeedback('title')"
@@ -105,11 +130,22 @@ export default {
                 description: event.description,
                 excerpt: event.excerpt,
                 place: event.place === null ? {} : event.place,
-                times: {end: moment(event.times.end), start: moment(event.times.start)}
+                times: {end: moment(event.times.end), start: moment(event.times.start)},
+                images: {
+                    header: {
+                        urls: {
+                            original: event.hasOwnProperty('images') && event.images.header !== null ? event.images.header.urls.original : null
+                        }
+                    }
+                }
             };
         }
     },
-
+    computed: {
+        hasHeaderImage: function () {
+            return this.form.images && this.form.images.header && this.form.images.header.urls && this.form.images.header.urls.original;
+        }
+    },
     methods: {
         getFieldState(field) {
             return !this.errors.hasOwnProperty(field);
@@ -119,6 +155,21 @@ export default {
                 return '';
             }
             return this.errors[field][0];
+        },
+        removeHeaderImg() {
+            this.form.images.header['content'] = this.form.images.header.urls = null;
+        },
+        fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        },
+        uploadHeaderImg(e) {
+            let self = this;
+            this.fileToBase64(e.srcElement.files[0]).then(data => self.form.images = {header: {content: data}});
         },
         onSubmit() {
             let self = this;

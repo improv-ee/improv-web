@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Image\HeaderImageResource;
 use App\Http\Resources\V1\Minimal\OrganizationResource;
 use App\Orm\Organization;
 use App\Orm\Production;
@@ -34,14 +35,7 @@ class ProductionResource extends JsonResource
             'events' => EventResource::collection($this->events),
             'title' => $this->title,
             'uid' => $this->uid,
-            'images' => [
-                'header' => $this->when($this->hasMedia('images'), [
-                    'urls' => [
-                        'original' => $this->getFirstMediaUrl('images')
-                    ]
-                ], null)
-
-            ],
+            'images' => new HeaderImageResource($this),
             'description' => $this->description,
             'excerpt' => $this->excerpt,
             'organizations' => $this->when($this->organizations()->count(), OrganizationResource::collection($this->organizations)),
