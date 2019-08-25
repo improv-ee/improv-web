@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="production.getUid() && event.getUid()"
+    v-if="event.getUid() && event.getProduction().getUid()"
     class="event-details">
     <div class="row">
       <div class="col-md-12 col-lg-12">
@@ -74,14 +74,14 @@ export default {
     },
     data() {
         return {
-            event: new Event(),
+            event: new Event(new Production()),
             production: new Production()
         };
     },
     created() {
         axios.get(config.apiUrl + '/events/' + this.$route.params.uid)
             .then(response => {
-                this.event = new Event(response.data.data);
+                this.event = new Event(response.data.data, new Production());
                 this.loadProduction(this.event.getProductionUid());
             });
     },

@@ -20,7 +20,7 @@ export class Event {
         if (this.event.description !== null){
             return this.event.description;
         }
-        return this.production.description;
+        return this.production.getDescription();
     }
 
     getStartTimeHuman() {
@@ -49,7 +49,7 @@ export class Event {
             return this.event.title;
         }
 
-        return this.production.title;
+        return this.production.getTitle();
     }
 
     setProduction(production) {
