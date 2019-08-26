@@ -27,7 +27,7 @@ export class Production {
     }
 
     getDescription() {
-        return _.get(this.production, 'excerpt', null);
+        return _.get(this.production, 'description', null);
     }
 
     getOrganizations() {
