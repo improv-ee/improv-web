@@ -35,6 +35,9 @@ export class Production {
     }
 
     hasEvents() {
+        if (!this.production) {
+            return false;
+        }
         return this.production.hasOwnProperty('events') && this.production.events.length > 0;
     }
 
