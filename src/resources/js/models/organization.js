@@ -21,6 +21,10 @@ export class Organization {
         return pretty ? Organization.getHumanUrl(url) : url;
     }
 
+    hasHomepage(){
+        return !! this.getHomepageUrl();
+    }
+
     /**
      * Return an URL for display to humans. Strip technical things
      *

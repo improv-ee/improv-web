@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="organizationModel">
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
         <img
@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="col-lg-3">
-        <p>
+        <p v-if="organizationModel.hasHomepage()">
           <strong> {{ $t('organization.attr.homepage_url') }}</strong>: <a
             :href="organizationModel.getHomepageUrl()"
             target="_blank">{{ organizationModel.getHomepageUrl(true) }}</a>
