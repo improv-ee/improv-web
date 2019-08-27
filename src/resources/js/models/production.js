@@ -11,6 +11,10 @@ export class Production {
         return _.get(this.production, 'title', null);
     }
 
+    loaded() {
+        return !! this.getUid();
+    }
+
     hasHeaderImg() {
         return !!_.get(this.production, 'images.header');
     }

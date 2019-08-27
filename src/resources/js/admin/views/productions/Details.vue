@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="production.loaded()">
     <b-breadcrumb
       v-if="breadcrumbs"
       :items="breadcrumbs" />
