@@ -58,7 +58,7 @@ return [
             'formatter_with' => [
                 'applicationName' => 'improv-web',
                 'contextPrefix' => '',
-                'version' => LogstashFormatter::V1
+                'version' => LogstashFormatter::V0
             ],
         ],
 
