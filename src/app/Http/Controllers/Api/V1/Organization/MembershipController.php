@@ -11,6 +11,7 @@ use App\Orm\OrganizationUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 /**
  * @group Organization members
@@ -56,6 +57,14 @@ class MembershipController extends Controller
         $membership = OrganizationUser::getMembership($user->id, $organization->id);
 
         if ($membership !== null) {
+            Log::warning('Attempted to create an OrganizationUser that already exists', [
+                'newMembership' => [
+                    'user' => $user->id,
+                    'organization' => $organization->id,
+                ],
+                'currentUserId' => Auth::user()->id,
+                'existingMembershipId' => $membership->id
+            ]);
             return response(['errors' => ['title' => 'Membership already exists']], 400);
         }
 
@@ -80,7 +89,8 @@ class MembershipController extends Controller
      * @param UpdateMembershipRequest $request
      * @authenticated
      */
-    public function update(Organization $organization, User $user, UpdateMembershipRequest $request){
+    public function update(Organization $organization, User $user, UpdateMembershipRequest $request)
+    {
 
         $membership = OrganizationUser::getMembership($user->id, $organization->id);
 
@@ -99,7 +109,7 @@ class MembershipController extends Controller
      */
     public function destroy(Organization $organization, User $user)
     {
-        $this->authorize('removeMember',$organization);
+        $this->authorize('removeMember', $organization);
 
         $membership = OrganizationUser::where('organization_id', $organization->id)
             ->where('user_id', $user->id)
