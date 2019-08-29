@@ -24,7 +24,16 @@ class ApiLogWriter implements LogWriter
             'files' => $files,
             'clientIp' => $request->ip(),
             'method' => $method,
-            'user' => Auth::user()->id ?? 0
+            'isAjax' => $request->ajax(),
+            'host' =>$request->getHttpHost(),
+            'fingerprint' => $request->fingerprint(),
+            'language' => $request->getPreferredLanguage(),
+            'cfRay' => $request->header('CF-RAY'),
+            'requestId' => $request->header('X-Request-ID'),
+            'forwarded-for' => $request->header('X-Original-Forwarded-For'),
+            'country' => $request->header('CF-IPCountry'),
+            'user-agent' => $request->userAgent(),
+            'user' => Auth::user()->id ?? null
         ]);
     }
 }

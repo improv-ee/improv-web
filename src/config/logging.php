@@ -1,5 +1,7 @@
 <?php
 
+use Monolog\Formatter\LogstashFormatter;
+use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 
 return [
@@ -47,27 +49,43 @@ return [
         // Application log
         'daily' => [
             'driver' => 'monolog',
-            'handler' => \Monolog\Handler\RotatingFileHandler::class,
+            'handler' => RotatingFileHandler::class,
             'handler_with' => [
                 'filename' => storage_path('logs/laravel.log'),
                 'maxFiles' => 7
             ],
-            'formatter' => \Monolog\Formatter\LogstashFormatter::class,
+            'formatter' => \App\Log\LogstashFormatter::class,
             'formatter_with' => [
                 'applicationName' => 'improv-web',
-                'contextPrefix' => ''
+                'contextPrefix' => '',
+                'version' => LogstashFormatter::V1
+            ],
+        ],
+
+        'security' => [
+            'driver' => 'monolog',
+            'handler' => RotatingFileHandler::class,
+            'handler_with' => [
+                'filename' => storage_path('logs/security.log'),
+                'maxFiles' => 7
+            ],
+            'formatter' => \App\Log\LogstashFormatter::class,
+            'formatter_with' => [
+                'applicationName' => 'improv-web',
+                'contextPrefix' => '',
+                'version' => LogstashFormatter::V1
             ],
         ],
 
         // Api request log
         'api' => [
             'driver' => 'monolog',
-            'handler' => \Monolog\Handler\RotatingFileHandler::class,
+            'handler' => RotatingFileHandler::class,
             'handler_with' => [
                 'filename' => storage_path('logs/api.log'),
                 'maxFiles' => 7
             ],
-            'formatter' => \Monolog\Formatter\LogstashFormatter::class,
+            'formatter' => LogstashFormatter::class,
             'formatter_with' => [
                 'applicationName' => 'improv-api',
                 'contextPrefix' => ''
