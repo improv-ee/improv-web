@@ -3,11 +3,13 @@
 namespace App\Http\Resources\V1;
 
 use App\Http\Resources\V1\Image\HeaderImageResource;
+use App\Orm\Event;
 use App\Orm\Place;
 use App\Orm\Production;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 /**
  * @property Place $place
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Cache;
  * @property string $title
  * @property string $description
  * @property Production $production
+ * @property int $id
  */
 class EventResource extends JsonResource
 {
@@ -35,6 +38,10 @@ class EventResource extends JsonResource
         $placeResource = null;
         if ($place !== null) {
             $placeResource = Cache::remember('PlaceResource:' . $this->place->uid, 604800, function () use ($place) {
+                Log::info('Could not find a cached version of a Place, need to re-fetch it from remote API', [
+                   'placeId' => $this->place->id,
+                    'eventId' => $this->id
+                ]);
                 return new PlaceResource($place);
             });
         }

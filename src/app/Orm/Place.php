@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
 
 /**
+ * @property int $id
  * @property string $uid
  */
 class Place extends Model implements Auditable
