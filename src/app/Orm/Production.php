@@ -19,6 +19,7 @@ use Spatie\Tags\HasTags;
 /**
  * Class Production
  * @package App\Orm
+ * @property int $id
  * @property string $title
  * @property string $description
  * @property string $excerpt

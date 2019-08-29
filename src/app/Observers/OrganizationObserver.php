@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Orm\Organization;
+use Illuminate\Support\Facades\Log;
 
 class OrganizationObserver
 {
@@ -21,6 +22,10 @@ class OrganizationObserver
         if ($this->shouldTranslate()) {
             $this->addDefaultTranslation($organization);
         }
+
+        Log::info('Created a new Organization', [
+            'id' => $organization->id
+        ]);
     }
 
 
@@ -44,7 +49,9 @@ class OrganizationObserver
      */
     public function updated(Organization $organization)
     {
-        //
+        Log::info('Updated details of an Organization', [
+            'id' => $organization->id
+        ]);
     }
 
     /**
@@ -55,7 +62,9 @@ class OrganizationObserver
      */
     public function deleted(Organization $organization)
     {
-        //
+        Log::info('Marked an Organization as deleted', [
+            'id' => $organization->id
+        ]);
     }
 
     /**

@@ -15,6 +15,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 /**
  * @property \Illuminate\Database\Eloquent\Collection $users
  * @property \Illuminate\Database\Eloquent\Collection $admins
+ * @property int $id
  * @property string $email
  * @property string $uid
  * @property string $facebook_url

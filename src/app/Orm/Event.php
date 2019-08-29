@@ -13,6 +13,8 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
+ * @property int $id
+ * @property string $uid
  * @property string $title
  * @property string $description
  * @property Carbon $start_time

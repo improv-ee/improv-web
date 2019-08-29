@@ -6,6 +6,7 @@ use App\Contracts\Services\PlaceService as PlaceServiceContract;
 use App\Exceptions\PlaceException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException;
 use SKAgarwal\GoogleApi\PlacesApi;
 
@@ -38,6 +39,11 @@ class PlaceService implements PlaceServiceContract
 
         try {
             $searchResults = $this->placesApi->placeAutocomplete($name, $args);
+            Log::info('Searching Google Places for a Place', [
+                'searchTerm' => $name,
+                'resultsCount' => $searchResults->get('predictions')->count()
+            ]);
+
         } catch (GooglePlacesApiException $e) {
             throw new PlaceException($e->getMessage(), $e->getCode(), $e);
         }
@@ -58,6 +64,9 @@ class PlaceService implements PlaceServiceContract
         ], $args);
 
         try {
+            Log::info('Requesting Place details from Google Places', [
+                'placeUid' => $uid
+            ]);
             return $this->placesApi->placeDetails($uid, $args)['result'];
         } catch (GooglePlacesApiException $e) {
             throw new PlaceException($e->getMessage(), $e->getCode(), $e);

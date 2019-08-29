@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Orm\Production;
+use Illuminate\Support\Facades\Log;
 
 class ProductionObserver
 {
@@ -20,6 +21,10 @@ class ProductionObserver
         if ($this->shouldTranslate()) {
             $this->addDefaultTranslation($production);
         }
+
+        Log::info('Created a new Production', [
+            'id' => $production->id
+        ]);
     }
 
     /**
@@ -37,23 +42,27 @@ class ProductionObserver
     /**
      * Handle the app orm production "updated" event.
      *
-     * @param  Production $appOrmProduction
+     * @param  Production $production
      * @return void
      */
-    public function updated(Production $appOrmProduction)
+    public function updated(Production $production)
     {
-        //
+        Log::info('Updated details of a Production', [
+            'id' => $production->id
+        ]);
     }
 
     /**
      * Handle the app orm production "deleted" event.
      *
-     * @param  Production $appOrmProduction
+     * @param  Production $production
      * @return void
      */
-    public function deleted(Production $appOrmProduction)
+    public function deleted(Production $production)
     {
-        //
+        Log::info('Marked a Production as deleted', [
+            'id' => $production->id
+        ]);
     }
 
     /**
