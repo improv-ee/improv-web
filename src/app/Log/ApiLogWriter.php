@@ -33,7 +33,8 @@ class ApiLogWriter implements LogWriter
             'forwardedFor' => $request->header('X-Original-Forwarded-For'),
             'country' => $request->header('CF-IPCountry'),
             'userAgent' => $request->userAgent(),
-            'userId' => $request->user('api')->id ?? null
+            'userId' => $request->user('api')->id ?? null,
+            'requestSize' => mb_strlen($request->getContent())
         ]);
     }
 }
