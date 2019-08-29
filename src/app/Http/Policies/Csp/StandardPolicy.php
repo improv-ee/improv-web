@@ -28,7 +28,6 @@ class StandardPolicy extends Policy
             ->addDirective(Directive::IMG, [
                 Keyword::SELF,
                 'data:',
-                'http://improv.ee',
                 config('app.url'),
                 config('app.api_url'),
                 'https://api.improv.ee',
