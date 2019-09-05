@@ -69,6 +69,7 @@
     "events": "Events",
     "list_intro": "This table shows all Productions, that have been created by any of your organizations. A Production is a concept of a show, workshop or a festival. Once Production has multiple Events (happening times).",
     "create_new": "New Production",
+    "no_upcoming_events_description": "This production does not have any upcoming Events scheduled",
     "attr": {
       "title": "Title",
       "title_description": "Format, show, festival or workshop title",

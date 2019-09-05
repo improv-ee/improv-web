@@ -5,6 +5,7 @@ namespace App\Orm;
 use App\User;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Astrotomic\Translatable\Translatable;
+use Carbon\Carbon;
 use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -17,18 +18,18 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Tags\HasTags;
 
 /**
- * Class Production
  * @package App\Orm
  * @property int $id
  * @property string $title
  * @property string $description
  * @property string $excerpt
+ * @property bool $hasUpcomingEvents
  * @property string $uid
  * @property int $creator_id
  */
 class Production extends Model implements Auditable, HasMedia
 {
-    use Translatable, SoftDeletes, SoftCascadeTrait,DirapeToken, \OwenIt\Auditing\Auditable, HasMediaTrait, HasTags;
+    use Translatable, SoftDeletes, SoftCascadeTrait, DirapeToken, \OwenIt\Auditing\Auditable, HasMediaTrait, HasTags;
 
     public $translatedAttributes = ['title', 'description', 'excerpt'];
     public $fillable = ['title', 'description', 'excerpt'];
@@ -57,7 +58,7 @@ class Production extends Model implements Auditable, HasMedia
      * @param User $user
      * @return Builder
      */
-    public function scopeBelongingToUser(Builder $query, User $user) : Builder
+    public function scopeBelongingToUser(Builder $query, User $user): Builder
     {
 
         // This is not the most performant or elegant way to implement it.
@@ -69,7 +70,8 @@ class Production extends Model implements Auditable, HasMedia
         return $query->whereIn('id', $productionIds);
     }
 
-    public function isMine(User $user = null) : bool {
+    public function isMine(User $user = null): bool
+    {
         if ($user === null) {
             $user = Auth::user();
         }
@@ -80,12 +82,22 @@ class Production extends Model implements Auditable, HasMedia
 
         $organizationIds = $user->organizations()->get()->pluck('id')->toArray();
 
-        return (bool)OrganizationProduction::where('production_id',$this->id)
-            ->whereIn('organization_id',$organizationIds)
+        return (bool)OrganizationProduction::where('production_id', $this->id)
+            ->whereIn('organization_id', $organizationIds)
             ->count();
     }
 
+    /**
+     * @return bool
+     */
+    public function getHasUpcomingEventsAttribute(): bool
+    {
+        return (bool)$this->events()->whereDate('end_time', '>=', Carbon::now(config('app.timezone')))->count();
+    }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function events()
     {
         return $this->hasMany('App\Orm\Event');

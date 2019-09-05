@@ -18,14 +18,16 @@ use Illuminate\Support\Collection;
  * @property string $excerpt
  * @property string $description
  * @property string $uid
+ * @property bool $hasUpcomingEvents
  * @property string $title
+ * @property Collection $events
  */
 class ProductionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -33,6 +35,7 @@ class ProductionResource extends JsonResource
 
         return [
             'events' => EventResource::collection($this->events),
+            'hasUpcomingEvents' => $this->hasUpcomingEvents,
             'title' => $this->title,
             'uid' => $this->uid,
             'images' => new HeaderImageResource($this),

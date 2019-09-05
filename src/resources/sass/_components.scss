@@ -11,6 +11,12 @@
   }
 }
 
+table {
+  .row-muted {
+    color: $gray-600;
+    font-size: 80%;
+  }
+}
 .cursor-pointer {
   cursor: pointer;
 }

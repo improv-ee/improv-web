@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Api;
 
+use App\Orm\Event;
 use App\Orm\Organization;
 use App\Orm\Production;
 use App\Orm\Tag;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -260,9 +262,38 @@ class ProductionsTest extends ApiTestCase
         $response->assertStatus(200)
             ->assertJson(['data' => [
                 'tags' => [
-                    ['name'=>$tag->name, 'slug' => $tag->slug]
+                    ['name' => $tag->name, 'slug' => $tag->slug]
                 ]
             ]]);
+    }
+
+    public function testProductionWithoutUpcomingEventsIsMarkedAsWithNoUpcomingEvents()
+    {
+
+        Production::truncate();
+
+        $event = factory(Event::class)->create();
+        $event->start_time = Carbon::now()->subYear();
+        $event->end_time = Carbon::now()->subYear();
+        $event->save();
+
+        $response = $this->get($this->getApiUrl() . '/productions');
+        $response->assertStatus(200);
+        $this->assertFalse($response->json('data.0.hasUpcomingEvents'));
+    }
+
+
+    public function testProductionWithUpcomingEventsIsMarkedAsHavingSome()
+    {
+
+        Production::truncate();
+
+        factory(Event::class)->create();
+
+        $response = $this->get($this->getApiUrl() . '/productions');
+        $response->assertStatus(200);
+
+        $this->assertTrue($response->json('data.0.hasUpcomingEvents'));
     }
 
 }

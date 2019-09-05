@@ -1,7 +1,16 @@
 <template>
-  <tr @click="openProduction(production.uid)">
+  <tr
+    :class="{ 'row-muted': !production.hasUpcomingEvents }"
+    @click="openProduction(production.uid)">
     <td>{{ production.title }}</td>
-    <td>{{ production.events.length }}</td>
+    <td
+      v-if="!production.hasUpcomingEvents"
+      :title="$t('production.no_upcoming_events_description')">
+      {{ production.events.length }} <i class="fas fa-flag-checkered" />
+    </td>
+    <td v-else>
+      {{ production.events.length }}
+    </td>
   </tr>
 </template>
 

@@ -69,6 +69,7 @@
     "events": "Üritused",
     "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
     "create_new": "Uus produktsioon",
+    "no_upcoming_events_description": "Sellel produktsioonil ei ole üritusi, mis leiaksid aset tulevikus",
     "attr": {
       "title": "Pealkiri",
       "title_description": "Formaadi, lavastuse või festivali nimetus",
