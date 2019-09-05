@@ -1,7 +1,10 @@
+import {Event} from './event';
+
 export class Production {
 
     constructor(production) {
         this.production = production;
+        this.events = [];
     }
 
     getUid() {
@@ -42,14 +45,23 @@ export class Production {
         if (!this.production) {
             return false;
         }
-        return this.production.hasOwnProperty('events') && this.production.events.length > 0;
+        return this.loadEvents().events.length > 0;
     }
 
+    loadEvents() {
+        if (this.events.length === 0 && this.production !== null && this.production.hasOwnProperty('events') && this.production.events.length > 0) {
+            for (let i in this.production.events) {
+                this.events.push(new Event(this.production.events[i], this));
+            }
+        }
+        return this;
+    }
     getEvents() {
         if (!this.production){
             return null;
         }
-        return this.production.events;
+
+        return this.loadEvents().events;
     }
 }
 

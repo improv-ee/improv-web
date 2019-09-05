@@ -27,6 +27,14 @@ export class Event {
         return moment(this.event.times.start).format('Do MMMM HH:mm');
     }
 
+    getStartTime() {
+        return _.get(this.event,'times.start');
+    }
+
+    getEndTime() {
+        return _.get(this.event,'times.end');
+    }
+
     getPlace() {
         return this.event.place;
     }

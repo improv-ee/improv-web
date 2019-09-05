@@ -37,12 +37,12 @@
           v-if="production.hasEvents()">
           <tr
             v-for="event in production.getEvents()"
-            :key="event.uid"
-            @click="openEvent(event.uid)">
-            <td>{{ event.title || production.title }}</td>
-            <td>{{ formatTime(event.times.start) }}</td>
-            <td>{{ formatTime(event.times.end) }}</td>
-            <td><span v-if="event.place">{{ event.place.name }}</span></td>
+            :key="event.getUid()"
+            @click="openEvent(event.getUid())">
+            <td>{{ event.getTitle() || production.getTitle() }}</td>
+            <td>{{ event.getStartTimeHuman() }}</td>
+            <td>{{ event.getEndTimeHuman() }}</td>
+            <td><span v-if="event.getPlace()">{{ event.getPlace().name }}</span></td>
           </tr>
         </tbody>
         <tbody v-else>
@@ -109,11 +109,28 @@ export default {
         },
         addEvent() {
             let self = this;
+
+            let startTime = moment().add(24, 'h').format();
+            let endTime = moment().add(25, 'h').format();
+            let uid = null;
+
+            if (self.production.hasEvents()) {
+                let lastEvent = self.production.getEvents()[self.production.getEvents().length - 1];
+                startTime = lastEvent.getStartTime();
+                endTime = lastEvent.getEndTime();
+                uid = lastEvent.getPlace().uid;
+            }
+
             axios.post(config.apiUrl + '/events', {
-                'production': {'uid': this.$route.params.uid},
-                'times': {
-                    'start': moment().add(24, 'h').format(),
-                    'end': moment().add(25, 'h').format()
+                production: {
+                    uid: this.$route.params.uid
+                },
+                times: {
+                    start: startTime,
+                    end: endTime,
+                },
+                place: {
+                    uid: uid
                 }
             })
                 .then(response => {
