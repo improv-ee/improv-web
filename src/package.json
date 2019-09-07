@@ -19,7 +19,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.5",
     "@sentry/browser": "^4.5.3",
     "axios": "^0.18",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.1",
     "eslint": "^5.14.1",
