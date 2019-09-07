@@ -13,6 +13,7 @@ RUN rm -rf /var/www/html /etc/apache2/conf-enabled/security.conf && \
 
 COPY docker/webserver/000-default.conf /etc/apache2/sites-available/
 COPY docker/webserver/apache2.conf /etc/apache2/
+COPY docker/webserver/php.prod.ini $PHP_INI_DIR/conf.d/
 COPY src /var/www/
 
 RUN chown -R www-data:www-data storage
@@ -22,9 +23,9 @@ FROM base as dev
 
 COPY docker/lb/certs/ca.crt /usr/local/share/ca-certificates/
 
-RUN update-ca-certificates && \
+RUN rm -f $PHP_INI_DIR/conf.d/php.prod.ini && \
+    update-ca-certificates && \
     pecl install xdebug-2.7.0 && \
-    docker-php-ext-enable xdebug && \
-    echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini && \
-    echo "xdebug.remote_host=xdebug_host" >> /usr/local/etc/php/php.ini && \
-    echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/php.ini
+    docker-php-ext-enable xdebug
+
+COPY docker/webserver/php.dev.ini $PHP_INI_DIR/conf.d/
