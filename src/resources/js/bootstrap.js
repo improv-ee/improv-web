@@ -40,6 +40,9 @@ Sentry.init({
 window.$ = window.jQuery = require('jquery');
 require('bootstrap');
 
+// Hotfix https://github.com/mdbootstrap/bootstrap-material-design/issues/245
+window.bsCustomFileInput = require('mdbootstrap/js/modules/bs-custom-file-input');
+
 require('mdbootstrap');
 
 /**
