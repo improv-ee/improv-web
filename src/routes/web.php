@@ -14,13 +14,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')
+    ->middleware('cache.headers:public;max_age=2628000;etag');
 Route::get('/getConfig', 'HomeController@getConfig')->name('config');
-Route::get('/maintenance', 'HomeController@maintenance')->name('maintenance');
+Route::get('/maintenance', 'HomeController@maintenance')
+    ->middleware('cache.headers:public;max_age=2628000;etag')
+    ->name('maintenance');
 
 Auth::routes(['verify' => true]);
 
 
-Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+Route::namespace('Admin')
+    ->prefix('admin')
+    ->middleware(['auth', 'verified', 'cache.headers:private;max_age=2628000;etag'])
+    ->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 });

@@ -23,29 +23,36 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/user/invite', 'UserController@invite');
 });
 
+Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
 
-Route::resource('productions', 'ProductionController', ['as' => 'api'])->only([
-    'index', 'show'
-]);
+    Route::resource('productions', 'ProductionController', ['as' => 'api'])->only([
+        'index', 'show'
+    ]);
 
+    Route::get('/events/schedule', 'EventController@schedule', ['as' => 'api'])
+        ->name('api.events.schedule');
 
-Route::get('/events/schedule', 'EventController@schedule', ['as' => 'api'])->name('api.events.schedule');
+    Route::resource('events', 'EventController', ['as' => 'api'])
+        ->only([
+            'index', 'show'
+        ]);
 
-Route::resource('events', 'EventController', ['as' => 'api'])->only([
-    'index', 'show'
-]);
+    Route::resource('organizations', 'OrganizationController', ['as' => 'api'])
+        ->only([
+            'index', 'show'
+        ]);
 
-Route::resource('organizations', 'OrganizationController', ['as' => 'api'])->only([
-    'index', 'show'
-]);
+    Route::resource('tags', 'TagController', ['as' => 'api'])
+        ->only([
+            'index'
+        ]);
 
-Route::resource('tags', 'TagController', ['as' => 'api'])->only([
-    'index'
-]);
+    Route::resource('users', 'UserController', ['as' => 'api'])
+        ->only(['show']);
 
-Route::resource('users', 'UserController', ['as' => 'api'])->only(['show']);
-
-Route::apiResource('images', 'ImageController', ['as' => 'api'])->only(['show']);
+    Route::apiResource('images', 'ImageController', ['as' => 'api'])
+        ->only(['show']);
+});
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('productions', 'ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
