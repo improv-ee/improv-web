@@ -6,6 +6,7 @@ require('../bootstrap');
 import VueI18n from 'vue-i18n/dist/vue-i18n.js';
 import Notifications from 'vue-notification';
 import BootstrapVue from 'bootstrap-vue';
+import LoadingSpinner from '../components/LoadingSpinner';
 import VueRouter from 'vue-router';
 import {getRoutes} from './routes';
 import Event from './components/schedule-feed/Event';
@@ -29,6 +30,7 @@ Vue.use(Meta);
 
 Vue.component('schedule-feed-event', Event);
 Vue.component('pagination', LaravelVuePagination);
+Vue.component('loading-spinner', LoadingSpinner);
 
 const progressBarOptions = {
     color: '#007bff',

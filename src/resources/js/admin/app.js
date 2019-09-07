@@ -9,6 +9,7 @@ import VueRouter from 'vue-router';
 import {getRoutes} from './routes';
 import BootstrapVue from 'bootstrap-vue';
 import App from './App';
+import LoadingSpinner from '../components/LoadingSpinner';
 import ProductionTableRow from './components/productions/ProductionTableRow';
 import ProductionForm from './components/productions/Form';
 import EventForm from './components/events/Form';
@@ -37,6 +38,7 @@ Vue.component('production-form', ProductionForm);
 Vue.component('event-form', EventForm);
 Vue.component('pagination', LaravelVuePagination);
 Vue.component('crud-toolbar', CrudToolbar);
+Vue.component('loading-spinner', LoadingSpinner);
 
 Vue.component(
     'passport-personal-access-tokens',
