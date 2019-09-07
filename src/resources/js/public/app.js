@@ -77,26 +77,15 @@ function setI18nLanguage (lang) {
     return lang;
 }
 
+// eslint-disable-next-line no-console
+console.log('Initializing app...');
 
-function bootApp() {
+// Set language
+setI18nLanguage(window.config.languages.current);
 
-    // Wait for async Axios request to load app config...
-    if (!window.config) {
-        setTimeout(bootApp, 50);
-        return;
-    }
-    // eslint-disable-next-line no-console
-    console.log('Initializing app...');
-
-    // Set language
-    setI18nLanguage(window.config.languages.current);
-
-    new Vue({
-        el: '#app',
-        render: createElement => createElement(App),
-        router,
-        i18n
-    });
-}
-
-bootApp();
+new Vue({
+    el: '#app',
+    render: createElement => createElement(App),
+    router,
+    i18n
+});

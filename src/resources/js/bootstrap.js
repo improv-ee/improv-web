@@ -69,12 +69,6 @@ if (token) {
 }
 
 console.log('Initializing app, requesting runtime config from backend...');
-axios.get('/getConfig')
-    .then(response => {
-        window.config = response.data;
-        console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');
-    }).catch(function (error) {
-        console.error('Fatal - unable to load app config!');
-        console.error(error);
-        window.location.href = '/maintenance';
-    });
+const jsonNode = document.getElementById('app-config');
+window.config = JSON.parse(jsonNode.textContent);
+console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');

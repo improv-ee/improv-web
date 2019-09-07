@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')
     ->middleware('cache.headers:public;max_age=2628000;etag');
-Route::get('/getConfig', 'HomeController@getConfig')->name('config');
+
 Route::get('/maintenance', 'HomeController@maintenance')
     ->middleware('cache.headers:public;max_age=2628000;etag')
     ->name('maintenance');

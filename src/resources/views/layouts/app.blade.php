@@ -17,6 +17,7 @@
     @yield('content')
 
 </div>
+<script type="application/json" id="app-config">{!! appConfigJson() !!}</script>
 @yield('scripts')
 </body>
 </html>

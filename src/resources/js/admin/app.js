@@ -103,29 +103,17 @@ function setI18nLanguage (lang) {
     return lang;
 }
 
+// eslint-disable-next-line no-console
+console.log('Initializing app...');
 
-function bootApp() {
+// Set language
+setI18nLanguage(window.config.languages.current);
 
-    // Wait for async Axios request to load app config...
-    if (!window.config) {
-        setTimeout(bootApp, 50);
-        return;
-    }
-    // eslint-disable-next-line no-console
-    console.log('Initializing app...');
+window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.config.token;
 
-    // Set language
-    setI18nLanguage(window.config.languages.current);
-
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.config.token;
-
-    new Vue({
-        el: '#app',
-        render: createElement => createElement(App),
-        router,
-        i18n
-    });
-}
-
-bootApp();
-
+new Vue({
+    el: '#app',
+    render: createElement => createElement(App),
+    router,
+    i18n
+});
