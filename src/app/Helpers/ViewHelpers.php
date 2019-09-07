@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
@@ -25,7 +26,7 @@ if (!function_exists('appConfigJson')) {
             ],
             'languages' => [
                 'supported' => config('language.allowed'),
-                'current' => Request::instance()->getLocale()
+                'current' => App::getLocale()
             ]], JSON_UNESCAPED_UNICODE);
     }
 }

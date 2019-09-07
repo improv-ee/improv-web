@@ -68,7 +68,7 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-console.log('Initializing app, requesting runtime config from backend...');
+console.log('Initializing app, loading runtime config...');
 const jsonNode = document.getElementById('app-config');
 window.config = JSON.parse(jsonNode.textContent);
 console.info('Config loaded, API URL is ' + window.config.apiUrl + ', continuing with app init...');

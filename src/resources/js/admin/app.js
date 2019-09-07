@@ -104,7 +104,7 @@ function setI18nLanguage (lang) {
 }
 
 // eslint-disable-next-line no-console
-console.log('Initializing app...');
+console.log('Initializing Vue...');
 
 // Set language
 setI18nLanguage(window.config.languages.current);
