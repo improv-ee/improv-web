@@ -5,6 +5,8 @@ namespace App\Http\Resources\V1;
 use App\Contracts\Services\PlaceService;
 use App\Exceptions\PlaceException;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 /**
  * @property string uid
@@ -21,13 +23,23 @@ class PlaceResource extends JsonResource
      */
     public function toArray($request)
     {
-
-        $placeService = resolve(PlaceService::class);
-
-        // Google's Maps/Places API terms do not allow to save Place details to local database
-        // Hence we must do a remove call each time to display them
         try {
-            $placeDetails = $placeService->getPlaceDetails($this->uid);
+
+            $placeUid = $this->uid;
+
+            // Cache Place resource
+            // It is unlikely to change during this time; and computing it is expensive
+            $placeDetails = Cache::remember('PlaceDetails:' . $placeUid, 604800, function () use ($placeUid) {
+                Log::info(
+                    'Could not find a cached version of a Place, need to re-fetch it from remote API', [
+                    'placeId' => $placeUid,
+                ]);
+
+                $placeService = resolve(PlaceService::class);
+                return $placeService->getPlaceDetails($placeUid);
+            });
+
+
         } catch (PlaceException $e) {
             return [
                 'uid' => $this->uid
