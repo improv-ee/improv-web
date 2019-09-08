@@ -1,70 +1,73 @@
 <template>
-  <div v-if="production.loaded()">
-    <b-breadcrumb
-      v-if="breadcrumbs"
-      :items="breadcrumbs" />
-    <crud-toolbar
-      resource-name="productions"
-      :resource-id="this.$route.params.uid" />
+  <div>
+    <div v-if="production.loaded()">
+      <b-breadcrumb
+        v-if="breadcrumbs"
+        :items="breadcrumbs" />
+      <crud-toolbar
+        resource-name="productions"
+        :resource-id="this.$route.params.uid" />
 
-    <h1>{{ production.getTitle() }}</h1>
+      <h1>{{ production.getTitle() }}</h1>
 
-    <img
-      v-if="production.hasHeaderImg()"
-      :src="production.getHeaderImgUrl()"
-      :alt="production.getTitle()"
-      class="img-responsive header-img">
+      <img
+        v-if="production.hasHeaderImg()"
+        :src="production.getHeaderImgUrl()"
+        :alt="production.getTitle()"
+        class="img-responsive header-img">
 
-    <p class="lead">
-      {{ production.getExcerpt() }}
-    </p>
+      <p class="lead">
+        {{ production.getExcerpt() }}
+      </p>
 
-    <vue-markdown :source="production.getDescription()" />
+      <vue-markdown :source="production.getDescription()" />
 
-    <h2>{{ $t('production.events') }}</h2>
+      <h2>{{ $t('production.events') }}</h2>
 
-    <div class="table-responsive">
-      <table class="table table-sm table-bordered table-clickable">
-        <thead class="thead-light">
-          <tr>
-            <th>{{ $t('production.attr.title') }}</th>
-            <th>{{ $t('event.attr.start_time') }}</th>
-            <th>{{ $t('event.attr.end_time') }}</th>
-            <th>{{ $t('event.attr.place') }}</th>
-          </tr>
-        </thead>
-        <tbody
-          v-if="production.hasEvents()">
-          <tr
-            v-for="event in production.getEvents()"
-            :key="event.getUid()"
-            @click="openEvent(event.getUid())">
-            <td>{{ event.getTitle() || production.getTitle() }}</td>
-            <td>{{ event.getStartTimeHuman() }}</td>
-            <td>{{ event.getEndTimeHuman() }}</td>
-            <td><span v-if="event.getPlace()">{{ event.getPlace().name }}</span></td>
-          </tr>
-        </tbody>
-        <tbody v-else>
-          <tr>
-            <td colspan="2">
-              {{ $t('production.no_events') }}
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">
-              <b-button
-                variant="primary"
-                @click="addEvent">
-                {{ $t('ui.add_new') }}
-              </b-button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered table-clickable">
+          <thead class="thead-light">
+            <tr>
+              <th>{{ $t('production.attr.title') }}</th>
+              <th>{{ $t('event.attr.start_time') }}</th>
+              <th>{{ $t('event.attr.end_time') }}</th>
+              <th>{{ $t('event.attr.place') }}</th>
+            </tr>
+          </thead>
+          <tbody
+            v-if="production.hasEvents()">
+            <tr
+              v-for="event in production.getEvents()"
+              :key="event.getUid()"
+              @click="openEvent(event.getUid())">
+              <td>{{ event.getTitle() || production.getTitle() }}</td>
+              <td>{{ event.getStartTimeHuman() }}</td>
+              <td>{{ event.getEndTimeHuman() }}</td>
+              <td><span v-if="event.getPlace()">{{ event.getPlace().name }}</span></td>
+            </tr>
+          </tbody>
+          <tbody v-else>
+            <tr>
+              <td colspan="2">
+                {{ $t('production.no_events') }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <b-button
+                  variant="primary"
+                  @click="addEvent">
+                  {{ $t('ui.add_new') }}
+                </b-button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
+    <loading-spinner v-else />
   </div>
 </template>
 

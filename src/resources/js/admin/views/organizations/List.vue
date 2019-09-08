@@ -1,55 +1,58 @@
 <template>
-  <div v-if="loaded">
-    <p>{{ $t('organization.list_intro') }}</p>
-    <p class="text-right">
-      <b-btn
-        v-b-modal.modal-new-organization
-        class="btn btn-sm btn-primary mb-3">
-        {{ $t("organization.create_new") }}
-      </b-btn>
-    </p>
+  <div>
+    <div v-if="loaded">
+      <p>{{ $t('organization.list_intro') }}</p>
+      <p class="text-right">
+        <b-btn
+          v-b-modal.modal-new-organization
+          class="btn btn-sm btn-primary mb-3">
+          {{ $t("organization.create_new") }}
+        </b-btn>
+      </p>
 
 
-    <div
-      v-if="organizations.length"
-      class="row">
-      <div class="col-10 offset-1">
-        <organization-card
-          v-for="organization in organizations"
-          :key="organization.uid"
-          :organization="organization" />
+      <div
+        v-if="organizations.length"
+        class="row">
+        <div class="col-10 offset-1">
+          <organization-card
+            v-for="organization in organizations"
+            :key="organization.uid"
+            :organization="organization" />
+        </div>
       </div>
-    </div>
 
-    <div
-      v-else
-      class="row">
-      <div class="col-10 offset-1">
-        <b-alert show>
-          {{ $t('organization.you_dont_have_any') }}
-        </b-alert>
+      <div
+        v-else
+        class="row">
+        <div class="col-10 offset-1">
+          <b-alert show>
+            {{ $t('organization.you_dont_have_any') }}
+          </b-alert>
+        </div>
       </div>
+
+
+      <b-modal
+        id="modal-new-organization"
+        :title="$t('organization.create_new')"
+        :ok-title="$t('ui.create')"
+        :cancel-title="$t('ui.cancel')"
+        @ok="createOrganization">
+        <b-form @submit.prevent="createOrganization">
+          <b-form-group
+            :label="$t('organization.attr.name')"
+            label-for="title">
+            <b-form-input
+              id="title"
+              v-model="newOrganizationName"
+              type="text"
+              required />
+          </b-form-group>
+        </b-form>
+      </b-modal>
     </div>
-
-
-    <b-modal
-      id="modal-new-organization"
-      :title="$t('organization.create_new')"
-      :ok-title="$t('ui.create')"
-      :cancel-title="$t('ui.cancel')"
-      @ok="createOrganization">
-      <b-form @submit.prevent="createOrganization">
-        <b-form-group
-          :label="$t('organization.attr.name')"
-          label-for="title">
-          <b-form-input
-            id="title"
-            v-model="newOrganizationName"
-            type="text"
-            required />
-        </b-form-group>
-      </b-form>
-    </b-modal>
+    <loading-spinner v-else />
   </div>
 </template>
 

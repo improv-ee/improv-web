@@ -1,48 +1,51 @@
 <template>
-  <div v-if="organization.getName()">
-    <h1>{{ organization.getName() }}</h1>
-    <img
-      v-if="organization.hasHeaderImg()"
-      :src="organization.getHeaderImgUrl()"
-      :alt="$t('organization.image')"
-      class="img-responsive header-img">
+  <div>
+    <div v-if="organization.getName()">
+      <h1>{{ organization.getName() }}</h1>
+      <img
+        v-if="organization.hasHeaderImg()"
+        :src="organization.getHeaderImgUrl()"
+        :alt="$t('organization.image')"
+        class="img-responsive header-img">
 
-    <div class="row">
-      <div
-        v-if="organization.getEmail()"
-        class="col-lg-3 col-object-meta">
-        <p>
-          <span class="meta-label">
-            <i class="far fa-envelope-open" /> {{ $t('organization.attr.email') }}</span><br>
-          <span class="meta-value">{{ organization.getEmail() }}</span>
-        </p>
+      <div class="row">
+        <div
+          v-if="organization.getEmail()"
+          class="col-lg-3 col-object-meta">
+          <p>
+            <span class="meta-label">
+              <i class="far fa-envelope-open" /> {{ $t('organization.attr.email') }}</span><br>
+            <span class="meta-value">{{ organization.getEmail() }}</span>
+          </p>
+        </div>
+        <div
+          v-if="organization.getHomepageUrl()"
+          class="col-lg-3 col-object-meta">
+          <p>
+            <span class="meta-label">
+              <i class="fas fa-external-link-alt" /> {{ $t('organization.attr.homepage_url') }}</span><br>
+            <span class="meta-value">
+              <a
+                :href="organization.getHomepageUrl()"
+                target="_blank">{{ organization.getHomepageUrl(true) }}</a></span>
+          </p>
+        </div>
+        <div
+          v-if="organization.getFacebookUrl()"
+          class="col-lg-3 col-object-meta">
+          <p>
+            <span class="meta-label">
+              <i class="fab fa-facebook" /> {{ $t('organization.attr.facebook_url') }}</span><br>
+            <span class="meta-value"><a
+              :href="organization.getFacebookUrl()"
+              target="_blank">{{ organization.getFacebookUrl(true) }}</a></span>
+          </p>
+        </div>
       </div>
-      <div
-        v-if="organization.getHomepageUrl()"
-        class="col-lg-3 col-object-meta">
-        <p>
-          <span class="meta-label">
-            <i class="fas fa-external-link-alt" /> {{ $t('organization.attr.homepage_url') }}</span><br>
-          <span class="meta-value">
-            <a
-              :href="organization.getHomepageUrl()"
-              target="_blank">{{ organization.getHomepageUrl(true) }}</a></span>
-        </p>
-      </div>
-      <div
-        v-if="organization.getFacebookUrl()"
-        class="col-lg-3 col-object-meta">
-        <p>
-          <span class="meta-label">
-            <i class="fab fa-facebook" /> {{ $t('organization.attr.facebook_url') }}</span><br>
-          <span class="meta-value"><a
-            :href="organization.getFacebookUrl()"
-            target="_blank">{{ organization.getFacebookUrl(true) }}</a></span>
-        </p>
-      </div>
+
+      <vue-markdown :source="organization.getDescription()" />
     </div>
-
-    <vue-markdown :source="organization.getDescription()" />
+    <loading-spinner v-else />
   </div>
 </template>
 

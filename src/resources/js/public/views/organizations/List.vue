@@ -10,6 +10,7 @@
           :organization="organization" />
       </div>
     </div>
+    <loading-spinner v-else />
   </div>
 </template>
 

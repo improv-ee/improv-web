@@ -1,12 +1,13 @@
 <template>
   <div>
     <b-breadcrumb
-      v-if="breadcrumbs"
+      v-if="loaded"
       :items="breadcrumbs" />
     <production-form
       v-if="production"
       :production="production"
       mode="edit" />
+    <loading-spinner v-if="!loaded" />
   </div>
 </template>
 
@@ -15,7 +16,8 @@ export default {
     data() {
         return {
             production: {},
-            breadcrumbs: []
+            breadcrumbs: [],
+            loaded: false
         };
     },
     mounted() {
@@ -24,7 +26,7 @@ export default {
             .then(response => {
                 self.production = response.data.data;
 
-                this.breadcrumbs = [
+                self.breadcrumbs = [
                     {
                         text: this.$t('nav.productions'),
                         to: { name: 'productions' }
@@ -37,6 +39,7 @@ export default {
                         text: this.$t('ui.edit')
                     },
                 ];
+                self.loaded = true;
             });
     }
 };
