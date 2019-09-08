@@ -5,6 +5,7 @@ namespace App\Http;
 use Akaunting\Language\Middleware\SetLocale;
 use App\Http\Middleware\AuthenticateIfPossible;
 use App\Http\Middleware\SetApiLocale;
+use App\Http\Middleware\SetLocaleFromGeoIP;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Spatie\Cors\Cors;
 
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Spatie\Csp\AddCspHeaders::class,
+            SetLocaleFromGeoIP::class,
             SetLocale::class
         ],
 
