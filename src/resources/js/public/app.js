@@ -76,6 +76,13 @@ function setI18nLanguage (lang) {
     moment.locale(lang);
     document.querySelector('html').setAttribute('lang', lang);
 
+    // Set a default query param to all API calls - the language.
+    // This param has no practical effect (the API takes it's language from HTTP Accept-Language header)
+    // but adding the query param will make the full URI of a resource unique per language.
+    // We need this for cache busting - to make sure a resource of a correct language is returned to the requester
+    // We have CloudFlare in front of us and CloudFlare does not honor the Vary header for caching. Sad.
+    window.axios.defaults.params = {lang: lang};
+
     return lang;
 }
 
