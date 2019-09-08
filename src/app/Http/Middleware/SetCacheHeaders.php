@@ -32,7 +32,7 @@ class SetCacheHeaders
 
             // Etag must be quoted, because CloudFlare
             // See "Weak Etag conversion" https://support.cloudflare.com/hc/en-us/articles/218505467-Does-Cloudflare-support-ETag-headers-
-            $options['etag'] = sprintf('"%s"',md5($response->getContent()));
+            $options['etag'] = sprintf('W/"%s"',md5($response->getContent()));
         }
 
         $response->setCache($options);
