@@ -58,7 +58,7 @@ class SetLocaleFromGeoIP
     {
 
         if (!$request->session()->has('locale')) {
-            $requestCountry = $request->header('CF-IPCountry');
+            $requestCountry = mb_strtolower($request->header('CF-IPCountry'));
             $this->setLanguageByCountry($requestCountry, $request->session());
         }
         return $next($request);
