@@ -30,3 +30,11 @@ Route::namespace('Admin')
     ->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
+
+Route::group([
+    'middleware' => ['web', 'language'],
+    'as'         => 'language::',
+    'prefix'     => config('language.prefix'),
+], function () {
+    Route::get('/{locale}',  'HomeController@locale')->name('locale');
+});

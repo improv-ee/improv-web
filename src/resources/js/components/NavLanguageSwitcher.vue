@@ -13,7 +13,7 @@
       <b-dropdown-item
         v-for="lang in availableLanguages"
         :key="lang"
-        :href="'/lang/' + lang + '/back'">
+        :href="'/lang/' + lang">
         <img
           :src="getFlagImageUrl(lang)"
           :alt="lang">

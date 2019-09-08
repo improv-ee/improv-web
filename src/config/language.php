@@ -10,7 +10,7 @@ return [
     | This option enable language route.
     |
     */
-    'route'         => true,
+    'route'         => false,
 
     /*
     |--------------------------------------------------------------------------
