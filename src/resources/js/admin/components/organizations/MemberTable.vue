@@ -9,8 +9,7 @@
     :items="items"
     :fields="fields">
     <template
-      slot="avatar"
-      slot-scope="data">
+      v-slot:cell(avatar)="data">
       <router-link
         :to="{ name: 'organizations.people.details', params: { uid: organizationUid, username: data.item.username }}">
         <img
@@ -49,19 +48,23 @@ export default {
     data: function () {
         return {
             items: [],
-            fields: {
-                avatar: {
-                    sortable: false
+            fields: [
+                {
+                    key: 'avatar',
+                    sortable: false,
+                    formatter: 'avatar'
                 },
-                username: {
+                {
+                    key: 'username',
                     label: 'username',
                     sortable: true
                 },
-                role: {
+                {
+                    key: 'role',
                     label: 'role',
                     sortable: true
                 }
-            }
+            ]
         };
     },
     watch: {
@@ -70,8 +73,8 @@ export default {
         }
     },
     mounted() {
-        this.fields.username.label = this.$i18n.t('user.username');
-        this.fields.role.label = this.$i18n.t('organization.user.role.role');
+        this.fields[1].label = this.$i18n.t('user.username');
+        this.fields[2].label = this.$i18n.t('organization.user.role.role');
         this.refresh();
     },
     methods: {
