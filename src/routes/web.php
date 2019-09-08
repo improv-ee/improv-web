@@ -15,10 +15,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')
-    ->middleware('cache.headers:public;max_age=2628000;etag');
+    ->middleware('cache.headers:private;max_age=604800;etag');
 
 Route::get('/maintenance', 'HomeController@maintenance')
-    ->middleware('cache.headers:public;max_age=2628000;etag')
+    ->middleware('cache.headers:private;max_age=604800;etag')
     ->name('maintenance');
 
 Auth::routes(['verify' => true]);
@@ -26,7 +26,7 @@ Auth::routes(['verify' => true]);
 
 Route::namespace('Admin')
     ->prefix('admin')
-    ->middleware(['auth', 'verified', 'cache.headers:private;max_age=2628000;etag'])
+    ->middleware(['auth', 'verified', 'cache.headers:private;max_age=604800;etag'])
     ->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
