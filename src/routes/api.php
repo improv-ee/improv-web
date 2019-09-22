@@ -24,27 +24,17 @@ Route::middleware('auth:api')->group(function () {
 });
 
 
-Route::middleware('cache.headers:private;max_age=604800;etag')->as('api.')->group(function () {
+Route::middleware('cache.headers:etag')->as('api.')->group(function () {
 
-    Route::apiResource('productions', 'ProductionController')->only(['index']);
-    Route::apiResource('events', 'EventController')->only(['index']);
-    Route::apiResource('organizations', 'OrganizationController')->only(['index']);
-    Route::apiResource('tags', 'TagController')->only(['index']);
-
-});
-
-
-Route::middleware('cache.headers:public;max_age=2628000;etag')->as('api.')->group(function () {
-
-    Route::apiResource('productions', 'ProductionController')->only(['show']);
+    Route::apiResource('productions', 'ProductionController')->only(['index', 'show']);
     Route::get('/events/schedule', 'EventController@schedule')
         ->name('api.events.schedule');
 
     Route::apiResource('events', 'EventController')
-        ->only(['show']);
+        ->only(['show', 'index']);
 
     Route::apiResource('organizations', 'OrganizationController')
-        ->only(['show']);
+        ->only(['show', 'index']);
 
     Route::apiResource('tags', 'TagController')
         ->only(['index']);
@@ -52,9 +42,11 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->as('api.')->grou
     Route::apiResource('users', 'UserController')
         ->only(['show']);
 
-    Route::apiResource('images', 'ImageController')
-        ->only(['show']);
+
 });
+
+Route::apiResource('images', 'ImageController', ['as' => 'api'])
+    ->only(['show'])->middleware('cache.headers:public;max_age=86400;etag');
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('productions', 'ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
