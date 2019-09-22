@@ -23,34 +23,36 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/user/invite', 'UserController@invite');
 });
 
-Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
 
-    Route::resource('productions', 'ProductionController', ['as' => 'api'])->only([
-        'index', 'show'
-    ]);
+Route::middleware('cache.headers:private;max_age=604800;etag')->as('api.')->group(function () {
 
-    Route::get('/events/schedule', 'EventController@schedule', ['as' => 'api'])
+    Route::apiResource('productions', 'ProductionController')->only(['index']);
+    Route::apiResource('events', 'EventController')->only(['index']);
+    Route::apiResource('organizations', 'OrganizationController')->only(['index']);
+    Route::apiResource('tags', 'TagController')->only(['index']);
+
+});
+
+
+Route::middleware('cache.headers:public;max_age=2628000;etag')->as('api.')->group(function () {
+
+    Route::apiResource('productions', 'ProductionController')->only(['show']);
+    Route::get('/events/schedule', 'EventController@schedule')
         ->name('api.events.schedule');
 
-    Route::resource('events', 'EventController', ['as' => 'api'])
-        ->only([
-            'index', 'show'
-        ]);
-
-    Route::resource('organizations', 'OrganizationController', ['as' => 'api'])
-        ->only([
-            'index', 'show'
-        ]);
-
-    Route::resource('tags', 'TagController', ['as' => 'api'])
-        ->only([
-            'index'
-        ]);
-
-    Route::resource('users', 'UserController', ['as' => 'api'])
+    Route::apiResource('events', 'EventController')
         ->only(['show']);
 
-    Route::apiResource('images', 'ImageController', ['as' => 'api'])
+    Route::apiResource('organizations', 'OrganizationController')
+        ->only(['show']);
+
+    Route::apiResource('tags', 'TagController')
+        ->only(['index']);
+
+    Route::apiResource('users', 'UserController')
+        ->only(['show']);
+
+    Route::apiResource('images', 'ImageController')
         ->only(['show']);
 });
 
