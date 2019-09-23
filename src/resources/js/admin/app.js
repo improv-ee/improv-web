@@ -126,3 +126,20 @@ new Vue({
     router,
     i18n
 });
+
+// Heartbeat function - periodically poll the API
+// If the session expires or user logged out in another tab, redirect to login page
+// This helps to avoid situation where frontend still thinks user is logged in and stays open
+setInterval(function(){
+    axios.get(config.apiUrl + '/heartbeat')
+        .catch(function (error) {
+            if(error.response.status === 401) {
+                // eslint-disable-next-line no-console
+                console.info('Session expired, redirecting to login page...');
+                window.location.href = '/login';
+                return;
+            }
+            // eslint-disable-next-line no-console
+            console.error(error.response);
+        });
+}, 900000);

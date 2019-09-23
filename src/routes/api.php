@@ -49,6 +49,11 @@ Route::apiResource('images', 'ImageController', ['as' => 'api'])
     ->only(['show'])->middleware('cache.headers:public;max_age=86400;etag');
 
 Route::middleware('auth:api')->group(function () {
+
+    Route::get('/heartbeat', function () {
+        return ['status' => 'ok'];
+    });
+
     Route::apiResource('productions', 'ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
 
     Route::apiResource('organizations', 'OrganizationController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
