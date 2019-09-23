@@ -1,4 +1,4 @@
-FROM php:7.3-apache as base
+FROM php:7.3-apache as prod
 
 WORKDIR /var/www/
 
@@ -19,7 +19,7 @@ COPY src /var/www/
 RUN chown -R www-data:www-data storage
 
 
-FROM base as dev
+FROM prod as dev
 
 COPY docker/lb/certs/ca.crt /usr/local/share/ca-certificates/
 

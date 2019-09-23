@@ -36,7 +36,7 @@ cd ..
 
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH | tr / - ; fi`
-docker build -t improv/improv-web:$TAG .
+docker build --target=prod -t improv/improv-web:$TAG .
 
 docker push improv/improv-web:$TAG
 docker rmi improv/improv-web:$TAG
