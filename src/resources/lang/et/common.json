@@ -22,6 +22,9 @@
     "platform_description": "improv.ee on platvorm truppidele ja publikule etenduste mängukava avaldamiseks ning impro-info jagamiseks.",
     "contact": "Meiega saab ühendust e-mailil {email}"
   },
+  "production": {
+    "events": "Üritused"
+  },
   "organization": {
     "image": "Pilt",
     "attr": {

@@ -18,9 +18,9 @@ import LaravelVuePagination from 'laravel-vue-pagination';
 
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {faCalendar, faAddressCard, faTimesCircle, faEnvelopeOpen} from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight, faMapMarkerAlt, faExternalLinkAlt, faMicrophone } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faMapMarkerAlt, faExternalLinkAlt, faMicrophone, faTags } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook  } from '@fortawesome/free-brands-svg-icons';
-library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle, faFacebook, faMicrophone, faMapMarkerAlt, faEnvelopeOpen,faExternalLinkAlt);
+library.add(faCalendar, faChevronRight, faAddressCard,faTimesCircle, faFacebook, faMicrophone, faMapMarkerAlt, faEnvelopeOpen,faExternalLinkAlt, faTags);
 dom.watch();
 
 Vue.use(VueRouter);

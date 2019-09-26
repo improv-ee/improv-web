@@ -41,6 +41,10 @@ export class Production {
         return this.production.organizations;
     }
 
+    getTags() {
+        return _.get(this.production, 'tags');
+    }
+
     hasEvents() {
         if (!this.production) {
             return false;

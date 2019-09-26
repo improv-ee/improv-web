@@ -5,7 +5,7 @@ import OrganizationsList from './views/organizations/List';
 import OrganizationDetails from './views/organizations/Details';
 import Contact from './views/Contact';
 import MarkdownView from '../components/MarkdownView';
-
+import ProductionDetails from './views/productions/Details';
 
 export function getRoutes(i18n){
     return [
@@ -18,6 +18,11 @@ export function getRoutes(i18n){
             path: '/events/:uid',
             name: 'events',
             component: EventDetails,
+        },
+        {
+            path: '/productions/:uid',
+            name: 'productions',
+            component: ProductionDetails,
         },
         {
             path: '/organizations',

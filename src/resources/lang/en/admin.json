@@ -66,7 +66,6 @@
     "no_events": "No events have been added",
     "you_dont_belong_to_any_org": "You don't belong to any Organization yet. In order to create Productions, you'll either need to join or found an Organization.",
     "num_of_events": "Number of events",
-    "events": "Events",
     "list_intro": "This table shows all Productions, that have been created by any of your organizations. A Production is a concept of a show, workshop or a festival. Once Production has multiple Events (happening times).",
     "create_new": "New Production",
     "no_upcoming_events_description": "This production does not have any upcoming Events scheduled",
