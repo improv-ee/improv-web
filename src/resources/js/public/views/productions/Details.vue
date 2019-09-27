@@ -21,7 +21,7 @@
                 v-for="tag in production.getTags()"
                 :key="tag.slug"
                 class="d-inline">
-                {{ tag.name }}
+                {{ tag.name }} 
               </li>
             </ul>
           </span>

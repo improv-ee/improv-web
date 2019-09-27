@@ -6,10 +6,16 @@ window.Popper = require('popper.js').default;
 window.Vue = require('vue');
 
 import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
 
 Sentry.init({
     dsn: 'https://4b357e3a9aa347229d1f452bf469f676@sentry.io/1314907',
-    integrations: [new Sentry.Integrations.Vue({Vue})],
+    integrations: [
+        new Integrations.Vue({
+            Vue,
+            attachProps: true,
+        }),
+    ],
     ignoreErrors: [
         '[vue-analytics]'
     ],
