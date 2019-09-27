@@ -55,6 +55,10 @@ export default {
                     this.loaded = true;
                     this.$Progress.finish();
 
+                })
+                .catch(error => {
+                    console.error(error);
+                    window.location.href = '/maintenance';
                 });
         }
     },
