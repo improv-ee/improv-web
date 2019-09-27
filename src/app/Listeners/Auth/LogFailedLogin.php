@@ -13,7 +13,7 @@ class LogFailedLogin
     public function handle(Failed $event)
     {
         Log::channel('security')->info('User failed to log in', [
-            'attemptedUserId' => $event->user->getAuthIdentifier(),
+            'attemptedUserId' => $event->user->getAuthIdentifier() ?? null,
             'attemptedUsername' => $event->credentials['username'],
             'attemptedPasswordChecksum' => crc32($event->credentials['password'])
         ]);
