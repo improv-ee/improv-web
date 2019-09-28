@@ -29,7 +29,7 @@
     </div>
 
 
-    <div class="rounded-bottom deep-purple">
+    <div class="rounded-bottom mdb-color lighten-2">
       <div class="row">
         <div class="col-12">
           <div class="text-center">
