@@ -13,12 +13,14 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
-    "@fortawesome/free-regular-svg-icons": "^5.6.3",
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
+    "@fortawesome/free-regular-svg-icons": "^5.6.3",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/vue-fontawesome": "^0.1.5",
-    "@sentry/browser": "^4.5.3",
+    "@sentry/browser": "^5.6.3",
+    "@sentry/integrations": "^5.6.1",
     "axios": "^0.18",
+    "babel-runtime": "^6.26.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0",
     "cross-env": "^5.1",
@@ -40,6 +42,7 @@
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.16.1",
     "sass-loader": "^7.1.0",
+    "uuid": "^3.3.2",
     "vue": "^2.6.3",
     "vue-analytics": "^5.16.2",
     "vue-bootstrap-datetimepicker": "^5.0.0",
@@ -51,8 +54,6 @@
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.5.22",
-    "uuid": "^3.3.2",
-    "babel-runtime": "^6.26.0",
     "webpack-bundle-analyzer": "^3.3.2"
   }
 }
