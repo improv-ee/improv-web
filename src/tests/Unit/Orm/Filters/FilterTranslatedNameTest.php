@@ -7,7 +7,7 @@ use App\Orm\Organization;
 use App\Orm\OrganizationTranslation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Request;
-use Spatie\QueryBuilder\Filter;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Tests\TestCase;
 
@@ -53,7 +53,7 @@ class FilterTranslatedNameTest extends TestCase
         $request = Request::create('/', 'GET', ['filter' => ['name' => 'Box']]);
 
         $fileredOrganizations = QueryBuilder::for(Organization::class, $request)
-            ->allowedFilters(Filter::custom('name', FilterTranslatedName::class))
+            ->allowedFilters(AllowedFilter::custom('name', new FilterTranslatedName))
             ->count();
 
         $this->assertEquals(2, $fileredOrganizations);

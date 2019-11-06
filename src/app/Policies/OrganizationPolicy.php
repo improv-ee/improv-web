@@ -13,7 +13,7 @@ class OrganizationPolicy
     /**
      * Determine whether the user can view the organization user.
      *
-     * @param  \App\User $user
+     * @param \App\User $user
      * @param Organization $organization
      * @return bool
      */
@@ -22,10 +22,15 @@ class OrganizationPolicy
         return true;
     }
 
+    public function viewAny(?User $user): bool
+    {
+        return true;
+    }
+
     /**
      * Determine whether the user can create organization users.
      *
-     * @param  \App\User $user
+     * @param \App\User $user
      * @return mixed
      */
     public function create(User $user): bool
@@ -48,7 +53,7 @@ class OrganizationPolicy
     /**
      * Determine whether the user can update the organization user.
      *
-     * @param  \App\User $user
+     * @param \App\User $user
      * @param Organization $organization
      * @return bool
      */
@@ -60,7 +65,7 @@ class OrganizationPolicy
     /**
      * Determine whether the user can delete the organization user.
      *
-     * @param  \App\User $user
+     * @param \App\User $user
      * @param Organization $organization
      * @return bool
      */
@@ -72,11 +77,11 @@ class OrganizationPolicy
     /**
      * Determine whether the user can restore the organization user.
      *
-     * @param  \App\User $user
+     * @param \App\User $user
      * @param Organization $organization
      * @return bool
      */
-    public function restore(User $user, Organization $organization) : bool
+    public function restore(User $user, Organization $organization): bool
     {
         return false;
     }
@@ -84,11 +89,11 @@ class OrganizationPolicy
     /**
      * Determine whether the user can permanently delete the organization user.
      *
-     * @param  \App\User $user
+     * @param \App\User $user
      * @param Organization $organization
      * @return bool
      */
-    public function forceDelete(User $user, Organization $organization):bool
+    public function forceDelete(User $user, Organization $organization): bool
     {
         return false;
     }

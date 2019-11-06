@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\TagResource;
 use App\Orm\Filters\FilterTranslatedTagName;
 use Illuminate\Http\Request;
-use Spatie\QueryBuilder\Filter;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\Tags\Tag;
 
@@ -32,7 +32,7 @@ class TagController extends Controller
     {
 
         $tags = QueryBuilder::for(Tag::class)
-            ->allowedFilters(Filter::custom('name', FilterTranslatedTagName::class))
+            ->allowedFilters(AllowedFilter::custom('name', new FilterTranslatedTagName))
             ->orderBy('id', 'asc')
             ->paginate(50);
 

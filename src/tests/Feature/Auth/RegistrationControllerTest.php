@@ -70,10 +70,10 @@ class RegistrationControllerTest extends TestCase
     public function testUserCanNotSignupWithPwnedPasswd()
     {
         $fields = $this->userRegistrationFields;
-        $fields['password'] = 'monkey';
-        $fields['password_confirmation'] = 'monkey';
+        $fields['password'] = $fields['password_confirmation'] = 'password123';
 
         $response = $this->post('/register', $fields);
+
         $response->assertSessionHasErrors(['password']);
     }
 }

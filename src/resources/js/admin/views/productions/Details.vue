@@ -112,7 +112,6 @@ export default {
         },
         addEvent() {
             let self = this;
-
             let startTime = moment().add(24, 'h').format();
             let endTime = moment().add(25, 'h').format();
             let uid = null;
@@ -121,7 +120,7 @@ export default {
                 let lastEvent = self.production.getEvents()[self.production.getEvents().length - 1];
                 startTime = lastEvent.getStartTime();
                 endTime = lastEvent.getEndTime();
-                uid = lastEvent.getPlace().uid;
+                uid = lastEvent.hasPlace() ? lastEvent.getPlace().uid : null;
             }
 
             axios.post(config.apiUrl + '/events', {
