@@ -8,6 +8,7 @@ use App\Rules\ReservedUsername;
 use App\User;
 use Carbon\Carbon;
 use Clarkeash\Doorman\Facades\Doorman;
+use Clarkeash\Doorman\Validation\DoormanRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -73,7 +74,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'min:3', 'max:32', 'unique:users', new ReservedUsername],
             'email' => 'required|string|email|min:5|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed|pwned|different:name|different:username|different:email',
-            'code' => 'required|doorman:email',
+            'code' => ['required', new DoormanRule($data['email'])],
             'tos' => 'required|accepted'
         ]);
     }

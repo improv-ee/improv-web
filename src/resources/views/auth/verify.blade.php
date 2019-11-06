@@ -15,7 +15,15 @@
                     @endif
 
                     {{ __('auth.email_verification_needed') }}
-                    {{ __('auth.email_verification_did_not_receive') }}, <a href="{{ route('verification.resend') }}">{{ __('auth.email_verification_request_another') }}</a>.
+
+                        {{ __('auth.email_verification_did_not_receive') }}
+                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                        @csrf
+
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
+                            {{ __('auth.email_verification_request_another') }}
+                        </button>.
+                    </form>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Request;
 
 class LogstashFormatter extends \Monolog\Formatter\LogstashFormatter
 {
-    public function format(array $record)
+    public function format(array $record) : string
     {
         $record['extra']['userId'] = Auth::user()->id ?? null;
 

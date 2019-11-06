@@ -8,10 +8,8 @@ use App\Http\Resources\V1\OrganizationResource;
 use App\Http\Services\OrganizationStorageService;
 use App\Orm\Filters\FilterTranslatedName;
 use App\Orm\Organization;
-use App\Orm\OrganizationUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\QueryBuilder\Filter;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 /**
@@ -59,7 +57,7 @@ class OrganizationController extends Controller
     public function index(Request $request)
     {
         $organizations = QueryBuilder::for(Organization::class)
-            ->allowedFilters(Filter::custom('name', FilterTranslatedName::class), Filter::exact('is_public'))
+            ->allowedFilters(AllowedFilter::custom('name', new FilterTranslatedName), AllowedFilter::exact('is_public'))
             ->orderBy('id', 'asc')
             ->onlyMine($request->input('onlyMine', false))
             ->paginate(30);
