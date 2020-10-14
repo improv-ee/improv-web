@@ -4,7 +4,7 @@ namespace App\Http\Resources\V1;
 
 use App\Http\Resources\V1\Image\HeaderImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use Illuminate\Support\Facades\Log;
 class ScheduleResource extends JsonResource
 {
     /**
@@ -15,7 +15,6 @@ class ScheduleResource extends JsonResource
      */
     public function toArray($request)
     {
-
         return [
             'uid' => $this->uid,
             'title' => $this->title,

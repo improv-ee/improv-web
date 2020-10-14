@@ -7,6 +7,10 @@ use App\Exceptions\PlaceException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use mastani\GoogleStaticMap\Format;
+use mastani\GoogleStaticMap\GoogleStaticMap;
+use mastani\GoogleStaticMap\MapType;
+use mastani\GoogleStaticMap\Size;
 use SKAgarwal\GoogleApi\Exceptions\GooglePlacesApiException;
 use SKAgarwal\GoogleApi\PlacesApi;
 
@@ -71,5 +75,29 @@ class PlaceService implements PlaceServiceContract
         } catch (GooglePlacesApiException $e) {
             throw new PlaceException($e->getMessage(), $e->getCode(), $e);
         }
+    }
+
+    /**
+     * Return URL to an image of the Place on a Google Maps
+     *
+     * See https://developers.google.com/maps/documentation/maps-static/intro
+     *
+     * @param string $address
+     * @param string $name
+     * @return string
+     */
+    public function getStaticPlaceImageUrl(string $address, string $name) : string
+    {
+        $map = new GoogleStaticMap(env('GOOGLE_PLACES_API_KEY'));
+        $url = $map->setCenter(urlencode($address))
+            ->setMapType(MapType::RoadMap)
+            ->setZoom(14)
+            ->setSize(900, 300)
+            ->setFormat(Format::PNG)
+            ->setSecret(env('GOOGLE_SMAPS_SIGNING_SECRET'))
+            ->addMarker(urlencode($address), urlencode($name), 'red', Size::Small)
+            ->make();
+
+        return $url;
     }
 }

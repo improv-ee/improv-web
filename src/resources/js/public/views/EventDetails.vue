@@ -47,13 +47,47 @@
             <i class="fas fa-map-marker-alt" /> {{ $t('event.attr.place') }}</span><br>
           <span class="meta-value">
             <a
-              :href="event.getPlace().url"
+              href="#"
               :title="event.getPlace().address"
-              target="_blank">{{ event.getPlace().name }}</a>
+              @click="toggleStaticMap">{{ event.getPlace().name }}</a>
           </span>
         </p>
       </div>
     </div>
+
+    <transition
+      name="fade">
+      <div
+        v-if="event.hasPlace() && showStaticMap"
+        class="row align-items-center">
+        <div class="col-8">
+          <a
+            :href="event.getPlace().urls.maps"
+            target="_blank"
+            :title="event.getPlace().address">
+            <img
+              :src="event.getPlace().urls.staticImage"
+              :alt="event.getPlace().name"
+              class="rounded map-image">
+          </a>
+        </div>
+        <div class="col-4">
+          <p>
+            <strong>{{ event.getPlace().name }}</strong><br>
+            {{ event.getPlace().address }}
+          </p>
+          <p>
+            <a
+              :href="event.getPlace().urls.maps"
+              target="_blank"
+              class="btn btn-primary btn-block">
+              <i
+                class="fas fa-map-marker-alt" /> {{ $t('event.attr.view_venue_map') }}
+            </a>
+          </p>
+        </div>
+      </div>
+    </transition>
 
     <div class="row">
       <div class="col-md-12 col-lg-12">
@@ -75,7 +109,8 @@ export default {
     data() {
         return {
             event: new Event(new Production()),
-            production: new Production()
+            production: new Production(),
+            showStaticMap: false
         };
     },
     created() {
@@ -92,6 +127,9 @@ export default {
                     this.production = new Production(response.data.data);
                     this.event.setProduction(this.production);
                 });
+        },
+        toggleStaticMap: function () {
+            this.showStaticMap = !this.showStaticMap;
         }
     }
 };

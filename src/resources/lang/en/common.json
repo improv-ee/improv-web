@@ -42,7 +42,8 @@
       "end_time": "End",
       "organizers": "Organizers",
       "tags": "Tags",
-      "place":"Venue"
+      "place":"Venue",
+      "view_venue_map": "View venue on Map"
     }
   },
   "ui": {

@@ -19,11 +19,7 @@ class ProductionsTest extends ApiTestCase
 {
     use DatabaseMigrations;
 
-    protected $validProductionInput = [
-        'title' => 'Sad Margarita',
-        'tags' => [],
-        'organizations' => []
-    ];
+    protected $validProductionInput = [];
 
     /**
      * @var Production
@@ -34,8 +30,13 @@ class ProductionsTest extends ApiTestCase
     {
         parent::setUp();
         $this->production = factory(Production::class)->create();
-        $this->validProductionInput['organizations'] = [$this->production->organizations()->first()->uid];
-        $this->validProductionInput['tags'] = [Tag::first()->slug];
+
+        $this->validProductionInput = [
+            'title' => 'Sad Margarita',
+            'tags' => [Tag::first()->slug],
+            'organizations' =>  [$this->production->organizations()->first()->uid]
+        ];
+
     }
 
     /**
