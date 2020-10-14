@@ -8,7 +8,7 @@ cache:
     - "$HOME/.npm"
     - "$HOME/.composer"
 php:
-  - 7.3
+  - 7.4
 
 node_js: 8.9
 
