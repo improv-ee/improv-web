@@ -5,7 +5,7 @@ WORKDIR /var/www/
 RUN rm -rf /var/www/html /etc/apache2/conf-enabled/security.conf && \
     apt-get update && \
     apt-get install -y libzip-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev jpegoptim optipng pngquant gifsicle mariadb-client libmagickwand-dev && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ && \
     docker-php-ext-install gd pdo_mysql zip exif && \
     pecl install imagick redis && \
     docker-php-ext-enable redis && \
@@ -26,7 +26,7 @@ COPY docker/lb/certs/ca.crt /usr/local/share/ca-certificates/
 
 RUN rm -f $PHP_INI_DIR/conf.d/php.prod.ini && \
     update-ca-certificates && \
-    pecl install xdebug-2.7.0 && \
+    pecl install xdebug && \
     docker-php-ext-enable xdebug
 
 COPY docker/webserver/php.dev.ini $PHP_INI_DIR/conf.d/

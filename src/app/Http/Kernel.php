@@ -7,7 +7,6 @@ use App\Http\Middleware\AuthenticateIfPossible;
 use App\Http\Middleware\SetApiLocale;
 use App\Http\Middleware\SetLocaleFromGeoIP;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Spatie\Cors\Cors;
 
 class Kernel extends HttpKernel
 {
@@ -24,7 +23,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        Cors::class
+        \Fruitcake\Cors\HandleCors::class,
     ];
 
     /**

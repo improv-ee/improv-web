@@ -28,7 +28,6 @@ class EventResource extends JsonResource
      */
     public function toArray($request)
     {
-
         return [
             'uid' => $this->uid,
             'title' => $this->title,
@@ -43,8 +42,8 @@ class EventResource extends JsonResource
             ],
             'place' => new PlaceResource($this->place),
             'links' => [
-                'self' => route('api.events.show', ['uid' => $this->uid]),
-                'production' => route('api.productions.show', ['id' => $this->production->uid])
+                'self' => route('api.events.show', ['event' => $this->uid]),
+                'production' => route('api.productions.show', ['production' => $this->production->uid])
             ],
             'images'=> new HeaderImageResource($this)
         ];
