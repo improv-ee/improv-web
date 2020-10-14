@@ -1,1 +1,0 @@
-**N.B! The API is currently not versioned and no SLA is provided.**
