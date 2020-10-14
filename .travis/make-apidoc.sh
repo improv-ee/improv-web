@@ -16,7 +16,6 @@ export OAUTH_TOKEN=$(php artisan apidoc:seed)
 php artisan apidoc:generate
 
 mv build/api-docs/Dockerfile public/docs/
-mv build/api-docs/source/prepend.md public/docs/source/
 
 php artisan apidoc:rebuild
 
