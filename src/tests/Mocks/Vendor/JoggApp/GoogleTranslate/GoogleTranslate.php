@@ -40,8 +40,7 @@ class GoogleTranslate extends \JoggApp\GoogleTranslate\GoogleTranslate
 
         return $translations;
     }
-
-    public function translate($input, $to = null): array
+    public function translate($input, $to = null, $format = 'text'): array
     {
 
         if (is_array($input)) {
@@ -62,7 +61,7 @@ class GoogleTranslate extends \JoggApp\GoogleTranslate\GoogleTranslate
         return 'mock-translated-' . $input;
     }
 
-    public function translateBatch(array $input, string $translateTo): array
+    public function translateBatch(array $input, string $translateTo, $format = 'text'): array
     {
         $translations = [];
 

@@ -32,7 +32,8 @@ class StandardPolicy extends Policy
                 config('app.api_url'),
                 'https://api.improv.ee',
                 'https://secure.gravatar.com',
-                'https://www.google-analytics.com'
+                'https://www.google-analytics.com',
+                'https://maps.googleapis.com'
             ])
             ->addDirective(Directive::MEDIA, Keyword::SELF)
             ->addDirective(Directive::OBJECT, Keyword::NONE)

@@ -42,7 +42,8 @@
       "end_time": "Lõpp",
       "organizers": "Korraldajad",
       "tags": "Märksõnad",
-      "place":"Toimumiskoht"
+      "place":"Toimumiskoht",
+      "view_venue_map": "Vaata asukohta kaardil"
     }
   },
   "ui": {

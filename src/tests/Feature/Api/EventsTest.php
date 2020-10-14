@@ -80,6 +80,22 @@ class EventsTest extends ApiTestCase
             ->assertJsonCount(2, 'data');
     }
 
+    public function testPlaceDetailsReturnGoogleMapLinks()
+    {
+        $this->actingAsLoggedInUser();
+
+
+        $event = factory(Event::class)->create();
+
+        $response = $this->get($this->getApiUrl() . '/events/' . $event->uid);
+
+        $response->assertStatus(200);
+
+        $response->json('data.place.staticImage');
+        $this->assertEquals(GooglePlaces::TEST_PLACE_URL, $response->json('data.place.urls.maps'));
+    }
+
+
     public function testEventCanBeCreated()
     {
         $this->actingAsOrganizationMember();

@@ -18,5 +18,6 @@ abstract class ApiTestCase extends TestCase
         parent::setUp();
 
         $this->withHeader('Accept', 'application/json');
+        $this->withHeader('Accept-Language', 'ee-ET');
     }
 }

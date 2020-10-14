@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
-use Unicodeveloper\Identify\Facades\IdentityFacade as Identify;
 
 class SetApiLocale
 {
@@ -30,14 +29,15 @@ class SetApiLocale
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param \Closure $next
      *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         if (config('language.auto')) {
-            $this->setLocale(Identify::lang()->getLanguage());
+            $locale = substr($request->server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
+            $this->setLocale($locale);
         } else {
             $this->setLocale(config('app.locale'));
         }
