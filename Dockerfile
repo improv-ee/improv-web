@@ -1,4 +1,4 @@
-FROM php:7.3-apache as prod
+FROM php:7.4-apache as prod
 
 WORKDIR /var/www/
 
