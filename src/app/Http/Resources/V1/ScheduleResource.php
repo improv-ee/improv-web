@@ -33,8 +33,8 @@ class ScheduleResource extends JsonResource
                 'end'=>$this->end_time->toIso8601String()
             ],
             'links' => [
-                'self' => route('api.events.show',['uid'=>$this->uid]),
-                'production' => route('api.productions.show',['id'=>$this->production->uid])
+                'self' => route('api.events.show',['event'=>$this->uid]),
+                'production' => route('api.productions.show',['production'=>$this->production->uid])
             ]
         ];
     }

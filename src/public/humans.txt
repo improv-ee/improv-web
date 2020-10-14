@@ -1,9 +1,6 @@
 /* TEAM */
 
 Ando Roots
-Eva Valdna
-Rahel Otsa
-Eveli Glinjanski
 
 /* THANKS */
 
