@@ -4,13 +4,13 @@ namespace App\Http\Generators;
 
 use DateTimeInterface;
 use App\Orm\Media;
-use Spatie\MediaLibrary\UrlGenerator\BaseUrlGenerator;
+use Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator;
 
 /**
  * @package App\Http\Generators
  * @property Media $media
  */
-class MediaUrlGenerator extends BaseUrlGenerator
+class MediaUrlGenerator extends DefaultUrlGenerator
 {
 
     /**

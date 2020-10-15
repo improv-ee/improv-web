@@ -21,6 +21,11 @@ return [
     'queue_name' => '',
 
     /*
+    * By default all conversions will be performed on a queue.
+    */
+    'queue_conversions_by_default' => env('QUEUE_CONVERSIONS_BY_DEFAULT', true),
+
+    /*
      * The fully qualified class name of the media model.
      */
     'media_model' => \App\Orm\Media::class,
@@ -64,15 +69,38 @@ return [
     ],
 
     /*
+     * When converting Media instances to response the media library will add
+     * a `loading` attribute to the `img` tag. Here you can set the default
+     * value of that attribute.
+     *
+     * Possible values: 'lazy', 'eager', 'auto' or null if you don't want to set any loading instruction.
+     *
+     * More info: https://css-tricks.com/native-lazy-loading/
+     */
+    'default_loading_attribute_value' => null,
+
+    /*
+     * This is the class that is responsible for naming conversion files. By default,
+     * it will use the filename of the original and concatenate the conversion name to it.
+     */
+    'conversion_file_namer' => Spatie\MediaLibrary\Conversions\DefaultConversionFileNamer::class,
+
+    /*
      * When urls to files get generated, this class will be called. Leave empty
      * if your files are stored locally above the site root or on s3.
      */
-    'url_generator' => \Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator::class, //\App\Http\Generators\MediaUrlGenerator::class,
+    'url_generator' => \App\Http\Generators\MediaUrlGenerator::class,
 
     /*
      * The class that contains the strategy for determining a media file's path.
      */
     'path_generator' => \Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+
+    /*
+     * Whether to activate versioning when urls to files get generated.
+     * When activated, this attaches a ?v=xx query string to the URL.
+     */
+    'version_urls' => false,
 
     /*
      * Medialibrary will try to optimize all converted images by removing
@@ -105,18 +133,18 @@ return [
      * These generators will be used to create an image of media files.
      */
     'image_generators' => [
-        Spatie\MediaLibrary\ImageGenerators\FileTypes\Image::class,
-        Spatie\MediaLibrary\ImageGenerators\FileTypes\Webp::class,
-        Spatie\MediaLibrary\ImageGenerators\FileTypes\Pdf::class,
-        Spatie\MediaLibrary\ImageGenerators\FileTypes\Svg::class,
-        Spatie\MediaLibrary\ImageGenerators\FileTypes\Video::class,
+        Spatie\MediaLibrary\Conversions\ImageGenerators\Image::class,
+        Spatie\MediaLibrary\Conversions\ImageGenerators\Webp::class,
+        Spatie\MediaLibrary\Conversions\ImageGenerators\Pdf::class,
+        Spatie\MediaLibrary\Conversions\ImageGenerators\Svg::class,
+        Spatie\MediaLibrary\Conversions\ImageGenerators\Video::class,
     ],
 
     /*
      * The engine that should perform the image conversions.
      * Should be either `gd` or `imagick`.
      */
-    'image_driver' => 'gd',
+    'image_driver' => env('IMAGE_DRIVER', 'gd'),
 
     /*
      * FFMPEG & FFProbe binaries paths, only used if you try to generate video
@@ -137,7 +165,14 @@ return [
      * your custom jobs extend the ones provided by the package.
      */
     'jobs' => [
-        'perform_conversions' => Spatie\MediaLibrary\Jobs\PerformConversions::class,
-        'generate_responsive_images' => Spatie\MediaLibrary\Jobs\GenerateResponsiveImages::class,
+        'perform_conversions' => Spatie\MediaLibrary\Conversions\Jobs\PerformConversionsJob::class,
+        'generate_responsive_images' => Spatie\MediaLibrary\ResponsiveImages\Jobs\GenerateResponsiveImagesJob::class,
     ],
+
+    /*
+     * When using the addMediaFromUrl method you may want to replace the default downloader.
+     * This is particularly useful when the url of the image is behind a firewall and
+     * need to add additional flags, possibly using curl.
+     */
+    'media_downloader' => Spatie\MediaLibrary\Downloaders\DefaultDownloader::class,
 ];
