@@ -153,7 +153,7 @@ return [
          * Package Service Providers...
          */
         Astrotomic\Translatable\TranslatableServiceProvider::class,
-        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+        Knuckles\Scribe\ScribeServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,

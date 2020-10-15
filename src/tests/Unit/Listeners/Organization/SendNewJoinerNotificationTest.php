@@ -18,12 +18,12 @@ class SendNewJoinerNotificationTest extends TestCase
 
     public function testNotificationIsSentToJoiner()
     {
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $orgMemberJoiner = $this->actingAsLoggedInUser();
-        $orgMemberAdmin1 = factory(User::class)->create();
-        $orgMemberAdmin2 = factory(User::class)->create();
-        $orgMember = factory(User::class)->create();
+        $orgMemberAdmin1 = User::factory()->create();
+        $orgMemberAdmin2 = User::factory()->create();
+        $orgMember = User::factory()->create();
 
         $organization->users()->attach($orgMemberJoiner, ['role'=> OrganizationUser::ROLE_MEMBER, 'creator_id'=>$orgMemberJoiner->id]);
         $organization->users()->attach($orgMemberAdmin1, ['role' => OrganizationUser::ROLE_ADMIN,'creator_id'=>$orgMemberAdmin1->id]);

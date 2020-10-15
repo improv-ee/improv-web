@@ -32,7 +32,7 @@ class UpdateProductionRequestTest extends TestCase
     {
         parent::setUp();
         $this->request = new UpdateProductionRequest;
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
         $this->validInput['organizations'] = [$organization->uid];
     }
 

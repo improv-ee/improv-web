@@ -25,13 +25,6 @@ return [
      */
     'media_model' => \App\Orm\Media::class,
 
-    's3' => [
-        /*
-         * The domain that should be prepended when generating urls.
-         */
-        'domain' => 'https://'.env('AWS_BUCKET').'.s3.amazonaws.com',
-    ],
-
     'remote' => [
         /*
          * Any extra headers that should be included when uploading media to
@@ -74,12 +67,12 @@ return [
      * When urls to files get generated, this class will be called. Leave empty
      * if your files are stored locally above the site root or on s3.
      */
-    'url_generator' => \App\Http\Generators\MediaUrlGenerator::class,
+    'url_generator' => \Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator::class, //\App\Http\Generators\MediaUrlGenerator::class,
 
     /*
      * The class that contains the strategy for determining a media file's path.
      */
-    'path_generator' => null,
+    'path_generator' => \Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
 
     /*
      * Medialibrary will try to optimize all converted images by removing

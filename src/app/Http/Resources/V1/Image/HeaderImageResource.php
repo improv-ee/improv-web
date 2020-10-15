@@ -7,7 +7,6 @@ use App\Orm\Production;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Cache;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 /**
  * @property HasMedia $this

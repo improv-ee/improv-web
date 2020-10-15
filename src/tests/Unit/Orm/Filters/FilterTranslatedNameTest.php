@@ -22,7 +22,7 @@ class FilterTranslatedNameTest extends TestCase
     public function testFilterReturnsOnlyResultsOfCurrentLocale()
     {
 
-        $organizations = factory(Organization::class, 4)->create();
+        $organizations = Organization::factory()->count( 4)->create();
 
         $t1 = new OrganizationTranslation;
         $t1->organization_id = $organizations[0]->id;

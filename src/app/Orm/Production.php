@@ -7,15 +7,16 @@ use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Dirape\Token\DirapeToken;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
+use Spatie\MediaLibrary\HasMedia;
 
 /**
  * @package App\Orm
@@ -29,7 +30,7 @@ use Spatie\Tags\HasTags;
  */
 class Production extends Model implements Auditable, HasMedia
 {
-    use Translatable, SoftDeletes, SoftCascadeTrait, DirapeToken, \OwenIt\Auditing\Auditable, HasMediaTrait, HasTags;
+    use Translatable, SoftDeletes, SoftCascadeTrait, DirapeToken, \OwenIt\Auditing\Auditable, InteractsWithMedia, HasTags, HasFactory;
 
     public $translatedAttributes = ['title', 'description', 'excerpt'];
     public $fillable = ['title', 'description', 'excerpt'];

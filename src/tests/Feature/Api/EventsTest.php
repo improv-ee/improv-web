@@ -27,7 +27,7 @@ class EventsTest extends ApiTestCase
 
     public function testEventInfoIsReturned()
     {
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
 
         $response = $this->get($this->getApiUrl() . '/events/' . $event->uid);
 
@@ -52,8 +52,8 @@ class EventsTest extends ApiTestCase
      */
     public function testEventPlaceExtraFieldsAreEmptyIfPlaceUidNotFound()
     {
-        $event = factory(Event::class)->create();
-        $place = factory(Place::class)->create(['uid' => GooglePlaces::TEST_404_PLACE_UID]);
+        $event = Event::factory()->create();
+        $place = Place::factory()->create(['uid' => GooglePlaces::TEST_404_PLACE_UID]);
         $event->place_id = $place->id;
         $event->save();
 
@@ -72,7 +72,7 @@ class EventsTest extends ApiTestCase
 
     public function testEventScheduleIsReturned()
     {
-        factory(Event::class, 2)->create();
+        Event::factory()->count( 2)->create();
 
         $response = $this->get($this->getApiUrl() . '/events/schedule');
 
@@ -85,7 +85,7 @@ class EventsTest extends ApiTestCase
         $this->actingAsLoggedInUser();
 
 
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
 
         $response = $this->get($this->getApiUrl() . '/events/' . $event->uid);
 
@@ -100,7 +100,7 @@ class EventsTest extends ApiTestCase
     {
         $this->actingAsOrganizationMember();
 
-        $production = factory(Production::class)->create();
+        $production = Production::factory()->create();
 
         $start = Carbon::now()->addHour();
         $end = Carbon::now()->addHours(2);
@@ -135,7 +135,7 @@ class EventsTest extends ApiTestCase
     public function testEventCanBeEdited()
     {
         $user = $this->actingAsOrganizationMember();
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $this->assignEventToUser($event, $user);
 
         $eventInput = [
@@ -160,7 +160,7 @@ class EventsTest extends ApiTestCase
     public function testPlaceCanBeRemovedFromEvent()
     {
         $user = $this->actingAsOrganizationMember();
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $this->assignEventToUser($event, $user);
 
         $eventInput = [
@@ -182,7 +182,7 @@ class EventsTest extends ApiTestCase
     public function testEventCanNotBeEditedByNonOwner()
     {
         $this->actingAsOrganizationMember();
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
 
         $response = $this->put($this->getApiUrl() . '/events/' . $event->uid);
         $response->assertStatus(403);
@@ -191,7 +191,7 @@ class EventsTest extends ApiTestCase
     public function testEventTitleWillBeSetToNullWhenEmpty()
     {
         $user = $this->actingAsOrganizationMember();
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $this->assignEventToUser($event, $user);
 
         $eventInput = [
@@ -214,7 +214,7 @@ class EventsTest extends ApiTestCase
     public function testCanNotDeleteEventNotOwnedByMyOrganizations()
     {
         $this->actingAsOrganizationMember();
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
 
         $response = $this->delete($this->getApiUrl() . '/events/' . $event->uid);
         $response->assertStatus(403);
@@ -225,7 +225,7 @@ class EventsTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember();
 
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $this->assignEventToUser($event, $user);
 
         $response = $this->delete($this->getApiUrl() . '/events/' . $event->uid);
@@ -237,7 +237,7 @@ class EventsTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember();
 
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $this->assignEventToUser($event, $user);
 
         $eventInput = [
@@ -268,7 +268,7 @@ class EventsTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember();
 
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $this->assignEventToUser($event, $user);
 
         $eventInput = [

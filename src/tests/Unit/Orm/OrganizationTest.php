@@ -17,7 +17,7 @@ class OrganizationTest extends TestCase
     {
 
         $user = $this->actingAsLoggedInUser();
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
         $organization->users()->attach($user, ['creator_id' => $user->id]);
 
         $this->assertTrue($organization->isMember($user));
@@ -27,7 +27,7 @@ class OrganizationTest extends TestCase
     {
 
         $user = $this->actingAsLoggedInUser();
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $this->assertFalse($organization->isMember($user));
     }
@@ -43,7 +43,7 @@ class OrganizationTest extends TestCase
                 return 'translated-' . $inputText;
             });
 
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $defaultLocale = config('app.fallback_locale');
 

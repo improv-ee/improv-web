@@ -22,7 +22,7 @@ class MembershipTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
         $organization = $user->organizations()->first();
-        $newMember = factory(User::class)->create();
+        $newMember = User::factory()->create();
 
         $response = $this->post(
             sprintf($this->getApiUrl() . '/organizations/%s/membership', $organization->uid),
@@ -74,7 +74,7 @@ class MembershipTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
         $organization = $user->organizations()->first();
-        $newMember = factory(User::class)->create();
+        $newMember = User::factory()->create();
 
         Event::fake();
 
@@ -89,7 +89,7 @@ class MembershipTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_MEMBER);
         $organization = $user->organizations()->first();
-        $newMember = factory(User::class)->create();
+        $newMember = User::factory()->create();
 
         $response = $this->post(
             sprintf($this->getApiUrl() . '/organizations/%s/membership', $organization->uid),
@@ -106,7 +106,7 @@ class MembershipTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
         $organization = $user->organizations()->first();
 
-        $member = factory(OrganizationUser::class)
+        $member = OrganizationUser::factory()
             ->create(['organization_id' => $organization->id]);
 
         $response = $this->delete(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->uid, $member->user->username));
@@ -120,7 +120,7 @@ class MembershipTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $organization = $user->organizations()->first();
 
-        $member = factory(OrganizationUser::class)
+        $member = OrganizationUser::factory()
             ->create(['organization_id' => $organization->id]);
 
         $response = $this->delete(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->uid, $member->user->username));
@@ -143,7 +143,7 @@ class MembershipTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember(OrganizationUser::ROLE_ADMIN);
         $organization = $user->organizations()->first();
 
-        $member = factory(OrganizationUser::class)
+        $member = OrganizationUser::factory()
             ->create(['organization_id' => $organization->id]);
 
         $response = $this->put(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->uid, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);
@@ -160,7 +160,7 @@ class MembershipTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $organization = $user->organizations()->first();
 
-        $member = factory(OrganizationUser::class)
+        $member = OrganizationUser::factory()
             ->create(['organization_id' => $organization->id]);
 
         $response = $this->put(sprintf($this->getApiUrl() . '/organizations/%s/membership/%s', $organization->uid, $member->user->username), ['role' => OrganizationUser::ROLE_ADMIN]);

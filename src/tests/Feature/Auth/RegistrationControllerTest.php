@@ -58,7 +58,7 @@ class RegistrationControllerTest extends TestCase
     public function testUserCanNotSignupWithTakenUsername()
     {
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $fields = $this->userRegistrationFields;
         $fields['username'] = $user->username;
