@@ -157,7 +157,6 @@ return [
         OwenIt\Auditing\AuditingServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
-        Clarkeash\Doorman\Providers\DoormanServiceProvider::class,
         SKAgarwal\GoogleApi\ServiceProvider::class,
 
 
@@ -219,7 +218,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Token'=>\Dirape\Token\Facades\Facade::class,
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
-        'Doorman' => Clarkeash\Doorman\Facades\Doorman::class,
         'GooglePlaces' => SKAgarwal\GoogleApi\Facade::class,
     ],
 

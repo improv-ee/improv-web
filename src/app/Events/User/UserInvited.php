@@ -2,7 +2,6 @@
 
 namespace App\Events\User;
 
-use App\Orm\Invite;
 use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -22,26 +21,26 @@ class UserInvited
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var Invite
-     */
-    public $invite;
-
-    /**
      * The sender of the invitation
      *
      * @var User
      */
-    public $inviter;
+    public User $inviter;
+
+    /**
+     * @var string email address that was invited
+     */
+    public string $invited_email;
 
     /**
      * Create a new event instance.
      *
-     * @param Invite $invite
+     * @param string $invited_email
      * @param User $inviter
      */
-    public function __construct(Invite $invite, User $inviter)
+    public function __construct(User $inviter, string $invited_email)
     {
-        $this->invite = $invite;
         $this->inviter = $inviter;
+        $this->invited_email = $invited_email;
     }
 }

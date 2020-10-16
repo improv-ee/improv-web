@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Orm\Invite;
 use App\Rules\ReservedUsername;
 use App\User;
 use Carbon\Carbon;
-use Clarkeash\Doorman\Facades\Doorman;
-use Clarkeash\Doorman\Validation\DoormanRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -55,10 +52,7 @@ class RegisterController extends Controller
     public function showRegistrationForm(Request $request)
     {
 
-        return view('auth.register', [
-            'invitationCode' => $request->get('code'),
-            'invite' => Invite::where('code', $request->get('code'))->first()
-        ]);
+        return view('auth.register');
     }
 
     /**
@@ -73,8 +67,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'username' => ['required', 'string', 'min:3', 'max:32', 'unique:users', new ReservedUsername],
             'email' => 'required|string|email|min:5|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed|pwned|different:name|different:username|different:email',
-            'code' => ['required', new DoormanRule($data['email'])],
+            'password' => 'required|string|min:12|confirmed|pwned|different:name|different:username|different:email',
             'tos' => 'required|accepted'
         ]);
     }
@@ -94,9 +87,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        // Temporary - set e-mail as manually verified. For as long as we have invitation logic,
-        // which already verifies it
-        $user->email_verified_at = Carbon::now();
         $user->save();
 
         return $user;
@@ -113,9 +103,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
 
-        $invite = Invite::where('code', $request->get('code'))->firstOrFail();
-        Doorman::redeem($request->get('code'), $request->get('email'));
-        Log::info('Redeemed invitation code', ['invitation_id' => $invite->id, 'invited_user_id' => $user->id]);
+        Log::info('New user signed up', ['user_id' => $user->id]);
 
         // Create new web access token on signup
         $token = $user->createWebToken();

@@ -17,7 +17,6 @@
 
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-                            <input type="hidden" name="code" value="{{ $invitationCode }}"/>
                             <div class="form-group row">
                                 <label for="name"
                                        class="col-md-4 col-form-label text-md-right">{{ __('user.name') }} *</label>
@@ -63,7 +62,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                           name="email" value="{{ $invite->for }}" required>
+                                           name="email" required>
                                     <small id="emailHelpBlock" class="form-text text-muted">
                                         {{  __('user.email_help') }}
                                     </small>
