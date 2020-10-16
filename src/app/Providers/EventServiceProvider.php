@@ -23,6 +23,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Notifications\Events\NotificationSent;
 
@@ -50,7 +51,7 @@ class EventServiceProvider extends ServiceProvider
 
         Registered::class => [
             LogRegisteredUser::class,
-            //SendEmailVerificationNotification::class, // Temporarily disabled until invitation codes are turned off
+            SendEmailVerificationNotification::class
         ],
 
         Attempting::class => [

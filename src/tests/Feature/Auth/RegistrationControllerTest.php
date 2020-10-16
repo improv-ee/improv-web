@@ -3,7 +3,6 @@
 namespace Tests\Feature\Auth;
 
 use App\User;
-use Clarkeash\Doorman\Facades\Doorman;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
@@ -24,18 +23,13 @@ class RegistrationControllerTest extends TestCase
         'email' => 'sam@sqroot.eu',
         'password' => 'wE6h0WkhD3rLwsRO8pp7',
         'password_confirmation' => 'wE6h0WkhD3rLwsRO8pp7',
-        'tos' => '1',
-        'code'=> null
+        'tos' => '1'
     ];
 
     protected function setUp() : void
     {
         parent::setUp();
         Artisan::call('passport:install');
-        $invite = Doorman::generate()
-            ->make()
-            ->first();
-        $this->userRegistrationFields['code'] = $invite->code;
     }
 
 
@@ -45,14 +39,6 @@ class RegistrationControllerTest extends TestCase
         $response->assertRedirect($this->getWebUrl().'/admin');
 
         $this->assertDatabaseHas('users', ['username' => $this->userRegistrationFields['username']]);
-    }
-
-    public function testUserCanNotSignUpWithoutInvitationCode()
-    {
-        DB::table('invites')->truncate();
-
-        $response = $this->post('/register', $this->userRegistrationFields);
-        $response->assertSessionHasErrors(['code']);
     }
 
     public function testUserCanNotSignupWithTakenUsername()

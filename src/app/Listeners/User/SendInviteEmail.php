@@ -3,9 +3,10 @@
 namespace App\Listeners\User;
 
 use App\Events\User\UserInvited;
-use App\Notifications\User\NewUserInvited;
+use App\Mail\NewUserInvite;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 /**
@@ -25,13 +26,11 @@ class SendInviteEmail implements ShouldQueue
     public function handle(UserInvited $event)
     {
 
-        Log::info('Generated a new invitation code', [
-            'email' => sha1($event->invite->for),
-            'invitation_id' => $event->invite->id,
+        Log::info('Sending a new invite email', [
+            'email' => sha1($event->invited_email),
             'inviter_id'=> $event->inviter->id
         ]);
 
-        $notification =new NewUserInvited($event->invite->code, $event->inviter->name);
-        Notification::send($event->invite, $notification);
+        Mail::to($event->invited_email)->send(new NewUserInvite($event->inviter));
     }
 }

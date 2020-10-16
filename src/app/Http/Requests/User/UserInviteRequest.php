@@ -4,6 +4,10 @@ namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $email
+ * @package App\Http\Requests\User
+ */
 class UserInviteRequest extends FormRequest
 {
     /**

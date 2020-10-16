@@ -7,11 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserInviteRequest;
 use App\Http\Resources\V1\User\SearchResultResource;
 use App\Http\Resources\V1\UserResource;
-use App\Orm\Invite;
 use App\User;
 use Illuminate\Http\Request;
-use Clarkeash\Doorman\Facades\Doorman;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\Log;
 use Spatie\QueryBuilder\QueryBuilder;
 
 /**
@@ -75,17 +74,8 @@ class UserController extends Controller
      */
     public function invite(UserInviteRequest $request)
     {
-        $invite = Doorman::generate()
-            ->expiresIn(14)
-            ->for($request->input('email'))
-            ->make()
-            ->first();
 
-        // "Converting" to an overwritten instance of Invite (vendor package does not support overwriting)
-        // Need to use custom model in order to serialize it
-        $invite = Invite::findOrFail($invite->id);
-
-        event(new UserInvited($invite, $request->user()));
+        event(new UserInvited($request->user(), $request->email));
         return response()->json();
     }
 }

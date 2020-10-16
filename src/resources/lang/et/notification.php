@@ -1,5 +1,7 @@
 <?php
 return [
+    'greeting' => 'Hei',
+
     'organization' => [
         'new_member' => [
             'greeting' => 'Tere :name',
