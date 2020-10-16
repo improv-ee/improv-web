@@ -53,6 +53,15 @@ class RegistrationControllerTest extends TestCase
         $response->assertSessionHasErrors(['username']);
     }
 
+    public function testUserCanNotSignupWithDisposableEmail()
+    {
+        $fields = $this->userRegistrationFields;
+        $fields['email'] = 'temp@mailinator.com';
+
+        $response = $this->post('/register', $fields);
+        $response->assertSessionHasErrors(['email']);
+    }
+
     public function testUserCanNotSignupWithPwnedPasswd()
     {
         $fields = $this->userRegistrationFields;
