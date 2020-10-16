@@ -3,3 +3,8 @@
 $font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+// Hotfix for mdbootstrap SCSS incorrect image path
+// https://mdbootstrap.com/support/jquery/mdb-pro-jquery-scss-import-fails/
+$image-path                                  : "../../img";
+$roboto-font-path: "../../font/roboto/";

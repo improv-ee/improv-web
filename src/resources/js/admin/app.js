@@ -26,22 +26,22 @@ library.add(faClock, faCalendar,faArrowUp,faArrowDown,faChevronLeft,faChevronRig
 dom.watch();
 
 
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('FontAwesomeIcon', FontAwesomeIcon);
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 Vue.use(datePicker);
 Vue.use(Notifications);
 
 
-Vue.component('production-table-row', ProductionTableRow);
-Vue.component('production-form', ProductionForm);
-Vue.component('event-form', EventForm);
-Vue.component('pagination', LaravelVuePagination);
-Vue.component('crud-toolbar', CrudToolbar);
-Vue.component('loading-spinner', LoadingSpinner);
+Vue.component('ProductionTableRow', ProductionTableRow);
+Vue.component('ProductionForm', ProductionForm);
+Vue.component('EventForm', EventForm);
+Vue.component('Pagination', LaravelVuePagination);
+Vue.component('CrudToolbar', CrudToolbar);
+Vue.component('LoadingSpinner', LoadingSpinner);
 
 Vue.component(
-    'passport-personal-access-tokens',
+    'PassportPersonalAccessTokens',
     require('./components/passport/PersonalAccessTokens.vue')
 );
 

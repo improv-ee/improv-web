@@ -28,9 +28,9 @@ Vue.use(Notifications);
 Vue.use(BootstrapVue);
 Vue.use(Meta);
 
-Vue.component('schedule-feed-event', Event);
-Vue.component('pagination', LaravelVuePagination);
-Vue.component('loading-spinner', LoadingSpinner);
+Vue.component('ScheduleFeedEvent', Event);
+Vue.component('Pagination', LaravelVuePagination);
+Vue.component('LoadingSpinner', LoadingSpinner);
 
 const progressBarOptions = {
     color: '#007bff',
