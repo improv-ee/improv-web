@@ -158,6 +158,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         SKAgarwal\GoogleApi\ServiceProvider::class,
+        Propaganistas\LaravelDisposableEmail\DisposableEmailServiceProvider::class,
 
 
         /*

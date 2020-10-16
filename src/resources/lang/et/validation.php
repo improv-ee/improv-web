@@ -162,4 +162,5 @@ return [
         'list_must_contain_mine' => 'Organisatsioonide nimekirjas peab olema vähemalt üks organisatsioon, mille liige sa oled.'
     ],
     'tag_does_not_exist' => ':attribute sisaldab väärtust, mida ei eksisteeri',
+    'indisposable' => 'Ajutiste e-mailidega konto loomine ei ole lubatud - palun kasuta oma päris e-maili'
 ];

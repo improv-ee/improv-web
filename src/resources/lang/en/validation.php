@@ -161,5 +161,5 @@ return [
         'list_must_contain_mine' => 'There must be at least one organization where you belong to.'
     ],
     'tag_does_not_exist' => ':attribute contains a value that does not exist in the database',
-
+    'indisposable' => 'Disposable email addresses are not allowed.',
 ];
