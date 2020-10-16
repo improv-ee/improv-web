@@ -9,7 +9,7 @@
     :items="items"
     :fields="fields">
     <template
-      v-slot:cell(avatar)="data">
+      #cell(avatar)="data">
       <router-link
         :to="{ name: 'organizations.people.details', params: { uid: organizationUid, username: data.item.username }}">
         <img
