@@ -36,8 +36,8 @@ class ProductionStorageServiceTest extends TestCase
     public function testSaveProductionRemovesOldProductions()
     {
         /** @var Production $production */
-        $production = factory(Production::class)->create();
-        $organizations = factory(Organization::class, 3)->create();
+        $production = Production::factory()->create();
+        $organizations = Organization::factory()->count( 3)->create();
 
         $production->organizations()->attach($organizations[0]);
         $production->organizations()->attach($organizations[1]);

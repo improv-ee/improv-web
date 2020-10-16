@@ -29,7 +29,7 @@ class ProductionsTest extends ApiTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->production = factory(Production::class)->create();
+        $this->production = Production::factory()->create();
 
         $this->validProductionInput = [
             'title' => 'Sad Margarita',
@@ -73,8 +73,8 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $organization = $user->organizations()->first();
 
-        $otherOrganization = factory(Organization::class)->create();
-        $productions = factory(Production::class, 10)->create();
+        $otherOrganization = Organization::factory()->create();
+        $productions = Production::factory()->count( 10)->create();
 
         $productions[1]->organizations()->attach($organization);
         $productions[2]->organizations()->attach($otherOrganization);
@@ -103,7 +103,7 @@ class ProductionsTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember();
         $userOrganization = $user->organizations()->first();
-        $newOrganization = factory(Organization::class)->create();
+        $newOrganization = Organization::factory()->create();
 
         $this->production->organizations()->attach($userOrganization);
 
@@ -129,7 +129,7 @@ class ProductionsTest extends ApiTestCase
         $user = $this->actingAsOrganizationMember();
         $this->production->organizations()->attach($user->organizations()->first());
 
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $productionInput = array_replace($this->validProductionInput, ['title' => 'Tilt Improv Festival',
             'description' => 'First improv festival in Estonia',
@@ -190,7 +190,7 @@ class ProductionsTest extends ApiTestCase
     public function testProductionCreationFailsIfDoesntBelongToMyOrganization()
     {
         $this->actingAsOrganizationMember();
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $productionInput = array_replace($this->validProductionInput, [
             'organizations' => [
@@ -273,7 +273,7 @@ class ProductionsTest extends ApiTestCase
 
         Production::truncate();
 
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
         $event->start_time = Carbon::now()->subYear();
         $event->end_time = Carbon::now()->subYear();
         $event->save();
@@ -289,7 +289,7 @@ class ProductionsTest extends ApiTestCase
 
         Production::truncate();
 
-        factory(Event::class)->create();
+        Event::factory()->create();
 
         $response = $this->get($this->getApiUrl() . '/productions');
         $response->assertStatus(200);

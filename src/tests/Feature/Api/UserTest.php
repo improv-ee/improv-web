@@ -18,9 +18,9 @@ class UserTest extends ApiTestCase
     {
         $this->actingAsLoggedInUser();
 
-        $user1 = factory(User::class)->create(['username' => 'jackblack', 'name' => 'Jack Black']);
-        $user2 = factory(User::class)->create(['username' => 'golfer1', 'name' => 'Jack Oneill']);
-        factory(User::class)->create();
+        $user1 = User::factory()->create(['username' => 'jackblack', 'name' => 'Jack Black']);
+        $user2 = User::factory()->create(['username' => 'golfer1', 'name' => 'Jack Oneill']);
+        User::factory()->create();
 
         $response = $this->get($this->getApiUrl() . '/user/search?filter[name]=jack');
         $response->assertStatus(200)
@@ -40,10 +40,10 @@ class UserTest extends ApiTestCase
     {
         $this->actingAsLoggedInUser();
 
-        $user = factory(User::class)->create(['username' => 'jackblack', 'name' => 'Jack Black']);
+        $user = User::factory()->create(['username' => 'jackblack', 'name' => 'Jack Black']);
         $user->delete();
 
-        factory(User::class)->create();
+        User::factory()->create();
 
         $response = $this->get($this->getApiUrl() . '/user/search?filter[name]=jack');
         $response->assertStatus(200);
@@ -72,7 +72,7 @@ class UserTest extends ApiTestCase
     public function testEmptySearchQueryReturnsResults()
     {
         $this->actingAsLoggedInUser();
-        factory(User::class, 6)->create();
+        User::factory()->count(6)->create();
 
         $response = $this->get($this->getApiUrl() . '/user/search?filter[name]=');
 

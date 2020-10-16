@@ -24,7 +24,7 @@ class ProductionTest extends TestCase
                 return 'translated-' . $inputText;
             });
 
-        $production = factory(Production::class)->create();
+        $production = Production::factory()->create();
 
         $defaultLocale = config('app.fallback_locale');
 

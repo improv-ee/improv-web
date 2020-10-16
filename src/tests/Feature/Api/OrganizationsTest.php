@@ -19,10 +19,10 @@ class OrganizationsTest extends ApiTestCase
 
     public function testOrganizationsListCanBeFilteredByName()
     {
-        factory(Organization::class)->create(['name' => 'Ruutu10 team nr 1' ]);
-        factory(Organization::class)->create(['name' => 'Ruutu10 team nr 2']);
-        factory(Organization::class)->create(['name' => 'Ruutu10 majatiim']);
-        factory(Organization::class, 10)->create();
+        Organization::factory()->create(['name' => 'Ruutu10 team nr 1' ]);
+        Organization::factory()->create(['name' => 'Ruutu10 team nr 2']);
+        Organization::factory()->create(['name' => 'Ruutu10 majatiim']);
+        Organization::factory()->count( 10)->create();
 
         $response = $this->get($this->getApiUrl() . '/organizations?filter[name]=Ruutu10');
         $response->assertStatus(200)
@@ -64,7 +64,7 @@ class OrganizationsTest extends ApiTestCase
     public function testOrganizationCanNotBeDeletedByNonMember()
     {
         $this->actingAsLoggedInUser();
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $response = $this->delete($this->getApiUrl() . '/organizations/' . $organization->uid);
         $response->assertStatus(403);
@@ -166,7 +166,7 @@ class OrganizationsTest extends ApiTestCase
     public function testUserCanNotEditOtherOrganizations()
     {
         $this->actingAsLoggedInUser();
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $newInput = ['name' => 'X-Force'];
 
@@ -178,11 +178,11 @@ class OrganizationsTest extends ApiTestCase
     {
         $this->actingAsLoggedInUser();
 
-        $organizations = factory(Organization::class, 2)->create();
+        $organizations = Organization::factory()->count(2)->create();
 
-        $member = factory(User::class)->create();
+        $member = User::factory()->create();
 
-        factory(OrganizationUser::class)->create(['user_id' => $member->id, 'organization_id' => $organizations[0]->id]);
+        OrganizationUser::factory()->create(['user_id' => $member->id, 'organization_id' => $organizations[0]->id]);
         $response = $this->get($this->getApiUrl() . '/organizations');
 
         $response->assertStatus(200)
@@ -201,7 +201,7 @@ class OrganizationsTest extends ApiTestCase
     public function testOrganizationListCanBeFilteredByVisibility()
     {
 
-        $organizations = factory(Organization::class, 2)->create();
+        $organizations = Organization::factory()->count( 2)->create();
         $organizations[0]->is_public = 0;
         $organizations[0]->save();
 
@@ -218,7 +218,7 @@ class OrganizationsTest extends ApiTestCase
 
     public function testOrganizationInfoIsReturned()
     {
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
 
         $response = $this->get($this->getApiUrl() . '/organizations/' . $organization->uid);
 
@@ -234,7 +234,7 @@ class OrganizationsTest extends ApiTestCase
     {
         $user = $this->actingAsOrganizationMember();
 
-        $organizations = factory(Organization::class, 3)->create();
+        $organizations = Organization::factory()->count( 3)->create();
         $organizations[0]->users()->attach($user, ['creator_id' => $user->id]);
 
         $response = $this->get($this->getApiUrl() . '/organizations?onlyMine=1');

@@ -5,12 +5,13 @@ namespace App\Orm;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Dirape\Token\DirapeToken;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
 
 /**
  * @property int $id
@@ -26,7 +27,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  */
 class Event extends Model implements AuditableInterface, HasMedia
 {
-    use Translatable, DirapeToken, SoftDeletes, Auditable, HasMediaTrait;
+    use Translatable, DirapeToken, SoftDeletes, Auditable, InteractsWithMedia, HasFactory;
 
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];

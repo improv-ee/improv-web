@@ -41,7 +41,7 @@ abstract class TestCase extends BaseTestCase
     protected function actingAsOrganizationMember(int $role = OrganizationUser::ROLE_MEMBER)
     {
         $user = $this->actingAsLoggedInUser();
-        $organization = factory(Organization::class)->create();
+        $organization = Organization::factory()->create();
         $organization->users()->attach($user, ['role' => $role, 'creator_id' => $user->id]);
         return Passport::actingAs($user);
     }
@@ -49,7 +49,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function actingAsLoggedInUser()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $user->assignRole('standard-user');
         return Passport::actingAs($user);
@@ -57,7 +57,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function actingAsUnauthenticatedUser()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         return Passport::actingAs($user);
     }

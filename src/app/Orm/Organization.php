@@ -5,12 +5,13 @@ namespace App\Orm;
 use App\User;
 use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
 
 /**
  * @property \Illuminate\Database\Eloquent\Collection $users
@@ -24,7 +25,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  */
 class Organization extends Model implements Auditable, HasMedia
 {
-    use \Astrotomic\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, HasMediaTrait, DirapeToken;
+    use \Astrotomic\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, InteractsWithMedia, DirapeToken, HasFactory;
 
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];

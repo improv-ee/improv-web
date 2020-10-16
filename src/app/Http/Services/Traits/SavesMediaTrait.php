@@ -2,8 +2,7 @@
 
 namespace App\Http\Services\Traits;
 
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-
+use \Spatie\MediaLibrary\HasMedia;
 use Illuminate\Http\Request;
 
 trait SavesMediaTrait

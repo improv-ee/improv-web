@@ -3,6 +3,7 @@
 namespace App\Orm;
 
 use App\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use OwenIt\Auditing\Contracts\Auditable;
 
@@ -12,7 +13,7 @@ use OwenIt\Auditing\Contracts\Auditable;
  */
 class OrganizationUser extends Pivot implements Auditable
 {
-    use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable, HasFactory;
 
     const ROLE_ADMIN = 0;
     const ROLE_MEMBER = 1;

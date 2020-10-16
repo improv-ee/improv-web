@@ -45,8 +45,8 @@ class ContainsMyOrganizationTest extends TestCase
     public function testMyOrganizationInLargerListPasses()
     {
         $user = $this->actingAsOrganizationMember();
-        $org1 = factory(Organization::class)->create();
-        $org2 = factory(Organization::class)->create();
+        $org1 = Organization::factory()->create();
+        $org2 = Organization::factory()->create();
 
         $this->assertTrue($this->validator->passes('organizations', [
             $org1->uid,
@@ -58,8 +58,8 @@ class ContainsMyOrganizationTest extends TestCase
     public function testMyOrganizationNotInListFails()
     {
         $this->actingAsOrganizationMember();
-        $org1 = factory(Organization::class)->create();
-        $org2 = factory(Organization::class)->create();
+        $org1 = Organization::factory()->create();
+        $org2 = Organization::factory()->create();
 
         $this->assertFalse($this->validator->passes('organizations', [
             $org1->uid,

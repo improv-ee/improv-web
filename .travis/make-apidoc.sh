@@ -10,14 +10,11 @@ composer install --no-interaction --dev
 
 
 php artisan migrate
-php artisan passport:install
-export OAUTH_TOKEN=$(php artisan apidoc:seed)
+php artisan passport:install > /dev/null
 
-php artisan apidoc:generate
+php artisan scribe:generate
 
 mv build/api-docs/Dockerfile public/docs/
-
-php artisan apidoc:rebuild
 
 cd public/docs
 rm -rf source

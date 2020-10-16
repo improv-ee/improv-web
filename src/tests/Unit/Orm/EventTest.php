@@ -24,7 +24,7 @@ class EventTest extends TestCase
                 return 'translated-' . $inputText;
             });
 
-        $event = factory(Event::class)->create();
+        $event = Event::factory()->create();
 
         $defaultLocale = config('app.fallback_locale');
 
