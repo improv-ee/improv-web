@@ -11,16 +11,25 @@ use Illuminate\Contracts\Validation\Rule;
  */
 class Base64HeaderImage implements Rule
 {
-    private $minWidth = 400;
-    private $maxWidth = 3000;
-    private $minHeight = 300;
-    private $maxHeight = 2000;
+    protected int $minWidth;
+    protected int $maxWidth;
+    protected int $minHeight;
+    protected int $maxHeight;
 
     protected $allowedMimeTypes = [
         'image/jpeg',
         'image/png',
         'image/webp'
     ];
+
+    public function __construct()
+    {
+        $this->minWidth = config('improv.images.header.width.min');
+        $this->maxWidth = config('improv.images.header.width.max');
+        $this->minHeight = config('improv.images.header.height.min');
+        $this->maxHeight = config('improv.images.header.height.max');
+    }
+
 
     /**
      * Determine if the validation rule passes.

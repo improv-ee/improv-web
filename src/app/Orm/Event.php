@@ -2,6 +2,7 @@
 
 namespace App\Orm;
 
+use App\Orm\Traits\HasCoverImage;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Dirape\Token\DirapeToken;
@@ -12,6 +13,7 @@ use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
 
 /**
  * @property int $id
@@ -27,7 +29,7 @@ use Spatie\MediaLibrary\HasMedia;
  */
 class Event extends Model implements AuditableInterface, HasMedia
 {
-    use Translatable, DirapeToken, SoftDeletes, Auditable, InteractsWithMedia, HasFactory;
+    use Translatable, DirapeToken, SoftDeletes, Auditable, InteractsWithMedia, HasFactory, HasCoverImage;
 
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];
@@ -55,5 +57,14 @@ class Event extends Model implements AuditableInterface, HasMedia
     public function getRouteKeyName()
     {
         return 'uid';
+    }
+
+    /**
+     * @param SpatieMedia|null $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(SpatieMedia $media = null): void
+    {
+        $this->registerCoverImageConversion();
     }
 }

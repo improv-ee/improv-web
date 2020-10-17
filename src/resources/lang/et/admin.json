@@ -30,7 +30,7 @@
   },
   "event": {
     "img": {
-      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge. Kui see pildi väli on tühi, kasutatakse Produktsioonile seatud pilti."
+      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma). Kui see pildi väli on tühi, kasutatakse Produktsioonile seatud pilti."
     },
     "attr": {
       "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
@@ -81,7 +81,7 @@
     },
     "img": {
       "header": "Päise pilt",
-      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 600px kõrge.",
+      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma).",
       "select_file": "Vali fail..."
     }
   }

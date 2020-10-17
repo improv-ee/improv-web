@@ -2,6 +2,7 @@
 
 namespace App\Orm;
 
+use App\Orm\Traits\HasCoverImage;
 use App\User;
 use Dirape\Token\DirapeToken;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
 
 /**
  * @property \Illuminate\Database\Eloquent\Collection $users
@@ -25,7 +27,8 @@ use Spatie\MediaLibrary\HasMedia;
  */
 class Organization extends Model implements Auditable, HasMedia
 {
-    use \Astrotomic\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, InteractsWithMedia, DirapeToken, HasFactory;
+    use \Astrotomic\Translatable\Translatable, SoftDeletes, \OwenIt\Auditing\Auditable, InteractsWithMedia,
+        DirapeToken, HasFactory, HasCoverImage;
 
     protected $DT_Column = 'uid';
     protected $DT_settings = ['type' => DT_Unique, 'size' => 16, 'special_chr' => false];
@@ -109,5 +112,14 @@ class Organization extends Model implements Auditable, HasMedia
         return $query->whereHas('users', function ($query) {
             $query->where('users.id', Auth::user()->id ?? null);
         });
+    }
+
+    /**
+     * @param SpatieMedia|null $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(SpatieMedia $media = null): void
+    {
+        $this->registerCoverImageConversion();
     }
 }
