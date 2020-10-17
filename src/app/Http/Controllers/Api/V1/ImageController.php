@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use App\Orm\Media;
+use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\InvalidConversion;
 
 /**
  * @group Images
@@ -18,7 +21,6 @@ class ImageController extends Controller
      *
      * Returns the specified Image. The Content-Type of the response is that of an image (image/png).
      *
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      * @response {}
      */
     public function show($filename)
@@ -30,11 +32,14 @@ class ImageController extends Controller
             return response('', 404);
         }
 
-        $path = $media->id . '/' . $media->file_name;
+        try {
+            $file = Storage::disk('media')->get($media->getPath('cover'));
+        } catch (FileNotFoundException | InvalidConversion $e) {
+            Log::alert($e->getMessage(), ['mediaId' => $media->id, 'path' => $media->getPath()]);
+            $file = stream_get_contents($media->getDefaultCoverImageStream());
+        }
 
-        $file = Storage::disk('media')->get($path);
-
-        return Response::create($file, 200, [
+        return new Response($file, 200, [
             'Content-Type' => $media->mime_type,
             'Cache-Control' => 'public, max-age=2592000',
             'ETag' => $media->getHash()

@@ -32,8 +32,9 @@ class MediaFactory extends Factory
 
         /** @var Media $media */
         $media = $production->getMedia('images')->first();
+
         $values = $media->toArray();
-        $media->delete();
+        $media->forceDelete();
 
         return $values;
     }

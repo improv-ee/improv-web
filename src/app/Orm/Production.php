@@ -2,6 +2,7 @@
 
 namespace App\Orm;
 
+use App\Orm\Traits\HasCoverImage;
 use App\User;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Astrotomic\Translatable\Translatable;
@@ -14,9 +15,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
 use Spatie\MediaLibrary\HasMedia;
+use \Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
 
 /**
  * @package App\Orm
@@ -30,7 +33,8 @@ use Spatie\MediaLibrary\HasMedia;
  */
 class Production extends Model implements Auditable, HasMedia
 {
-    use Translatable, SoftDeletes, SoftCascadeTrait, DirapeToken, \OwenIt\Auditing\Auditable, InteractsWithMedia, HasTags, HasFactory;
+    use Translatable,SoftDeletes, SoftCascadeTrait, DirapeToken, \OwenIt\Auditing\Auditable,
+        InteractsWithMedia, HasTags, HasFactory, HasCoverImage;
 
     public $translatedAttributes = ['title', 'description', 'excerpt'];
     public $fillable = ['title', 'description', 'excerpt'];
@@ -131,4 +135,12 @@ class Production extends Model implements Auditable, HasMedia
         return 'uid';
     }
 
+    /**
+     * @param SpatieMedia|null $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(SpatieMedia $media = null): void
+    {
+       $this->registerCoverImageConversion();
+    }
 }

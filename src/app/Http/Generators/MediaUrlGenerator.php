@@ -25,10 +25,11 @@ class MediaUrlGenerator extends DefaultUrlGenerator
 
     public function getPath(): string
     {
-        if (env('APP_ENV') !== 'testing') {
-            throw new \Exception('MediaUrlGenerator::getPath not implemented outside testing env');
+        if (env('APP_ENV') === 'testing') {
+            return storage_path('framework/testing/');
         }
-        return storage_path('framework/testing/');
+
+        return $this->getPathRelativeToRoot();
     }
 
     /**
