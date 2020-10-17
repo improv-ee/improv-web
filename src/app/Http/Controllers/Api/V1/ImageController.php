@@ -34,14 +34,21 @@ class ImageController extends Controller
 
         try {
             $file = Storage::disk('media')->get($media->getPath('cover'));
+            $cacheTime = 2592000;
         } catch (FileNotFoundException | InvalidConversion $e) {
             Log::alert($e->getMessage(), ['mediaId' => $media->id, 'path' => $media->getPath()]);
             $file = stream_get_contents($media->getDefaultCoverImageStream());
+
+            // Do not cache the default cover image for long
+            // Usually this image is returned once right after event creation, while the background job
+            // for generating a cover image is still running. If we cache the default not found image,
+            // proxies like CloudFlare will keep showing it, even when a better image is available
+            $cacheTime = 10;
         }
 
         return new Response($file, 200, [
             'Content-Type' => $media->mime_type,
-            'Cache-Control' => 'public, max-age=2592000',
+            'Cache-Control' => 'public, max-age='.$cacheTime,
             'ETag' => $media->getHash()
         ]);
     }
