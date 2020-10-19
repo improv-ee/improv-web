@@ -42,6 +42,8 @@ Route::middleware('cache.headers:etag')->as('api.')->group(function () {
     Route::apiResource('users', 'UserController')
         ->only(['show']);
 
+    Route::apiResource('gigcategories', 'GigCategoryController')->only(['index']);
+
     Route::apiResource('gigads', 'GigadController')->only(['index', 'show']);
 });
 

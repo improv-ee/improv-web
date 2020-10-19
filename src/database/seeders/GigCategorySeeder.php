@@ -19,19 +19,24 @@ class GigCategorySeeder extends Seeder
         $categories = [
             [
                 'name' => 'Etendused üritustele',
-                'description' => 'TODO'
+                'description' => 'TODO',
+                'order' => 10
             ],[
                 'name' => 'Töötoad',
-                'description' => 'TODO'
+                'description' => 'TODO',
+                'order' => 20
             ],[
                 'name' => 'Õhtujuhtimine',
-                'description' => 'TODO'
+                'description' => 'TODO',
+                'order'=>30
             ],[
                 'name' => 'Meeskonnatöö',
-                'description' => 'TODO'
+                'description' => 'TODO',
+                'order'=> 40
             ],[
                 'name' => 'Impronäitleja',
-                'description' => 'TODO'
+                'description' => 'TODO',
+                'order'=> 50
             ],
         ];
 
@@ -41,6 +46,7 @@ class GigCategorySeeder extends Seeder
 
             $category->name = $input['name'];
             $category->description = $input['description'];
+            $category->order = $input['order'];
             $category->save();
         }
     }

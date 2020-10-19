@@ -23,7 +23,8 @@ class GigCategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->words(3, true),
-            'description' => $this->faker->sentence(30, true)
+            'description' => $this->faker->sentence(30, true),
+            'order' => rand(-3, 10)
         ];
     }
 }

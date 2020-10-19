@@ -15,6 +15,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @property string $name
  * @property int $id
  * @property string $description
+ * @property int $order
  * @package App\Orm
  */
 class GigCategory extends Model
@@ -31,7 +32,7 @@ class GigCategory extends Model
         'deleted_at'
     ];
 
-    protected $fillable = ['description', 'name','locale'];
+    protected $fillable = ['description', 'name','order'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

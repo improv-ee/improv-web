@@ -15,6 +15,7 @@ class CreateGigCategoryTable extends Migration
     {
         Schema::create('gig_categories', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('order')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

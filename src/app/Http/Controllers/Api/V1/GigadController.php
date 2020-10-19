@@ -42,7 +42,7 @@ class GigadController extends Controller
     {
 
         $gigads = QueryBuilder::for(Gigad::class)
-            ->allowedFilters(AllowedFilter::exact('is_public'))
+            ->allowedFilters([AllowedFilter::exact('is_public'), AllowedFilter::exact('gig_category_id')])
             ->orderBy('id', 'asc')
             ->onlyMine($request->input('onlyMine', false))
             ->paginate(15);

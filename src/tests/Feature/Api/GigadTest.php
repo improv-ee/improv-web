@@ -13,6 +13,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
  */
 class GigadTest extends ApiTestCase
 {
+    use DatabaseMigrations;
+
     private Gigad $gigad;
     private array $validGigadInput;
 
@@ -29,8 +31,6 @@ class GigadTest extends ApiTestCase
             'is_public' => false
         ];
     }
-
-    use DatabaseMigrations;
 
 
     public function testGigadInfoIsReturned()
