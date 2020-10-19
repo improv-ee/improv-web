@@ -13,11 +13,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class ,2)->create();
+        User::factory()->count(2)->create();
 
         // Test user
         // Not present in prod
-        factory(User::class)->make([
+        User::factory()->make([
             'username'=>'admin',
             'password'=> Hash::make('Ajutine123')
         ])->save();

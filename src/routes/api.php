@@ -42,7 +42,7 @@ Route::middleware('cache.headers:etag')->as('api.')->group(function () {
     Route::apiResource('users', 'UserController')
         ->only(['show']);
 
-
+    Route::apiResource('gigads', 'GigadController')->only(['index', 'show']);
 });
 
 Route::apiResource('images', 'ImageController', ['as' => 'api'])
@@ -55,6 +55,8 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::apiResource('productions', 'ProductionController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
+
+    Route::apiResource('gigads', 'GigadController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
 
     Route::apiResource('organizations', 'OrganizationController', ['as' => 'api'])->only(['store', 'destroy', 'update']);
 

@@ -22,6 +22,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
  * @property string $email
  * @property string $uid
  * @property string $facebook_url
+ * @property string $name
+ * @property string $description
  * @property string $homepage_url
  * @property int $is_public
  */
@@ -61,6 +63,14 @@ class Organization extends Model implements Auditable, HasMedia
     public function users()
     {
         return $this->belongsToMany('App\User')->withPivot(['role']);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function gigads()
+    {
+        return $this->hasMany('App\Orm\Gigad');
     }
 
     public function admins()

@@ -6,6 +6,7 @@ import OrganizationDetails from './views/organizations/Details';
 import Contact from './views/Contact';
 import MarkdownView from '../components/MarkdownView';
 import ProductionDetails from './views/productions/Details';
+import GigsForm from './views/gigs/Form';
 
 export function getRoutes(i18n){
     return [
@@ -28,6 +29,11 @@ export function getRoutes(i18n){
             path: '/organizations',
             name: 'organizations',
             component: OrganizationsList,
+        },
+        {
+            path: '/gigs',
+            name: 'gigs',
+            component: GigsForm,
         },
         {
             path: '/organizations/:uid',

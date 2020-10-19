@@ -67,8 +67,10 @@ class ContainsMyOrganizationTest extends TestCase
         ]));
     }
 
-    public function testReturnsFalseOnStringInput()
+    public function testTakesStringInputAsListOfOneOrgs()
     {
-        $this->assertFalse($this->validator->passes('organizations', 'Kaladin'));
+        $user = $this->actingAsOrganizationMember();
+
+        $this->assertTrue($this->validator->passes('organizations', $user->organizations()->first()->uid));
     }
 }

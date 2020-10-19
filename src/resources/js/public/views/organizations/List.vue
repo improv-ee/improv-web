@@ -22,8 +22,7 @@ export default {
     },
     data() {
         return {
-            organizations: [],
-            newOrganizationName: '',
+            organizations: []
         };
     },
     mounted() {
