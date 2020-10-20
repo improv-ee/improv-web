@@ -18,24 +18,24 @@ class GigCategorySeeder extends Seeder
         // Add initial data
         $categories = [
             [
-                'name' => 'Etendused üritustele',
-                'description' => 'TODO',
+                'name' => 'Tellimusetendused',
+                'description' => '',
                 'order' => 10
             ],[
                 'name' => 'Töötoad',
-                'description' => 'TODO',
+                'description' => '',
                 'order' => 20
             ],[
                 'name' => 'Õhtujuhtimine',
-                'description' => 'TODO',
+                'description' => '',
                 'order'=>30
             ],[
                 'name' => 'Meeskonnatöö',
-                'description' => 'TODO',
+                'description' => '',
                 'order'=> 40
             ],[
                 'name' => 'Impronäitleja',
-                'description' => 'TODO',
+                'description' => '',
                 'order'=> 50
             ],
         ];

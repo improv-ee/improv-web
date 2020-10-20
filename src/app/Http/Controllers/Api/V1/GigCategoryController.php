@@ -12,6 +12,7 @@ use Spatie\QueryBuilder\QueryBuilder;
  * @group Gigs
  *
  * Gig categories categorize gig ads
+ * Examples: Performance, workshop
  */
 class GigCategoryController extends Controller
 {

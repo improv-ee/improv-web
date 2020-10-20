@@ -9,15 +9,19 @@ use App\Http\Requests\Gigad\UpdateGigadRequest;
 use App\Http\Resources\V1\GigadResource;
 use App\Http\Services\GigadStorageService;
 use App\Orm\Gigad;
-use App\Orm\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Log;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 /**
- * @group Gigads
+ * Control Gig Ads
+ *
+ * A Gig Ad is an advertisement from an organization to accept types of Gigs.
+ * For example, an organization might offer companies 'shows for hire', where they perform
+ * at the time and place of the customers choosing
+ *
+ * @group Gigs
  */
 class GigadController extends Controller
 {
