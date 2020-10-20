@@ -1,20 +1,23 @@
 <template>
-    <div>
+  <div>
+    <div
+      v-if="loaded"
+      class="row">
+      <div
+        v-for="category in categories"
+        :key="category.id"
+        class="col-12">
+        <div v-if="category.ads > 0">
+          <h3>{{ category.name }}</h3>
 
-
-        <div v-if="loaded" class="row">
-            <div v-for="category in categories" class="col-12">
-                <div v-if="category.ads > 0">
-                    <h3>{{ category.name }}</h3>
-
-                    <p class="lead">{{ category.description }}</p>
-                    <category-ads :category-id="category.id"/>
-                </div>
-            </div>
+          <p class="lead">
+            {{ category.description }}
+          </p>
+          <category-ads :category-id="category.id" />
         </div>
-
-
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

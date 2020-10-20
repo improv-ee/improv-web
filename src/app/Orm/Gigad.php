@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
 
 /**
  * @property string $link
@@ -100,5 +101,14 @@ class Gigad extends Model implements Auditable, HasMedia
         $organizationIds = Auth::user()->organizations()->get()->pluck('id')->toArray();
 
         return $query->whereIn('organization_id', $organizationIds);
+    }
+
+    /**
+     * @param SpatieMedia|null $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(SpatieMedia $media = null): void
+    {
+        $this->registerCoverImageConversion();
     }
 }

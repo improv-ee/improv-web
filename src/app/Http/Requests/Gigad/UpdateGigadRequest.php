@@ -17,8 +17,8 @@ class UpdateGigadRequest extends DeleteGigadRequest
     public function rules()
     {
         return [
-            'link' => 'max:255|required|min:5|url',
-            'description' => 'max:5000|required',
+            'link' => 'max:255|nullable|min:5|url',
+            'description' => 'max:5000|nullable',
             'organization_uid' => ['required', 'exists:organizations,uid', new ContainsMyOrganization],
             'images.header.content' => ['nullable', new Base64HeaderImage],
             'is_public' => 'required|bool',

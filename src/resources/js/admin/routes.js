@@ -13,6 +13,7 @@ import OrganizationsList from './views/organizations/List';
 import OrganizationDetails from './views/organizations/Details';
 import OrganizationEdit from './views/organizations/Edit';
 import OrganizationPeopleDetails from './views/organizations/people/Details';
+import GigadEdit from './views/organizations/gigs/Edit';
 
 export function getRoutes() {
     return [
@@ -85,6 +86,11 @@ export function getRoutes() {
             path: '/organizations/:uid/people/:username',
             name: 'organizations.people.details',
             component: OrganizationPeopleDetails
+        },
+        {
+            path: '/gigads/:uid/edit',
+            name: 'gigads.edit',
+            component: GigadEdit,
         },
         {path: '*', component: PageNotFound}
     ];

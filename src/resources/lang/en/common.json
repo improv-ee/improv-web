@@ -14,7 +14,8 @@
     "productions": "Productions",
     "contact": "Contact",
     "terms": "Terms",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "gigs": "Paid performances"
   },
   "contact": {
     "greeting": "Hey",
@@ -46,6 +47,10 @@
       "view_venue_map": "View venue on Map"
     }
   },
+    "lang": {
+        "yes": "Yes",
+        "no": "No"
+    },
   "ui": {
     "create": "Create",
     "add_new": "Create new",

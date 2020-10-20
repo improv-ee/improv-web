@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Http\Resources\V1\Image\HeaderImageResource;
 use App\Orm\GigCategory;
 use App\Orm\Organization;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -36,7 +37,12 @@ class GigadResource extends JsonResource
                 'name' => $this->organization->name
             ],
             'link'=> $this['link'],
-            'description' => $this['description']
+            'description' => $this['description'],
+            'times' => [
+                'updated_at'=>$this['updated_at']->toIso8601String()
+            ],
+            'is_public' => $this['is_public'],
+            'images' => new HeaderImageResource($this)
         ];
     }
 

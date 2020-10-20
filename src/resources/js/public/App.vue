@@ -27,7 +27,7 @@
             :to="{ name: 'organizations' }">
             {{ $t("nav.organizations") }}
           </b-nav-item>
-            <b-nav-item
+          <b-nav-item
             exact
             :to="{ name: 'gigs' }">
             {{ $t("nav.gigs") }}

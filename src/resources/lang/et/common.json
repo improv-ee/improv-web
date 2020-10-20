@@ -14,7 +14,8 @@
     "productions": "Produktsioonid",
     "contact": "Kontakt",
     "terms": "Tingimused",
-    "privacy": "Privaatsus"
+    "privacy": "Privaatsus",
+    "gigs": "Tellimine"
   },
   "contact": {
     "greeting": "Hei",
@@ -65,6 +66,10 @@
       "and_number_others": "... ja {number} muud tulemust"
     }
   },
+    "lang": {
+        "yes": "Jah",
+        "no": "Ei"
+    },
   "user": {
     "username": "Kasutajanimi"
   }

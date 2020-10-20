@@ -7,6 +7,7 @@ use App\Http\Requests\Gigad\DeleteGigadRequest;
 use App\Http\Requests\Gigad\StoreGigadRequest;
 use App\Http\Requests\Gigad\UpdateGigadRequest;
 use App\Http\Resources\V1\GigadResource;
+use App\Http\Services\GigadStorageService;
 use App\Orm\Gigad;
 use App\Orm\Organization;
 use Illuminate\Http\Request;
@@ -19,6 +20,18 @@ use Spatie\QueryBuilder\QueryBuilder;
  */
 class GigadController extends Controller
 {
+    /**
+     * @var GigadStorageService
+     */
+    private GigadStorageService $gigadStorageService;
+
+    /**
+     * @param GigadStorageService $gigadStorageService
+     */
+    public function __construct(GigadStorageService $gigadStorageService)
+    {
+        $this->gigadStorageService = $gigadStorageService;
+    }
 
 
     /**
@@ -66,12 +79,9 @@ class GigadController extends Controller
     {
 
         $gigad = new Gigad;
-        $gigad->link = $request->input('link');
-        $gigad->description = $request->input('description');
-        $gigad->organization_id = Organization::where('uid', $request->input('organization_uid'))->first()->id;
-        $gigad->gig_category_id = $request->input('gig_category_id');
         $gigad->setToken();
-        $gigad->save();
+
+        $this->gigadStorageService->update($gigad,$request);
 
         return new GigadResource($gigad);
     }
@@ -91,12 +101,8 @@ class GigadController extends Controller
      */
     public function update(Gigad $gigad, UpdateGigadRequest $request)
     {
-        $gigad->link = $request->input('link');
-        $gigad->description = $request->input('description');
-        $gigad->organization_id = Organization::where('uid', $request->input('organization_uid'))->first()->id;
-        $gigad->gig_category_id = $request->input('gig_category_id');
-        $gigad->save();
 
+        $this->gigadStorageService->update($gigad,$request);
         return new GigadResource($gigad);
     }
 
