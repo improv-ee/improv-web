@@ -21,6 +21,14 @@ trait HasCoverImage
                 Manipulations::FIT_CROP,
                 config('improv.images.header.width.optimal'),
                 config('improv.images.header.height.optimal')
-            );
+            )
+
+            // Do not perform image conversion using a queue and a worker, instead
+            // do it synchronously in the main webserver container. This is bad for performance,
+            // but currently needed UX workaround - users who upload a cover image want to see the
+            // potentially cropped image immediately after; to avoid confusion and surprise should the
+            // originally uploaded image then suddenly change later. To change this if performance hit
+            // becomes too big of a problem
+            ->nonQueued();
     }
 }
