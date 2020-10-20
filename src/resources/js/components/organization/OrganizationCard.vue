@@ -1,7 +1,7 @@
 <template>
   <div v-if="organizationModel">
     <div class="row">
-      <div class="col-lg-8 offset-lg-2">
+      <div class="col-8 offset-2">
         <img
           :src="getCardImage(organization)"
           class="rounded mx-auto d-block img-fluid"
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-lg-3 offset-lg-3">
+      <div class="col-4 offset-2">
         <p>
           <strong>{{ $t('organization.attr.name') }}:</strong>
           <router-link :to="{name: 'organization.details', params: {uid: organization.uid}}">
@@ -18,7 +18,7 @@
           </router-link>
         </p>
       </div>
-      <div class="col-lg-3">
+      <div class="col-4">
         <p v-if="organizationModel.hasHomepage()">
           <strong> {{ $t('organization.attr.homepage_url') }}</strong>: <a
             :href="organizationModel.getHomepageUrl()"
@@ -65,7 +65,6 @@ export default {
 
 <style scoped>
   img {
-    max-height: 15em;
     width: 100%;
     cursor: pointer;
     margin-bottom: .5em;
