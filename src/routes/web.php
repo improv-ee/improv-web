@@ -38,9 +38,3 @@ Route::group([
 ], function () {
     Route::get('/{locale}',  'HomeController@locale')->name('locale');
 });
-
-// Special case - Estonian Improv 10 years celebration redirect
-// TODO - remove after 2019
-Route::get('/impro10', function(){
-    return redirect('/#/productions/APQZj6KV5Zq5BJCD');
-});
