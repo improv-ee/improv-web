@@ -12,6 +12,7 @@ use App\Orm\Gigad;
 use App\Orm\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Log;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -55,7 +56,11 @@ class GigadController extends Controller
     {
 
         $gigads = QueryBuilder::for(Gigad::class)
-            ->allowedFilters([AllowedFilter::exact('is_public'), AllowedFilter::exact('gig_category_id')])
+            ->allowedFilters([
+                AllowedFilter::exact('is_public'),
+                AllowedFilter::exact('gig_category_id'),
+                AllowedFilter::exact('organization.uid')
+            ])
             ->orderBy('id', 'asc')
             ->onlyMine($request->input('onlyMine', false))
             ->paginate(15);

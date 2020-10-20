@@ -1,57 +1,57 @@
 <template>
-    <div v-if="organization.uid">
-        <crud-toolbar
-            resource-name="organizations"
-            :show-edit="isAdmin"
-            :show-delete="isAdmin"
-            :resource-id="$route.params.uid"/>
+  <div v-if="organization.uid">
+    <crud-toolbar
+      resource-name="organizations"
+      :show-edit="isAdmin"
+      :show-delete="isAdmin"
+      :resource-id="$route.params.uid" />
 
 
-        <h1>{{ organization.name }}</h1>
+    <h1>{{ organization.name }}</h1>
 
-        <img
-            v-if="organization.images.header"
-            :src="organization.images.header.urls.original"
-            :alt="organization.image"
-            class="img-responsive header-img">
-
-
-        <vue-markdown :source="organization.description"/>
-
-        <h2>{{ $t('organization.members') }}</h2>
-
-        <member-table
-            :members="organization.members"
-            :organization-uid="this.$route.params.uid"/>
+    <img
+      v-if="organization.images.header"
+      :src="organization.images.header.urls.original"
+      :alt="organization.image"
+      class="img-responsive header-img">
 
 
-        <h2>{{ $t('organization.add_member') }}</h2>
-        <p>{{ $t('organization.add_member_help') }}</p>
-        <b-form
-            v-if="isAdmin"
-            @submit.prevent="addMember">
-            <b-form-group
-                id="newMember"
-                class="col-x2-5"
-                label-for="newMemberUsername">
-                <user-select
-                    v-model="newMember"/>
-            </b-form-group>
+    <vue-markdown :source="organization.description" />
+
+    <h2>{{ $t('organization.members') }}</h2>
+
+    <member-table
+      :members="organization.members"
+      :organization-uid="this.$route.params.uid" />
 
 
-            <b-button
-                type="submit"
-                :disabled="!newMember.username"
-                variant="primary">
-                {{ $t('organization.add_member') }}
-            </b-button>
-        </b-form>
+    <h2>{{ $t('organization.add_member') }}</h2>
+    <p>{{ $t('organization.add_member_help') }}</p>
+    <b-form
+      v-if="isAdmin"
+      @submit.prevent="addMember">
+      <b-form-group
+        id="newMember"
+        class="col-x2-5"
+        label-for="newMemberUsername">
+        <user-select
+          v-model="newMember" />
+      </b-form-group>
 
-        <h2>{{ $t('nav.gigs') }}</h2>
-        <p>{{ $t('gigs.intro_help') }}</p>
 
-        <gig-table></gig-table>
-    </div>
+      <b-button
+        type="submit"
+        :disabled="!newMember.username"
+        variant="primary">
+        {{ $t('organization.add_member') }}
+      </b-button>
+    </b-form>
+
+    <h2>{{ $t('nav.gigs') }}</h2>
+    <p>{{ $t('gigs.intro_help') }}</p>
+
+    <gig-table />
+  </div>
 </template>
 
 <script>
@@ -95,15 +95,15 @@ export default {
                 .then(function () {
                     self.loadOrganization();
                 }).catch(function (error) {
-                if (error.response.status === 422) {
-                    Vue.notify({
-                        group: 'app',
-                        type: 'error',
-                        title: self.$t('ui.validation_error'),
-                        text: self.$t('user.not_found')
-                    });
-                }
-            });
+                    if (error.response.status === 422) {
+                        Vue.notify({
+                            group: 'app',
+                            type: 'error',
+                            title: self.$t('ui.validation_error'),
+                            text: self.$t('user.not_found')
+                        });
+                    }
+                });
 
         },
         loadOrganization() {

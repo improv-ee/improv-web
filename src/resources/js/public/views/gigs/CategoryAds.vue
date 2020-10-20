@@ -6,14 +6,16 @@
       v-for="gig in gigs"
       :key="gig.uid"
       class="col-12">
-      <div class="card card-cascade wider mb-4">
+      <div class="card card-cascade wider mb-5">
         <!-- Card image -->
         <div class="view view-cascade overlay">
           <img
             class="card-img-top"
             :src="getCardImage(gig)"
             alt="Header image">
-          <a :href="gig.link">
+          <a
+            :href="gig.link"
+            target="_blank">
             <div class="mask rgba-white-slight" />
           </a>
         </div>
@@ -27,11 +29,12 @@
 
           <!-- Text -->
           <div class="card-text">
-              <vue-markdown :source="gig.description" />
+            <vue-markdown :source="gig.description" />
           </div>
 
           <a
             class="btn btn-primary btn-lg btn-block"
+            target="_blank"
             :href="gig.link"><i class="fas fa-external-link-alt" /> {{ $t('gig.visit_advertiser') }}</a>
         </div>
       </div>
@@ -41,7 +44,7 @@
 
 
 <script>
-import VueMarkdown from "vue-markdown";
+import VueMarkdown from 'vue-markdown';
 
 export default {
     components: {

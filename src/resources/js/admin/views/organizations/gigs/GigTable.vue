@@ -1,27 +1,28 @@
 <template>
-    <div>
-        <b-table
-            v-if="loaded"
-            striped
-            outlined
-            responsive
-            hover
-            :items="items"
-            :fields="fields">
-            <template
-                #cell(uid)="data">
-                <router-link class="btn"
-                    :to="{ name: 'gigads.edit', params: { uid: data.item.uid }}">
-                    {{ $t('ui.edit') }}
-                </router-link>
-            </template>
-        </b-table>
-        <b-button
-            variant="primary"
-            @click="addGigad">
-            {{ $t('ui.add_new') }}
-        </b-button>
-    </div>
+  <div>
+    <b-table
+      v-if="loaded"
+      striped
+      outlined
+      responsive
+      hover
+      :items="items"
+      :fields="fields">
+      <template
+        #cell(uid)="data">
+        <router-link
+          class="btn"
+          :to="{ name: 'gigads.edit', params: { uid: data.item.uid }}">
+          {{ $t('ui.edit') }}
+        </router-link>
+      </template>
+    </b-table>
+    <b-button
+      variant="primary"
+      @click="addGigad">
+      {{ $t('ui.add_new') }}
+    </b-button>
+  </div>
 </template>
 <script>
 var moment = require('moment');
@@ -78,7 +79,7 @@ export default {
         },
         loadGigs() {
             let self = this;
-            axios.get(config.apiUrl + '/gigads', {params: {'onlyMine': 1}})
+            axios.get(config.apiUrl + '/gigads', {params: {'filter[organization.uid]': this.$route.params.uid}})
                 .then(response => {
                     for (let i = 0; i < response.data.data.length; i++) {
                         let gigad = response.data.data[i];

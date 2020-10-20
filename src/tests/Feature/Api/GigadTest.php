@@ -101,6 +101,25 @@ class GigadTest extends ApiTestCase
             ->assertJsonCount(1, 'data');
     }
 
+    public function testAdsCanBeFilteredPerOrganization()
+    {
+        Organization::factory()->count(5)->create();
+        Gigad::factory()->count(4)->create();
+
+        $org2 = Organization::factory()->create();
+        $ad2 = Gigad::factory()->create(['organization_id' => $org2->id]);
+        $ad3 = Gigad::factory()->create(['organization_id' => $org2->id]);
+
+        $response = $this->get($this->getApiUrl() . '/gigads?filter[organization.uid]=' . $org2->uid);
+        $response->assertStatus(200)
+            ->assertJsonFragment([
+                'uid' => $ad3->uid,
+            ])->assertJsonFragment([
+                'uid' => $ad2->uid,
+            ])
+            ->assertJsonCount(2, 'data');
+    }
+
 
     public function testGigadCanBeCreated()
     {
@@ -127,5 +146,17 @@ class GigadTest extends ApiTestCase
         $response = $this->put($this->getApiUrl() . '/gigads/' . $this->gigad->uid, $this->validGigadInput);
         $response->assertStatus(200)
             ->assertJson(['data' => ['link' => $this->validGigadInput['link']]]);
+    }
+
+    public function testAdBelongingToOtherOrganizationCanNotBeEdited()
+    {
+        $this->actingAsOrganizationMember();
+
+        $otherOrg = Organization::factory()->create();
+        $this->gigad->organization_id = $this->validGigadInput['organization_uid'] = $otherOrg->id;
+        $this->gigad->save();
+
+        $response = $this->put($this->getApiUrl() . '/gigads/' . $this->gigad->uid, $this->validGigadInput);
+        $response->assertStatus(403);
     }
 }
