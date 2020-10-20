@@ -62,7 +62,9 @@
         <nav-language-switcher />
       </b-collapse>
     </b-navbar>
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
 
     <BottomNav />
   </div>

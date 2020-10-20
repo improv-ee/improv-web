@@ -36,7 +36,9 @@
 
     <div class="row">
       <div class="col-12 admin-content">
-        <router-view />
+        <transition name="fade">
+          <router-view />
+        </transition>
       </div>
     </div>
 
