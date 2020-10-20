@@ -46,6 +46,11 @@
         {{ $t('organization.add_member') }}
       </b-button>
     </b-form>
+
+    <h2>{{ $t('nav.gigs') }}</h2>
+    <p>{{ $t('gigs.intro_help') }}</p>
+
+    <gig-table />
   </div>
 </template>
 
@@ -54,12 +59,14 @@
 import MemberTable from '../../components/organizations/MemberTable';
 import VueMarkdown from 'vue-markdown';
 import UserSelect from '../../components/UserSelect';
+import GigTable from './gigs/GigTable';
 
 export default {
     components: {
         MemberTable,
         VueMarkdown,
-        UserSelect
+        UserSelect,
+        GigTable
     },
     data() {
         return {
@@ -84,7 +91,7 @@ export default {
     methods: {
         addMember() {
             let self = this;
-            axios.post(`${config.apiUrl}/organizations/${ this.$route.params.uid }/membership`, {username: this.newMember.username})
+            axios.post(`${config.apiUrl}/organizations/${this.$route.params.uid}/membership`, {username: this.newMember.username})
                 .then(function () {
                     self.loadOrganization();
                 }).catch(function (error) {

@@ -1,88 +1,103 @@
 {
-  "ui": {
-    "markdown_supported": "Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
-  },
-  "nav": {
-    "home": "Avaleht"
-  },
-  "dash": {
-    "greeting": "Meie homne on meie endi teha."
-  },
-  "user": {
-    "not_found": "Sellist kasutajanime ei leitud",
-    "profile": {
-      "email": "E-mail",
-      "name": "Nimi",
-      "avatar": "Avatar",
-      "settings": "Profiili seaded",
-      "api_tokens": "API võtmed",
-      "invite": {
-        "invite_new_user": "Kutsu uus kasutaja",
-        "send_invitation": "Saada kutse",
-        "invite_sent": "Kutse saadetud"
-      }
+    "ui": {
+        "markdown_supported": "Teksti küljendamiseks on võimalik kasutada <a href=\"https://help.github.com/articles/basic-writing-and-formatting-syntax/\" target=\"_blank\">Markdown keelt</a>."
     },
-    "settings": {
-      "api": {
-        "tokens_intro": "Improv.ee pakub masinatele liidestumiseks tehnilist API-t. See võimaldab ühendada teisi veebilehti ning süsteeme. API kasutamiseks on vaja luua personaalne API võti. Dokumentatsiooni API kasutamisest leiad {apiDoc}."
-      }
-    }
-  },
-  "event": {
-    "img": {
-      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma). Kui see pildi väli on tühi, kasutatakse Produktsioonile seatud pilti."
+    "nav": {
+        "home": "Avaleht"
     },
-    "attr": {
-      "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
-      "description_description": "Ürituse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
-      "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
-      "end_time_description": "Ürituse alguskuupäev- ja kella-aeg",
-      "place_description":"Asukoht, kus üritus toimub"
-    }
-  },
-  "organization": {
-    "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
-    "create_new": "Uus organisatsioon",
-    "members": "Liikmed",
-    "add_member": "Lisa uus liige",
-    "add_member_help": "Tahad kedagi organisatsiooni liikmeks lisada? Otsi nende kasutajat nime järgi ning vajuta Lisa.",
-    "remove_member": "Eemalda organisatsioonist",
-    "name_taken": "Selle nimega organisatsioon on juba loodud, palun vali teine nimi. Kui see organisatsioon kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
-    "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
-    "attr": {
-      "name": "Nimi",
-      "description": "Kirjeldus",
-      "is_public": "Näita avalikus nimekirjas"
+    "dash": {
+        "greeting": "Meie homne on meie endi teha."
     },
     "user": {
-      "role": {
-        "role": "Roll",
-        "admin": "Omanik",
-        "member": "Liige"
-      }
-    }
-  },
-  "production": {
-    "no_events": "Ühtegi sündmust pole lisatud",
-    "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi organisatsiooni - produktsioonide lisamiseks pead looma uue organisatsiooni; või liituma juba olemasolevaga.",
-    "num_of_events": "Üritusi",
-    "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
-    "create_new": "Uus produktsioon",
-    "no_upcoming_events_description": "Sellel produktsioonil ei ole üritusi, mis leiaksid aset tulevikus",
-    "attr": {
-      "title": "Pealkiri",
-      "title_description": "Formaadi, lavastuse või festivali nimetus",
-      "excerpt": "Lühikirjeldus",
-      "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
-      "description": "Kirjeldus",
-      "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
-      "organizers_description": "Vali organisatsioonid, kes seda produktsiooni korraldavad. N.B! Valitud organisatsioonid saavad õiguse produktsiooni andmeid muuta!",
-      "tags_description": "Lisa produktsioonile märksõnu, mis aitavad seda kirjeldada. Näiteks, kas tegemist on töötoa või etendusega?"
+        "not_found": "Sellist kasutajanime ei leitud",
+        "profile": {
+            "email": "E-mail",
+            "name": "Nimi",
+            "avatar": "Avatar",
+            "settings": "Profiili seaded",
+            "api_tokens": "API võtmed",
+            "invite": {
+                "invite_new_user": "Kutsu uus kasutaja",
+                "send_invitation": "Saada kutse",
+                "invite_sent": "Kutse saadetud"
+            }
+        },
+        "settings": {
+            "api": {
+                "tokens_intro": "Improv.ee pakub masinatele liidestumiseks tehnilist API-t. See võimaldab ühendada teisi veebilehti ning süsteeme. API kasutamiseks on vaja luua personaalne API võti. Dokumentatsiooni API kasutamisest leiad {apiDoc}."
+            }
+        }
     },
-    "img": {
-      "header": "Päise pilt",
-      "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma).",
-      "select_file": "Vali fail..."
+    "event": {
+        "img": {
+            "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma). Kui see pildi väli on tühi, kasutatakse Produktsioonile seatud pilti."
+        },
+        "attr": {
+            "title_description": "Ürituse alampealkiri, kui see erineb produktsiooni pealkirjast (külastajale näidatakse mõlemat pealkirja). Jäta väli tühjaks, kui alampealkirja pole vaja.",
+            "description_description": "Ürituse kirjeldus, kui on vaja midagi konkreetse ürituse kohta täpsustada. Võib jätta tühjaks.",
+            "start_time_description": "Ürituse alguskuupäev- ja kella-aeg",
+            "end_time_description": "Ürituse alguskuupäev- ja kella-aeg",
+            "place_description": "Asukoht, kus üritus toimub"
+        }
+    },
+    "organization": {
+        "list_intro": "Organisatsioon on grupp improga tegelevaid inimesi. Organisatsioonil on nimi, liikmete nimekiri ja kirjeldus. Organisatsioonid saavad korraldada produktsioone - etendusi, töötubasid ning festivale.",
+        "create_new": "Uus organisatsioon",
+        "members": "Liikmed",
+        "add_member": "Lisa uus liige",
+        "add_member_help": "Tahad kedagi organisatsiooni liikmeks lisada? Otsi nende kasutajat nime järgi ning vajuta Lisa.",
+        "remove_member": "Eemalda organisatsioonist",
+        "name_taken": "Selle nimega organisatsioon on juba loodud, palun vali teine nimi. Kui see organisatsioon kuulub sinule, räägi palun oma grupiga, et praegune haldur sind liikmeks kutsuks.",
+        "you_dont_have_any": "Sa ei kuulu hetkel ühtegi organisatsiooni. Olemasoleva organisatsiooni haldaja saab sind oma organisatsiooni kutsuda (räägi temaga). Samuti saad sa asutada uue organisatsiooni.",
+        "attr": {
+            "name": "Nimi",
+            "description": "Kirjeldus",
+            "is_public": "Näita avalikus nimekirjas"
+        },
+        "user": {
+            "role": {
+                "role": "Roll",
+                "admin": "Omanik",
+                "member": "Liige"
+            }
+        }
+    },
+    "production": {
+        "no_events": "Ühtegi sündmust pole lisatud",
+        "you_dont_belong_to_any_org": "Sa ei kuulu veel ühtegi organisatsiooni - produktsioonide lisamiseks pead looma uue organisatsiooni; või liituma juba olemasolevaga.",
+        "num_of_events": "Üritusi",
+        "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
+        "create_new": "Uus produktsioon",
+        "no_upcoming_events_description": "Sellel produktsioonil ei ole üritusi, mis leiaksid aset tulevikus",
+        "attr": {
+            "title": "Pealkiri",
+            "title_description": "Formaadi, lavastuse või festivali nimetus",
+            "excerpt": "Lühikirjeldus",
+            "excerpt_description": "Lühikokkuvõtet kuvatakse mängukava koondvaates, kuhu iga ürituse täispikk kirjeldus ei mahu.",
+            "description": "Kirjeldus",
+            "description_description": "Millega tegu on? Kuidas formaat välja näeb? See on produktsiooni \"müügikõne\".",
+            "organizers_description": "Vali organisatsioonid, kes seda produktsiooni korraldavad. N.B! Valitud organisatsioonid saavad õiguse produktsiooni andmeid muuta!",
+            "tags_description": "Lisa produktsioonile märksõnu, mis aitavad seda kirjeldada. Näiteks, kas tegemist on töötoa või etendusega?"
+        },
+        "img": {
+            "header": "Päise pilt",
+            "header_description": "Pilti kuvatakse ürituse lehe päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma).",
+            "select_file": "Vali fail..."
+        }
+    },
+    "gigs": {
+        "intro_help": "Trupid, kes pakuvad tellimusesinemisi või töötubasid saavad oma tellimisinfo avalikule lehele üles panna. Sisesta info siia ning kontrolli tulemust veebilehe avalikust vaatest.",
+        "attr": {
+            "image": "Päise pilt",
+            "image_description": "Pilti kuvatakse pakkumise päises. Peaks olema laiformaadis (16:9) ja vähemalt 900 x 300px. Soovitatud pildi mõõtmed on 1920 x 1005px, kui laaditud pildi mõõtmed on erinevad, seatakse pilt automaatselt nendesse mõõtmetesse (osa pildist võib minna kaduma).",
+            "category": "Kategooria",
+            "updated_at": "Viimati muudetud",
+            "is_public": "Näita avalikult",
+            "is_public_description": "Kui see valik ei ole märgistatud, siis infot avalikul lehel ei näidata",
+            "description": "Lühikirjeldus",
+            "link": "Lingi URL",
+            "link_description": "Pakkumise lühikirjelduse juures kuvatakse linki, millele vajutades suunatakse klient sinu määratud aadressile. Siia sobib hästi sinu trupi kodulehe alamlehe aadress, mis kirjeldab tellimuste üksikasju",
+            "description_description": "See on teenuse (tellimusetendus, töötuba) pakkumise peamine sisu. Kirjelda (lühidalt), mida pakutakse, ning kuidas (kas) erinetakse teistest pakkujatest. Potensiaalne klient saab täpsemalt lugeda Sinu kodulehele suunavalt URLilt. Teksti formaatimiseks saab kasutada Markdown keelt."
+        }
     }
-  }
 }

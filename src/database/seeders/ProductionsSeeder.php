@@ -17,9 +17,9 @@ class ProductionsSeeder extends Seeder
 
 
         for ($i = 0; $i < 2; $i++) {
-            $production = factory(Production::class)->create();
+            $production = Production::factory()->create();
 
-            $event = factory(Event::class, rand(1, 4))->create(['production_id' => $production->id]);
+            $event = Event::factory()->count(rand(1, 4))->create(['production_id' => $production->id]);
         }
     }
 

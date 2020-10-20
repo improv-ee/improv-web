@@ -13,5 +13,8 @@
       "excerpt": "Excerpt",
       "description": "Description"
     }
-  }
+  },
+    "gig": {
+        "visit_advertiser": "Read more and order"
+    }
 }

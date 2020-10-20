@@ -27,6 +27,11 @@
             :to="{ name: 'organizations' }">
             {{ $t("nav.organizations") }}
           </b-nav-item>
+          <b-nav-item
+            exact
+            :to="{ name: 'gigs' }">
+            {{ $t("nav.gigs") }}
+          </b-nav-item>
           <b-nav-item-dropdown
             v-if="countryLinks.hasOwnProperty(currentLanguage)"
             :text="$t('nav.local_improv')">

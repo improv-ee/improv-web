@@ -13,5 +13,8 @@
       "excerpt": "Lühikirjeldus",
       "description": "Kirjeldus"
     }
-  }
+  },
+    "gig": {
+        "visit_advertiser": "Loe lähemalt ja telli trupi kodulehelt"
+    }
 }

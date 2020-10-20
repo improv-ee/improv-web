@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OrganizationsSeeder::class);
 
         $this->call(ProductionsSeeder::class);
+        $this->call(GigCategorySeeder::class);
+        $this->call(GigadSeeder::class);
+
     }
 }
