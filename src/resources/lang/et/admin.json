@@ -97,7 +97,7 @@
             "description": "Lühikirjeldus",
             "link": "Lingi URL",
             "link_description": "Pakkumise lühikirjelduse juures kuvatakse linki, millele vajutades suunatakse klient sinu määratud aadressile. Siia sobib hästi sinu trupi kodulehe alamlehe aadress, mis kirjeldab tellimuste üksikasju",
-            "description_description": "See on teenuse (tellimusetendus, töötuba) pakkumise peamine sisu. Kirjelda (lühidalt), mida pakutakse, ning kuidas (kas) erinetakse teistest pakkujatest. Potensiaalne klient saab täpsemalt lugeda Sinu kodulehele suunavalt URLilt"
+            "description_description": "See on teenuse (tellimusetendus, töötuba) pakkumise peamine sisu. Kirjelda (lühidalt), mida pakutakse, ning kuidas (kas) erinetakse teistest pakkujatest. Potensiaalne klient saab täpsemalt lugeda Sinu kodulehele suunavalt URLilt. Teksti formaatimiseks saab kasutada Markdown keelt."
         }
     }
 }

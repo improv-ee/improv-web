@@ -97,7 +97,7 @@
             "description": "Description",
             "link": "Call to action URL",
             "link_description": "Link to a subpage on your homepage that describes your offering in more detail. This link is displayed near the description field.",
-            "description_description": "This is the main body of the service offering. Describe (shortly) what you're offering to the customer."
+            "description_description": "This is the main body of the service offering. Describe (shortly) what you're offering to the customer. Markdown formatting is supported."
         }
     }
 }

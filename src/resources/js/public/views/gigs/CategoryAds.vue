@@ -11,8 +11,8 @@
         <div class="view view-cascade overlay">
           <img
             class="card-img-top"
-            src="/img/production/default-header.jpg"
-            alt="Card image cap">
+            :src="getCardImage(gig)"
+            alt="Header image">
           <a :href="gig.link">
             <div class="mask rgba-white-slight" />
           </a>
@@ -26,9 +26,9 @@
           </h4>
 
           <!-- Text -->
-          <p class="card-text">
-            {{ gig.description }}
-          </p>
+          <div class="card-text">
+              <vue-markdown :source="gig.description" />
+          </div>
 
           <a
             class="btn btn-primary btn-lg btn-block"
@@ -41,7 +41,12 @@
 
 
 <script>
+import VueMarkdown from "vue-markdown";
+
 export default {
+    components: {
+        VueMarkdown
+    },
     props: {
         categoryId: {
             type: Number,
@@ -60,6 +65,12 @@ export default {
     },
     methods: {
 
+        getCardImage(gigad) {
+            if (gigad.images && gigad.images.header && gigad.images.header.urls) {
+                return gigad.images.header.urls.original;
+            }
+            return '/img/production/default-header.jpg';
+        },
         getResults() {
             let self = this;
 

@@ -45,12 +45,16 @@
 
                 <b-form-group
                     label-for="description"
-                    :label="$t('gigs.attr.description')"
                     :invalid-feedback="invalidFeedback('description')"
                     :state="getFieldState('description')"
                     :description="$t('gigs.attr.description_description')">
+                    <template slot="label">
+                        {{ $t('gigs.attr.description') }} <span class="small">({{ 1000 - form.description.length }})</span>
+                    </template>
+
                     <b-form-textarea
                         id="description"
+                        maxlength="1000"
                         v-model="form.description"
                         type="text"
                         rows="10"/>
