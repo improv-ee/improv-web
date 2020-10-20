@@ -69,6 +69,9 @@
         "list_intro": "This table shows all Productions, that have been created by any of your organizations. A Production is a concept of a show, workshop or a festival. Once Production has multiple Events (happening times).",
         "create_new": "New Production",
         "no_upcoming_events_description": "This production does not have any upcoming Events scheduled",
+        "what_events_suit_the_site": "What kind of events fit well into improv.ee?",
+        "what_events_suit_the_site_explanation": "<p>improv.ee aggregates improvised theatre events and info.</p><p>All events tied directly to improvised theatre fit well into the event schedule: theatre shows where the performer improvises, improv workshops, jams, festivals, drop-ins... Also, events that are closely related to improvised theatre, such as contact dance workshop or stage fighting class.</p><p>Events that don't tie into improvised theatre (jazz, classical theatre show, pub quiz night) do not fit well to this site; and can be removed by the moderators.</p>",
+
         "attr": {
             "title": "Title",
             "title_description": "Format, show, festival or workshop title",

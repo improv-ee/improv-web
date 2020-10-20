@@ -69,6 +69,8 @@
         "list_intro": "See tabel näitab kõiki produktsioone, mida sinu organisatsioonid loonud on. Produktsioon on suurem ürituse kontseptsioon ja -formaat. Ühel produktsioonil on tüüpiliselt mitu erinevat ürituse aega.",
         "create_new": "Uus produktsioon",
         "no_upcoming_events_description": "Sellel produktsioonil ei ole üritusi, mis leiaksid aset tulevikus",
+        "what_events_suit_the_site": "Millised sündmused sobivad improv.ee keskkonda?",
+        "what_events_suit_the_site_explanation": "<p>improv.ee on koondab endas improviseeritud teatrimaailma sündmusi ja infot.</p><p>Ülespanekuks sobivad kõik otseselt improviseeritud teatriga seotud sündmused: etendused (kus esineja improviseerib), töötoad, jämmid, festivalid, drop-inid... Samuti sobivad ülespanekuks improteatri maailmaga lähedalt seotud üritused nagu näiteks kontaktimpro (tantsu)töötuba või lavavõitluse ükskikkursus; kui on alust arvata, et see pakuks huvi improviseerijatele.</p><p>Üritused, mis teatri-improga ei seondu (jazz, klassikaline teatrietendus, pubiõhtu viktoriin) saidile väga hästi ei sobi ning need võib moderaator eemaldada. Üritame hoida ürituste nimekirja improteatri harrastajale relevantse.</p>",
         "attr": {
             "title": "Pealkiri",
             "title_description": "Formaadi, lavastuse või festivali nimetus",

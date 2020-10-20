@@ -7,8 +7,22 @@
         {{ $t('production.you_dont_belong_to_any_org') }}
       </p>
       <div v-else>
-        <p>{{ $t('production.list_intro') }}</p>
+        <p>
+          {{ $t('production.list_intro') }}
 
+          <a
+            v-b-toggle
+            href="#production-suitability-collapse"
+            @click.prevent>{{ $t('production.what_events_suit_the_site') }}</a>
+          <b-collapse id="production-suitability-collapse">
+            <!-- eslint-disable vue/no-v-html -->
+            <b-alert
+              show
+              variant="info"
+              v-html="$t('production.what_events_suit_the_site_explanation')" />
+              <!-- eslint-enable vue/no-v-html -->
+          </b-collapse>
+        </p>
         <p class="text-right">
           <b-button
             :to="{name: 'production.create'}"
