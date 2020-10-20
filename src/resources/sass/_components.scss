@@ -77,3 +77,9 @@ table {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.vue-notification {
+    &.error {
+        font-size: 1.4em;
+    }
+}

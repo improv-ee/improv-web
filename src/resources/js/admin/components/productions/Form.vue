@@ -217,14 +217,15 @@ export default {
                 }).catch(function (error) {
 
                     let text = error.response.status === 422 ? self.$t('ui.validation_error') : self.$t('ui.server_error_message');
+                    self.errors = error.response.data.errors;
 
                     self.$notify({
                         type: 'error',
                         group: 'app',
-                        title: text
+                        title: text,
+                        text: error.response.status === 422 ? Object.values(self.errors).pop().pop() : null
                     });
 
-                    self.errors = error.response.data.errors;
 
                 });
         },
