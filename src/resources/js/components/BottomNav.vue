@@ -23,7 +23,7 @@
                 target="_blank">{{ $t('site.report_bug') }}</a>
             </li>
             <li>
-              <a href="/#/contact">{{ $t('nav.contact') }}</a>
+              <a href="/contact">{{ $t('nav.contact') }}</a>
             </li>
           </ul>
         </div>
@@ -45,10 +45,10 @@
                 target="_blank">GitHub</a>
             </li>
             <li>
-              <a href="/#/privacy">{{ $t('nav.privacy') }}</a>
+              <a href="/privacy">{{ $t('nav.privacy') }}</a>
             </li>
             <li>
-              <a href="/#/terms">{{ $t('nav.terms') }}</a>
+              <a href="/terms">{{ $t('nav.terms') }}</a>
             </li>
           </ul>
         </div>
