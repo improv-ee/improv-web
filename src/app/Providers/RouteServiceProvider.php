@@ -50,6 +50,12 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::domain(env('API_DOMAIN'))
+            ->get('/robots.txt', function () {
+                return response("User-agent: *\nDisallow: /")
+                    ->header('Content-Type', 'text/plain');
+            });
+
+        Route::domain(env('API_DOMAIN'))
             ->get('/', function () {
                 return response()->json([
                     "title" => "improv.ee API",
