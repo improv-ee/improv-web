@@ -18,7 +18,11 @@ COPY docker/webserver/apache2.conf /etc/apache2/
 COPY docker/webserver/php.prod.ini $PHP_INI_DIR/conf.d/
 COPY src /var/www/
 
-RUN chown -R www-data:www-data storage
+# Make all (most) web files read-only, to protect against
+# modification by the web user (say someone gains code exec as the web user)
+RUN chown -R www-data:www-data /var/www && \
+    chmod -R u-w,g-w,o-w /var/www && \
+    chmod -R u+w,g+w /var/www/storage
 
 USER 33
 
