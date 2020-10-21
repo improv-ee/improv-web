@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:run')->daily()->at('02:00')->withoutOverlapping()->onOneServer();
         $schedule->command('backup:monitor')->daily()->at('03:00')->withoutOverlapping()->onOneServer();
         $schedule->command('disposable:update')->weekly();
+        $schedule->command('make:sitemap')->daily()->at('04:00')->withoutOverlapping()->onOneServer();
     }
 
     /**

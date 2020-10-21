@@ -13,6 +13,16 @@
 
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
+Route::get('/robots.txt', function () {
+    return response("Sitemap: https://improv.ee/sitemap.xml")->header('Content-Type', 'text/plain');
+});
+
+Route::get('/sitemap.xml', function (){
+    return response(Storage::disk('media')->get('sitemap.xml'))
+        ->header('Content-Type','application/xml');
+});
 
 Route::get('/', 'HomeController@index')
     ->middleware('cache.headers:private;max_age=604800;etag');
@@ -28,13 +38,13 @@ Route::namespace('Admin')
     ->prefix('admin')
     ->middleware(['auth', 'verified', 'cache.headers:private;max_age=604800;etag'])
     ->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
-});
+        Route::get('/', 'HomeController@index')->name('home');
+    });
 
 Route::group([
     'middleware' => ['web', 'language'],
-    'as'         => 'language::',
-    'prefix'     => config('language.prefix'),
+    'as' => 'language::',
+    'prefix' => config('language.prefix'),
 ], function () {
-    Route::get('/{locale}',  'HomeController@locale')->name('locale');
+    Route::get('/{locale}', 'HomeController@locale')->name('locale');
 });
