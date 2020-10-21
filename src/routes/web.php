@@ -24,9 +24,6 @@ Route::get('/sitemap.xml', function (){
         ->header('Content-Type','application/xml');
 });
 
-Route::get('/', 'HomeController@index')
-    ->middleware('cache.headers:private;max_age=604800;etag');
-
 Route::get('/maintenance', 'HomeController@maintenance')
     ->middleware('cache.headers:private;max_age=604800;etag')
     ->name('maintenance');
@@ -38,6 +35,7 @@ Route::namespace('Admin')
     ->prefix('admin')
     ->middleware(['auth', 'verified', 'cache.headers:private;max_age=604800;etag'])
     ->group(function () {
+        Route::get('/{wildcard}', 'HomeController@index')->where('wildcard', '.*');
         Route::get('/', 'HomeController@index')->name('home');
     });
 
@@ -48,3 +46,14 @@ Route::group([
 ], function () {
     Route::get('/{locale}', 'HomeController@locale')->name('locale');
 });
+
+Route::get('/not-found',function(){
+    abort(404);
+});
+
+// Catch all route
+// Matches the literal home page (/) as well as anything else (/yelp)
+// Use-case: enable vue-router catch-all routing via history.pushstate
+// https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
+Route::get('{wildcard}', 'HomeController@index')->where('wildcard', '.*')
+    ->middleware('cache.headers:private;max_age=86400;etag');

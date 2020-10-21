@@ -88,8 +88,9 @@ const i18n = new VueI18n({
 
 
 const router = new VueRouter({
-    mode: 'hash',
-    routes: getRoutes(i18n)
+    mode: 'history',
+    routes: getRoutes(i18n),
+    base: '/admin'
 });
 
 function setI18nLanguage (lang) {

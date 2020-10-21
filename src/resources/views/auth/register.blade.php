@@ -79,7 +79,7 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('user.password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
+                                    <input id="password" type="password" autocomplete="off"
                                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                            name="password" required>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
@@ -100,7 +100,7 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('user.password_again') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
+                                    <input id="password-confirm" type="password" class="form-control" autocomplete="off"
                                            name="password_confirmation" required>
                                 </div>
                             </div>

@@ -81,6 +81,28 @@ export function getRoutes(i18n){
                 view: 'improv/history.md'
             }
         },
-        { path: '*', component: PageNotFound }
+
+        // List of legacy routes
+        // These are routes handled by Laravel, ie the views are Blade HTML rendering
+        // Vue.js is still loaded on these pages tho, in order to not 404 them, declare them as empty component routes
+        // Longer term plan is to extract these routes out of Laravel and into Vue
+        {path: '/login'},
+        {path: '/register'},
+        {path: '/password/reset/:token'},
+        {path: '/oauth/scopes'},
+        {path: '/oauth/personal-access-tokens'},
+        {path: '/email/verify'},
+        {path: '/email/verify/:token'},
+        {
+            path: '*',
+            component: PageNotFound,
+            beforeEnter() {
+                // Redirect to a non-Vue 404 page (responded to by Laravel)
+                // This allows us to respond with a 404 Status Code, mainly for SEO
+                // eslint-disable-next-line no-console
+                console.error('Page not found');
+                window.location = '/not-found';
+            }
+        }
     ];
 }

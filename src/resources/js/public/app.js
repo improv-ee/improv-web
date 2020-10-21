@@ -60,7 +60,7 @@ const i18n = new VueI18n({
 });
 
 const router = new VueRouter({
-    mode: 'hash',
+    mode: 'history',
     routes: getRoutes(i18n),
 });
 Vue.use(VueAnalytics, {id: 'UA-133334351-1', router});
@@ -86,15 +86,16 @@ function setI18nLanguage (lang) {
     return lang;
 }
 
-// eslint-disable-next-line no-console
-console.log('Initializing app...');
-
 // Set language
 setI18nLanguage(window.config.languages.current);
 
-new Vue({
-    el: '#app',
-    render: createElement => createElement(App),
-    router,
-    i18n
-});
+if (document.getElementById('app')) {
+    // eslint-disable-next-line no-console
+    console.log('Initializing app...');
+    new Vue({
+        el: '#app',
+        render: createElement => createElement(App),
+        router,
+        i18n
+    });
+}
