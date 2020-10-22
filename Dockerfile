@@ -20,9 +20,10 @@ COPY src /var/www/
 
 # Make all (most) web files read-only, to protect against
 # modification by the web user (say someone gains code exec as the web user)
-RUN chown -R www-data:www-data /var/www && \
+RUN mkdir -p .config && \
+    chown -R www-data:www-data /var/www && \
     chmod -R u-w,g-w,o-w /var/www && \
-    chmod -R u+w,g+w /var/www/storage
+    chmod -R u+w,g+w storage .config bootstrap/cache
 
 USER 33
 

@@ -26,6 +26,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media as SpatieMedia;
  * @property string $description
  * @property string $homepage_url
  * @property int $is_public
+ * @method Organization onlyPublic()
  */
 class Organization extends Model implements Auditable, HasMedia
 {
@@ -122,6 +123,14 @@ class Organization extends Model implements Auditable, HasMedia
         return $query->whereHas('users', function ($query) {
             $query->where('users.id', Auth::user()->id ?? null);
         });
+    }
+
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeOnlyPublic(Builder $query) {
+        return $query->where('is_public', 1);
     }
 
     /**

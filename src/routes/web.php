@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Route::get('/robots.txt', function () {
-    return response("Sitemap: https://improv.ee/sitemap.xml")->header('Content-Type', 'text/plain');
+    return response()->view('robots')->header('Content-Type', 'text/plain');
 });
 
 Route::get('/sitemap.xml', function (){
