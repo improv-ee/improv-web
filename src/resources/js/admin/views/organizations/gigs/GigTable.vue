@@ -10,11 +10,20 @@
       :fields="fields">
       <template
         #cell(uid)="data">
-        <router-link
-          class="btn"
-          :to="{ name: 'gigads.edit', params: { uid: data.item.uid }}">
-          {{ $t('ui.edit') }}
-        </router-link>
+        <b-button-group>
+          <router-link
+            class="btn btn-sm"
+            tag="button"
+            :to="{ name: 'gigads.edit', params: { uid: data.item.uid }}">
+            <i class="far fa-edit" /> {{ $t('ui.edit') }}
+          </router-link>
+          <b-button
+            size="sm"
+            variant="danger"
+            @click="deleteGigad(data.item.uid)">
+            <i class="far fa-trash-alt" /> {{ $t("ui.delete") }}
+          </b-button>
+        </b-button-group>
       </template>
     </b-table>
     <b-button
@@ -74,6 +83,15 @@ export default {
                     self.$router.push({
                         name: 'gigads.edit',
                         params: {uid: response.data.data.uid}
+                    });
+                });
+        },
+        deleteGigad(uid){
+            let self = this;
+            axios.delete(config.apiUrl + '/gigads/'+uid)
+                .then(function(){
+                    self.items= _.filter(self.items, function(item) {
+                        return item.uid !== uid;
                     });
                 });
         },

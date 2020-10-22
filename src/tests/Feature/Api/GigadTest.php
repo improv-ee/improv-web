@@ -159,4 +159,31 @@ class GigadTest extends ApiTestCase
         $response = $this->put($this->getApiUrl() . '/gigads/' . $this->gigad->uid, $this->validGigadInput);
         $response->assertStatus(403);
     }
+
+    public function testAdCanBeDeleted()
+    {
+        $user = $this->actingAsOrganizationMember();
+
+        $this->gigad->organization_id = $user->organizations()->first()->id;
+        $this->gigad->save();
+
+        $response = $this->delete($this->getApiUrl() . '/gigads/' . $this->gigad->uid);
+        $response->assertStatus(200);
+
+        $this->gigad->refresh();
+        $this->assertNotNull($this->gigad->deleted_at);
+    }
+
+
+    public function testAdBelongingToOtherOrganizationCanNotBeDeleted()
+    {
+        $this->actingAsOrganizationMember();
+
+        $otherOrg = Organization::factory()->create();
+        $this->gigad->organization_id = $this->validGigadInput['organization_uid'] = $otherOrg->id;
+        $this->gigad->save();
+
+        $response = $this->delete($this->getApiUrl() . '/gigads/' . $this->gigad->uid);
+        $response->assertStatus(403);
+    }
 }
