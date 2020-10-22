@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1\Gig;
 
+use App\Orm\Gigad;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -24,7 +25,7 @@ class CategoryResource extends JsonResource
             'name' => $this['name'],
             'description' => $this['description'],
             'order'=> $this['order'],
-            'ads' => $this->gigads->count()
+            'ads' => Gigad::onlyPublic(true)->where('gig_category_id',$this['id'])->count()
         ];
     }
 

@@ -77,7 +77,7 @@ export default {
         getResults() {
             let self = this;
 
-            axios.get(config.apiUrl + '/gigads', {params: {'filter[gig_category_id]': self.categoryId}})
+            axios.get(config.apiUrl + '/gigads', {params: {'filter[gig_category_id]': self.categoryId, 'filter[is_public]': 1}})
                 .then(response => {
                     self.gigs = response.data.data;
                     self.loaded = true;

@@ -33,6 +33,7 @@ class CategoryTest extends ApiTestCase
     {
         parent::setUp();
 
+        Organization::factory()->create();
         GigCategory::factory()->count(5)->create();
         $this->gigCategory = GigCategory::factory()->create();
     }
@@ -46,6 +47,24 @@ class CategoryTest extends ApiTestCase
                 'id' => $this->gigCategory->id,
                 'description' => $this->gigCategory->description
             ])
-            ->assertJsonCount(6,'data');
+            ->assertJsonCount(6, 'data');
+    }
+
+    public function testGigCategoryListCanBeFilteredByChildPublicStatus()
+    {
+
+        Gigad::factory()->count(3)->create(['is_public' => 0]);
+        $gigad = Gigad::factory()->make();
+        $gigad->is_public = 1;
+        $gigad->gig_category_id = $this->gigCategory->id;
+        $gigad->save();
+
+        $response = $this->get($this->getApiUrl() . '/gigcategories?filter[gigads.is_public]=1');
+
+        $response->assertStatus(200)
+            ->assertJsonFragment([
+                'id' => $this->gigCategory->id
+            ])
+            ->assertJsonCount(1, 'data');
     }
 }
