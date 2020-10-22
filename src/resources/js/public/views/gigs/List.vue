@@ -9,10 +9,9 @@
         class="col-12">
         <div v-if="category.ads > 0">
           <h3>{{ category.name }}</h3>
-
-          <p class="lead">
-            {{ category.description }}
-          </p>
+          <div class="lead">
+            <vue-markdown :source="category.description" />
+          </div>
           <category-ads :category-id="category.id" />
         </div>
       </div>
@@ -22,10 +21,12 @@
 
 <script>
 import CategoryAds from './CategoryAds';
+import VueMarkdown from 'vue-markdown';
 
 export default {
     components: {
-        CategoryAds
+        CategoryAds,
+        VueMarkdown
     },
     data() {
         return {
