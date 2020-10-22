@@ -27,7 +27,7 @@ class MakeSiteMap implements ShouldQueue
     {
         Log::info('Starting sitemap generation');
 
-        UrlHelper::forceRootUrl('https://'.config('app.url'));
+        UrlHelper::forceRootUrl(config('app.url'));
 
         $sitemap = Sitemap::create()
             ->add(Url::create('/'))
