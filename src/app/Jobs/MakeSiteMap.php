@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use Illuminate\Support\Facades\URL as UrlHelper;
 
 class MakeSiteMap implements ShouldQueue
 {
@@ -26,8 +25,6 @@ class MakeSiteMap implements ShouldQueue
     public function handle()
     {
         Log::info('Starting sitemap generation');
-
-        UrlHelper::forceRootUrl(env('WEB_DOMAIN'));
 
         $sitemap = Sitemap::create()
             ->add(Url::create('/'))
