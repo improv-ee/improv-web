@@ -1,25 +1,25 @@
 @extends('layouts.app')
-@section('title', config('app.name'))
+@section('title', isset($title)?$title:config('app.name'))
 
 @section('topright')
     <div class="btn-group" role="group" aria-label="{{ __('auth.login') }}">
-    @guest
-        <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ __('auth.login') }}</a>
-    @else
+        @guest
+            <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ __('auth.login') }}</a>
+        @else
             <form action="{{ url('/logout') }}" method="POST">
 
-            <a class="btn btn-sm btn-primary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
+                <a class="btn btn-sm btn-primary" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
                 {!! csrf_field() !!}
                 <button type="submit" title="{{ __('auth.logout') }}" class="btn btn-sm btn-light">
                     <i class="far fa-times-circle"></i>
                 </button>
             </form>
-    @endguest
+        @endguest
     </div>
 @endsection
 
 @section('content')
-            <div id="app"></div>
+    <div id="app"></div>
 @endsection
 
 @section('scripts')
@@ -27,5 +27,5 @@
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}"/>
 @endsection

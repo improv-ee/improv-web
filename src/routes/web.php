@@ -19,9 +19,9 @@ Route::get('/robots.txt', function () {
     return response()->view('robots')->header('Content-Type', 'text/plain');
 });
 
-Route::get('/sitemap.xml', function (){
+Route::get('/sitemap.xml', function () {
     return response(Storage::disk('media')->get('sitemap.xml'))
-        ->header('Content-Type','application/xml');
+        ->header('Content-Type', 'application/xml');
 });
 
 Route::get('/maintenance', 'HomeController@maintenance')
@@ -47,7 +47,7 @@ Route::group([
     Route::get('/{locale}', 'HomeController@locale')->name('locale');
 });
 
-Route::get('/not-found',function(){
+Route::get('/not-found', function () {
     abort(404);
 });
 
@@ -55,5 +55,10 @@ Route::get('/not-found',function(){
 // Matches the literal home page (/) as well as anything else (/yelp)
 // Use-case: enable vue-router catch-all routing via history.pushstate
 // https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
-Route::get('{wildcard}', 'HomeController@index')->where('wildcard', '.*')
-    ->middleware('cache.headers:private;max_age=86400;etag');
+// Some special routes map to dedicated controllers; those are used for prerendering, for SEO meta tags
+Route::group(['middleware' => ['cache.headers:private;max_age=86400;etag']], function () {
+    Route::get('/events/{event}', 'EventController@show');
+    Route::get('/organizations/{organization}', 'OrganizationController@show');
+
+    Route::get('{wildcard}', 'HomeController@index')->where('wildcard', '.*');
+});

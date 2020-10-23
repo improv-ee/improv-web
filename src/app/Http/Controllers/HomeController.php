@@ -18,8 +18,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontpage');
+            return view('frontpage');
     }
+
 
     public function maintenance()
     {
@@ -34,7 +35,7 @@ class HomeController extends Controller
      *
      * @return RedirectResponse
      */
-    public function locale($locale, Request $request) : RedirectResponse
+    public function locale($locale, Request $request): RedirectResponse
     {
         // Check if is allowed and set default locale if not
         if (!language()->allowed($locale)) {
@@ -46,6 +47,6 @@ class HomeController extends Controller
         } else {
             $request->session()->put('locale', $locale);
         }
-        return redirect('/?lang='.$locale);
+        return redirect('/?lang=' . $locale);
     }
 }
