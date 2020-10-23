@@ -12,6 +12,7 @@ class OrganizationController extends Controller
         $seoMeta = [
             'description' => Str::limit($organization->description, 140),
             'keywords' => $organization->name,
+            'image' => $organization->hasMedia('images') ? $organization->getFirstMedia('images')->getUrl('cover') : null
         ];
 
         return view('frontpage', [

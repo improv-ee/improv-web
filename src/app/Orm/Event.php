@@ -67,4 +67,15 @@ class Event extends Model implements AuditableInterface, HasMedia
     {
         $this->registerCoverImageConversion();
     }
+
+    /**
+     * @return SpatieMedia|null
+     */
+    public function getHeaderImage() :?SpatieMedia
+    {
+        if ($this->hasMedia('images')) {
+            return $this->getFirstMedia('images');
+        }
+        return $this->production->getFirstMedia('images');
+    }
 }

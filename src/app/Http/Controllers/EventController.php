@@ -14,9 +14,11 @@ class EventController extends Controller
             $keywords[] = $org->name;
         }
 
+        $image = $event->getHeaderImage();
         $seoMeta = [
             'description' => $event->production->excerpt,
             'keywords' => implode(',', $keywords),
+            'image' => $image ? $image->getUrl('cover') : null
         ];
 
         return view('frontpage', [

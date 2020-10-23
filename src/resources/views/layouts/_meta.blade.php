@@ -5,6 +5,7 @@
 @isset($seo)
     <meta name="description" content="{{ $seo['description'] }}" />
     <meta name="keywords" content="{{ $seo['keywords'] }}" />
+    <meta property="og:image" content="{{ $seo['image'] }}" />
 @else
 <meta name="description" content="@lang('site.meta_description')" />
 <meta name="keywords" content="@lang('site.meta_keywords')" />
