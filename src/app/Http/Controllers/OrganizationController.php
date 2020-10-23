@@ -17,7 +17,7 @@ class OrganizationController extends Controller
 
         return view('frontpage', [
             'seo' => $seoMeta,
-            'title' => config('app.name') . '|' . $organization->name
+            'title' => config('app.name') . ' | ' . $organization->name
         ]);
     }
 }

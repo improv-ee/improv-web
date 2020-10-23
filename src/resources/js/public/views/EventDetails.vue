@@ -131,6 +131,11 @@ export default {
         toggleStaticMap: function () {
             this.showStaticMap = !this.showStaticMap;
         }
+    },
+    metaInfo() {
+        return {
+            title: this.event.getTitle()
+        };
     }
 };
 </script>

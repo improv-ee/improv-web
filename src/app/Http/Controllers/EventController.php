@@ -23,7 +23,7 @@ class EventController extends Controller
 
         return view('frontpage', [
             'seo' => $seoMeta,
-            'title' => config('app.name') . '|' . $event->production->title
+            'title' => config('app.name') . ' | ' . $event->production->title
         ]);
     }
 }
