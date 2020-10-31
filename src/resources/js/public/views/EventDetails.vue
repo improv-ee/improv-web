@@ -4,10 +4,11 @@
     class="event-details">
     <div class="row">
       <div class="col-md-12 col-lg-12">
-        <img
+        <b-img
           class="img-fluid header-img"
-          :src="event.getHeaderImgUrl()"
-          :alt="event.production.getUid()">
+          :src="event.getHeaderImgPlaceholder()"
+          :srcset="event.getHeaderImgSrcset()"
+          :alt="event.getTitle()" />
       </div>
     </div>
     <div class="row">

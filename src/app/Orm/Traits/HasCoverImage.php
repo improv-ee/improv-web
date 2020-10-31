@@ -22,6 +22,7 @@ trait HasCoverImage
                 config('improv.images.header.width.optimal'),
                 config('improv.images.header.height.optimal')
             )
+            ->withResponsiveImages()
 
             // Do not perform image conversion using a queue and a worker, instead
             // do it synchronously in the main webserver container. This is bad for performance,

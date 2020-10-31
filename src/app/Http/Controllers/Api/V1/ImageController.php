@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Log;
 use App\Orm\Media;
 use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\InvalidConversion;
+use Spatie\MediaLibrary\Support\PathGenerator\PathGeneratorFactory;
 
 /**
  * @group Images
  */
 class ImageController extends Controller
 {
+
+    const IMAGE_CACHE_TTL = 2592000;
 
     /**
      * Get an Image
@@ -23,33 +26,49 @@ class ImageController extends Controller
      *
      * @response {}
      */
-    public function show($filename)
+    public function show(string $filename, ?string $conversion = '', ?string $responsive = null)
     {
-        /** @var \App\Orm\Media $media */
+        /** @var Media $media */
         $media = Media::where('file_name', $filename)->first();
 
         if ($media === null) {
             return response('', 404);
         }
 
-        try {
-            $file = Storage::disk('media')->get($media->getPath('cover'));
-            $cacheTime = 2592000;
-        } catch (FileNotFoundException | InvalidConversion $e) {
-            Log::alert($e->getMessage(), ['mediaId' => $media->id, 'path' => $media->getPath()]);
-            $file = stream_get_contents($media->getDefaultCoverImageStream());
+        if ($responsive && $media->hasResponsiveImages($conversion)) {
 
-            // Do not cache the default cover image for long
-            // Usually this image is returned once right after event creation, while the background job
-            // for generating a cover image is still running. If we cache the default not found image,
-            // proxies like CloudFlare will keep showing it, even when a better image is available
-            $cacheTime = 10;
+            foreach ($media->responsiveImages($conversion)->files as $file) {
+
+                if ($file->fileName !== $responsive) {
+                    continue;
+                }
+
+                $pathGenerator = PathGeneratorFactory::create();
+
+                $path = $pathGenerator->getPathForResponsiveImages($file->media);
+
+                $fullPath = $path . $responsive;
+
+                return $this->returnMediaResponse($fullPath, $media->mime_type);
+            }
         }
 
+        try {
+            return $this->returnMediaResponse($media->getPath($conversion), $media->mime_type);
+        } catch (FileNotFoundException | InvalidConversion $e) {
+            Log::alert($e->getMessage(), ['mediaId' => $media->id, 'path' => $media->getPath()]);
+            return response('', 404);
+        }
+
+    }
+
+    private function returnMediaResponse(string $mediaFullPath, string $contentType): Response
+    {
+        $file = Storage::disk('media')->get($mediaFullPath);
+
         return new Response($file, 200, [
-            'Content-Type' => $media->mime_type,
-            'Cache-Control' => 'public, max-age='.$cacheTime,
-            'ETag' => $media->getHash()
+            'Content-Type' => $contentType,
+            'Cache-Control' => 'public, max-age=' . self::IMAGE_CACHE_TTL
         ]);
     }
 }

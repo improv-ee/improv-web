@@ -87,7 +87,7 @@ class EventController extends Controller
      */
     public function schedule()
     {
-        return ScheduleResource::collection($this->getNextEvents(17));
+        return ScheduleResource::collection($this->getNextEvents(20));
     }
 
     /**

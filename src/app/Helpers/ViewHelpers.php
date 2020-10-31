@@ -19,6 +19,7 @@ if (!function_exists('appConfigJson')) {
         return json_encode([
             'token' => Request::instance()->session()->get('apiToken'),
             'apiUrl' => sprintf('https://%s/v1', env('API_DOMAIN')),
+            'webUrl' => sprintf('https://%s', env('WEB_DOMAIN')),
             'username' => Auth::user()->username ?? null,
             'release' => [
                 'version' => getenv('RELEASE_VERSION', 'dev'),

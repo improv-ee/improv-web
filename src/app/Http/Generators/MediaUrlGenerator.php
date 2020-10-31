@@ -20,7 +20,7 @@ class MediaUrlGenerator extends DefaultUrlGenerator
      */
     public function getUrl(): string
     {
-        return route('api.images.show', ['image' => $this->media->file_name]).'?hash='.$this->media->getHash();
+        return route('api.images.show', ['filename' => $this->media->file_name]) . '?hash=' . $this->media->getHash();
     }
 
     public function getPath(): string
@@ -52,6 +52,9 @@ class MediaUrlGenerator extends DefaultUrlGenerator
      */
     public function getResponsiveImagesDirectoryUrl(): string
     {
-        return '';
+        return route('api.images.show', [
+                'filename' => $this->media->file_name,
+                'conversion' => $this->conversion->getName(),
+            ]) . '/';
     }
 }

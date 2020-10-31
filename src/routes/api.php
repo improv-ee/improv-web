@@ -45,10 +45,12 @@ Route::middleware('cache.headers:etag')->as('api.')->group(function () {
     Route::apiResource('gigcategories', 'GigCategoryController')->only(['index']);
 
     Route::apiResource('gigads', 'GigadController')->only(['index', 'show']);
+
+    Route::get('/images/{filename}/{conversion?}/{responsive?}', 'ImageController@show')->name('images.show')
+        ->middleware('cache.headers:public;max_age=86400;etag');
+
 });
 
-Route::apiResource('images', 'ImageController', ['as' => 'api'])
-    ->only(['show'])->middleware('cache.headers:public;max_age=86400;etag');
 
 Route::middleware('auth:api')->group(function () {
 

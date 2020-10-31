@@ -48,7 +48,11 @@ export class Event {
     }
 
     hasHeaderImg() {
-        return !!_.get(this.event, 'images.header');
+        return !!_.get(this.event, 'images.header.urls.original');
+    }
+
+    hasHeaderImgPlaceholder() {
+        return !!_.get(this.event, 'images.header.placeholder');
     }
 
     getTitle() {
@@ -65,11 +69,25 @@ export class Event {
         return this;
     }
 
+    getHeaderImgPlaceholder() {
+        if (this.hasHeaderImgPlaceholder()) {
+            return this.event.images.header.placeholder;
+        }
+        return this.production.getHeaderImgPlaceholder();
+    }
+
     getHeaderImgUrl() {
-        if (this.event && this.event.images && this.event.images.header && this.event.images.header.urls) {
+        if (this.hasHeaderImg()) {
             return this.event.images.header.urls.original;
         }
-        return this.production.getHeaderImgUrl() || '/img/production/default-header.jpg';
+        return this.production.getHeaderImgUrl();
+    }
+
+    getHeaderImgSrcset() {
+        if (this.hasHeaderImg()) {
+            return this.event.images.header.urls.srcset;
+        }
+        return this.production.getHeaderImgSrcset();
     }
 
 }

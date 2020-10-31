@@ -51,10 +51,10 @@ export default {
     methods: {
 
         getCardImage(organization) {
-            if (organization.images && organization.images.header && organization.images.header.urls) {
+            if (organization.images && organization.images.header && organization.images.header.urls && organization.images.header.urls.original !== null) {
                 return organization.images.header.urls.original;
             }
-            return '/img/production/default-header.jpg';
+            return config.webUrl + '/img/production/default-header.jpg';
         },
         goToOrg(organization) {
             this.$router.push({name: 'organization.details', params: {uid: organization.uid}});

@@ -19,7 +19,7 @@ export class Production {
     }
 
     hasHeaderImg() {
-        return !!_.get(this.production, 'images.header');
+        return !!_.get(this.production, 'images.header.urls.original');
     }
 
     getHeaderImgUrl() {
@@ -27,6 +27,25 @@ export class Production {
             return null;
         }
         return _.get(this.production, 'images.header.urls.original');
+    }
+
+    hasHeaderImgPlaceholder() {
+        return !!_.get(this.production, 'images.header.placeholder');
+    }
+
+    getHeaderImgPlaceholder() {
+
+        if (this.hasHeaderImgPlaceholder()) {
+            return this.production.images.header.placeholder;
+        }
+        return  config.webUrl + '/img/production/default-header.jpg';
+    }
+
+    getHeaderImgSrcset() {
+        if (this.hasHeaderImg()) {
+            return this.production.images.header.urls.srcset;
+        }
+        return null;
     }
 
     getExcerpt() {
@@ -43,6 +62,10 @@ export class Production {
 
     getTags() {
         return _.get(this.production, 'tags');
+    }
+
+    hasTags() {
+        return this.getTags().length > 0;
     }
 
     hasEvents() {

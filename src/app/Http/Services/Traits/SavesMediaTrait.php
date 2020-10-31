@@ -10,25 +10,9 @@ trait SavesMediaTrait
     protected function addMedia($base64Media, HasMedia $model)
     {
         $model->addMediaFromBase64($base64Media)
+            ->withResponsiveImages()
             ->withCustomProperties(['type' => 'header'])
-            ->setFileName($this->getFileName())
             ->toMediaCollection('images');
-    }
-
-    /**
-     * Get a unique pseudo-random file name
-     *
-     * @return string
-     */
-    protected function getFileName(): string
-    {
-        try {
-            $seed = random_int(PHP_INT_MIN, PHP_INT_MAX) . uniqid();
-        } catch (\Exception $e) {
-            $seed = uniqid('', true) . '-' . time();
-        }
-
-        return sha1($seed);
     }
 
     /**

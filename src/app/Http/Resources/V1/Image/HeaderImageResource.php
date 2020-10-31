@@ -23,11 +23,17 @@ class HeaderImageResource extends JsonResource
     public function toArray($request)
     {
 
+        $firstMedia = $this->getFirstMedia('images');
+
         return [
-            'header' => $this->when($this->hasMedia('images'), [
+            'header' => $this->when($this->hasMedia('images') !== null, [
                 'urls' => [
-                    'original' => $this->getFirstMediaUrl('images')
-                ]
+                    'original' => $this->getFirstMediaUrl('images') ?: null,
+                    'responsive' => $firstMedia === null ? null : $this->getFirstMedia('images')->getResponsiveImageUrls('cover'),
+                    'srcset' => $firstMedia === null ? null : $this->getFirstMedia('images')->getSrcset('cover'),
+                ],
+                'placeholder' => $firstMedia === null ? null : $this->getFirstMedia('images')->responsiveImages('cover')->getPlaceholderSvg()
+
             ], null)
         ];
     }

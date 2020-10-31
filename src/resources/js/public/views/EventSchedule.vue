@@ -7,7 +7,7 @@
           v-for="event in events.data"
           :key="event.uid"
           class="col-12 col-md-6 col-lg-6 mb-3">
-          <schedule-feed-event :event="event" />
+          <schedule-feed-event :event="eventFactory(event)" />
         </div>
       </div>
       <div class="row">
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import {Event} from '../../models/event';
+import {Production} from '../../models/production';
 export default {
     data() {
         return {
@@ -35,7 +37,9 @@ export default {
         this.getResults();
     },
     methods: {
-
+        eventFactory(eventData){
+            return new Event(eventData, new Production(eventData.production));
+        },
         getResults(page = 1) {
             this.$Progress.start();
 
