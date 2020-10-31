@@ -40,7 +40,7 @@ class MakeSiteMap implements ShouldQueue
                 ->select('uid')
                 ->where('is_public', 1)
                 ->orderBy('updated_at', 'DESC')
-                ->limit(2000)
+                ->limit(10000)
                 ->pluck('uid')
                 ->each(function ($uid) use ($sitemap, $model) {
                     $sitemap->add(Url::create( "/{$model}/{$uid}"));

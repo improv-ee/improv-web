@@ -23,7 +23,12 @@ class EventController extends Controller
 
         return view('frontpage', [
             'seo' => $seoMeta,
-            'title' => config('app.name') . ' | ' . $event->production->title
+            'title' => sprintf('%s (%s; %s) - %s',
+                $event->getTitleOrParent(),
+                $event->start_time->toFormattedDateString(),
+                $event->production->organizations()->get()->pluck('name')->implode(', '),
+                strtolower(config('app.name'))
+            )
         ]);
     }
 }

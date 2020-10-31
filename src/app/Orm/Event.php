@@ -71,11 +71,24 @@ class Event extends Model implements AuditableInterface, HasMedia
     /**
      * @return SpatieMedia|null
      */
-    public function getHeaderImage() :?SpatieMedia
+    public function getHeaderImage(): ?SpatieMedia
     {
         if ($this->hasMedia('images')) {
             return $this->getFirstMedia('images');
         }
         return $this->production->getFirstMedia('images');
+    }
+
+    /**
+     * Get event title, if it has one; otherwise default to parent Production title
+     *
+     * @return string|null
+     */
+    public function getTitleOrParent(): ?string
+    {
+        if ($this->title !== null) {
+            return $this->title;
+        }
+        return $this->production->title;
     }
 }

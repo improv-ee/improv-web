@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', isset($title)?$title:config('app.name'))
+@section('title', isset($title)?$title:strtolower(config('app.name')))
 
 @section('topright')
     <div class="btn-group" role="group" aria-label="{{ __('auth.login') }}">
