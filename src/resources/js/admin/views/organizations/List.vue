@@ -18,7 +18,7 @@
           <organization-card
             v-for="organization in organizations"
             :key="organization.uid"
-            :organization="organization" />
+            :organization="organizationFactory(organization)" />
         </div>
       </div>
 
@@ -58,6 +58,7 @@
 
 <script>
 import OrganizationCard from '../../../components/organization/OrganizationCard';
+import {Organization} from '../../../models/organization';
 export default {
     components: {
         OrganizationCard,
@@ -73,6 +74,9 @@ export default {
         this.getResults();
     },
     methods: {
+        organizationFactory(organizationData){
+            return new Organization(organizationData);
+        },
         createOrganization(e) {
 
             if (!this.newOrganizationName.length) {

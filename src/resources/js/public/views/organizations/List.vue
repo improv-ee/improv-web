@@ -7,7 +7,7 @@
         <organization-card
           v-for="organization in organizations"
           :key="organization.uid"
-          :organization="organization" />
+          :organization="organizationFactory(organization)" />
       </div>
     </div>
     <loading-spinner v-else />
@@ -16,6 +16,7 @@
 
 <script>
 import OrganizationCard from '../../../components/organization/OrganizationCard';
+import { Organization } from '../../../models/organization';
 export default {
     components: {
         OrganizationCard,
@@ -29,7 +30,9 @@ export default {
         this.getResults();
     },
     methods: {
-
+        organizationFactory(organizationData){
+            return new Organization(organizationData);
+        },
         getResults(page = 1) {
             axios.get(config.apiUrl + '/organizations', {params: {page: page, 'filter[is_public]': 1}})
                 .then(response => {

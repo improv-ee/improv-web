@@ -8,6 +8,10 @@ export class Organization {
         return _.get(this.organization, 'name', null);
     }
 
+    getUid() {
+        return _.get(this.organization, 'uid', null);
+    }
+
     getDescription() {
         return _.get(this.organization, 'description', null);
     }
@@ -54,9 +58,28 @@ export class Organization {
         return !!_.get(this.organization, 'images.header.urls.original');
     }
 
+    hasHeaderImgPlaceholder() {
+        return !!_.get(this.organization, 'images.header.placeholder');
+    }
+
+    getHeaderImgPlaceholder() {
+
+        if (this.hasHeaderImgPlaceholder()) {
+            return this.organization.images.header.placeholder;
+        }
+        return config.webUrl + '/img/production/default-header.jpg';
+    }
+
+    getHeaderImgSrcset() {
+        if (this.hasHeaderImg()) {
+            return this.organization.images.header.urls.srcset;
+        }
+        return null;
+    }
+
     getHeaderImgUrl() {
         if (!this.hasHeaderImg()) {
-            return null;
+            return config.webUrl + '/img/production/default-header.jpg';
         }
         return _.get(this.organization, 'images.header.urls.original');
     }

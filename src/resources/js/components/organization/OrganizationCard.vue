@@ -1,28 +1,31 @@
 <template>
-  <div v-if="organizationModel">
+  <div>
     <div class="row">
       <div class="col-8 offset-2">
-        <img
-          :src="getCardImage(organization)"
-          class="rounded mx-auto d-block img-fluid"
-          :alt="organization.name"
-          @click="goToOrg(organization)">
+        <router-link :to="{name: 'organization.details', params: {uid: organization.getUid()}}">
+          <b-img-lazy
+            :src="organization.getHeaderImgUrl()"
+            :blank-src="organization.getHeaderImgPlaceholder()"
+            :srcset="organization.getHeaderImgSrcset()"
+            class="rounded mx-auto d-block img-fluid"
+            :alt="organization.getName()" />
+        </router-link>
       </div>
     </div>
     <div class="row mb-4">
       <div class="col-4 offset-2">
         <p>
           <strong>{{ $t('organization.attr.name') }}:</strong>
-          <router-link :to="{name: 'organization.details', params: {uid: organization.uid}}">
-            {{ organization.name }}
+          <router-link :to="{name: 'organization.details', params: {uid: organization.getUid()}}">
+            {{ organization.getName() }}
           </router-link>
         </p>
       </div>
       <div class="col-4">
-        <p v-if="organizationModel.hasHomepage()">
+        <p v-if="organization.hasHomepage()">
           <strong> {{ $t('organization.attr.homepage_url') }}</strong>: <a
-            :href="organizationModel.getHomepageUrl()"
-            target="_blank">{{ organizationModel.getHomepageUrl(true) }}</a>
+            :href="organization.getHomepageUrl()"
+            target="_blank">{{ organization.getHomepageUrl(true) }}</a>
         </p>
       </div>
     </div>
@@ -36,28 +39,8 @@ export default {
         organization: {
             type: Object,
             default: function () {
-                return {};
+                return new Organization();
             }
-        }
-    },
-    data() {
-        return {
-            organizationModel: null
-        };
-    },
-    mounted() {
-        this.organizationModel = new Organization(this.organization);
-    },
-    methods: {
-
-        getCardImage(organization) {
-            if (organization.images && organization.images.header && organization.images.header.urls && organization.images.header.urls.original !== null) {
-                return organization.images.header.urls.original;
-            }
-            return config.webUrl + '/img/production/default-header.jpg';
-        },
-        goToOrg(organization) {
-            this.$router.push({name: 'organization.details', params: {uid: organization.uid}});
         }
     }
 };
@@ -69,6 +52,4 @@ export default {
     cursor: pointer;
     margin-bottom: .5em;
   }
-
-
 </style>

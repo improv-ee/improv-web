@@ -4,9 +4,10 @@
     class="event-details">
     <div class="row">
       <div class="col-md-12 col-lg-12">
-        <b-img
+        <b-img-lazy
           class="img-fluid header-img"
-          :src="event.getHeaderImgPlaceholder()"
+          :blank-src="event.getHeaderImgPlaceholder()"
+          :src="event.getHeaderImgUrl()"
           :srcset="event.getHeaderImgSrcset()"
           :alt="event.getTitle()" />
       </div>
