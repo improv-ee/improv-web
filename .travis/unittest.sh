@@ -14,6 +14,16 @@ curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-lin
 chmod +x ./cc-test-reporter
 ./cc-test-reporter before-build
 
+
+# Travis, by default, has older version of NPM
+# Upgrade it to a minimum acceptable version for us
+npm i -g npm@6.7.0
+npm ci
+
+# Static assets are needed for Laravel Mix \ unittests that test for Blade
+echo "Generating static assets"
+npm run development
+
 echo "Running unit tests..."
 php vendor/bin/phpunit
 

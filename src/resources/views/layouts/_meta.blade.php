@@ -17,3 +17,10 @@
 
 <link rel="author" type="text/plain" href="humans.txt" />
 <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+
+@foreach(config('language.allowed') as $langCode)
+@if(config('app.locale') === $langCode)
+@continue
+@endif
+<link rel="alternate" hreflang="{{ $langCode }}" href="{{ url()->current()}}?lang={{ $langCode }}" />
+@endforeach
