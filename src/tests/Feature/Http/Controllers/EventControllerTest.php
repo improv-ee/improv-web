@@ -23,7 +23,7 @@ class EventControllerTest extends WebTestCase
     {
         $event = Event::factory()->create();
         $response = $this->get($this->getWebUrl() . 'events/' . $event->uid);
-        $response->assertOk();
+        $this->assertEquals(200,$response->status(),$response->content());
 
         preg_match("/<title>(.*)<\/title>/im", $response->content(), $matches);
 

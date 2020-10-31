@@ -48,4 +48,16 @@ class EventResource extends JsonResource
             'images'=> new HeaderImageResource($this)
         ];
     }
+
+    /**
+     * Customize the outgoing response for the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Response  $response
+     * @return void
+     */
+    public function withResponse($request, $response)
+    {
+        $response->header('Last-Modified', $this->updated_at->format('D, d M Y H:i:s \G\M\T'));
+    }
 }
