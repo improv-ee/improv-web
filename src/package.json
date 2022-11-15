@@ -39,7 +39,7 @@
     "mdbootstrap": "4.8.9",
     "moment": "^2.29.1",
     "popper.js": "^1.16.1",
-    "resolve-url-loader": "^3.1",
+    "resolve-url-loader": "^5.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0",
     "uuid": "^8.3",
