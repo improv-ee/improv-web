@@ -7,6 +7,7 @@
 
 This is the source code for https://improv.ee, a website dedicated to listing information and events about improvised theatre.
 
+This project is archived and superceeded by https://github.com/improv-ee/improv-static
 
 ## Development
 
